@@ -112,6 +112,12 @@ h1,h2,h3,.hero-title,.panel-header h2,.lead-story h1{letter-spacing:0}
 .issue-art-card--contain img{object-fit:contain;min-height:0;max-height:560px}
 .schedule-poster-card,.reward-logo-card,.rule-art-card{margin:1.2rem 0}
 .schedule-poster-card img{max-height:880px}
+.schedule-edition{position:relative;overflow:hidden;border:1px solid var(--line);border-left:6px solid #c21820;background:linear-gradient(135deg,rgba(194,24,32,.22),rgba(18,18,22,.92) 48%,rgba(207,184,124,.14));border-radius:24px;padding:clamp(1rem,3vw,1.6rem);box-shadow:var(--shadow)}
+.schedule-edition .hero-title{margin:.35rem 0 .25rem;text-transform:uppercase;line-height:.95}
+.schedule-edition .lead{max-width:780px;margin-bottom:1rem}
+.schedule-edition__meta{display:flex;gap:.65rem;flex-wrap:wrap}
+.schedule-edition__meta span{display:inline-flex;align-items:center;gap:.35rem;border:1px solid rgba(255,226,138,.28);background:rgba(0,0,0,.36);border-radius:999px;padding:.55rem .75rem;color:#f5ead0;font-weight:900}
+.schedule-edition__meta strong{color:var(--gold2)}
 .reward-logo-card img{max-height:360px}
 .rule-art-card img{max-height:480px}
 .archive-art-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:1.35rem 0 1.5rem}

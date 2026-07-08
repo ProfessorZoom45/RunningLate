@@ -403,6 +403,8 @@
   function renderSchedule(data){
     const root = $('[data-render="schedule"]'); if(!root) return;
     const search = $('#scheduleSearch'); const weekFilter = $('#weekFilter');
+    const scheduleTotal = $('[data-render="schedule-total"]');
+    if(scheduleTotal) scheduleTotal.textContent = data.derived?.projected_user_games || (data.schedule || []).length;
     const render = () => {
       const q = (search?.value || '').toLowerCase().trim();
       const wf = weekFilter?.value || 'All';

@@ -1439,8 +1439,8 @@
     "coverLines": [
       {
         "kicker": "Season Preview",
-        "title": "79-Game User War Path",
-        "detail": "Every projected user-vs-user matchup lives in the schedule board."
+        "title": "The Season Awaits",
+        "detail": "Projected user-vs-user games for Weeks 1-13 live in the schedule board."
       },
       {
         "kicker": "Program Count",
@@ -1519,7 +1519,7 @@
       {
         "kicker": "SCHEDULE DESK",
         "title": "79 projected user games already loaded",
-        "summary": "The schedule board filters by week, team, and venue while hiding CPU-vs-CPU clutter.",
+        "summary": "The schedule board filters the projected user-vs-user games for Weeks 1-13 by week, team, and venue.",
         "href": "schedule.html",
         "cta": "Open Schedule"
       },
