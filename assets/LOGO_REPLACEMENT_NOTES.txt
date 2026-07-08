@@ -1,0 +1,3 @@
+User-provided logos have been integrated in v3. Sitewide logo: assets/rld-logo.png
+Splash poster: assets/rld-splash-poster.png
+Original uploaded crest preserved as assets/rld-logo-original.png

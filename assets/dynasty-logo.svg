@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-labelledby="t d">
+<title id="t">Running Late Dynasty CFB 27</title><desc id="d">Royal crest style logo with gold, red, black, and white football dynasty branding.</desc>
+<defs>
+  <radialGradient id="g" cx="50%" cy="26%" r="70%"><stop offset="0" stop-color="#ffeaa0"/><stop offset=".25" stop-color="#d4af37"/><stop offset=".68" stop-color="#5d1114"/><stop offset="1" stop-color="#050506"/></radialGradient>
+  <linearGradient id="metal" x1="0" x2="1"><stop offset="0" stop-color="#8f6f18"/><stop offset=".2" stop-color="#fff1a8"/><stop offset=".5" stop-color="#d4af37"/><stop offset=".8" stop-color="#fff0a2"/><stop offset="1" stop-color="#7f5f11"/></linearGradient>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000" flood-opacity=".65"/><feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="#d4af37" flood-opacity=".35"/></filter>
+</defs>
+<rect width="1200" height="1200" fill="#050506"/>
+<g filter="url(#shadow)">
+  <path d="M600 76 965 205v295c0 285-147 496-365 624C382 996 235 785 235 500V205L600 76Z" fill="url(#g)" stroke="url(#metal)" stroke-width="34"/>
+  <path d="M600 132 906 240v256c0 239-116 421-306 535-190-114-306-296-306-535V240L600 132Z" fill="none" stroke="#0a0b0d" stroke-width="18" opacity=".82"/>
+  <path d="M350 386h500v86H350z" rx="18" fill="#0c0c10" stroke="url(#metal)" stroke-width="10"/>
+  <path d="M422 520c40-90 316-90 356 0 26 58 14 153-41 210-68 70-206 70-274 0-55-57-67-152-41-210Z" fill="#111218" stroke="url(#metal)" stroke-width="18"/>
+  <path d="M600 498c65 0 118 53 118 118S665 734 600 734s-118-53-118-118 53-118 118-118Z" fill="#7c1117" stroke="#f6d66f" stroke-width="14"/>
+  <path d="M522 616h156M600 538v156M546 564c32 36 32 68 0 104M654 564c-32 36-32 68 0 104" stroke="#fff1a8" stroke-width="14" stroke-linecap="round" fill="none" opacity=".9"/>
+  <text x="600" y="345" text-anchor="middle" font-family="Impact, Arial Black, sans-serif" font-size="86" fill="#fff7cf" stroke="#070707" stroke-width="8" paint-order="stroke" letter-spacing="4">RUNNING LATE</text>
+  <text x="600" y="455" text-anchor="middle" font-family="Impact, Arial Black, sans-serif" font-size="64" fill="url(#metal)" stroke="#070707" stroke-width="7" paint-order="stroke" letter-spacing="5">DYNASTY</text>
+  <text x="600" y="850" text-anchor="middle" font-family="Impact, Arial Black, sans-serif" font-size="92" fill="#fff7cf" stroke="#070707" stroke-width="9" paint-order="stroke" letter-spacing="6">CFB 27</text>
+  <text x="600" y="937" text-anchor="middle" font-family="Arial Black, Impact, sans-serif" font-size="34" fill="#d4af37" letter-spacing="7">DAY 1 ERA</text>
+</g>
+</svg>
