@@ -590,7 +590,7 @@
       ['hub','hub.html','&#127968;','Hub'],
       ['schedule','schedule.html','&#128197;','Schedule'],
       ['teamhub','teamhub.html','&#127944;','Team Hub'],
-      ['media','media.html','&#128250;','Media'],
+      ['videos','videos.html','&#9654;','Videos'],
       ['discord',DISCORD,'&#128172;','Discord']
     ];
     const nav = document.createElement('nav');

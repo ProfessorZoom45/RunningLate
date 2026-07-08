@@ -123,6 +123,19 @@ h1,h2,h3,.hero-title,.panel-header h2,.lead-story h1{letter-spacing:0}
 .schedule-edition__meta{display:flex;gap:.65rem;flex-wrap:wrap}
 .schedule-edition__meta span{display:inline-flex;align-items:center;gap:.35rem;border:1px solid rgba(255,226,138,.28);background:rgba(0,0,0,.36);border-radius:999px;padding:.55rem .75rem;color:#f5ead0;font-weight:900}
 .schedule-edition__meta strong{color:var(--gold2)}
+.video-room{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,360px);gap:1rem;align-items:stretch;margin-top:1.35rem}
+.video-feature,.video-sideboard,.video-playlist{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,18,22,.9),rgba(5,5,6,.96));border-radius:24px;box-shadow:var(--shadow);overflow:hidden}
+.video-feature{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr)}
+.video-frame{position:relative;aspect-ratio:16/9;background:#020204}
+.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-frame--wide{border:1px solid var(--line2);border-radius:18px;overflow:hidden}
+.video-feature__body{display:grid;align-content:center;gap:.75rem;padding:1.1rem}
+.video-feature__body h2,.video-sideboard h2{margin:.2rem 0;text-transform:uppercase;line-height:1}
+.video-feature__body p,.video-sideboard p{margin:0;color:#d8d1c3;font-weight:750}
+.video-actions{display:flex;gap:.65rem;flex-wrap:wrap;margin-top:.35rem}
+.video-sideboard{display:grid;align-content:center;justify-items:start;gap:.85rem;padding:1.15rem}
+.video-sideboard img{width:min(220px,80%);justify-self:center;filter:drop-shadow(0 0 28px rgba(212,175,55,.22))}
+.video-playlist{margin-top:1rem;padding:1rem}
 .reward-logo-card img{max-height:360px}
 .rule-art-card img{max-height:480px}
 .archive-art-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:1.35rem 0 1.5rem}
@@ -162,7 +175,7 @@ h1,h2,h3,.hero-title,.panel-header h2,.lead-story h1{letter-spacing:0}
 .site-footer{margin-top:3rem}
 .site-footer .footer-links a[href*="league-history"]{display:none}
 @media (max-width:1020px){
-  .magazine-hero,.issue-art-grid,.coach-card-grid{grid-template-columns:1fr}
+  .magazine-hero,.issue-art-grid,.coach-card-grid,.video-room,.video-feature{grid-template-columns:1fr}
   .team-hub-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:720px){

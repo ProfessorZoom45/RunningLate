@@ -20,6 +20,7 @@ Static GitHub Pages site for the Running Late Dynasty CFB 27 league hub.
 - `history.html` - league history and CFB 26 to CFB 27 carryover context.
 - `rewards.html` - rewards and boost tracker shell.
 - `media.html` - streams, clips, and highlights center.
+- `videos.html` - official YouTube playlist, featured latest video, and collaborator invite.
 - `archive.html` - database of past index splash covers and weekly issue images.
 - `updates.html` - maintenance guide.
 - `sitemap.html` - human-readable sitemap and publishing checklist.

@@ -1209,6 +1209,12 @@
       "summary": "Streams, clips, highlight culture, and content links."
     },
     {
+      "title": "Videos",
+      "file": "videos.html",
+      "type": "Community",
+      "summary": "Official YouTube playlist, latest featured video, and coach collaborator invite."
+    },
+    {
       "title": "Archive",
       "file": "archive.html",
       "type": "Archive",
@@ -1578,6 +1584,11 @@
         "label": "Media",
         "href": "media.html",
         "detail": "Streams and clips"
+      },
+      {
+        "label": "Videos",
+        "href": "videos.html",
+        "detail": "Official YouTube playlist"
       }
     ],
     "updateGuide": [
