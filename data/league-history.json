@@ -1593,7 +1593,7 @@
   "dashboard": {
     "status": {
       "leagueState": "LAUNCH WEEK",
-      "currentWeek": "Week 0 / Week 1 Build",
+      "currentWeek": "Preseason",
       "nextAdvance": "Friday July 10 • Noon EST",
       "updateLabel": "Updated from Discord export • July 7, 2026",
       "editorNote": "Edit data/league-history.json first; app.js paints the cards automatically."
