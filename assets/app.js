@@ -15,7 +15,92 @@
     ['Streams Posted','12','Clips, VODs, and stream links logged'],
     ['Rewards Claimed','8','Boosts and rewards submitted'],
     ['Admin Reviews','1','Open review item'],
-    ['Open Teams','0','No current openings']
+    ['Open Teams','69 pool','Available schools listed by conference']
+  ];
+  const AVAILABLE_TEAMS = [
+    ['Mountain West Available', [
+      'AIR FORCE FALCONS ✈️',
+      'HAWAI’I RAINBOW WARRIORS 🌈',
+      'NEVADA WOLF PACK 🐺',
+      'NEW MEXICO LOBOS 🐺',
+      'NORTH DAKOTA STATE BISON 🦬',
+      'NORTHERN ILLINOIS HUSKIES 🐺',
+      'SAN JOSE STATE SPARTANS 🪖',
+      'UNLV REBELS 🎰',
+      'UTEP MINERS ⛏️',
+      'WYOMING COWBOYS 🤠'
+    ]],
+    ['PAC-12 Available', [
+      'BOISE STATE BRONCOS 🐴',
+      'COLORADO STATE RAMS 🐏',
+      'FRESNO STATE BULLDOGS 🐶',
+      'OREGON STATE BEAVERS 🦫',
+      'SAN DIEGO STATE AZTECS 🗡️',
+      'TEXAS STATE BOBCATS 🐱',
+      'UTAH STATE AGGIES 🐂',
+      'WASHINGTON STATE COUGARS 🐾'
+    ]],
+    ['Sun Belt Available', [
+      'APP STATE MOUNTAINEERS ⛰️',
+      'ARKANSAS STATE RED WOLVES 🐺',
+      'COASTAL CAROLINA CHANTICLEERS 🐓',
+      'GEORGIA SOUTHERN EAGLES 🦅',
+      'GEORGIA STATE PANTHERS 🐆',
+      'JAMES MADISON DUKES 🐶',
+      'LOUISIANA RAGIN’ CAJUNS 🌶️',
+      'LOUISIANA TECH BULLDOGS 🐶',
+      'MARSHALL THUNDERING HERD 🦬',
+      'OLD DOMINION MONARCHS 🦁',
+      'SOUTH ALABAMA JAGUARS 🐆',
+      'SOUTHERN MISS GOLDEN EAGLES 🦅',
+      'TROY TROJANS ⚔️',
+      'UL MONROE WARHAWKS 🦅'
+    ]],
+    ['ACC Available', [
+      'BOSTON COLLEGE EAGLES 🦅',
+      'CALIFORNIA GOLDEN BEARS 🐻',
+      'DUKE BLUE DEVILS 😈',
+      'GEORGIA TECH YELLOW JACKETS 🐝',
+      'LOUISVILLE CARDINALS 🐦',
+      'NC STATE WOLFPACK 🐺',
+      'NORTH CAROLINA TAR HEELS 🐏',
+      'PITT PANTHERS 🐆',
+      'STANFORD CARDINAL 🌲',
+      'SYRACUSE ORANGE 🍊',
+      'VIRGINIA CAVALIERS ⚔️',
+      'WAKE FOREST DEMON DEACONS 🎩'
+    ]],
+    ['Big Ten Available', [
+      'ILLINOIS FIGHTING ILLINI 🔶',
+      'IOWA HAWKEYES 🐤',
+      'MARYLAND TERRAPINS 🐢',
+      'MICHIGAN STATE SPARTANS 🪖',
+      'MINNESOTA GOLDEN GOPHERS 🐿️',
+      'NORTHWESTERN WILDCATS 🟣',
+      'PURDUE BOILERMAKERS 🚂',
+      'RUTGERS SCARLET KNIGHTS 🛡️',
+      'UCLA BRUINS 🐻',
+      'WISCONSIN BADGERS 🦡'
+    ]],
+    ['Big XII Available', [
+      'ARIZONA WILDCATS 🐻',
+      'ARIZONA STATE SUN DEVILS 🔱',
+      'BAYLOR BEARS 🐻',
+      'CINCINNATI BEARCATS 🐾',
+      'IOWA STATE CYCLONES 🌪️',
+      'KANSAS JAYHAWKS 🐦',
+      'KANSAS STATE WILDCATS 🐱',
+      'OKLAHOMA STATE COWBOYS 🤠',
+      'UCF KNIGHTS ⚔️',
+      'UTAH UTES 🪶',
+      'WEST VIRGINIA MOUNTAINEERS ⛰️'
+    ]],
+    ['SEC Available', [
+      'ARKANSAS RAZORBACKS 🐗',
+      'KENTUCKY WILDCATS 🐱',
+      'MISSOURI TIGERS 🐯',
+      'VANDERBILT COMMODORES ⚓'
+    ]]
   ];
 
   async function loadData(){
@@ -146,9 +231,10 @@
   function renderOpenTeams(data){
     const root = $('[data-render="open-teams"]'); if(!root) return;
     const claimed = data.derived?.claimed_count || data.teams?.length || 0;
+    const availableCount = AVAILABLE_TEAMS.reduce((sum, group) => sum + group[1].length, 0);
     const rows = [
       ['Claimed', `${claimed} programs`, 'All current coaches are marked active.'],
-      ['Open', '0 teams', 'No public open programs right now.'],
+      ['Open', `${availableCount} teams`, 'Available school pool is listed below by conference.'],
       ['Reserved', '0 holds', 'Reserved claims can be added here by admins.'],
       ['Waitlist', 'Join Discord', 'Replacement coaches should enter through the league invite.'],
       ['Needs Confirmation', '0 users', 'No confirmation issues are listed publicly.']
@@ -163,6 +249,11 @@
           <span>${esc(status)}</span>
           <strong>${esc(value)}</strong>
           <p>${esc(detail)}</p>
+        </article>`).join('')}</div>
+      <div class="available-board">${AVAILABLE_TEAMS.map(([group, teams]) => `
+        <article class="available-card reveal">
+          <h3>${esc(group)} <span>${teams.length}</span></h3>
+          <div class="chip-row">${teams.map(team => `<span class="chip">${esc(team)}</span>`).join('')}</div>
         </article>`).join('')}</div>`;
   }
   function renderConferenceCards(data){

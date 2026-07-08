@@ -46,6 +46,10 @@ body{padding-bottom:7.5rem}
 .health-card strong,.status-card strong{display:block;margin:.2rem 0;font-size:clamp(1.7rem,3.5vw,2.7rem);line-height:.95;color:#fff}
 .health-card p,.status-card p{margin:.3rem 0 0;color:#d8d1c3;font-weight:750}
 .status-board{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.8rem}
+.available-board{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem;margin-top:1rem}
+.available-card{border:1px solid var(--line2);background:rgba(255,255,255,.04);border-radius:18px;padding:1rem}
+.available-card h3{display:flex;justify-content:space-between;gap:.75rem;align-items:center;margin:0 0 .75rem;text-transform:uppercase;letter-spacing:.03em}
+.available-card h3 span{display:inline-flex;align-items:center;justify-content:center;min-width:2rem;border:1px solid var(--line);border-radius:999px;color:var(--gold2);font-size:.78rem}
 .audio-player{position:fixed;left:1rem;bottom:1rem;z-index:80;display:flex;align-items:center;gap:.85rem;width:min(560px,calc(100vw - 2rem));border:1px solid rgba(255,226,138,.34);background:linear-gradient(135deg,rgba(15,15,18,.94),rgba(63,10,14,.94));backdrop-filter:blur(18px);border-radius:18px;padding:.78rem .9rem;box-shadow:0 20px 70px rgba(0,0,0,.45)}
 .audio-player__meta{min-width:0;flex:1}
 .audio-player__meta span{display:block;color:var(--muted);font-size:.66rem;font-weight:1000;text-transform:uppercase;letter-spacing:.12em}
@@ -58,7 +62,7 @@ body{padding-bottom:7.5rem}
 @media (max-width:900px){
   body{padding-bottom:10.8rem}
   .section-jumper{top:104px}
-  .status-board{grid-template-columns:1fr}
+  .status-board,.available-board{grid-template-columns:1fr}
   .audio-player{left:.65rem;right:.65rem;bottom:4.95rem;width:auto;padding:.68rem .72rem}
   .audio-player__controls button{width:38px;height:38px}
   .mobile-bottom-nav{position:fixed;left:0;right:0;bottom:0;z-index:85;display:grid;grid-template-columns:repeat(5,1fr);gap:.2rem;padding:.42rem .5rem calc(.42rem + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:rgba(5,5,6,.94);backdrop-filter:blur(18px);box-shadow:0 -16px 50px rgba(0,0,0,.42)}
