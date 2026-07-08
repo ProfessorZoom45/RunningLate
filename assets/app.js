@@ -353,6 +353,9 @@
             </div>
           </a>`).join('')}</div>`;
       observe();
+      if(location.hash){
+        setTimeout(()=>document.getElementById(location.hash.slice(1))?.scrollIntoView({behavior:'smooth',block:'start'}), 120);
+      }
     };
     search?.addEventListener('input', draw);
     draw();
@@ -439,14 +442,27 @@
   }
   function renderArchive(data){
     const root = $('[data-render="archive"]'); if(!root) return;
-    const cards = [
-      ['Issue 01','Launch Desk','Week 0 / onboarding shell for the CFB 27 era.'],
-      ['Issue 02','Week 1 War Room','First user-vs-user slate and early league storylines.'],
-      ['Issue 03','Game of the Week','GOTW voting, rivalry heat, and boost tracker space.'],
-      ['Issue 04','Conference Heat Check','ACC, Big Ten, BIG XII, SEC, and Independent race notes.'],
-      ['Issue 05','Playoff Push','Late-season contender board and trophy race placeholder.']
+    const covers = [
+      {
+        issue: 'Issue 1',
+        title: 'Running Late Dynasty CFB 27',
+        date: 'Summer 2025',
+        image: 'assets/images/running-late-dynasty-issue-1.png',
+        detail: 'Original index splash cover for the CFB 27 launch issue.'
+      }
     ];
-    root.innerHTML = cards.map(c=>`<article class="glass-card reveal"><span class="eyebrow">${c[0]}</span><h3>${c[1]}</h3><p>${c[2]}</p><span class="chip">Issue Slot</span></article>`).join('');
+    root.innerHTML = `<div class="splash-archive-grid">${covers.map(c=>`
+      <article class="splash-archive-card reveal">
+        <a class="splash-archive-card__media" href="${esc(c.image)}" target="_blank" rel="noopener">
+          <img src="${esc(c.image)}" alt="${esc(c.title)} ${esc(c.issue)} splash cover">
+        </a>
+        <div class="splash-archive-card__body">
+          <span class="eyebrow">${esc(c.issue)}</span>
+          <h2>${esc(c.title)}</h2>
+          <p>${esc(c.detail)}</p>
+          <span class="chip chip--gold">${esc(c.date)}</span>
+        </div>
+      </article>`).join('')}</div>`;
   }
   function renderLegacy(data){
     const root = $('[data-render="legacy"]'); if(!root) return;
@@ -534,10 +550,43 @@
     document.body.appendChild(nav);
   }
   function observe(){
+    linkTexasMentions();
     const items = $$('.reveal:not(.is-visible)');
     if(!('IntersectionObserver' in window)){ items.forEach(x=>x.classList.add('is-visible')); return; }
     const io = new IntersectionObserver(entries => entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }}), {threshold:.08});
     items.forEach(x=>io.observe(x));
+  }
+  function linkTexasMentions(root=document.body){
+    if(!root) return;
+    const skipSelector = 'a,script,style,textarea,input,select,option,.audio-player';
+    const rx = /\bTexas\b(?!\s*(?:A&M|Tech))/gi;
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode(node){
+        const parent = node.parentElement;
+        if(!parent || parent.closest(skipSelector)) return NodeFilter.FILTER_REJECT;
+        rx.lastIndex = 0;
+        return rx.test(node.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      }
+    });
+    const nodes = [];
+    while(walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(node => {
+      rx.lastIndex = 0;
+      const text = node.nodeValue;
+      const frag = document.createDocumentFragment();
+      let last = 0, match;
+      while((match = rx.exec(text))){
+        if(match.index > last) frag.append(document.createTextNode(text.slice(last, match.index)));
+        const a = document.createElement('a');
+        a.className = 'texas-team-link';
+        a.href = 'teamhub.html#hub-team-texas';
+        a.textContent = match[0];
+        frag.append(a);
+        last = match.index + match[0].length;
+      }
+      if(last < text.length) frag.append(document.createTextNode(text.slice(last)));
+      node.replaceWith(frag);
+    });
   }
   function wireNav(){
     const btn = $('.menu-toggle'), nav = $('#site-nav');
