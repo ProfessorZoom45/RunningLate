@@ -440,7 +440,6 @@
       ['hub','hub.html','&#127968;','Hub'],
       ['schedule','schedule.html','&#128197;','Schedule'],
       ['teams','teams.html','&#127944;','Teams'],
-      ['updates','updates.html','&#128293;','Updates'],
       ['discord',DISCORD,'&#128172;','Discord']
     ];
     const nav = document.createElement('nav');
