@@ -1,6 +1,5 @@
 {
   "generated_at": "2026-07-08T01:39:01",
-  "source_export": "Day1s_CFB_27_Dynasty_server_export_2026-07-07_20-35-20",
   "settings": [
     {
       "label": "League Type",
@@ -47,7 +46,7 @@
     {
       "date": "2025-06-12",
       "title": "Server Opens",
-      "detail": "The Discord export begins with the general welcome message, giving the league a home base before the first public advance posts."
+      "detail": "The league Discord opens with a general welcome message, giving the dynasty a home base before the first public advance posts."
     },
     {
       "date": "2025-07-10",
@@ -87,158 +86,6 @@
   ],
   "teams": [
     {
-      "school": "Clemson",
-      "display": "CLEMSON 🐅",
-      "conference": "ACC",
-      "coach": "tigerz009",
-      "primary": "#f56600",
-      "accent": "#522d80"
-    },
-    {
-      "school": "Florida State",
-      "display": "FLORIDA STATE 🏹",
-      "conference": "ACC",
-      "coach": "allstarcowboy254._84024",
-      "primary": "#782f40",
-      "accent": "#ceb888"
-    },
-    {
-      "school": "Miami",
-      "display": "MIAMI 🙌",
-      "conference": "ACC",
-      "coach": "dame1336",
-      "primary": "#f47321",
-      "accent": "#005030"
-    },
-    {
-      "school": "SMU",
-      "display": "SMU 🐎",
-      "conference": "ACC",
-      "coach": "automattic_nwo",
-      "primary": "#0033a0",
-      "accent": "#c8102e"
-    },
-    {
-      "school": "Virginia Tech",
-      "display": "VIRGINIA TECH 🦃",
-      "conference": "ACC",
-      "coach": "superhb",
-      "primary": "#861f41",
-      "accent": "#e5751f"
-    },
-    {
-      "school": "BYU",
-      "display": "BYU 🟦",
-      "conference": "BIG XII",
-      "coach": "Zo0o_0oM",
-      "primary": "#002e5d",
-      "accent": "#ffffff"
-    },
-    {
-      "school": "Colorado",
-      "display": "COLORADO 🦬",
-      "conference": "BIG XII",
-      "coach": "bill913",
-      "primary": "#cfb87c",
-      "accent": "#000000"
-    },
-    {
-      "school": "Houston",
-      "display": "HOUSTON 🐾",
-      "conference": "BIG XII",
-      "coach": "marjaan_",
-      "primary": "#c8102e",
-      "accent": "#ffffff"
-    },
-    {
-      "school": "TCU",
-      "display": "TCU 🐸",
-      "conference": "BIG XII",
-      "coach": "john5564415",
-      "primary": "#4d1979",
-      "accent": "#ffffff"
-    },
-    {
-      "school": "Texas Tech",
-      "display": "TEXAS TECH 🏴‍☠️",
-      "conference": "BIG XII",
-      "coach": "lifesgood0688",
-      "primary": "#cc0000",
-      "accent": "#000000"
-    },
-    {
-      "school": "Indiana",
-      "display": "INDIANA 🔴",
-      "conference": "Big Ten",
-      "coach": "grinch_is_here",
-      "primary": "#990000",
-      "accent": "#edebeb"
-    },
-    {
-      "school": "Michigan",
-      "display": "MICHIGAN 〽️",
-      "conference": "Big Ten",
-      "coach": "grap.12_58536",
-      "primary": "#00274c",
-      "accent": "#ffcb05"
-    },
-    {
-      "school": "Nebraska",
-      "display": "NEBRASKA 🌽",
-      "conference": "Big Ten",
-      "coach": "lakedogg32",
-      "primary": "#e41c38",
-      "accent": "#ffffff"
-    },
-    {
-      "school": "Ohio State",
-      "display": "OHIO STATE 🌰",
-      "conference": "Big Ten",
-      "coach": "zig8875",
-      "primary": "#bb0000",
-      "accent": "#666666"
-    },
-    {
-      "school": "Oregon",
-      "display": "OREGON 🦆",
-      "conference": "Big Ten",
-      "coach": "rainey84480",
-      "primary": "#154733",
-      "accent": "#fee123"
-    },
-    {
-      "school": "Penn State",
-      "display": "PENN STATE 🦁",
-      "conference": "Big Ten",
-      "coach": "ulost2sway",
-      "primary": "#1e407c",
-      "accent": "#ffffff"
-    },
-    {
-      "school": "USC",
-      "display": "USC ✌️",
-      "conference": "Big Ten",
-      "coach": "mrrolltide",
-      "primary": "#990000",
-      "accent": "#ffc72c"
-    },
-    {
-      "school": "Washington",
-      "display": "WASHINGTON 🐺",
-      "conference": "Big Ten",
-      "coach": "hoezay_hndrxx",
-      "primary": "#4b2e83",
-      "accent": "#b7a57a"
-    },
-    {
-      "school": "Notre Dame",
-      "display": "NOTRE DAME ☘️",
-      "conference": "Independent",
-      "coach": "malepatternballedness",
-      "primary": "#0c2340",
-      "accent": "#c99700"
-    },
-    {
       "school": "Alabama",
       "display": "ALABAMA 🐘",
       "conference": "SEC",
@@ -255,12 +102,44 @@
       "accent": "#f26522"
     },
     {
+      "school": "BYU",
+      "display": "BYU 🟦",
+      "conference": "BIG XII",
+      "coach": "Zo0o_0oM",
+      "primary": "#002e5d",
+      "accent": "#ffffff"
+    },
+    {
+      "school": "Clemson",
+      "display": "CLEMSON 🐅",
+      "conference": "ACC",
+      "coach": "tigerz009",
+      "primary": "#f56600",
+      "accent": "#522d80"
+    },
+    {
+      "school": "Colorado",
+      "display": "COLORADO 🦬",
+      "conference": "BIG XII",
+      "coach": "bill913",
+      "primary": "#cfb87c",
+      "accent": "#000000"
+    },
+    {
       "school": "Florida",
       "display": "FLORIDA 🐊",
       "conference": "SEC",
       "coach": "taybby0814",
       "primary": "#0021a5",
       "accent": "#fa4616"
+    },
+    {
+      "school": "Florida State",
+      "display": "FLORIDA STATE 🏹",
+      "conference": "ACC",
+      "coach": "allstarcowboy254._84024",
+      "primary": "#782f40",
+      "accent": "#ceb888"
     },
     {
       "school": "Georgia",
@@ -271,6 +150,22 @@
       "accent": "#000000"
     },
     {
+      "school": "Houston",
+      "display": "HOUSTON 🐾",
+      "conference": "BIG XII",
+      "coach": "marjaan_",
+      "primary": "#c8102e",
+      "accent": "#ffffff"
+    },
+    {
+      "school": "Indiana",
+      "display": "INDIANA 🔴",
+      "conference": "Big Ten",
+      "coach": "grinch_is_here",
+      "primary": "#990000",
+      "accent": "#edebeb"
+    },
+    {
       "school": "LSU",
       "display": "LSU 🐯",
       "conference": "SEC",
@@ -279,12 +174,52 @@
       "accent": "#fdd023"
     },
     {
+      "school": "Miami",
+      "display": "MIAMI 🙌",
+      "conference": "ACC",
+      "coach": "dame1336",
+      "primary": "#f47321",
+      "accent": "#005030"
+    },
+    {
+      "school": "Michigan",
+      "display": "MICHIGAN 〽️",
+      "conference": "Big Ten",
+      "coach": "grap.12_58536",
+      "primary": "#00274c",
+      "accent": "#ffcb05"
+    },
+    {
       "school": "Mississippi State",
       "display": "MISSISSIPPI STATE 🔔",
       "conference": "SEC",
       "coach": "zeeeeeeeee3",
       "primary": "#660000",
       "accent": "#ffffff"
+    },
+    {
+      "school": "Nebraska",
+      "display": "NEBRASKA 🌽",
+      "conference": "Big Ten",
+      "coach": "lakedogg32",
+      "primary": "#e41c38",
+      "accent": "#ffffff"
+    },
+    {
+      "school": "Notre Dame",
+      "display": "NOTRE DAME ☘️",
+      "conference": "Independent",
+      "coach": "malepatternballedness",
+      "primary": "#0c2340",
+      "accent": "#c99700"
+    },
+    {
+      "school": "Ohio State",
+      "display": "OHIO STATE 🌰",
+      "conference": "Big Ten",
+      "coach": "zig8875",
+      "primary": "#bb0000",
+      "accent": "#666666"
     },
     {
       "school": "Oklahoma",
@@ -303,12 +238,44 @@
       "accent": "#14213d"
     },
     {
+      "school": "Oregon",
+      "display": "OREGON 🦆",
+      "conference": "Big Ten",
+      "coach": "rainey84480",
+      "primary": "#154733",
+      "accent": "#fee123"
+    },
+    {
+      "school": "Penn State",
+      "display": "PENN STATE 🦁",
+      "conference": "Big Ten",
+      "coach": "ulost2sway",
+      "primary": "#1e407c",
+      "accent": "#ffffff"
+    },
+    {
+      "school": "SMU",
+      "display": "SMU 🐎",
+      "conference": "ACC",
+      "coach": "automattic_nwo",
+      "primary": "#0033a0",
+      "accent": "#c8102e"
+    },
+    {
       "school": "South Carolina",
       "display": "SOUTH CAROLINA 🐔",
       "conference": "SEC",
       "coach": "cmledet97",
       "primary": "#73000a",
       "accent": "#000000"
+    },
+    {
+      "school": "TCU",
+      "display": "TCU 🐸",
+      "conference": "BIG XII",
+      "coach": "john5564415",
+      "primary": "#4d1979",
+      "accent": "#ffffff"
     },
     {
       "school": "Tennessee",
@@ -333,6 +300,38 @@
       "coach": "selfmadezay.",
       "primary": "#500000",
       "accent": "#ffffff"
+    },
+    {
+      "school": "Texas Tech",
+      "display": "TEXAS TECH 🏴‍☠️",
+      "conference": "BIG XII",
+      "coach": "lifesgood0688",
+      "primary": "#cc0000",
+      "accent": "#000000"
+    },
+    {
+      "school": "USC",
+      "display": "USC ✌️",
+      "conference": "Big Ten",
+      "coach": "mrrolltide",
+      "primary": "#990000",
+      "accent": "#ffc72c"
+    },
+    {
+      "school": "Virginia Tech",
+      "display": "VIRGINIA TECH 🦃",
+      "conference": "ACC",
+      "coach": "superhb",
+      "primary": "#861f41",
+      "accent": "#e5751f"
+    },
+    {
+      "school": "Washington",
+      "display": "WASHINGTON 🐺",
+      "conference": "Big Ten",
+      "coach": "hoezay_hndrxx",
+      "primary": "#4b2e83",
+      "accent": "#b7a57a"
     }
   ],
   "draft_order": [
@@ -1136,200 +1135,14 @@
     "Check uniforms before kickoff to avoid dark-on-dark or white-on-white matchups.",
     "Respect the opponent, the admins, and the league. Keep trash talk inside football."
   ],
-  "channel_stats": [
-    {
-      "channel": "📢-announcements",
-      "messages": 360,
-      "nonempty": 330,
-      "first": "2025-07-11",
-      "last": "2026-07-06",
-      "top_author": "Dr. Zoom"
-    },
-    {
-      "channel": "2k-runs",
-      "messages": 68,
-      "nonempty": 67,
-      "first": "2025-10-02",
-      "last": "2026-06-29",
-      "top_author": "Dr. Zoom"
-    },
-    {
-      "channel": "acc",
-      "messages": 1,
-      "nonempty": 1,
-      "first": "2026-06-30",
-      "last": "2026-06-30",
-      "top_author": "Dr. Zoom"
-    },
-    {
-      "channel": "admins",
-      "messages": 3502,
-      "nonempty": 3443,
-      "first": "2025-07-11",
-      "last": "2026-07-06",
-      "top_author": "Dr. Zoom"
-    },
-    {
-      "channel": "advance-times",
-      "messages": 1,
-      "nonempty": 1,
-      "first": "2026-07-07",
-      "last": "2026-07-07",
-      "top_author": "Dr. Zoom"
-    },
-    {
-      "channel": "big-ten",
-      "messages": 1,
-      "nonempty": 1,
-      "first": "2026-06-30",
-      "last": "2026-06-30",
-      "top_author": "Dr. Zoom"
-    },
-    {
-      "channel": "big-xii",
-      "messages": 1,
-      "nonempty": 1,
-      "first": "2026-06-30",
-      "last": "2026-06-30",
-      "top_author": "Dr. Zoom"
-    },
-    {
-      "channel": "cfb-27-draft-recap",
-      "messages": 108,
-      "nonempty": 105,
-      "first": "2026-06-28",
-      "last": "2026-07-07",
-      "top_author": "Dr. Zoom"
-    },
-    {
-      "channel": "conference-setup-cfb-27",
-      "messages": 1,
-      "nonempty": 1,
-      "first": "2026-07-07",
-      "last": "2026-07-07",
-      "top_author": "Dr. Zoom"
-    },
-    {
-      "channel": "dynasty-invites",
-      "messages": 2,
-      "nonempty": 2,
-      "first": "2026-07-07",
-      "last": "2026-07-07",
-      "top_author": "Dr. Zoom"
-    },
-    {
-      "channel": "general",
-      "messages": 16532,
-      "nonempty": 15840,
-      "first": "2025-06-12",
-      "last": "2026-07-08",
-      "top_author": "Dr. Zoom"
-    },
-    {
-      "channel": "other-conferences",
-      "messages": 1,
-      "nonempty": 1,
-      "first": "2026-06-30",
-      "last": "2026-06-30",
-      "top_author": "Dr. Zoom"
-    },
-    {
-      "channel": "polls-and-game-of-the-week",
-      "messages": 212,
-      "nonempty": 55,
-      "first": "2025-08-21",
-      "last": "2026-05-09",
-      "top_author": "Dr. Zoom"
-    },
-    {
-      "channel": "rewards",
-      "messages": 109,
-      "nonempty": 107,
-      "first": "2025-07-11",
-      "last": "2025-11-08",
-      "top_author": "Dr. Zoom"
-    },
-    {
-      "channel": "rules-for-cfb27",
-      "messages": 4,
-      "nonempty": 4,
-      "first": "2026-07-07",
-      "last": "2026-07-07",
-      "top_author": "Dr. Zoom"
-    },
-    {
-      "channel": "schedules-availability",
-      "messages": 26,
-      "nonempty": 26,
-      "first": "2026-05-16",
-      "last": "2026-07-07",
-      "top_author": "Dr. Zoom"
-    },
-    {
-      "channel": "season-preview-2026",
-      "messages": 1,
-      "nonempty": 1,
-      "first": "2026-07-07",
-      "last": "2026-07-07",
-      "top_author": "Dr. Zoom"
-    },
-    {
-      "channel": "sec",
-      "messages": 1,
-      "nonempty": 1,
-      "first": "2026-06-30",
-      "last": "2026-06-30",
-      "top_author": "Dr. Zoom"
-    },
-    {
-      "channel": "streams-clips-and-highlights",
-      "messages": 843,
-      "nonempty": 794,
-      "first": "2025-07-10",
-      "last": "2026-07-07",
-      "top_author": "Streamcord"
-    },
-    {
-      "channel": "teams-taken-and-open",
-      "messages": 4,
-      "nonempty": 4,
-      "first": "2026-07-07",
-      "last": "2026-07-07",
-      "top_author": "Dr. Zoom"
-    },
-    {
-      "channel": "upcoming-offseason-changes",
-      "messages": 2,
-      "nonempty": 2,
-      "first": "2026-07-07",
-      "last": "2026-07-07",
-      "top_author": "Dr. Zoom"
-    },
-    {
-      "channel": "Day1s_CFB_27_Dynasty_week-0-2026_1523976576218300426_2026-07-07_20-35-20",
-      "messages": 0,
-      "nonempty": 0,
-      "first": "",
-      "last": "",
-      "top_author": ""
-    },
-    {
-      "channel": "Day1s_CFB_27_Dynasty_week-1-2026_1524081710571065435_2026-07-07_20-35-20",
-      "messages": 0,
-      "nonempty": 0,
-      "first": "",
-      "last": "",
-      "top_author": ""
-    }
-  ],
-  "version": "prototype-hub-v4-magazine-dashboard",
+  "version": "launch-magazine-site",
   "brand": {
     "name": "Running Late Dynasty",
     "short": "RLD",
     "game": "CFB 27",
     "tagline": "Day 1 Dynasty Era",
     "discordInvite": "https://discord.gg/8sXA2RQPnm",
-    "privacy": "Public pages exclude Discord IDs and the league password.",
+    "privacy": "Public preseason site for Running Late Dynasty CFB 27.",
     "footer": "Perfect Timing Gaming • Powered by D1SN • Credits: Professor Zoom",
     "coverIssue": "D1SN Special Issue 00",
     "coverDate": "July 2026"
@@ -1339,19 +1152,31 @@
       "title": "Splash Gate",
       "file": "index.html",
       "type": "Entry",
-      "summary": "Magazine-cover splash page that automatically loads the Dynasty Hub."
+      "summary": "Full magazine-cover splash page leading into the Dynasty Hub."
     },
     {
       "title": "Dynasty Hub",
       "file": "hub.html",
       "type": "Core",
-      "summary": "ESPN-style command center with signal cards, headlines, featured games, conference map, and timeline."
+      "summary": "Command center with league signals, headlines, featured games, health, and timeline."
+    },
+    {
+      "title": "Team Hub",
+      "file": "teamhub.html",
+      "type": "Core",
+      "summary": "Searchable school and username hub for all 31 claimed programs."
+    },
+    {
+      "title": "Coach Cards",
+      "file": "coaches.html",
+      "type": "Core",
+      "summary": "Public preseason coach profile cards with team, conference, record, scheme, and ranking slots."
     },
     {
       "title": "Teams",
       "file": "teams.html",
       "type": "Core",
-      "summary": "Current CFB 27 user teams grouped by ACC, Big Ten, BIG XII, SEC, and Independent."
+      "summary": "Conference-grouped team board for claimed programs and open teams."
     },
     {
       "title": "Schedule",
@@ -1363,7 +1188,7 @@
       "title": "Rules",
       "file": "rules.html",
       "type": "League Ops",
-      "summary": "Public-safe CFB 27 rulebook summary and enforcement reminders."
+      "summary": "Public CFB 27 rulebook summary and enforcement reminders."
     },
     {
       "title": "History",
@@ -1375,7 +1200,7 @@
       "title": "Rewards",
       "file": "rewards.html",
       "type": "League Ops",
-      "summary": "Legacy rewards, GOTW boosts, and CFB 27 reward tracker shell."
+      "summary": "Reward board and Game of the Week boost space."
     },
     {
       "title": "Media",
@@ -1387,19 +1212,7 @@
       "title": "Archive",
       "file": "archive.html",
       "type": "Archive",
-      "summary": "Magazine-style slots for weekly D1SN/Running Late issue pages."
-    },
-    {
-      "title": "Update Center",
-      "file": "updates.html",
-      "type": "Utility",
-      "summary": "Easy update map for dashboard signals, cover lines, teams, schedule, rules, and headlines."
-    },
-    {
-      "title": "Sitemap",
-      "file": "sitemap.html",
-      "type": "Utility",
-      "summary": "Human-readable site map and publishing checklist."
+      "summary": "Magazine-style issue archive for weekly Running Late updates."
     }
   ],
   "legacy": {
@@ -1582,21 +1395,20 @@
     ],
     "claimed_count": 31,
     "projected_user_games": 79,
-    "legacy_carryover_count": 23,
-    "channel_count": 23
+    "legacy_carryover_count": 23
   },
   "public_notes": [
-    "Discord invite can be shared publicly: https://discord.gg/8sXA2RQPnm",
-    "League password and raw Discord IDs are intentionally not published.",
-    "This prototype is static GitHub Pages friendly: HTML, CSS, JS, JSON, SVG only."
+    "Discord invite: https://discord.gg/8sXA2RQPnm",
+    "Preseason hub is ready for weekly league updates.",
+    "Coach cards use public profile fields and can be expanded as users submit details."
   ],
   "dashboard": {
     "status": {
       "leagueState": "LAUNCH WEEK",
       "currentWeek": "Preseason",
       "nextAdvance": "Friday July 10 • Noon EST",
-      "updateLabel": "Updated from Discord export • July 7, 2026",
-      "editorNote": "Edit data/league-history.json first; app.js paints the cards automatically."
+      "updateLabel": "Preseason launch board",
+      "editorNote": "Weekly league notes can be added as the season advances."
     },
     "scorebar": [
       {
@@ -1712,11 +1524,11 @@
         "cta": "Open Schedule"
       },
       {
-        "kicker": "TEAM BOARD",
-        "title": "31 claimed programs across five league groups",
-        "summary": "The team page keeps every claimed school grouped under ACC, Big Ten, BIG XII, SEC, and Independent.",
-        "href": "teams.html",
-        "cta": "View Teams"
+        "kicker": "TEAM / USER HUB",
+        "title": "31 claimed programs, one searchable coach board",
+        "summary": "Search by school, username, or conference, then jump straight into that coach card.",
+        "href": "teamhub.html",
+        "cta": "Open Team Hub"
       }
     ],
     "watchlist": [
@@ -1743,9 +1555,14 @@
     ],
     "featuredLinks": [
       {
-        "label": "Teams",
-        "href": "teams.html",
-        "detail": "Claimed school board"
+        "label": "Team Hub",
+        "href": "teamhub.html",
+        "detail": "Search school and user cards"
+      },
+      {
+        "label": "Coach Cards",
+        "href": "coaches.html",
+        "detail": "Public preseason profiles"
       },
       {
         "label": "Schedule",
@@ -1755,22 +1572,12 @@
       {
         "label": "Rules",
         "href": "rules.html",
-        "detail": "Public rule summary"
-      },
-      {
-        "label": "Rewards",
-        "href": "rewards.html",
-        "detail": "Boost tracker shell"
+        "detail": "League standards"
       },
       {
         "label": "Media",
         "href": "media.html",
         "detail": "Streams and clips"
-      },
-      {
-        "label": "Updates",
-        "href": "updates.html",
-        "detail": "Edit map"
       }
     ],
     "updateGuide": [

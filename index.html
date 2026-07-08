@@ -3,80 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Magazine Cover | Running Late Dynasty CFB 27</title>
-  <meta name="description" content="Magazine-cover splash page for Running Late Dynasty CFB 27 that auto-loads the Dynasty Hub.">
+  <title>Running Late Dynasty CFB 27</title>
+  <meta name="description" content="Running Late Dynasty CFB 27 special issue splash cover.">
   <meta name="theme-color" content="#050505">
-  <meta property="og:title" content="Magazine Cover | Running Late Dynasty CFB 27">
-  <meta property="og:description" content="Magazine-cover splash page for Running Late Dynasty CFB 27 that auto-loads the Dynasty Hub.">
+  <meta property="og:title" content="Running Late Dynasty CFB 27">
+  <meta property="og:description" content="Running Late Dynasty CFB 27 special issue splash cover.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/rld-splash-poster.png">
+  <meta property="og:image" content="assets/images/dynasty-splash-image.png">
   <link rel="icon" href="assets/rld-logo.png" type="image/png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="assets/styles.css">
 </head>
-<body data-page="splash">
-  <div class="ticker" role="banner">
-    <a class="ticker__label" href="hub.html"><span>Running</span><span>Late</span><span>Feed</span></a>
-    <div class="ticker__track" aria-label="league ticker">
-      <span>🏁 Running Late Dynasty For College Football 27</span>
-      <span>🎮 Private League • Cross-Play ON • Heisman • 48-Hour Advances</span>
-      <span>📅 First Advance: Friday July 10 • Noon EST</span>
-      <span>🔥 31 Claimed Programs • 79 Projected User Games</span>
-      <span>💬 Join Discord: <a href="https://discord.gg/8sXA2RQPnm" target="_blank" rel="noopener">https://discord.gg/8sXA2RQPnm</a></span>
-    </div>
-  </div>
-  <main class="magazine-splash">
-    <!-- Magazine-style cover: edit the cover lines from data/league-history.json → dashboard.coverLines -->
-    <section class="cover-shell" aria-label="Running Late Dynasty magazine cover">
-      <div class="cover-kicker">
-        <span>D1SN Special Issue 00</span>
-        <span>CFB 27 Launch Edition</span>
-        <span>July 2026</span>
-      </div>
-      <div class="cover-stage">
-        <img class="cover-art" src="assets/rld-splash-poster.png" alt="Running Late Dynasty CFB 27 cover art with players, fireworks, and gold logo">
-        <div class="cover-glow" aria-hidden="true"></div>
-        <div class="cover-masthead">
-          <span>Running Late</span>
-          <strong>Dynasty</strong>
-          <em>CFB 27</em>
-        </div>
-        <div class="cover-lines cover-lines--left" data-render="cover-lines" data-side="left"></div>
-        <aside class="cover-badge">
-          <b data-stat="teams">31</b>
-          <span>Claimed Programs</span>
-        </aside>
-        <aside class="cover-price-tag">
-          <span>Day 1 Era</span>
-          <b>Build A Legacy</b>
-        </aside>
-        <div class="cover-barcode" aria-label="prototype barcode"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><span>RLD-27</span></div>
-      </div>
-      <div class="cover-footer-card">
-        <div>
-          <span class="eyebrow">🏎️💨 Auto Load</span>
-          <h1>Enter The <em>Dynasty Hub</em></h1>
-          <p>Magazine cover opens first, then loads the ESPN-style command center in <strong id="countdown">8</strong> seconds.</p>
-        </div>
-        <div class="cta-row">
-          <a class="btn btn--primary" href="hub.html">Enter Hub</a>
-          <a class="btn btn--red" href="https://discord.gg/8sXA2RQPnm" target="_blank" rel="noopener">Join Discord</a>
-          <a class="btn" href="index.html?noauto=1">Stay On Cover</a>
-        </div>
-      </div>
-    </section>
-  </main>
-  <footer class="site-footer">
-    <div>
-      <img src="assets/rld-logo.png" alt="" aria-hidden="true">
-      <p><strong>Running Late Dynasty</strong><br>Perfect Timing Gaming • Powered by D1SN • Credits: Professor Zoom</p>
-    </div>
-    <div class="footer-links">
-      <a href="https://discord.gg/8sXA2RQPnm" target="_blank" rel="noopener">Join Discord</a>
-      <a href="data/league-history.json">League Data</a>
-    </div>
-  </footer>
-  <script src="data/league-history.js"></script>
-  <script src="assets/app.js"></script>
+<body class="splash-only" data-page="splash">
+  <a class="splash-only__link" href="hub.html" aria-label="Enter the Running Late Dynasty Hub">
+    <img src="assets/images/dynasty-splash-image.png" alt="Running Late Dynasty CFB 27 special issue cover">
+  </a>
 </body>
 </html>

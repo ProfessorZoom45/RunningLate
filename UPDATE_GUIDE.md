@@ -1,6 +1,6 @@
-# Running Late Dynasty CFB 27 — Easy Update Guide
+# Running Late Dynasty CFB 27 - Easy Update Guide
 
-Use this file when you want to update the GitHub Pages prototype without rebuilding the design.
+Use this file when you want to update the GitHub Pages site without rebuilding the design.
 
 ## Main file to edit
 

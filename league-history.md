@@ -1,6 +1,6 @@
 # Running Late Dynasty CFB 27 History
 
-Built from the Discord JSON export dated 2026-07-07.
+Public CFB 27 launch archive dated 2026-07-07.
 
 ## Quick Read
 
@@ -8,7 +8,7 @@ Running Late Dynasty started as a fast-moving CFB 26 Discord league and grew int
 
 ## Timeline
 
-- **2025-06-12 - Server Opens:** The Discord export begins with the general welcome message, giving the league a home base before the first public advance posts.
+- **2025-06-12 - Server Opens:** The league Discord opens with a general welcome message, giving the dynasty a home base before the first public advance posts.
 - **2025-07-10 - Highlights Channel Comes Alive:** Streams, clips, and highlight links start turning the dynasty into more than standings: it becomes a weekly show.
 - **2025-07-11 - Week 0 Era Begins:** Announcements and ready-to-advance tracking begin, setting the rhythm that becomes the league identity.
 - **2025-08-21 - GOTW and Rewards Grow:** Game of the Week voting and boost systems become part of the weekly culture, rewarding activity and big matchups.
@@ -199,41 +199,11 @@ Projected user games found: **79**.
 - Check uniforms before kickoff to avoid dark-on-dark or white-on-white matchups.
 - Respect the opponent, the admins, and the league. Keep trash talk inside football.
 
-## Export Coverage
-
-| Channel | Messages | First | Last | Top Author |
-|---|---:|---|---|---|
-| 📢-announcements | 360 | 2025-07-11 | 2026-07-06 | Dr. Zoom |
-| 2k-runs | 68 | 2025-10-02 | 2026-06-29 | Dr. Zoom |
-| acc | 1 | 2026-06-30 | 2026-06-30 | Dr. Zoom |
-| admins | 3502 | 2025-07-11 | 2026-07-06 | Dr. Zoom |
-| advance-times | 1 | 2026-07-07 | 2026-07-07 | Dr. Zoom |
-| big-ten | 1 | 2026-06-30 | 2026-06-30 | Dr. Zoom |
-| big-xii | 1 | 2026-06-30 | 2026-06-30 | Dr. Zoom |
-| cfb-27-draft-recap | 108 | 2026-06-28 | 2026-07-07 | Dr. Zoom |
-| conference-setup-cfb-27 | 1 | 2026-07-07 | 2026-07-07 | Dr. Zoom |
-| dynasty-invites | 2 | 2026-07-07 | 2026-07-07 | Dr. Zoom |
-| general | 16532 | 2025-06-12 | 2026-07-08 | Dr. Zoom |
-| other-conferences | 1 | 2026-06-30 | 2026-06-30 | Dr. Zoom |
-| polls-and-game-of-the-week | 212 | 2025-08-21 | 2026-05-09 | Dr. Zoom |
-| rewards | 109 | 2025-07-11 | 2025-11-08 | Dr. Zoom |
-| rules-for-cfb27 | 4 | 2026-07-07 | 2026-07-07 | Dr. Zoom |
-| schedules-availability | 26 | 2026-05-16 | 2026-07-07 | Dr. Zoom |
-| season-preview-2026 | 1 | 2026-07-07 | 2026-07-07 | Dr. Zoom |
-| sec | 1 | 2026-06-30 | 2026-06-30 | Dr. Zoom |
-| streams-clips-and-highlights | 843 | 2025-07-10 | 2026-07-07 | Streamcord |
-| teams-taken-and-open | 4 | 2026-07-07 | 2026-07-07 | Dr. Zoom |
-| upcoming-offseason-changes | 2 | 2026-07-07 | 2026-07-07 | Dr. Zoom |
-| Day1s_CFB_27_Dynasty_week-0-2026_1523976576218300426_2026-07-07_20-35-20 | 0 |  |  |  |
-| Day1s_CFB_27_Dynasty_week-1-2026_1524081710571065435_2026-07-07_20-35-20 | 0 |  |  |  |
-
-
 ---
 
-## Prototype v2 Upgrade Notes
+## Preseason Site Notes
 
-- Added splash-to-hub flow: `index.html` loads into `hub.html` after the launch animation.
-- Added a multi-page sitemap while keeping the old archive/magazine structure alive.
-- Added Discord invite in the ticker and footer on every page: https://discord.gg/8sXA2RQPnm
-- Added legacy CFB 26 carryover comparison and CFB 27 claimed-board structure.
-- Added public-safe privacy guard: no league password and no raw Discord IDs on public pages.
+- Public pages focus on team, schedule, rules, media, rewards, and history.
+- Coach profile cards are ready for submitted user details as the preseason file fills in.
+- Private admin logs, passwords, and account metadata are not published here.
+- The live site is built for GitHub Pages and uses static HTML, CSS, JavaScript, JSON, images, and audio.

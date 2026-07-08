@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sitemap | Running Late Dynasty CFB 27</title>
-  <meta name="description" content="Running Late Dynasty GitHub Pages sitemap and publishing checklist.">
+  <title>Coach Cards | Running Late Dynasty CFB 27</title>
+  <meta name="description" content="Running Late Dynasty CFB 27 coach cards with team, user, conference, scheme, record, and preseason profile details.">
   <meta name="theme-color" content="#050505">
-  <meta property="og:title" content="Sitemap | Running Late Dynasty CFB 27">
-  <meta property="og:description" content="Running Late Dynasty GitHub Pages sitemap and publishing checklist.">
+  <meta property="og:title" content="Coach Cards | Running Late Dynasty CFB 27">
+  <meta property="og:description" content="Running Late Dynasty CFB 27 coach cards with team, user, conference, scheme, record, and preseason profile details.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/rld-splash-poster.png">
+  <meta property="og:image" content="assets/images/hype-running-late-logo.png">
   <link rel="icon" href="assets/rld-logo.png" type="image/png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="assets/styles.css">
 </head>
-<body data-page="sitemap">
+<body data-page="coaches">
   <div class="ticker" role="banner">
     <a class="ticker__label" href="hub.html"><span>Running</span><span>Late</span><span>Feed</span></a>
     <div class="ticker__track" aria-label="league ticker">
@@ -33,7 +33,7 @@
     <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav id="site-nav" class="site-nav" aria-label="Main navigation">
 <a class="nav-link " href="hub.html">Hub</a>
-<a class="nav-link " href="teamhub.html">Team Hub</a>
+<a class="nav-link is-active" href="teamhub.html">Team Hub</a>
 <a class="nav-link " href="schedule.html">Schedule</a>
 <a class="nav-link " href="rules.html">Rules</a>
 <a class="nav-link " href="history.html">History</a>
@@ -44,11 +44,24 @@
     </nav>
   </header>
   <main>
-    <section class="section section--tight">
-      <span class="eyebrow">🧭 Sitemap</span><h1 class="hero-title">Site <em>Blueprint</em></h1><p class="lead">Every page keeps the ticker at the top and the Discord invite in the footer.</p>
-      <div class="grid grid--3" data-render="sitemap"></div>
+    <section class="magazine-hero magazine-hero--coaches">
+      <div class="magazine-hero__copy">
+        <span class="eyebrow">Coach Cards</span>
+        <h1 class="hero-title">Preseason <em>Scout Files</em></h1>
+        <p class="lead">Each program gets a clean profile card. Empty real-world details stay as preseason file slots until the league fills them in.</p>
+        <div class="controls controls--hero">
+          <input id="coachSearch" class="input" type="search" placeholder="Search team, user, or conference" aria-label="Search team, user, or conference">
+          <a class="btn btn--primary" href="teamhub.html">Back To Team Hub</a>
+        </div>
+      </div>
+      <figure class="magazine-hero__media">
+        <img src="assets/images/hype-running-late-logo.png" alt="Running Late Dynasty CFB 27 hype artwork">
+      </figure>
     </section>
-    <section class="section"><div class="hero-panel reveal"><div class="panel-header"><div><span class="eyebrow">🚀 GitHub Pages</span><h2>Publish Checklist</h2><p>Files are published from the repository root on main, with sitemap.xml and robots.txt pointing to the live RunningLate URL.</p></div></div><div class="chip-row"><span class="chip chip--gold">index.html splash</span><span class="chip chip--gold">hub.html command center</span><span class="chip">assets/styles.css</span><span class="chip">assets/app.js</span><span class="chip">data/league-history.json</span><span class="chip">sitemap.xml</span></div></div></section>
+    <section class="section section--tight">
+      <div class="section-jumper" data-render="coach-jumper" aria-label="Coach card quick links"></div>
+      <div class="coach-card-grid" data-render="coach-cards"></div>
+    </section>
   </main>
   <footer class="site-footer">
     <div>
