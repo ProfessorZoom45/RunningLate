@@ -529,6 +529,7 @@
         <button type="button" data-audio-restart title="Start over" aria-label="Start over">&#8634;</button>
         <button type="button" data-audio-play title="Play or pause" aria-label="Play">&#9654;</button>
         <button type="button" data-audio-next title="Next song" aria-label="Next song">&#9197;</button>
+        <button type="button" class="audio-player__minimize" data-audio-minimize title="Hide player" aria-label="Hide music player" aria-expanded="true"><span data-audio-minimize-icon>&#10094;</span></button>
       </div>`;
     document.body.appendChild(player);
     const audio = new Audio();
@@ -538,6 +539,18 @@
     const play = $('[data-audio-play]', player);
     const restart = $('[data-audio-restart]', player);
     const next = $('[data-audio-next]', player);
+    const minimize = $('[data-audio-minimize]', player);
+    const minimizeIcon = $('[data-audio-minimize-icon]', player);
+    const setMinimized = (minimized, persist=true) => {
+      player.classList.toggle('audio-player--minimized', minimized);
+      minimize.title = minimized ? 'Show player' : 'Hide player';
+      minimize.setAttribute('aria-label', minimized ? 'Show music player' : 'Hide music player');
+      minimize.setAttribute('aria-expanded', String(!minimized));
+      minimizeIcon.innerHTML = minimized ? '&#10095;' : '&#10094;';
+      if(persist){
+        try { localStorage.setItem('rldAudioMinimized', minimized ? '1' : '0'); } catch(e) {}
+      }
+    };
     const syncTime = () => {
       const remaining = audio.duration - audio.currentTime;
       time.textContent = `${formatTime(remaining)} remaining`;
@@ -560,12 +573,14 @@
     restart.addEventListener('click', () => { audio.currentTime = 0; audio.play().catch(()=>{}); });
     play.addEventListener('click', () => { audio.paused ? audio.play().catch(()=>{}) : audio.pause(); });
     next.addEventListener('click', () => { index = (index + 1) % AUDIO_TRACKS.length; loadTrack(true); });
+    minimize.addEventListener('click', () => setMinimized(!player.classList.contains('audio-player--minimized')));
     audio.addEventListener('loadedmetadata', syncTime);
     audio.addEventListener('durationchange', syncTime);
     audio.addEventListener('timeupdate', syncTime);
     audio.addEventListener('play', syncPlay);
     audio.addEventListener('pause', syncPlay);
     audio.addEventListener('ended', () => { index = (index + 1) % AUDIO_TRACKS.length; loadTrack(true); });
+    try { setMinimized(localStorage.getItem('rldAudioMinimized') === '1', false); } catch(e) {}
     loadTrack(true);
   }
   function wireMobileBottomNav(){
