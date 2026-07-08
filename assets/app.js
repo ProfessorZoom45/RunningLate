@@ -17,6 +17,39 @@
     ['Admin Reviews','1','Open review item'],
     ['Open Teams','69 pool','Available schools listed by conference']
   ];
+  const RIVALRY_MASTER = {
+    'Alabama': ['Auburn','LSU','Mississippi State','Tennessee'],
+    'Auburn': ['Alabama','Florida','Georgia','LSU'],
+    'BYU': ['Utah','Utah State','Wyoming'],
+    'Clemson': ['Boston College','Florida State','Georgia','Georgia Tech','NC State','South Carolina'],
+    'Colorado': ['Colorado State','Nebraska','Utah'],
+    'Florida': ['Auburn','Florida State','Georgia','LSU','Miami','Tennessee'],
+    'Florida State': ['Clemson','Florida','Miami'],
+    'Georgia': ['Auburn','Clemson','Florida','Georgia Tech','South Carolina','Tennessee'],
+    'Houston': ['Rice','Tulsa'],
+    'Indiana': ['Kentucky','Michigan State','Purdue'],
+    'LSU': ['Alabama','Arkansas','Auburn','Florida','Mississippi State','Ole Miss','Texas A&M','Tulane'],
+    'Miami': ['Florida','Florida State','Virginia Tech'],
+    'Michigan': ['Michigan State','Minnesota','Northwestern','Notre Dame','Ohio State'],
+    'Mississippi State': ['Alabama','LSU','Ole Miss'],
+    'Nebraska': ['Colorado','Iowa','Minnesota','Missouri','Oklahoma','Texas','Wisconsin'],
+    'Notre Dame': ['Army','Boston College','Michigan','Michigan State','Navy','Northwestern','Pittsburgh','Purdue','Stanford','USC'],
+    'Ohio State': ['Illinois','Michigan','Penn State'],
+    'Oklahoma': ['Missouri','Nebraska','Oklahoma State','Texas'],
+    'Ole Miss': ['LSU','Memphis','Mississippi State'],
+    'Oregon': ['Oregon State','Washington'],
+    'Penn State': ['Maryland','Michigan State','Minnesota','Ohio State','Pittsburgh','Syracuse','Temple'],
+    'SMU': ['Navy','North Texas','Rice','TCU'],
+    'South Carolina': ['Clemson','Georgia','Missouri','North Carolina','Texas A&M'],
+    'TCU': ['Baylor','SMU','Texas','Texas Tech'],
+    'Tennessee': ['Alabama','Florida','Georgia','Kentucky','Vanderbilt'],
+    'Texas': ['Arkansas','Nebraska','Oklahoma','TCU','Texas A&M','Texas Tech'],
+    'Texas A&M': ['Arkansas','Baylor','LSU','South Carolina','Texas'],
+    'Texas Tech': ['Baylor','Oklahoma State','TCU','Texas'],
+    'USC': ['Notre Dame','Stanford','UCLA'],
+    'Virginia Tech': ['Georgia Tech','Miami','Virginia','West Virginia'],
+    'Washington': ['Oregon','Washington State']
+  };
   const AVAILABLE_TEAMS = [
     ['Mountain West Available', [
       'AIR FORCE FALCONS ✈️',
@@ -145,8 +178,8 @@
     return `${game.week}: ${at} ${opponent}`;
   }
   function rivalryNote(data, school){
-    const rivalry = gamesForTeam(data, school).find(g => /Alabama|Auburn|Florida State|Florida|Texas A&M|Texas|Ohio State|Michigan|Oregon|Washington|Oklahoma|Clemson|South Carolina/i.test(g.matchup));
-    return rivalry ? rivalry.matchup : 'Build the rivalry board';
+    const rivals = RIVALRY_MASTER[cleanDisplay(school)] || [];
+    return rivals.length ? rivals.join(', ') : 'CFB 26 rivalry list pending';
   }
 
   function renderStats(data){
