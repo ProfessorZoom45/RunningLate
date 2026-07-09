@@ -249,7 +249,10 @@
       "conference": "Independent",
       "coach": "malepatternballedness",
       "primary": "#0c2340",
-      "accent": "#c99700"
+      "accent": "#c99700",
+      "gamertag": "brah_sparks",
+      "platform": "PlayStation",
+      "joinedDynasty": true
     },
     {
       "school": "Ohio State",
@@ -306,7 +309,10 @@
       "conference": "ACC",
       "coach": "automattic_nwo",
       "primary": "#0033a0",
-      "accent": "#c8102e"
+      "accent": "#c8102e",
+      "gamertag": "AutomatticTX_NWO",
+      "platform": "PlayStation",
+      "joinedDynasty": true
     },
     {
       "school": "South Carolina",
