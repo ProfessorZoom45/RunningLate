@@ -181,7 +181,7 @@
   function cleanDisplay(value){ return String(value||'').replace(/[^\w\s&.'-]/g,'').replace(/\s+/g,' ').trim(); }
   function teamSearchText(t, data){
     const games = (data.schedule||[]).filter(g => g.away===t.school || g.home===t.school).map(g => `${g.week} ${g.matchup}`).join(' ');
-    return `${t.school} ${t.display} ${t.coach} ${t.conference} ${games}`.toLowerCase();
+    return `${t.school} ${t.display} ${t.coach} ${t.gamertag || ''} ${t.platform || ''} ${t.conference} ${games}`.toLowerCase();
   }
   function coachForTeam(data, school){
     const t = teamLookup(data)[String(school||'').toLowerCase()];
@@ -210,6 +210,9 @@
     if(!links.length) return `<a href="${DISCORD}" target="_blank" rel="noopener">Add Link</a>`;
     return `<span class="social-links">${links.map(link => `<a href="${esc(link.url)}" target="_blank" rel="noopener">${esc(link.label || link.type)}</a>`).join('')}</span>`;
   }
+  function dynastyGamertag(t){ return t?.gamertag || 'Pending'; }
+  function dynastyPlatform(t){ return t?.platform || 'Pending'; }
+  function dynastyJoinStatus(t){ return t?.joinedDynasty ? 'Joined Dynasty' : 'Awaiting Join Log'; }
   function rivalryNote(data, school){
     const rivals = RIVALRY_MASTER[cleanDisplay(school)] || [];
     return rivals.length ? rivals.join(', ') : 'CFB 26 rivalry list pending';
@@ -373,6 +376,9 @@
       <div class="coach-meta">
         <span><b>Team</b>${esc(cleanDisplay(t.school))}</span>
         <span><b>Status</b>Active</span>
+        <span><b>Join Log</b>${esc(dynastyJoinStatus(t))}</span>
+        <span><b>Dynasty Gamertag</b>${esc(dynastyGamertag(t))}</span>
+        <span><b>Platform</b>${esc(dynastyPlatform(t))}</span>
         <span><b>Record</b>0-0</span>
         <span><b>Next User Game</b><a href="${teamScheduleHref(t.school)}">${esc(nextGameForTeam(data,t.school))}</a></span>
         <span><b>Twitch/YouTube</b>${socialLinksHtml(t)}</span>
@@ -407,6 +413,9 @@
     const rivals = games.filter(g => /Alabama|Auburn|Florida State|Florida|Texas A&M|Texas|Ohio State|Michigan|Oregon|Washington|Oklahoma|Clemson|South Carolina|Notre Dame|USC/i.test(g.matchup));
     return [
       ['User Name', t.coach],
+      ['Dynasty Gamertag', dynastyGamertag(t)],
+      ['Platform', dynastyPlatform(t)],
+      ['Join Log', dynastyJoinStatus(t)],
       ['Conference', conferenceField(t.conference), true],
       ['Coach Name', 'Preseason file pending'],
       ['Prestige', 'Launch rating pending'],
@@ -439,7 +448,7 @@
             <div>
               <h3>${esc(cleanDisplay(t.school))}</h3>
               <p>${esc(t.coach)}</p>
-              <div class="team-hub-card__meta">${conferenceBadge(t.conference)}<span><b>Next User Game:</b> ${esc(nextGameForTeam(data,t.school))}</span></div>
+              <div class="team-hub-card__meta">${conferenceBadge(t.conference)}<span><b>GT:</b> ${esc(dynastyGamertag(t))}</span><span><b>Platform:</b> ${esc(dynastyPlatform(t))}</span><span><b>Next User Game:</b> ${esc(nextGameForTeam(data,t.school))}</span></div>
             </div>
           </a>`).join('')}</div>`;
       observe();

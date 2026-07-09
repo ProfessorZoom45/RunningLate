@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-09T13:21:55.077Z",
+  "generated_at": "2026-07-09T18:32:10.914Z",
   "settings": [
     {
       "label": "League Type",
@@ -99,7 +99,10 @@
       "conference": "SEC",
       "coach": "i_do_dis_314",
       "primary": "#0c2340",
-      "accent": "#f26522"
+      "accent": "#f26522",
+      "gamertag": "i_do_dis_314",
+      "platform": "PlayStation",
+      "joinedDynasty": true
     },
     {
       "school": "BYU",
@@ -107,7 +110,10 @@
       "conference": "BIG XII",
       "coach": "Zo0o_0oM",
       "primary": "#002e5d",
-      "accent": "#ffffff"
+      "accent": "#ffffff",
+      "gamertag": "Zo0o_0oM",
+      "platform": "PlayStation",
+      "joinedDynasty": true
     },
     {
       "school": "Clemson",
@@ -115,7 +121,10 @@
       "conference": "ACC",
       "coach": "tigerz009",
       "primary": "#f56600",
-      "accent": "#522d80"
+      "accent": "#522d80",
+      "gamertag": "JetUp1227",
+      "platform": "PlayStation",
+      "joinedDynasty": true
     },
     {
       "school": "Colorado",
@@ -123,7 +132,10 @@
       "conference": "BIG XII",
       "coach": "bill913",
       "primary": "#cfb87c",
-      "accent": "#000000"
+      "accent": "#000000",
+      "gamertag": "datboynice33935",
+      "platform": "PlayStation",
+      "joinedDynasty": true
     },
     {
       "school": "Florida",
@@ -131,7 +143,10 @@
       "conference": "SEC",
       "coach": "taybby0814",
       "primary": "#0021a5",
-      "accent": "#fa4616"
+      "accent": "#fa4616",
+      "gamertag": "TayBby313",
+      "platform": "PlayStation",
+      "joinedDynasty": true
     },
     {
       "school": "Florida State",
@@ -139,7 +154,10 @@
       "conference": "ACC",
       "coach": "allstarcowboy254._84024",
       "primary": "#782f40",
-      "accent": "#ceb888"
+      "accent": "#ceb888",
+      "gamertag": "AllStarC0wBoY254",
+      "platform": "PlayStation",
+      "joinedDynasty": true
     },
     {
       "school": "Georgia",
@@ -163,7 +181,10 @@
       "conference": "Big Ten",
       "coach": "grinch_is_here",
       "primary": "#990000",
-      "accent": "#edebeb"
+      "accent": "#edebeb",
+      "gamertag": "AirGoatish",
+      "platform": "PlayStation",
+      "joinedDynasty": true
     },
     {
       "school": "LSU",
@@ -171,7 +192,10 @@
       "conference": "SEC",
       "coach": "bignutt195",
       "primary": "#461d7c",
-      "accent": "#fdd023"
+      "accent": "#fdd023",
+      "gamertag": "JTChamp195",
+      "platform": "PlayStation",
+      "joinedDynasty": true
     },
     {
       "school": "Miami",
@@ -179,7 +203,10 @@
       "conference": "ACC",
       "coach": "dame1336",
       "primary": "#f47321",
-      "accent": "#005030"
+      "accent": "#005030",
+      "gamertag": "Chi-Twn_VS_Any_1",
+      "platform": "PlayStation",
+      "joinedDynasty": true
     },
     {
       "school": "Michigan",
@@ -187,7 +214,10 @@
       "conference": "Big Ten",
       "coach": "grap.12_58536",
       "primary": "#00274c",
-      "accent": "#ffcb05"
+      "accent": "#ffcb05",
+      "gamertag": "GRAND_RAPIDS_MI",
+      "platform": "PlayStation",
+      "joinedDynasty": true
     },
     {
       "school": "Mississippi State",
@@ -227,7 +257,10 @@
       "conference": "Big Ten",
       "coach": "zig8875",
       "primary": "#bb0000",
-      "accent": "#666666"
+      "accent": "#666666",
+      "gamertag": "zig817",
+      "platform": "PlayStation",
+      "joinedDynasty": true
     },
     {
       "school": "Oklahoma",
@@ -235,7 +268,10 @@
       "conference": "SEC",
       "coach": "tweetybirrrd",
       "primary": "#841617",
-      "accent": "#fdf9d8"
+      "accent": "#fdf9d8",
+      "gamertag": "GeauxTweety",
+      "platform": "PlayStation",
+      "joinedDynasty": true
     },
     {
       "school": "Ole Miss",
@@ -251,7 +287,10 @@
       "conference": "Big Ten",
       "coach": "rainey84480",
       "primary": "#154733",
-      "accent": "#fee123"
+      "accent": "#fee123",
+      "gamertag": "VueTV117",
+      "platform": "PlayStation",
+      "joinedDynasty": true
     },
     {
       "school": "Penn State",
@@ -275,7 +314,10 @@
       "conference": "SEC",
       "coach": "cmledet97",
       "primary": "#73000a",
-      "accent": "#000000"
+      "accent": "#000000",
+      "gamertag": "Cmledet97",
+      "platform": "PlayStation",
+      "joinedDynasty": true
     },
     {
       "school": "TCU",
@@ -283,7 +325,10 @@
       "conference": "BIG XII",
       "coach": "john5564415",
       "primary": "#4d1979",
-      "accent": "#ffffff"
+      "accent": "#ffffff",
+      "gamertag": "ITTs_John",
+      "platform": "PlayStation",
+      "joinedDynasty": true
     },
     {
       "school": "Tennessee",
@@ -291,7 +336,10 @@
       "conference": "SEC",
       "coach": "cmledet969829",
       "primary": "#ff8200",
-      "accent": "#ffffff"
+      "accent": "#ffffff",
+      "gamertag": "cmledet96",
+      "platform": "PlayStation",
+      "joinedDynasty": true
     },
     {
       "school": "Texas",
@@ -299,7 +347,10 @@
       "conference": "SEC",
       "coach": "jrob9179",
       "primary": "#bf5700",
-      "accent": "#ffffff"
+      "accent": "#ffffff",
+      "gamertag": "jrob9179",
+      "platform": "PlayStation",
+      "joinedDynasty": true
     },
     {
       "school": "Texas A&M",
@@ -307,7 +358,10 @@
       "conference": "SEC",
       "coach": "selfmadezay.",
       "primary": "#500000",
-      "accent": "#ffffff"
+      "accent": "#ffffff",
+      "gamertag": "A716WESTSIDER",
+      "platform": "PlayStation",
+      "joinedDynasty": true
     },
     {
       "school": "Texas Tech",
@@ -323,7 +377,10 @@
       "conference": "Big Ten",
       "coach": "mrrolltide",
       "primary": "#990000",
-      "accent": "#ffc72c"
+      "accent": "#ffc72c",
+      "gamertag": "Bama_Boy2740",
+      "platform": "PlayStation",
+      "joinedDynasty": true
     },
     {
       "school": "Virginia Tech",
@@ -339,7 +396,10 @@
       "conference": "Big Ten",
       "coach": "hoezay_hndrxx",
       "primary": "#4b2e83",
-      "accent": "#b7a57a"
+      "accent": "#b7a57a",
+      "gamertag": "OVO-JAW4",
+      "platform": "PlayStation",
+      "joinedDynasty": true
     }
   ],
   "draft_order": [
