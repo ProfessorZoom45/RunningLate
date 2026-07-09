@@ -10,13 +10,36 @@
     {src:'assets/audio/ab-honcho-daze-jungle.mp3', title:'AB Honcho x Daze, The Leader - Jungle'}
   ];
   const HEALTH_METRICS = [
-    ['Games Completed','71/79','Games submitted or marked complete'],
+    ['User Games Completed','0/79','Games submitted or marked complete'],
     ['Users Active','31/31','Current active coach count'],
-    ['Streams Posted','12','Clips, VODs, and stream links logged'],
-    ['Rewards Claimed','8','Boosts and rewards submitted'],
-    ['Admin Reviews','1','Open review item'],
+    ['Streams Posted','0','Clips, VODs, and stream links logged'],
+    ['Rewards Claimed','0','Boosts and rewards submitted'],
+    ['Admin Reviews','1','Open items to review'],
     ['Open Teams','69 pool','Available schools listed by conference']
   ];
+  const SOCIAL_LINKS = {
+    'ole miss': [
+      {type:'Twitch', label:'Twitch', url:'https://www.twitch.tv/grodys_spot'}
+    ],
+    'washington': [
+      {type:'YouTube', label:'YouTube', url:'https://youtube.com/@hoezayw?si=CUhF3AKRn5fLipzq'},
+      {type:'Twitch', label:'Twitch', url:'https://www.twitch.tv/hoezay4'}
+    ],
+    'nebraska': [
+      {type:'Twitch', label:'Twitch', url:'https://www.twitch.tv/lakedogg32?sr=a'}
+    ],
+    'oregon': [
+      {type:'Twitch', label:'Twitch', url:'https://m.twitch.tv/vuetv117'}
+    ],
+    'oklahoma': [
+      {type:'YouTube', label:'YouTube', url:'https://youtube.com/@youngtweet3068?si=pBrbaIiiFXk1is32'}
+    ],
+    'byu': [
+      {type:'Twitch', label:'Twitch 1', url:'https://m.twitch.tv/changethewrld45'},
+      {type:'YouTube', label:'YouTube', url:'https://www.youtube.com/@ZOOMvsTHEWORLD'},
+      {type:'Twitch', label:'Twitch 2', url:'https://twitch.tv/ZoomPTG'}
+    ]
+  };
   const RIVALRY_MASTER = {
     'Alabama': ['Auburn','LSU','Mississippi State','Tennessee'],
     'Auburn': ['Alabama','Florida','Georgia','LSU'],
@@ -177,9 +200,25 @@
     const at = game.neutral ? 'vs' : (game.home===school ? 'vs' : '@');
     return `${game.week}: ${at} ${opponent}`;
   }
+  function teamScheduleHref(school){ return `team-schedules.html#team-${slug(school)}`; }
+  function socialLinksForTeam(t){
+    return SOCIAL_LINKS[String(t?.school || '').toLowerCase()] || [];
+  }
+  function socialLinksHtml(t){
+    const links = socialLinksForTeam(t);
+    if(!links.length) return `<a href="${DISCORD}" target="_blank" rel="noopener">Add Link</a>`;
+    return `<span class="social-links">${links.map(link => `<a href="${esc(link.url)}" target="_blank" rel="noopener">${esc(link.label || link.type)}</a>`).join('')}</span>`;
+  }
   function rivalryNote(data, school){
     const rivals = RIVALRY_MASTER[cleanDisplay(school)] || [];
     return rivals.length ? rivals.join(', ') : 'CFB 26 rivalry list pending';
+  }
+  function cleanAvailableTeamLabel(value){
+    return String(value || '')
+      .replace(/\u00e2\u20ac\u2122/g, "'")
+      .replace(/[^\x20-\x7e]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
   }
 
   function renderStats(data){
@@ -285,7 +324,7 @@
       <div class="available-board">${AVAILABLE_TEAMS.map(([group, teams]) => `
         <article class="available-card reveal">
           <h3>${esc(group)} <span>${teams.length}</span></h3>
-          <div class="chip-row">${teams.map(team => `<span class="chip">${esc(team)}</span>`).join('')}</div>
+          <div class="chip-row">${teams.map(team => `<span class="chip">${esc(cleanAvailableTeamLabel(team))}</span>`).join('')}</div>
         </article>`).join('')}</div>`;
   }
   function renderConferenceCards(data){
@@ -293,13 +332,14 @@
     const groups = groupedTeams(data.teams || []);
     root.innerHTML = Object.keys(groups).sort(confOrder).map(conf => `
       <article class="glass-card reveal">
-        <div class="panel-header"><div><span class="eyebrow">${esc(conf)}</span><h3>${groups[conf].length} claimed</h3></div></div>
+        <div class="panel-header"><div><span class="eyebrow">${esc(conf)}</span></div></div>
         <div class="chip-row">${groups[conf].map(t=>`<span class="chip" style="--team-primary:${esc(t.primary)};border-color:${esc(t.primary)}66">${esc(t.display)}</span>`).join('')}</div>
       </article>`).join('');
   }
   function renderTimeline(data){
     const root = $('[data-render="timeline"]'); if(!root) return;
-    root.innerHTML = (data.timeline || []).map(t => `
+    const rows = (data.timeline || []).slice().sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+    root.innerHTML = rows.map(t => `
       <div class="timeline-item reveal"><article class="timeline-card"><time>${esc(t.date)}</time><h3>${esc(t.title)}</h3><p>${esc(t.detail)}</p></article></div>`).join('');
   }
   function renderTeams(data){
@@ -333,12 +373,13 @@
         <span><b>Team</b>${esc(cleanDisplay(t.school))}</span>
         <span><b>Status</b>Active</span>
         <span><b>Record</b>0-0</span>
-        <span><b>Next Game</b>${esc(nextGameForTeam(data,t.school))}</span>
-        <span><b>Twitch/YouTube</b><a href="${DISCORD}" target="_blank" rel="noopener">Add Link</a></span>
+        <span><b>Next Game</b><a href="${teamScheduleHref(t.school)}">${esc(nextGameForTeam(data,t.school))}</a></span>
+        <span><b>Twitch/YouTube</b>${socialLinksHtml(t)}</span>
         <span><b>Rivalry Note</b>${esc(rivalryNote(data,t.school))}</span>
         <span><b>Last Result</b>No result yet</span>
       </div>
       <a class="btn btn--profile" href="coaches.html#team-${slug(t.school)}">Open Coach Card</a>
+      <a class="btn btn--profile btn--schedule" href="${teamScheduleHref(t.school)}">Team Schedule</a>
       <div class="swatches"><i class="swatch" style="background:${esc(t.primary)}"></i><i class="swatch" style="background:${esc(t.accent)}"></i></div>
     </article>`;
   }
@@ -364,7 +405,8 @@
       ['Record vs Top 25', '0-0'],
       ['Top-25 (Media)', '-'],
       ['Top-25 (Coaches)', '-'],
-      ['Next Game', nextGameForTeam(data, t.school)],
+      ['Twitch/YouTube', socialLinksHtml(t), true],
+      ['Next Game', `<a href="${teamScheduleHref(t.school)}">${esc(nextGameForTeam(data, t.school))}</a>`, true],
       ['Last Game Result', 'No result yet']
     ];
   }
@@ -408,7 +450,8 @@
         ${fields.map(([label,value,html])=>`<div class="coach-field"><b>${esc(label)}</b><span>${html ? value : esc(value)}</span></div>`).join('')}
       </div>
       <div class="coach-profile-card__actions">
-        <a class="btn btn--primary" href="schedule.html">View Schedule</a>
+        <a class="btn btn--primary" href="${teamScheduleHref(t.school)}">Team Schedule</a>
+        ${socialLinksForTeam(t).map(link => `<a class="btn" href="${esc(link.url)}" target="_blank" rel="noopener">${esc(link.label || link.type)}</a>`).join('')}
         <a class="btn" href="teamhub.html">Team Hub</a>
       </div>
     </article>`;
@@ -462,14 +505,85 @@
     const homeCoach = coachForTeam(data,g.home);
     return `<article class="match-card"><div><small>${esc(g.neutral?'Neutral Site':'User vs User')}</small><b>${esc(g.matchup)}</b>${g.venue?`<small>${esc(g.venue)}</small>`:''}<small>${esc(g.away)}: ${esc(awayCoach||'Coach TBD')} | ${esc(g.home)}: ${esc(homeCoach||'Coach TBD')}</small></div><span class="chip">${g.neutral?'VS':'@'}</span></article>`;
   }
+  function teamScheduleCard(t, data){
+    const games = gamesForTeam(data, t.school);
+    const cleanSchool = cleanDisplay(t.school);
+    return `<article id="team-${slug(t.school)}" class="team-schedule-card reveal" style="--team-primary:${esc(t.primary)};--team-accent:${esc(t.accent)}">
+      <div class="team-schedule-card__head">
+        <div>
+          <span class="eyebrow">Individual Team Slate</span>
+          <h2>${esc(cleanSchool)}</h2>
+          <p>${esc(t.coach)} - ${esc(t.conference)}</p>
+        </div>
+        ${conferenceBadge(t.conference)}
+      </div>
+      <div class="team-schedule-card__games">
+        ${games.length ? games.map(g => {
+          const opponent = g.away===t.school ? g.home : g.away;
+          const location = g.neutral ? 'Neutral Site' : (g.home===t.school ? 'Home' : 'Away');
+          const prefix = g.neutral ? 'vs' : (g.home===t.school ? 'vs' : '@');
+          const tag = g.neutral ? 'VS' : (g.home===t.school ? 'HOME' : 'AWAY');
+          return `<article class="match-card">
+            <div>
+              <small>${esc(g.week)} - ${esc(location)}</small>
+              <b>${esc(prefix)} ${esc(opponent)}</b>
+              ${g.venue ? `<small>${esc(g.venue)}</small>` : ''}
+              <small>${esc(g.matchup)}</small>
+            </div>
+            <span class="chip">${esc(tag)}</span>
+          </article>`;
+        }).join('') : `<article class="match-card">
+          <div>
+            <small>Coming Soon</small>
+            <b>User-game slate pending</b>
+            <small>This team has no projected user-vs-user matchup in the current export.</small>
+          </div>
+          <span class="chip">TBD</span>
+        </article>`}
+      </div>
+      <div class="team-schedule-card__footer">
+        <b>Full 2026 Schedule</b>
+        <span>Official full team schedule and CPU games are coming soon. This page is built from the confirmed user-vs-user dynasty slate for now.</span>
+      </div>
+    </article>`;
+  }
+  function renderTeamSchedules(data){
+    const root = $('[data-render="team-schedules"]'); if(!root) return;
+    const search = $('#teamScheduleSearch');
+    const draw = () => {
+      const q = (search?.value || '').toLowerCase().trim();
+      const teams = (data.teams || []).slice().sort(teamAlpha).filter(t => teamSearchText(t,data).includes(q));
+      const jumper = teams.length ? `<nav class="section-jumper" aria-label="Team schedule sections">${teams.map(t=>`<a href="#team-${slug(t.school)}">${esc(cleanDisplay(t.school))} <span>${gamesForTeam(data,t.school).length}</span></a>`).join('')}</nav>` : '';
+      const result = q ? `<p class="finder-result">${teams.length ? `${teams.length} team schedule${teams.length===1?'':'s'} found.` : 'No team schedules match that search.'}</p>` : '';
+      root.innerHTML = result + jumper + (teams.length ? `<div class="team-schedule-grid">${teams.map(t=>teamScheduleCard(t,data)).join('')}</div>` : '<p class="lead">No team schedules match that search.</p>');
+      observe();
+      if(location.hash){
+        setTimeout(()=>document.getElementById(location.hash.slice(1))?.scrollIntoView({behavior:'smooth',block:'start'}), 120);
+      }
+    };
+    search?.addEventListener('input', draw);
+    draw();
+  }
   function renderRules(data){
     const root = $('[data-render="rules"]'); if(!root) return;
     root.innerHTML = (data.rules || []).map(r => `<article class="rule-item reveal">${esc(r)}</article>`).join('');
   }
   function renderTopGames(data){
     const root = $('[data-render="top-games"]'); if(!root) return;
-    const rows = data.derived?.top_user_game_counts || [];
-    root.innerHTML = rows.map((r,i)=>`<div class="leader-row reveal"><b>${i+1}</b><span>${esc(r.team)}</span><span class="chip chip--gold">${r.games} games</span></div>`).join('');
+    const counts = new Map((data.teams || []).map(t => [t.school, 0]));
+    (data.schedule || []).forEach(g => {
+      counts.set(g.away, (counts.get(g.away) || 0) + 1);
+      counts.set(g.home, (counts.get(g.home) || 0) + 1);
+    });
+    const seeded = data.derived?.top_user_game_counts || [];
+    const used = new Set(seeded.map(r => r.team));
+    const seededRows = seeded.map(r => ({team:r.team, games:counts.get(r.team) || r.games || 0}));
+    const remainingRows = (data.teams || [])
+      .filter(t => !used.has(t.school))
+      .map(t => ({team:t.school, games:counts.get(t.school) || 0}))
+      .sort((a,b) => b.games - a.games || a.team.localeCompare(b.team));
+    const rows = seededRows.concat(remainingRows).slice(0, 15);
+    root.innerHTML = rows.map((r,i)=>`<div class="leader-row reveal"><b>${i+1}</b><a class="leader-team" href="teamhub.html#hub-team-${slug(r.team)}">${esc(r.team)}</a><span class="chip chip--gold">${r.games} games</span></div>`).join('');
   }
   function renderSitemap(data){
     const root = $('[data-render="sitemap"]'); if(!root) return;
@@ -504,8 +618,8 @@
     const legacy = data.legacy || {};
     root.innerHTML = `
       <article class="glass-card reveal"><h3>CFB 26 Roots</h3><p>${esc((legacy.culture_notes||[])[0]||'')}</p><div class="chip-row">${(legacy.cfb26_user_programs||[]).map(t=>`<span class="chip">${esc(t)}</span>`).join('')}</div></article>
-      <article class="glass-card reveal"><h3>Carryover Programs</h3><p>${esc(legacy.carryover_programs?.length || 0)} programs appear on both the legacy CFB 26 list and the CFB 27 claimed board.</p><div class="chip-row">${(legacy.carryover_programs||[]).map(t=>`<span class="chip chip--gold">${esc(t)}</span>`).join('')}</div></article>
-      <article class="glass-card reveal"><h3>New CFB 27 Claimed Programs</h3><p>Fresh names on the current board compared with the saved CFB 26 list.</p><div class="chip-row">${(legacy.new_cfb27_claims_vs_legacy_list||[]).map(t=>`<span class="chip">${esc(t)}</span>`).join('')}</div></article>`;
+      <article class="glass-card reveal"><h3>Carryover Programs</h3><p>${esc(legacy.carryover_programs?.length || 0)} programs appear on both the legacy CFB 26 list and the CFB 27 active member board.</p><div class="chip-row">${(legacy.carryover_programs||[]).map(t=>`<span class="chip chip--gold">${esc(t)}</span>`).join('')}</div></article>
+      <article class="glass-card reveal"><h3>New CFB 27 Active Programs</h3><p>Fresh names on the current board compared with the saved CFB 26 list.</p><div class="chip-row">${(legacy.new_cfb27_claims_vs_legacy_list||[]).map(t=>`<span class="chip">${esc(t)}</span>`).join('')}</div></article>`;
   }
   function formatTime(seconds){
     if(!Number.isFinite(seconds) || seconds < 0) return '--:--';
@@ -586,17 +700,20 @@
   function wireMobileBottomNav(){
     if($('.mobile-bottom-nav')) return;
     const page = document.body.dataset.page || '';
+    let activePage = page;
+    if(page === 'team-schedules') activePage = 'schedule';
+    if(['teamhub','teams','coaches'].includes(page)) activePage = 'teams';
     const items = [
       ['hub','hub.html','&#127968;','Hub'],
       ['schedule','schedule.html','&#128197;','Schedule'],
-      ['teamhub','teamhub.html','&#127944;','Team Hub'],
-      ['videos','videos.html','&#9654;','Videos'],
+      ['teams','teamhub.html','&#127944;','Teams'],
+      ['updates','updates.html','&#128293;','Updates'],
       ['discord',DISCORD,'&#128172;','Discord']
     ];
     const nav = document.createElement('nav');
     nav.className = 'mobile-bottom-nav';
     nav.setAttribute('aria-label','Mobile navigation');
-    nav.innerHTML = items.map(([key,href,icon,label]) => `<a class="${page===key?'is-active':''}" href="${href}" ${key==='discord'?'target="_blank" rel="noopener"':''}><span>${icon}</span><b>${label}</b></a>`).join('');
+    nav.innerHTML = items.map(([key,href,icon,label]) => `<a class="${activePage===key?'is-active':''}" href="${href}" ${key==='discord'?'target="_blank" rel="noopener"':''}><span>${icon}</span><b>${label}</b></a>`).join('');
     document.body.appendChild(nav);
   }
   function observe(){
@@ -645,17 +762,17 @@
   function wireSplash(){
     if(document.body.dataset.page !== 'splash') return;
     const noAuto = new URLSearchParams(location.search).has('noauto');
-    let seconds = 8;
+    let seconds = 30;
     const count = $('#countdown');
     if(noAuto){ if(count) count.textContent='manual'; return; }
     const interval = setInterval(()=>{ seconds--; if(count) count.textContent = seconds; if(seconds<=0) clearInterval(interval); }, 1000);
-    setTimeout(()=>{ location.href='hub.html'; }, 8200);
+    setTimeout(()=>{ location.href='hub.html'; }, 30200);
   }
   async function init(){
     wireNav(); wireMobileBottomNav(); mountAudioPlayer(); wireSplash();
     const data = await loadData();
     renderStats(data); renderScorebug(data); renderStatusText(data); renderCoverLines(data); renderHeadlines(data); renderSignals(data); renderWatchlist(data); renderFeaturedGames(data); renderUpdateGuide(data);
-    renderSettings(data); renderLeagueHealth(data); renderOpenTeams(data); renderConferenceCards(data); renderTimeline(data); renderTeams(data); renderTeamHub(data); renderCoachCards(data); renderSchedule(data); renderRules(data); renderTopGames(data); renderSitemap(data); renderArchive(data); renderLegacy(data);
+    renderSettings(data); renderLeagueHealth(data); renderOpenTeams(data); renderConferenceCards(data); renderTimeline(data); renderTeams(data); renderTeamHub(data); renderCoachCards(data); renderSchedule(data); renderTeamSchedules(data); renderRules(data); renderTopGames(data); renderSitemap(data); renderArchive(data); renderLegacy(data);
     observe();
   }
   document.addEventListener('DOMContentLoaded', init);

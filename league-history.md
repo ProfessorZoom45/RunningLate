@@ -8,20 +8,20 @@ Running Late Dynasty started as a fast-moving CFB 26 Discord league and grew int
 
 ## Timeline
 
-- **2025-06-12 - Server Opens:** The league Discord opens with a general welcome message, giving the dynasty a home base before the first public advance posts.
-- **2025-07-10 - Highlights Channel Comes Alive:** Streams, clips, and highlight links start turning the dynasty into more than standings: it becomes a weekly show.
-- **2025-07-11 - Week 0 Era Begins:** Announcements and ready-to-advance tracking begin, setting the rhythm that becomes the league identity.
-- **2025-08-21 - GOTW and Rewards Grow:** Game of the Week voting and boost systems become part of the weekly culture, rewarding activity and big matchups.
-- **2025-11-01 - Stay Ready Reward System:** Offseason rewards formalize the league motto: move fast, stay ready, and keep the dynasty rolling.
-- **2026-06-28 - CFB 27 Draft Night:** The new era starts with a public draft order and team selections, beginning with Ohio State at pick one.
-- **2026-06-30 - Conference Boards Set:** ACC, Big Ten, BIG XII, SEC, and Independent team boards are posted for the CFB 27 setup.
 - **2026-07-07 - Day 1 Launch:** Running Late Dynasty officially launches for CFB 27 with private league setup, cross-play, and the first advance posted for July 10 at noon EST.
+- **2026-06-30 - Conference Boards Set:** ACC, Big Ten, BIG XII, SEC, and Independent team boards are posted for the CFB 27 setup.
+- **2026-06-28 - CFB 27 Draft Night:** The new era starts with a public draft order and team selections, beginning with Ohio State at pick one.
+- **2025-11-01 - Stay Ready Reward System:** Offseason rewards formalize the league motto: move fast, stay ready, and keep the dynasty rolling.
+- **2025-08-21 - GOTW and Rewards Grow:** Game of the Week voting and boost systems become part of the weekly culture, rewarding activity and big matchups.
+- **2025-07-11 - Week 0 Era Begins:** Announcements and ready-to-advance tracking begin, setting the rhythm that becomes the league identity.
+- **2025-07-10 - Highlights Channel Comes Alive:** Streams, clips, and highlight links start turning the dynasty into more than standings: it becomes a weekly show.
+- **2025-06-12 - Server Opens:** The league Discord opens with a general welcome message, giving the dynasty a home base before the first public advance posts.
 
 ## League Setup
 
 - **League Type:** Private
 - **Max Users:** 32
-- **Claimed Teams Found:** 31
+- **Active Member Teams:** 31
 - **Cross-Play:** ON
 - **Difficulty:** Heisman
 - **Advance Cycle:** 48 hours

@@ -13,7 +13,7 @@ Use this file when you want to update the GitHub Pages site without rebuilding t
 | New cover teaser | `dashboard.coverLines` | Magazine splash page |
 | New advance/GOTW/reward status | `dashboard.signals` | Hub signal cards |
 | New top story | `dashboard.headlines` | Hub headline stack |
-| Team owner or school changed | `teams` | Teams page, conference map, claimed count |
+| Team owner or school changed | `teams` | Teams page, conference map, active member count |
 | New game/result/schedule note | `schedule` | Schedule page and featured slate |
 | Rule update | `rules` | Rules page |
 

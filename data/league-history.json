@@ -10,7 +10,7 @@
       "value": "32"
     },
     {
-      "label": "Claimed Teams Found",
+      "label": "Active Member Teams",
       "value": "31"
     },
     {
@@ -44,34 +44,9 @@
   ],
   "timeline": [
     {
-      "date": "2025-06-12",
-      "title": "Server Opens",
-      "detail": "The league Discord opens with a general welcome message, giving the dynasty a home base before the first public advance posts."
-    },
-    {
-      "date": "2025-07-10",
-      "title": "Highlights Channel Comes Alive",
-      "detail": "Streams, clips, and highlight links start turning the dynasty into more than standings: it becomes a weekly show."
-    },
-    {
-      "date": "2025-07-11",
-      "title": "Week 0 Era Begins",
-      "detail": "Announcements and ready-to-advance tracking begin, setting the rhythm that becomes the league identity."
-    },
-    {
-      "date": "2025-08-21",
-      "title": "GOTW and Rewards Grow",
-      "detail": "Game of the Week voting and boost systems become part of the weekly culture, rewarding activity and big matchups."
-    },
-    {
-      "date": "2025-11-01",
-      "title": "Stay Ready Reward System",
-      "detail": "Offseason rewards formalize the league motto: move fast, stay ready, and keep the dynasty rolling."
-    },
-    {
-      "date": "2026-06-28",
-      "title": "CFB 27 Draft Night",
-      "detail": "The new era starts with a public draft order and team selections, beginning with Ohio State at pick one."
+      "date": "2026-07-07",
+      "title": "Day 1 Launch",
+      "detail": "Running Late Dynasty officially launches for CFB 27 with private league setup, cross-play, and the first advance posted for July 10 at noon EST."
     },
     {
       "date": "2026-06-30",
@@ -79,9 +54,34 @@
       "detail": "ACC, Big Ten, BIG XII, SEC, and Independent team boards are posted for the CFB 27 setup."
     },
     {
-      "date": "2026-07-07",
-      "title": "Day 1 Launch",
-      "detail": "Running Late Dynasty officially launches for CFB 27 with private league setup, cross-play, and the first advance posted for July 10 at noon EST."
+      "date": "2026-06-28",
+      "title": "CFB 27 Draft Night",
+      "detail": "The new era starts with a public draft order and team selections, beginning with Ohio State at pick one."
+    },
+    {
+      "date": "2025-11-01",
+      "title": "Stay Ready Reward System",
+      "detail": "Offseason rewards formalize the league motto: move fast, stay ready, and keep the dynasty rolling."
+    },
+    {
+      "date": "2025-08-21",
+      "title": "GOTW and Rewards Grow",
+      "detail": "Game of the Week voting and boost systems become part of the weekly culture, rewarding activity and big matchups."
+    },
+    {
+      "date": "2025-07-11",
+      "title": "Week 0 Era Begins",
+      "detail": "Announcements and ready-to-advance tracking begin, setting the rhythm that becomes the league identity."
+    },
+    {
+      "date": "2025-07-10",
+      "title": "Highlights Channel Comes Alive",
+      "detail": "Streams, clips, and highlight links start turning the dynasty into more than standings: it becomes a weekly show."
+    },
+    {
+      "date": "2025-06-12",
+      "title": "Server Opens",
+      "detail": "The league Discord opens with a general welcome message, giving the dynasty a home base before the first public advance posts."
     }
   ],
   "teams": [
@@ -1164,7 +1164,7 @@
       "title": "Team Hub",
       "file": "teamhub.html",
       "type": "Core",
-      "summary": "Searchable school and username hub for all 31 claimed programs."
+      "summary": "Searchable school and username hub for all 31 active member programs."
     },
     {
       "title": "Coach Cards",
@@ -1176,7 +1176,7 @@
       "title": "Teams",
       "file": "teams.html",
       "type": "Core",
-      "summary": "Conference-grouped team board for claimed programs and open teams."
+      "summary": "Conference-grouped team board for active member programs and open teams."
     },
     {
       "title": "Schedule",
@@ -1450,7 +1450,7 @@
       },
       {
         "kicker": "Program Count",
-        "title": "31 Claimed Schools",
+        "title": "31 Active Member Programs",
         "detail": "ACC, Big Ten, BIG XII, SEC, and Independent boards are already mapped."
       },
       {
@@ -1531,7 +1531,7 @@
       },
       {
         "kicker": "TEAM / USER HUB",
-        "title": "31 claimed programs, one searchable coach board",
+        "title": "31 active member programs, one searchable coach board",
         "summary": "Search by school, username, or conference, then jump straight into that coach card.",
         "href": "teamhub.html",
         "cta": "Open Team Hub"
@@ -1541,7 +1541,7 @@
       {
         "rank": "01",
         "title": "SEC gauntlet",
-        "detail": "12 claimed programs create the deepest conference board on the site."
+        "detail": "12 active member programs create the deepest conference board on the site."
       },
       {
         "rank": "02",
@@ -1610,7 +1610,7 @@
       {
         "area": "Teams",
         "edit": "data/league-history.json → teams",
-        "result": "Updates team board, conference cards, and claimed count."
+        "result": "Updates team board, conference cards, and active member count."
       },
       {
         "area": "Schedule",

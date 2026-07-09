@@ -15,8 +15,26 @@
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body class="splash-only" data-page="splash">
-  <a class="splash-only__link" href="hub.html" aria-label="Enter the Running Late Dynasty Hub">
-    <img src="assets/images/dynasty-splash-image.png" alt="Running Late Dynasty CFB 27 special issue cover">
-  </a>
+  <main class="splash-only__stage" aria-label="Running Late Dynasty splash entry">
+    <p class="splash-only__cue">Click Image To Enter The Dynasty Hub</p>
+    <a class="splash-only__link" href="hub.html" aria-label="Enter the Running Late Dynasty Hub">
+      <img src="assets/images/dynasty-splash-image.png" alt="Running Late Dynasty CFB 27 special issue cover">
+    </a>
+    <p class="splash-only__timer">Auto-entering in <span id="countdown">30</span> seconds</p>
+  </main>
+  <script>
+    (() => {
+      const count = document.getElementById('countdown');
+      let seconds = 30;
+      const tick = window.setInterval(() => {
+        seconds -= 1;
+        if(count) count.textContent = seconds;
+        if(seconds <= 0){
+          window.clearInterval(tick);
+          window.location.href = 'hub.html';
+        }
+      }, 1000);
+    })();
+  </script>
 </body>
 </html>
