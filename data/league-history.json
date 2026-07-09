@@ -1311,12 +1311,6 @@
       "summary": "Command center with league signals, headlines, featured games, health, and timeline."
     },
     {
-      "title": "Team Hub",
-      "file": "teamhub.html",
-      "type": "Core",
-      "summary": "Searchable school and username hub for all 32 active member programs."
-    },
-    {
       "title": "Coach Cards",
       "file": "coaches.html",
       "type": "Core",
@@ -1326,7 +1320,7 @@
       "title": "Teams",
       "file": "teams.html",
       "type": "Core",
-      "summary": "Conference-grouped team board for active member programs and open teams."
+      "summary": "Merged team/user hub with active member cards, coach-card links, conference board, and open-team pool."
     },
     {
       "title": "Schedule",
@@ -1696,10 +1690,10 @@
       },
       {
         "kicker": "TEAM / USER HUB",
-        "title": "32 active member programs, one searchable coach board",
-        "summary": "Search by school, username, or conference, then jump straight into that coach card.",
-        "href": "teamhub.html",
-        "cta": "Open Team Hub"
+        "title": "32 active member programs, one merged team board",
+        "summary": "Search by school, username, or conference, then jump into coach cards, team schedules, conference groups, and open-team status from one page.",
+        "href": "teams.html",
+        "cta": "Open Teams"
       }
     ],
     "watchlist": [
@@ -1726,9 +1720,9 @@
     ],
     "featuredLinks": [
       {
-        "label": "Team Hub",
-        "href": "teamhub.html",
-        "detail": "Search school and user cards"
+        "label": "Teams",
+        "href": "teams.html",
+        "detail": "Merged team, user, and board hub"
       },
       {
         "label": "Coach Cards",

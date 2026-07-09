@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Teams | Running Late Dynasty CFB 27</title>
-  <meta name="description" content="Current Running Late Dynasty CFB 27 user teams and conference board.">
+  <meta name="description" content="Merged Running Late Dynasty CFB 27 team hub, user board, coach cards, and conference board.">
   <meta name="theme-color" content="#050505">
   <meta property="og:title" content="Teams | Running Late Dynasty CFB 27">
-  <meta property="og:description" content="Current Running Late Dynasty CFB 27 user teams and conference board.">
+  <meta property="og:description" content="Merged Running Late Dynasty CFB 27 team hub, user board, coach cards, and conference board.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/rld-splash-poster.png">
+  <meta property="og:image" content="assets/images/user-list-poster.png">
   <link rel="icon" href="assets/rld-logo.png" type="image/png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="assets/styles.css">
@@ -32,31 +32,58 @@
     </a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav id="site-nav" class="site-nav" aria-label="Main navigation">
-<a class="nav-link " href="hub.html">Hub</a>
-<span class="nav-group nav-group--teams" role="group" aria-label="Team navigation">
-<a class="nav-link nav-link--team-main " href="teamhub.html">Teams</a>
-<a class="nav-link nav-link--team-board is-active" href="teams.html">Board</a>
-</span>
-<a class="nav-link " href="schedule.html">Schedule</a>
-<a class="nav-link " href="rules.html">Rules</a>
-<a class="nav-link " href="history.html">History</a>
-<a class="nav-link " href="rewards.html">Rewards</a>
-<a class="nav-link " href="media.html">Media</a>
-<a class="nav-link " href="videos.html">Videos</a>
-<a class="nav-link " href="archive.html">Archive</a>
-<a class="nav-link nav-link--discord" href="https://discord.gg/8sXA2RQPnm" target="_blank" rel="noopener">Discord</a>
+      <a class="nav-link" href="hub.html">Hub</a>
+      <a class="nav-link is-active" href="teams.html">Teams</a>
+      <a class="nav-link" href="schedule.html">Schedule</a>
+      <a class="nav-link" href="rules.html">Rules</a>
+      <a class="nav-link" href="history.html">History</a>
+      <a class="nav-link" href="rewards.html">Rewards</a>
+      <a class="nav-link" href="media.html">Media</a>
+      <a class="nav-link" href="videos.html">Videos</a>
+      <a class="nav-link" href="archive.html">Archive</a>
+      <a class="nav-link nav-link--discord" href="https://discord.gg/8sXA2RQPnm" target="_blank" rel="noopener">Discord</a>
     </nav>
   </header>
   <main>
-    <section class="section section--tight">
-      <span class="eyebrow">👥 Team Board</span><h1 class="hero-title">Active Member <em>Programs</em></h1><p class="lead">Current CFB 27 teams grouped by conference. Search by school, coach, or conference.</p>
+    <section class="section section--tight teams-command">
+      <span class="eyebrow">Team / User Hub</span>
+      <h1 class="hero-title">Active Member <em>Programs</em></h1>
+      <p class="lead">One polished home for the user list, quick coach-card finder, detailed team cards, conference board, and recruiting/open-team pool.</p>
       <figure class="issue-art-card issue-art-card--contain schedule-poster-card reveal">
         <img src="assets/images/user-list-poster.png" alt="Running Late Dynasty 2026 active member user list poster">
       </figure>
+      <nav class="section-jumper" aria-label="Team page sections">
+        <a href="#coach-finder">Coach Finder</a>
+        <a href="#team-cards">Team Cards</a>
+        <a href="#conference-board">Conference Board</a>
+        <a href="#open-teams">Open Teams</a>
+      </nav>
+      <div class="controls controls--hero">
+        <input id="teamHubSearch" class="input" type="search" placeholder="Search team or username" aria-label="Search team or username">
+        <a class="btn btn--primary" href="coaches.html">All Coach Cards</a>
+        <a class="btn" href="team-schedules.html">Team Schedules</a>
+      </div>
+    </section>
+    <section id="coach-finder" class="section section--tight">
+      <div class="panel-header">
+        <div><span class="eyebrow">Active Member Cards</span><h2>Coach Finder</h2><p>Tap a program card to open that school's full coach-card subpage.</p></div>
+      </div>
+      <div data-render="team-hub"></div>
+    </section>
+    <section id="team-cards" class="section">
+      <div class="panel-header">
+        <div><span class="eyebrow">Team Cards</span><h2>Board Details</h2><p>Conference, status, record slots, social links, rivalry notes, and next user-game links for each active program.</p></div>
+      </div>
       <div class="controls"><input id="teamSearch" class="input" placeholder="Search your team or username" aria-label="Search your team or username"><select id="confFilter" class="select" aria-label="Filter by conference"></select></div>
       <div data-render="teams"></div>
     </section>
-    <section class="section">
+    <section id="conference-board" class="section">
+      <div class="panel-header">
+        <div><span class="eyebrow">Conference Board</span><h2>Power Structure</h2><p>Current user programs grouped by league home.</p></div>
+      </div>
+      <div class="grid grid--2" data-render="conferences"></div>
+    </section>
+    <section id="open-teams" class="section">
       <div class="hero-panel" data-render="open-teams"></div>
     </section>
   </main>

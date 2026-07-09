@@ -374,7 +374,7 @@
         <span><b>Team</b>${esc(cleanDisplay(t.school))}</span>
         <span><b>Status</b>Active</span>
         <span><b>Record</b>0-0</span>
-        <span><b>Next Game</b><a href="${teamScheduleHref(t.school)}">${esc(nextGameForTeam(data,t.school))}</a></span>
+        <span><b>Next User Game</b><a href="${teamScheduleHref(t.school)}">${esc(nextGameForTeam(data,t.school))}</a></span>
         <span><b>Twitch/YouTube</b>${socialLinksHtml(t)}</span>
         <span><b>Rivalry Note</b>${esc(rivalryNote(data,t.school))}</span>
         <span><b>Last Result</b>No result yet</span>
@@ -407,7 +407,7 @@
       ['Top-25 (Media)', '-'],
       ['Top-25 (Coaches)', '-'],
       ['Twitch/YouTube', socialLinksHtml(t), true],
-      ['Next Game', `<a href="${teamScheduleHref(t.school)}">${esc(nextGameForTeam(data, t.school))}</a>`, true],
+      ['Next User Game', `<a href="${teamScheduleHref(t.school)}">${esc(nextGameForTeam(data, t.school))}</a>`, true],
       ['Last Game Result', 'No result yet']
     ];
   }
@@ -425,7 +425,7 @@
             <div>
               <h3>${esc(cleanDisplay(t.school))}</h3>
               <p>${esc(t.coach)}</p>
-              <div class="team-hub-card__meta">${conferenceBadge(t.conference)}<span>${esc(nextGameForTeam(data,t.school))}</span></div>
+              <div class="team-hub-card__meta">${conferenceBadge(t.conference)}<span><b>Next User Game:</b> ${esc(nextGameForTeam(data,t.school))}</span></div>
             </div>
           </a>`).join('')}</div>`;
       observe();
@@ -453,7 +453,7 @@
       <div class="coach-profile-card__actions">
         <a class="btn btn--primary" href="${teamScheduleHref(t.school)}">Team Schedule</a>
         ${socialLinksForTeam(t).map(link => `<a class="btn" href="${esc(link.url)}" target="_blank" rel="noopener">${esc(link.label || link.type)}</a>`).join('')}
-        <a class="btn" href="teamhub.html">Team Hub</a>
+        <a class="btn" href="teams.html">Teams</a>
       </div>
     </article>`;
   }
@@ -589,7 +589,7 @@
       .map(t => ({team:t.school, games:counts.get(t.school) || 0}))
       .sort((a,b) => b.games - a.games || a.team.localeCompare(b.team));
     const rows = seededRows.concat(remainingRows).slice(0, 15);
-    root.innerHTML = rows.map((r,i)=>`<div class="leader-row reveal"><b>${i+1}</b><a class="leader-team" href="teamhub.html#hub-team-${slug(r.team)}">${esc(r.team)}</a><span class="chip chip--gold">${r.games} games</span></div>`).join('');
+    root.innerHTML = rows.map((r,i)=>`<div class="leader-row reveal"><b>${i+1}</b><a class="leader-team" href="teams.html#hub-team-${slug(r.team)}">${esc(r.team)}</a><span class="chip chip--gold">${r.games} games</span></div>`).join('');
   }
   function renderSitemap(data){
     const root = $('[data-render="sitemap"]'); if(!root) return;
@@ -712,7 +712,7 @@
     const items = [
       ['hub','hub.html','&#127968;','Hub'],
       ['schedule','schedule.html','&#128197;','Schedule'],
-      ['teams','teamhub.html','&#127944;','Teams'],
+      ['teams','teams.html','&#127944;','Teams'],
       ['updates','updates.html','&#128293;','Updates'],
       ['discord',DISCORD,'&#128172;','Discord']
     ];
@@ -752,7 +752,7 @@
         if(match.index > last) frag.append(document.createTextNode(text.slice(last, match.index)));
         const a = document.createElement('a');
         a.className = 'texas-team-link';
-        a.href = 'teamhub.html#hub-team-texas';
+        a.href = 'teams.html#hub-team-texas';
         a.textContent = match[0];
         frag.append(a);
         last = match.index + match[0].length;

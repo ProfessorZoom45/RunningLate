@@ -12,9 +12,8 @@ Static GitHub Pages site for the Running Late Dynasty CFB 27 league hub.
 
 - `index.html` - full magazine-cover splash gate that links into the hub.
 - `hub.html` - Dynasty command center, league health, signals, featured games, and conference overview.
-- `teamhub.html` - searchable Team/User Hub for all 32 active member programs.
 - `coaches.html` - public preseason coach cards with team, user, conference, record, scheme, and ranking slots.
-- `teams.html` - conference-grouped coach/team board with Open Teams / Waitlist status.
+- `teams.html` - merged Team/User Hub with coach-card links, detailed team cards, conference board, and Open Teams / Waitlist status.
 - `schedule.html` - searchable user-vs-user schedule grouped by week.
 - `team-schedules.html` - individual user-game schedule slates by team, with full official schedules marked coming soon.
 - `rules.html` - public rule summary.
