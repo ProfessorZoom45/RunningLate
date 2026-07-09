@@ -210,3 +210,8 @@ h1,h2,h3,.hero-title,.panel-header h2,.lead-story h1{letter-spacing:0}
   .mobile-bottom-nav a span{font-size:1rem}
   .mobile-bottom-nav a b{font-size:clamp(.46rem,2.15vw,.6rem);line-height:1;text-align:center;white-space:normal}
 }
+.match-card--conference{border-left:4px solid var(--red)}
+.match-card--non{border-left:4px solid #f4f2eb}
+.game-kind{display:inline-flex!important;align-items:center;gap:.42rem;color:#f3ebdc!important;letter-spacing:.08em}
+.game-kind:before{content:"";width:.58rem;height:.58rem;border-radius:999px;background:var(--red);box-shadow:0 0 0 3px rgba(227,34,42,.16)}
+.game-kind--non:before{background:#f4f2eb;box-shadow:0 0 0 3px rgba(244,242,235,.16)}

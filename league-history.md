@@ -4,7 +4,7 @@ Public CFB 27 launch archive dated 2026-07-07.
 
 ## Quick Read
 
-Running Late Dynasty started as a fast-moving CFB 26 Discord league and grew into a full league operation with weekly advances, streams, Game of the Week voting, rewards, offseason pacing, and public announcements. The CFB 27 version launches as the Day 1 era: a private, cross-play dynasty built around custom head coaches, 48-hour advances, Heisman difficulty, and a 79-game projected user-vs-user schedule.
+Running Late Dynasty started as a fast-moving CFB 26 Discord league and grew into a full league operation with weekly advances, streams, Game of the Week voting, rewards, offseason pacing, and public announcements. The CFB 27 version launches as the Day 1 era: a private, cross-play dynasty built around custom head coaches, 48-hour advances, Heisman difficulty, and an 86-game projected user-vs-user schedule.
 
 ## Timeline
 
@@ -21,7 +21,7 @@ Running Late Dynasty started as a fast-moving CFB 26 Discord league and grew int
 
 - **League Type:** Private
 - **Max Users:** 32
-- **Active Member Teams:** 31
+- **Active Member Teams:** 32
 - **Cross-Play:** ON
 - **Difficulty:** Heisman
 - **Advance Cycle:** 48 hours
@@ -67,6 +67,7 @@ Running Late Dynasty started as a fast-moving CFB 26 Discord league and grew int
 - GEORGIA 🐶 - mikecmd_856
 - LSU 🐯 - bignutt195
 - MISSISSIPPI STATE 🔔 - zeeeeeeeee3
+- MISSOURI TIGERS - earlthepearl1995_
 - OKLAHOMA 🔴 - tweetybirrrd
 - OLE MISS 🔵 - grody365
 - SOUTH CAROLINA 🐔 - cmledet97
@@ -82,111 +83,130 @@ Running Late Dynasty started as a fast-moving CFB 26 Discord league and grew int
 
 ### Week 1
 
-- Clemson @ LSU
-- SMU @ Florida State
+- Non-Conference: Clemson @ LSU
+- Conference: SMU @ Florida State
+
 ### Week 2
 
-- Oklahoma @ Michigan
-- Ohio State @ Texas
+- Non-Conference: Oklahoma @ Michigan
+- Non-Conference: Ohio State @ Texas
+
 ### Week 3
 
-- Houston @ Texas Tech
-- Florida State @ Alabama
-- Mississippi State @ South Carolina
-- Florida @ Auburn
-- LSU @ Ole Miss
+- Conference: Houston @ Texas Tech
+- Non-Conference: Florida State @ Alabama
+- Conference: Mississippi State @ South Carolina
+- Conference: Florida @ Auburn
+- Conference: LSU @ Ole Miss
+
 ### Week 4
 
-- Texas @ Tennessee
-- South Carolina @ Alabama
-- Ole Miss @ Florida
-- Oklahoma @ Georgia
-- Texas A&M @ LSU
-- Oregon @ USC
+- Conference: Texas @ Tennessee
+- Conference: South Carolina @ Alabama
+- Conference: Ole Miss @ Florida
+- Conference: Oklahoma @ Georgia
+- Conference: Texas A&M @ LSU
+- Conference: Oregon @ USC
+- Conference: Missouri @ Mississippi State
+
 ### Week 5
 
-- BYU @ TCU
-- Texas Tech @ Colorado
-- Alabama @ Mississippi State
-- Auburn @ Tennessee
-- Miami @ Clemson
-- Washington @ USC
+- Conference: BYU @ TCU
+- Conference: Texas Tech @ Colorado
+- Conference: Alabama @ Mississippi State
+- Conference: Auburn @ Tennessee
+- Conference: Miami @ Clemson
+- Conference: Washington @ USC
+- Conference: Florida @ Missouri
+
 ### Week 6
 
-- Georgia @ Alabama
-- South Carolina @ Florida
-- Texas vs Oklahoma in Cotton Bowl Stadium
-- Indiana @ Nebraska
-- USC @ Penn State
+- Conference: Georgia @ Alabama
+- Conference: South Carolina @ Florida
+- Conference: Texas vs Oklahoma - Cotton Bowl Stadium
+- Conference: Indiana @ Nebraska
+- Conference: USC @ Penn State
+- Conference: Texas A&M @ Missouri
+
 ### Week 7
 
-- Notre Dame @ BYU
-- Auburn @ Georgia
-- Mississippi State @ LSU
-- Alabama @ Tennessee
-- Florida @ Texas
-- Florida State @ Miami
-- Indiana @ Ohio State
-- Penn State @ Michigan
-- Nebraska @ Oregon
+- Non-Conference: Notre Dame @ BYU
+- Conference: Auburn @ Georgia
+- Conference: Mississippi State @ LSU
+- Conference: Alabama @ Tennessee
+- Conference: Florida @ Texas
+- Conference: Florida State @ Miami
+- Conference: Indiana @ Ohio State
+- Conference: Penn State @ Michigan
+- Conference: Nebraska @ Oregon
+- Conference: Missouri @ Ole Miss
+
 ### Week 8
 
-- Texas A&M @ Alabama
-- LSU @ Auburn
-- Oklahoma @ Mississippi State
-- Tennessee @ South Carolina
-- Ole Miss @ Texas
-- Virginia Tech @ Clemson
-- Indiana @ Michigan
+- Conference: Texas A&M @ Alabama
+- Conference: LSU @ Auburn
+- Conference: Oklahoma @ Mississippi State
+- Conference: Tennessee @ South Carolina
+- Conference: Ole Miss @ Texas
+- Conference: Virginia Tech @ Clemson
+- Conference: Indiana @ Michigan
+
 ### Week 9
 
-- Florida vs Georgia in Mercedes-Benz Stadium
-- South Carolina @ Oklahoma
-- Auburn @ Ole Miss
-- Mississippi State @ Texas
-- Clemson @ Florida State
-- Ohio State @ USC
-- Washington @ Nebraska
+- Conference: Florida vs Georgia - Mercedes-Benz Stadium
+- Conference: South Carolina @ Oklahoma
+- Conference: Auburn @ Ole Miss
+- Conference: Mississippi State @ Texas
+- Conference: Clemson @ Florida State
+- Conference: Ohio State @ USC
+- Conference: Washington @ Nebraska
+
 ### Week 10
 
-- Virginia Tech @ SMU
-- Alabama @ LSU
-- Oklahoma @ Florida
-- Georgia @ Ole Miss
-- Texas A&M @ South Carolina
-- Miami @ Notre Dame
-- Penn State @ Washington
-- Oregon @ Ohio State
+- Conference: Virginia Tech @ SMU
+- Conference: Alabama @ LSU
+- Conference: Oklahoma @ Florida
+- Conference: Georgia @ Ole Miss
+- Conference: Texas A&M @ South Carolina
+- Non-Conference: Miami @ Notre Dame
+- Conference: Penn State @ Washington
+- Conference: Oregon @ Ohio State
+- Conference: Texas @ Missouri
+
 ### Week 11
 
-- Houston @ Colorado
-- Texas @ LSU
-- Auburn @ Mississippi State
-- Ole Miss @ Oklahoma
-- Tennessee @ Texas A&M
-- Michigan @ Oregon
-- USC @ Indiana
+- Conference: Houston @ Colorado
+- Conference: Texas @ LSU
+- Conference: Auburn @ Mississippi State
+- Conference: Ole Miss @ Oklahoma
+- Conference: Tennessee @ Texas A&M
+- Conference: Michigan @ Oregon
+- Conference: USC @ Indiana
+- Conference: Missouri @ Georgia
+
 ### Week 12
 
-- SMU @ Notre Dame
-- Texas A&M @ Oklahoma
-- Georgia @ South Carolina
-- LSU @ Tennessee
-- Virginia Tech @ Miami
-- Ohio State @ Nebraska
-- Indiana @ Washington
+- Non-Conference: SMU @ Notre Dame
+- Conference: Texas A&M @ Oklahoma
+- Conference: Georgia @ South Carolina
+- Conference: LSU @ Tennessee
+- Conference: Virginia Tech @ Miami
+- Conference: Ohio State @ Nebraska
+- Conference: Indiana @ Washington
+
 ### Week 13
 
-- Mississippi State @ Ole Miss
-- Florida @ Florida State
-- Texas @ Texas A&M
-- Auburn @ Alabama
-- South Carolina @ Clemson
-- Michigan @ Ohio State
-- Washington @ Oregon
-- TCU @ Texas Tech
+- Conference: Mississippi State @ Ole Miss
+- Non-Conference: Florida @ Florida State
+- Conference: Texas @ Texas A&M
+- Conference: Auburn @ Alabama
+- Non-Conference: South Carolina @ Clemson
+- Conference: Michigan @ Ohio State
+- Conference: Washington @ Oregon
+- Conference: TCU @ Texas Tech
+- Conference: Oklahoma @ Missouri
 
-Projected user games found: **79**.
+Projected user games found: **86**.
 
 ## Public Rules Summary
 

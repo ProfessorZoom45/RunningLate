@@ -10,12 +10,12 @@
     {src:'assets/audio/ab-honcho-daze-jungle.mp3', title:'AB Honcho x Daze, The Leader - Jungle'}
   ];
   const HEALTH_METRICS = [
-    ['User Games Completed','0/79','Games submitted or marked complete'],
-    ['Users Active','31/31','Current active coach count'],
+    ['User Games Completed','0/86','Games submitted or marked complete'],
+    ['Users Active','32/32','Current active coach count'],
     ['Streams Posted','0','Clips, VODs, and stream links logged'],
     ['Rewards Claimed','0','Boosts and rewards submitted'],
     ['Admin Reviews','1','Open items to review'],
-    ['Open Teams','69 pool','Available schools listed by conference']
+    ['Open Teams','68 pool','Available schools listed by conference']
   ];
   const SOCIAL_LINKS = {
     'ole miss': [
@@ -55,6 +55,7 @@
     'Miami': ['Florida','Florida State','Virginia Tech'],
     'Michigan': ['Michigan State','Minnesota','Northwestern','Notre Dame','Ohio State'],
     'Mississippi State': ['Alabama','LSU','Ole Miss'],
+    'Missouri': ['Arkansas','Illinois','Kansas','Nebraska','Oklahoma','South Carolina'],
     'Nebraska': ['Colorado','Iowa','Minnesota','Missouri','Oklahoma','Texas','Wisconsin'],
     'Notre Dame': ['Army','Boston College','Michigan','Michigan State','Navy','Northwestern','Pittsburgh','Purdue','Stanford','USC'],
     'Ohio State': ['Illinois','Michigan','Penn State'],
@@ -154,7 +155,6 @@
     ['SEC Available', [
       'ARKANSAS RAZORBACKS 🐗',
       'KENTUCKY WILDCATS 🐱',
-      'MISSOURI TIGERS 🐯',
       'VANDERBILT COMMODORES ⚓'
     ]]
   ];
@@ -188,7 +188,8 @@
     return t?.coach || '';
   }
   function gameSearchText(g, data){
-    return `${g.week} ${g.matchup} ${g.venue||''} ${g.away} ${g.home} ${coachForTeam(data,g.away)} ${coachForTeam(data,g.home)}`.toLowerCase();
+    const gameType = g.conference ? 'conference game red' : 'non-conference game white';
+    return `${g.week} ${g.matchup} ${g.venue||''} ${g.away} ${g.home} ${coachForTeam(data,g.away)} ${coachForTeam(data,g.home)} ${gameType}`.toLowerCase();
   }
   function gamesForTeam(data, school){
     return (data.schedule||[]).filter(g => g.away===school || g.home===school).sort((a,b)=>weekNumber(a.week)-weekNumber(b.week));
@@ -503,7 +504,9 @@
   function matchCard(g, data){
     const awayCoach = coachForTeam(data,g.away);
     const homeCoach = coachForTeam(data,g.home);
-    return `<article class="match-card"><div><small>${esc(g.neutral?'Neutral Site':'User vs User')}</small><b>${esc(g.matchup)}</b>${g.venue?`<small>${esc(g.venue)}</small>`:''}<small>${esc(g.away)}: ${esc(awayCoach||'Coach TBD')} | ${esc(g.home)}: ${esc(homeCoach||'Coach TBD')}</small></div><span class="chip">${g.neutral?'VS':'@'}</span></article>`;
+    const gameType = g.conference ? 'Conference Game' : 'Non-Conference Game';
+    const kindClass = g.conference ? 'game-kind--conference' : 'game-kind--non';
+    return `<article class="match-card ${g.conference ? 'match-card--conference' : 'match-card--non'}"><div><small class="game-kind ${kindClass}">${esc(gameType)}</small><b>${esc(g.matchup)}</b>${g.venue?`<small>${esc(g.venue)}</small>`:''}<small>${esc(g.away)}: ${esc(awayCoach||'Coach TBD')} | ${esc(g.home)}: ${esc(homeCoach||'Coach TBD')}</small></div><span class="chip">${g.neutral?'VS':'@'}</span></article>`;
   }
   function teamScheduleCard(t, data){
     const games = gamesForTeam(data, t.school);
@@ -523,8 +526,11 @@
           const location = g.neutral ? 'Neutral Site' : (g.home===t.school ? 'Home' : 'Away');
           const prefix = g.neutral ? 'vs' : (g.home===t.school ? 'vs' : '@');
           const tag = g.neutral ? 'VS' : (g.home===t.school ? 'HOME' : 'AWAY');
-          return `<article class="match-card">
+          const gameType = g.conference ? 'Conference Game' : 'Non-Conference Game';
+          const kindClass = g.conference ? 'game-kind--conference' : 'game-kind--non';
+          return `<article class="match-card ${g.conference ? 'match-card--conference' : 'match-card--non'}">
             <div>
+              <small class="game-kind ${kindClass}">${esc(gameType)}</small>
               <small>${esc(g.week)} - ${esc(location)}</small>
               <b>${esc(prefix)} ${esc(opponent)}</b>
               ${g.venue ? `<small>${esc(g.venue)}</small>` : ''}

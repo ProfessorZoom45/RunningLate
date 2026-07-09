@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-08T01:39:01",
+  "generated_at": "2026-07-09T13:21:55.077Z",
   "settings": [
     {
       "label": "League Type",
@@ -11,7 +11,7 @@
     },
     {
       "label": "Active Member Teams",
-      "value": "31"
+      "value": "32"
     },
     {
       "label": "Cross-Play",
@@ -196,6 +196,14 @@
       "coach": "zeeeeeeeee3",
       "primary": "#660000",
       "accent": "#ffffff"
+    },
+    {
+      "school": "Missouri",
+      "display": "MISSOURI TIGERS",
+      "conference": "SEC",
+      "coach": "earlthepearl1995_",
+      "primary": "#f1b82d",
+      "accent": "#000000"
     },
     {
       "school": "Nebraska",
@@ -498,7 +506,8 @@
       "away": "Clemson",
       "home": "LSU",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": false
     },
     {
       "week": "Week 1",
@@ -506,7 +515,8 @@
       "away": "SMU",
       "home": "Florida State",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 2",
@@ -514,7 +524,8 @@
       "away": "Oklahoma",
       "home": "Michigan",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": false
     },
     {
       "week": "Week 2",
@@ -522,7 +533,8 @@
       "away": "Ohio State",
       "home": "Texas",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": false
     },
     {
       "week": "Week 3",
@@ -530,7 +542,8 @@
       "away": "Houston",
       "home": "Texas Tech",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 3",
@@ -538,7 +551,8 @@
       "away": "Florida State",
       "home": "Alabama",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": false
     },
     {
       "week": "Week 3",
@@ -546,7 +560,8 @@
       "away": "Mississippi State",
       "home": "South Carolina",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 3",
@@ -554,7 +569,8 @@
       "away": "Florida",
       "home": "Auburn",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 3",
@@ -562,7 +578,8 @@
       "away": "LSU",
       "home": "Ole Miss",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 4",
@@ -570,7 +587,8 @@
       "away": "Texas",
       "home": "Tennessee",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 4",
@@ -578,7 +596,8 @@
       "away": "South Carolina",
       "home": "Alabama",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 4",
@@ -586,7 +605,8 @@
       "away": "Ole Miss",
       "home": "Florida",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 4",
@@ -594,7 +614,8 @@
       "away": "Oklahoma",
       "home": "Georgia",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 4",
@@ -602,7 +623,8 @@
       "away": "Texas A&M",
       "home": "LSU",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 4",
@@ -610,7 +632,17 @@
       "away": "Oregon",
       "home": "USC",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 4",
+      "matchup": "Missouri @ Mississippi State",
+      "away": "Missouri",
+      "home": "Mississippi State",
+      "neutral": false,
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 5",
@@ -618,7 +650,8 @@
       "away": "BYU",
       "home": "TCU",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 5",
@@ -626,7 +659,8 @@
       "away": "Texas Tech",
       "home": "Colorado",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 5",
@@ -634,7 +668,8 @@
       "away": "Alabama",
       "home": "Mississippi State",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 5",
@@ -642,7 +677,8 @@
       "away": "Auburn",
       "home": "Tennessee",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 5",
@@ -650,7 +686,8 @@
       "away": "Miami",
       "home": "Clemson",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 5",
@@ -658,7 +695,17 @@
       "away": "Washington",
       "home": "USC",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 5",
+      "matchup": "Florida @ Missouri",
+      "away": "Florida",
+      "home": "Missouri",
+      "neutral": false,
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 6",
@@ -666,7 +713,8 @@
       "away": "Georgia",
       "home": "Alabama",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 6",
@@ -674,15 +722,17 @@
       "away": "South Carolina",
       "home": "Florida",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 6",
-      "matchup": "Texas vs Oklahoma in Cotton Bowl Stadium",
+      "matchup": "Texas vs Oklahoma",
       "away": "Texas",
       "home": "Oklahoma",
       "neutral": true,
-      "venue": "Cotton Bowl Stadium"
+      "venue": "Cotton Bowl Stadium",
+      "conference": true
     },
     {
       "week": "Week 6",
@@ -690,7 +740,8 @@
       "away": "Indiana",
       "home": "Nebraska",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 6",
@@ -698,7 +749,17 @@
       "away": "USC",
       "home": "Penn State",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 6",
+      "matchup": "Texas A&M @ Missouri",
+      "away": "Texas A&M",
+      "home": "Missouri",
+      "neutral": false,
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 7",
@@ -706,7 +767,8 @@
       "away": "Notre Dame",
       "home": "BYU",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": false
     },
     {
       "week": "Week 7",
@@ -714,7 +776,8 @@
       "away": "Auburn",
       "home": "Georgia",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 7",
@@ -722,7 +785,8 @@
       "away": "Mississippi State",
       "home": "LSU",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 7",
@@ -730,7 +794,8 @@
       "away": "Alabama",
       "home": "Tennessee",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 7",
@@ -738,7 +803,8 @@
       "away": "Florida",
       "home": "Texas",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 7",
@@ -746,7 +812,8 @@
       "away": "Florida State",
       "home": "Miami",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 7",
@@ -754,7 +821,8 @@
       "away": "Indiana",
       "home": "Ohio State",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 7",
@@ -762,7 +830,8 @@
       "away": "Penn State",
       "home": "Michigan",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 7",
@@ -770,7 +839,17 @@
       "away": "Nebraska",
       "home": "Oregon",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 7",
+      "matchup": "Missouri @ Ole Miss",
+      "away": "Missouri",
+      "home": "Ole Miss",
+      "neutral": false,
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 8",
@@ -778,7 +857,8 @@
       "away": "Texas A&M",
       "home": "Alabama",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 8",
@@ -786,7 +866,8 @@
       "away": "LSU",
       "home": "Auburn",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 8",
@@ -794,7 +875,8 @@
       "away": "Oklahoma",
       "home": "Mississippi State",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 8",
@@ -802,7 +884,8 @@
       "away": "Tennessee",
       "home": "South Carolina",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 8",
@@ -810,7 +893,8 @@
       "away": "Ole Miss",
       "home": "Texas",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 8",
@@ -818,7 +902,8 @@
       "away": "Virginia Tech",
       "home": "Clemson",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 8",
@@ -826,15 +911,17 @@
       "away": "Indiana",
       "home": "Michigan",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 9",
-      "matchup": "Florida vs Georgia in Mercedes-Benz Stadium",
+      "matchup": "Florida vs Georgia",
       "away": "Florida",
       "home": "Georgia",
       "neutral": true,
-      "venue": "Mercedes-Benz Stadium"
+      "venue": "Mercedes-Benz Stadium",
+      "conference": true
     },
     {
       "week": "Week 9",
@@ -842,7 +929,8 @@
       "away": "South Carolina",
       "home": "Oklahoma",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 9",
@@ -850,7 +938,8 @@
       "away": "Auburn",
       "home": "Ole Miss",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 9",
@@ -858,7 +947,8 @@
       "away": "Mississippi State",
       "home": "Texas",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 9",
@@ -866,7 +956,8 @@
       "away": "Clemson",
       "home": "Florida State",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 9",
@@ -874,7 +965,8 @@
       "away": "Ohio State",
       "home": "USC",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 9",
@@ -882,7 +974,8 @@
       "away": "Washington",
       "home": "Nebraska",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 10",
@@ -890,7 +983,8 @@
       "away": "Virginia Tech",
       "home": "SMU",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 10",
@@ -898,7 +992,8 @@
       "away": "Alabama",
       "home": "LSU",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 10",
@@ -906,7 +1001,8 @@
       "away": "Oklahoma",
       "home": "Florida",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 10",
@@ -914,7 +1010,8 @@
       "away": "Georgia",
       "home": "Ole Miss",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 10",
@@ -922,7 +1019,8 @@
       "away": "Texas A&M",
       "home": "South Carolina",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 10",
@@ -930,7 +1028,8 @@
       "away": "Miami",
       "home": "Notre Dame",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": false
     },
     {
       "week": "Week 10",
@@ -938,7 +1037,8 @@
       "away": "Penn State",
       "home": "Washington",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 10",
@@ -946,7 +1046,17 @@
       "away": "Oregon",
       "home": "Ohio State",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 10",
+      "matchup": "Texas @ Missouri",
+      "away": "Texas",
+      "home": "Missouri",
+      "neutral": false,
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 11",
@@ -954,7 +1064,8 @@
       "away": "Houston",
       "home": "Colorado",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 11",
@@ -962,7 +1073,8 @@
       "away": "Texas",
       "home": "LSU",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 11",
@@ -970,7 +1082,8 @@
       "away": "Auburn",
       "home": "Mississippi State",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 11",
@@ -978,7 +1091,8 @@
       "away": "Ole Miss",
       "home": "Oklahoma",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 11",
@@ -986,7 +1100,8 @@
       "away": "Tennessee",
       "home": "Texas A&M",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 11",
@@ -994,7 +1109,8 @@
       "away": "Michigan",
       "home": "Oregon",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 11",
@@ -1002,7 +1118,17 @@
       "away": "USC",
       "home": "Indiana",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 11",
+      "matchup": "Missouri @ Georgia",
+      "away": "Missouri",
+      "home": "Georgia",
+      "neutral": false,
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 12",
@@ -1010,7 +1136,8 @@
       "away": "SMU",
       "home": "Notre Dame",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": false
     },
     {
       "week": "Week 12",
@@ -1018,7 +1145,8 @@
       "away": "Texas A&M",
       "home": "Oklahoma",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 12",
@@ -1026,7 +1154,8 @@
       "away": "Georgia",
       "home": "South Carolina",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 12",
@@ -1034,7 +1163,8 @@
       "away": "LSU",
       "home": "Tennessee",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 12",
@@ -1042,7 +1172,8 @@
       "away": "Virginia Tech",
       "home": "Miami",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 12",
@@ -1050,7 +1181,8 @@
       "away": "Ohio State",
       "home": "Nebraska",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 12",
@@ -1058,7 +1190,8 @@
       "away": "Indiana",
       "home": "Washington",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 13",
@@ -1066,7 +1199,8 @@
       "away": "Mississippi State",
       "home": "Ole Miss",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 13",
@@ -1074,7 +1208,8 @@
       "away": "Florida",
       "home": "Florida State",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": false
     },
     {
       "week": "Week 13",
@@ -1082,7 +1217,8 @@
       "away": "Texas",
       "home": "Texas A&M",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 13",
@@ -1090,7 +1226,8 @@
       "away": "Auburn",
       "home": "Alabama",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 13",
@@ -1098,7 +1235,8 @@
       "away": "South Carolina",
       "home": "Clemson",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": false
     },
     {
       "week": "Week 13",
@@ -1106,7 +1244,8 @@
       "away": "Michigan",
       "home": "Ohio State",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 13",
@@ -1114,7 +1253,8 @@
       "away": "Washington",
       "home": "Oregon",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
     },
     {
       "week": "Week 13",
@@ -1122,7 +1262,17 @@
       "away": "TCU",
       "home": "Texas Tech",
       "neutral": false,
-      "venue": ""
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 13",
+      "matchup": "Oklahoma @ Missouri",
+      "away": "Oklahoma",
+      "home": "Missouri",
+      "neutral": false,
+      "venue": "",
+      "conference": true
     }
   ],
   "rules": [
@@ -1164,7 +1314,7 @@
       "title": "Team Hub",
       "file": "teamhub.html",
       "type": "Core",
-      "summary": "Searchable school and username hub for all 31 active member programs."
+      "summary": "Searchable school and username hub for all 32 active member programs."
     },
     {
       "title": "Coach Cards",
@@ -1182,7 +1332,7 @@
       "title": "Schedule",
       "file": "schedule.html",
       "type": "Core",
-      "summary": "Projected 79-game user-vs-user schedule grouped by week."
+      "summary": "Projected 86-game user-vs-user schedule grouped by week."
     },
     {
       "title": "Rules",
@@ -1289,7 +1439,8 @@
       "Ole Miss",
       "Oregon",
       "TCU",
-      "Virginia Tech"
+      "Virginia Tech",
+      "Missouri"
     ],
     "legacy_programs_not_on_current_claimed_board": [
       "Arizona State",
@@ -1310,42 +1461,42 @@
   },
   "derived": {
     "conference_counts": {
-      "ACC": 5,
+      "SEC": 13,
       "BIG XII": 5,
+      "ACC": 5,
       "Big Ten": 8,
-      "Independent": 1,
-      "SEC": 12
+      "Independent": 1
     },
     "week_counts": {
       "Week 1": 2,
       "Week 2": 2,
       "Week 3": 5,
-      "Week 4": 6,
-      "Week 5": 6,
-      "Week 6": 5,
-      "Week 7": 9,
+      "Week 4": 7,
+      "Week 5": 7,
+      "Week 6": 6,
+      "Week 7": 10,
       "Week 8": 7,
       "Week 9": 7,
-      "Week 10": 8,
-      "Week 11": 7,
+      "Week 10": 9,
+      "Week 11": 8,
       "Week 12": 7,
-      "Week 13": 8
+      "Week 13": 9
     },
     "top_user_game_counts": [
       {
-        "team": "LSU",
-        "games": 8
+        "team": "Texas",
+        "games": 9
       },
       {
         "team": "Oklahoma",
-        "games": 8
-      },
-      {
-        "team": "Texas",
-        "games": 8
+        "games": 9
       },
       {
         "team": "Alabama",
+        "games": 8
+      },
+      {
+        "team": "LSU",
         "games": 8
       },
       {
@@ -1354,18 +1505,30 @@
       },
       {
         "team": "Mississippi State",
-        "games": 7
+        "games": 8
       },
       {
         "team": "Florida",
-        "games": 7
+        "games": 8
+      },
+      {
+        "team": "Ole Miss",
+        "games": 8
       },
       {
         "team": "Auburn",
         "games": 7
       },
       {
-        "team": "Ole Miss",
+        "team": "Georgia",
+        "games": 7
+      },
+      {
+        "team": "Texas A&M",
+        "games": 7
+      },
+      {
+        "team": "Missouri",
         "games": 7
       },
       {
@@ -1377,30 +1540,32 @@
         "games": 6
       },
       {
-        "team": "Georgia",
-        "games": 6
+        "team": "Oregon",
+        "games": 5
       }
     ],
     "neutral_games": [
       {
         "week": "Week 6",
-        "matchup": "Texas vs Oklahoma in Cotton Bowl Stadium",
+        "matchup": "Texas vs Oklahoma",
         "away": "Texas",
         "home": "Oklahoma",
         "neutral": true,
-        "venue": "Cotton Bowl Stadium"
+        "venue": "Cotton Bowl Stadium",
+        "conference": true
       },
       {
         "week": "Week 9",
-        "matchup": "Florida vs Georgia in Mercedes-Benz Stadium",
+        "matchup": "Florida vs Georgia",
         "away": "Florida",
         "home": "Georgia",
         "neutral": true,
-        "venue": "Mercedes-Benz Stadium"
+        "venue": "Mercedes-Benz Stadium",
+        "conference": true
       }
     ],
-    "claimed_count": 31,
-    "projected_user_games": 79,
+    "claimed_count": 32,
+    "projected_user_games": 86,
     "legacy_carryover_count": 23
   },
   "public_notes": [
@@ -1431,11 +1596,11 @@
       },
       {
         "label": "Teams",
-        "value": "31"
+        "value": "32"
       },
       {
         "label": "User Games",
-        "value": "79"
+        "value": "86"
       },
       {
         "label": "Discord",
@@ -1446,11 +1611,11 @@
       {
         "kicker": "Season Preview",
         "title": "The Season Awaits",
-        "detail": "Projected user-vs-user games for Weeks 1-13 live in the schedule board."
+        "detail": "86 projected user-vs-user games for Weeks 1-13 live in the schedule board."
       },
       {
         "kicker": "Program Count",
-        "title": "31 Active Member Programs",
+        "title": "32 Active Member Programs",
         "detail": "ACC, Big Ten, BIG XII, SEC, and Independent boards are already mapped."
       },
       {
@@ -1524,14 +1689,14 @@
       },
       {
         "kicker": "SCHEDULE DESK",
-        "title": "79 projected user games already loaded",
-        "summary": "The schedule board filters the projected user-vs-user games for Weeks 1-13 by week, team, and venue.",
+        "title": "86 projected user games already loaded",
+        "summary": "The schedule board filters the 86 projected user-vs-user games for Weeks 1-13 by week, team, and venue.",
         "href": "schedule.html",
         "cta": "Open Schedule"
       },
       {
         "kicker": "TEAM / USER HUB",
-        "title": "31 active member programs, one searchable coach board",
+        "title": "32 active member programs, one searchable coach board",
         "summary": "Search by school, username, or conference, then jump straight into that coach card.",
         "href": "teamhub.html",
         "cta": "Open Team Hub"
@@ -1541,7 +1706,7 @@
       {
         "rank": "01",
         "title": "SEC gauntlet",
-        "detail": "12 active member programs create the deepest conference board on the site."
+        "detail": "13 active member programs create the deepest conference board on the site."
       },
       {
         "rank": "02",
