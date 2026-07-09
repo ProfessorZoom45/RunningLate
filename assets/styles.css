@@ -215,3 +215,12 @@ h1,h2,h3,.hero-title,.panel-header h2,.lead-story h1{letter-spacing:0}
 .game-kind{display:inline-flex!important;align-items:center;gap:.42rem;color:#f3ebdc!important;letter-spacing:.08em}
 .game-kind:before{content:"";width:.58rem;height:.58rem;border-radius:999px;background:var(--red);box-shadow:0 0 0 3px rgba(227,34,42,.16)}
 .game-kind--non:before{background:#f4f2eb;box-shadow:0 0 0 3px rgba(244,242,235,.16)}
+.nav-group{display:inline-flex;align-items:stretch;border:1px solid var(--line2);border-radius:999px;overflow:hidden;background:rgba(255,255,255,.035)}
+.nav-group .nav-link{border:0;border-radius:0;padding-inline:.68rem}
+.nav-group .nav-link+.nav-link{border-left:1px solid var(--line2)}
+.nav-group .nav-link--team-board{font-size:.68rem;color:#ded5bf}
+.nav-group .nav-link.is-active{background:rgba(212,175,55,.12);color:#fff}
+@media (max-width:900px){
+  .nav-group{display:flex;width:100%;border-radius:16px}
+  .nav-group .nav-link{width:50%;text-align:center}
+}
