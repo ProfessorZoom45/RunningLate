@@ -186,6 +186,11 @@ h1,h2,h3,.hero-title,.panel-header h2,.lead-story h1{letter-spacing:0}
 .coach-profile-card__actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem}
 .conf-badge{display:inline-grid;place-items:center;min-width:2.45rem;height:2.1rem;border-radius:10px;background:#111;border:1px solid rgba(255,226,138,.35);color:var(--gold2);font-weight:1000;font-size:.78rem}
 .conf-badge--acc{background:#172d65}.conf-badge--big-ten{background:#102b4f}.conf-badge--big-xii{background:#4d1620}.conf-badge--sec{background:#173c7a}.conf-badge--independent{background:#302914}
+.conf-badge--logo{display:inline-flex;align-items:center;gap:.48rem;width:auto;min-width:0;height:auto;min-height:2.35rem;padding:.18rem .62rem .18rem .34rem;color:#fff;background:linear-gradient(135deg,#090a0e,#19100a 56%,#090909)}
+.conf-badge--logo img{width:3rem;height:2.05rem;object-fit:contain;border-radius:4px;filter:drop-shadow(0 0 8px rgba(255,255,255,.18))}
+.conf-badge--big-ten.conf-badge--logo img{background:rgba(255,255,255,.94);padding:.16rem}
+.conf-badge--sec.conf-badge--logo img,.conf-badge--independent.conf-badge--logo img{height:2.45rem}
+.conf-badge--logo span,.conf-label{font-weight:1000;text-transform:uppercase;letter-spacing:.07em}
 .signal-card small{display:none}
 .site-footer{margin-top:3rem}
 .site-footer .footer-links a[href*="league-history"]{display:none}

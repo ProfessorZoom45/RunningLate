@@ -385,15 +385,29 @@
     </article>`;
   }
   function conferenceBadge(conf){
+    const logos = {
+      'ACC': {src:'assets/images/acc-logo.png', label:'ACC'},
+      'Big Ten': {src:'assets/images/big-ten-logo.png', label:'BIG 10'},
+      'BIG XII': {src:'assets/images/big-xii-logo.png', label:'BIG XII'},
+      'SEC': {src:'assets/images/sec-logo.png', label:'SEC'},
+      'Independent': {src:'assets/images/fbs-independent-logo.png', label:'FBS Independent'}
+    };
+    const logo = logos[conf];
+    if(logo){
+      return `<span class="conf-badge conf-badge--${slug(conf)} conf-badge--logo"><img src="${esc(logo.src)}" alt="" aria-hidden="true"><span>${esc(logo.label)}</span></span>`;
+    }
     const map = {'ACC':'ACC','Big Ten':'B1G','BIG XII':'XII','SEC':'SEC','Independent':'IND'};
     return `<span class="conf-badge conf-badge--${slug(conf)}">${esc(map[conf] || conf)}</span>`;
+  }
+  function conferenceField(conf){
+    return conferenceBadge(conf);
   }
   function coachProfileData(t, data){
     const games = gamesForTeam(data, t.school);
     const rivals = games.filter(g => /Alabama|Auburn|Florida State|Florida|Texas A&M|Texas|Ohio State|Michigan|Oregon|Washington|Oklahoma|Clemson|South Carolina|Notre Dame|USC/i.test(g.matchup));
     return [
-      ['User Name', `${t.coach} (@${t.coach})`],
-      ['Conference', `${conferenceBadge(t.conference)} ${esc(t.conference)}`, true],
+      ['User Name', t.coach],
+      ['Conference', conferenceField(t.conference), true],
       ['Coach Name', 'Preseason file pending'],
       ['Prestige', 'Launch rating pending'],
       ['Level & Archetype', 'Preseason scout file'],
