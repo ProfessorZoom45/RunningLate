@@ -2227,7 +2227,7 @@
         "value": "48H",
         "status": "ON CLOCK",
         "tone": "red",
-        "detail": "Games move on a 48-hour cycle. First advance is Friday July 10 at Noon EST.",
+        "detail": "In-Game Weeks move on a 48-hour cycle. Second Advance is Sunday @ NOON EST",
         "editKey": "dashboard.signals[0]"
       },
       {
