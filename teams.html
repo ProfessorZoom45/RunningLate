@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -37,51 +37,49 @@
       <a class="nav-link" href="schedule.html">Schedule</a>
       <a class="nav-link" href="rules.html">Rules</a>
       <a class="nav-link" href="history.html">History</a>
-      <a class="nav-link" href="rewards.html">Rewards</a>
       <a class="nav-link" href="media.html">Media</a>
-      <a class="nav-link" href="videos.html">Videos</a>
       <a class="nav-link" href="archive.html">Archive</a>
       <a class="nav-link nav-link--discord" href="https://discord.gg/8sXA2RQPnm" target="_blank" rel="noopener">Discord</a>
     </nav>
   </header>
   <main>
     <section class="section section--tight teams-command">
-      <span class="eyebrow">Team / User Hub</span>
-      <h1 class="hero-title">Active Member <em>Programs</em></h1>
-      <p class="lead">One polished home for the user list, quick coach-card finder, detailed team cards, conference board, and recruiting/open-team pool.</p>
       <figure class="issue-art-card issue-art-card--contain schedule-poster-card reveal">
         <img src="assets/images/user-list-poster.png" alt="Running Late Dynasty 2026 active member user list poster">
       </figure>
-      <nav class="section-jumper" aria-label="Team page sections">
-        <a href="#coach-finder">Coach Finder</a>
-        <a href="#team-cards">Team Cards</a>
-        <a href="#conference-board">Conference Board</a>
-        <a href="#open-teams">Open Teams</a>
-      </nav>
+      <span class="eyebrow">Team / User Hub</span>
+      <h1 class="hero-title">Active Member <em>Programs</em></h1>
+      <p class="lead">One polished home for the user list, quick coach-card finder, detailed team cards, conference board, and recruiting/open-team pool.</p>
       <div class="controls controls--hero">
-        <input id="teamHubSearch" class="input" type="search" placeholder="Search team or username" aria-label="Search team or username">
+        <input id="teamPageSearch" class="input" type="search" placeholder="Search Coach Name, Team Name, or Username/Discord name" aria-label="Search Coach Name, Team Name, or Username/Discord name">
         <a class="btn btn--primary" href="coaches.html">All Coach Cards</a>
         <a class="btn" href="team-schedules.html">Team Schedules</a>
       </div>
+      <nav class="section-jumper" aria-label="Team page sections">
+        <a href="#conference-board">Conference Board</a>
+        <a href="#team-cards">Team Cards</a>
+        <a href="#coach-finder">Coach Cards</a>
+        <a href="#open-teams">Open Teams</a>
+      </nav>
     </section>
-    <section id="coach-finder" class="section section--tight">
+    <section id="conference-board" class="section section--tight">
       <div class="panel-header">
-        <div><span class="eyebrow">Active Member Cards</span><h2>Coach Finder</h2><p>Tap a program card to open that school's full coach-card subpage.</p></div>
+        <div><span class="eyebrow">Conference Board</span><h2>Power Structure</h2><p>Current user programs grouped by league home.</p></div>
       </div>
-      <div data-render="team-hub"></div>
+      <div class="grid grid--2" data-render="conferences"></div>
     </section>
     <section id="team-cards" class="section">
       <div class="panel-header">
         <div><span class="eyebrow">Team Cards</span><h2>Board Details</h2><p>Conference, status, record slots, social links, rivalry notes, and next user-game links for each active program.</p></div>
       </div>
-      <div class="controls"><input id="teamSearch" class="input" placeholder="Search your team or username" aria-label="Search your team or username"><select id="confFilter" class="select" aria-label="Filter by conference"></select></div>
+      <div class="controls"><select id="confFilter" class="select" aria-label="Filter by conference"></select></div>
       <div data-render="teams"></div>
     </section>
-    <section id="conference-board" class="section">
+    <section id="coach-finder" class="section">
       <div class="panel-header">
-        <div><span class="eyebrow">Conference Board</span><h2>Power Structure</h2><p>Current user programs grouped by league home.</p></div>
+        <div><span class="eyebrow">Coach Cards</span><h2>Coach Finder</h2><p>Tap a logo card to open that school's full coach-card subpage.</p></div>
       </div>
-      <div class="grid grid--2" data-render="conferences"></div>
+      <div data-render="team-hub"></div>
     </section>
     <section id="open-teams" class="section">
       <div class="hero-panel" data-render="open-teams"></div>

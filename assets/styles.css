@@ -166,11 +166,20 @@ h1,h2,h3,.hero-title,.panel-header h2,.lead-story h1{letter-spacing:0}
 .social-links a{display:inline-flex;align-items:center;border:1px solid rgba(255,226,138,.28);border-radius:999px;padding:.18rem .48rem;background:rgba(212,175,55,.08);text-decoration:none}
 .team-schedule-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,420px);gap:1.25rem;align-items:center;border:1px solid var(--line);border-left:6px solid var(--red);background:linear-gradient(135deg,rgba(194,24,32,.2),rgba(12,12,15,.92) 50%,rgba(212,175,55,.12));border-radius:26px;padding:clamp(1rem,3vw,1.6rem);box-shadow:var(--shadow);overflow:hidden}.team-schedule-hero__art{margin:0;border:1px solid var(--line2);border-radius:18px;overflow:hidden;background:#050506;max-height:420px}.team-schedule-hero__art img{width:100%;height:100%;object-fit:cover;object-position:top center}.team-schedule-grid{display:grid;gap:1rem;margin-top:1rem}.team-schedule-card{scroll-margin-top:135px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,18,22,.88),rgba(5,5,6,.96));border-radius:24px;padding:1rem;box-shadow:var(--shadow);position:relative;overflow:hidden}.team-schedule-card:before{content:"";position:absolute;inset:0 0 auto;height:6px;background:linear-gradient(90deg,var(--team-primary),var(--team-accent))}.team-schedule-card__head{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;padding-top:.35rem}.team-schedule-card__head h2{margin:.35rem 0 0;text-transform:uppercase;line-height:1;font-size:clamp(1.55rem,3.4vw,2.7rem)}.team-schedule-card__head p{margin:.35rem 0 0;color:var(--gold2);font-weight:950}.team-schedule-card__games{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;margin-top:1rem}.team-schedule-card__footer{display:grid;gap:.2rem;margin-top:1rem;border:1px solid rgba(255,226,138,.24);background:rgba(212,175,55,.08);border-radius:16px;padding:.9rem}.team-schedule-card__footer b{color:var(--gold2);text-transform:uppercase;letter-spacing:.06em}.team-schedule-card__footer span{color:#e5ddcb;font-weight:780}
 .simulation-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,280px);gap:1.25rem;align-items:center;border:1px solid var(--line);border-left:6px solid var(--red);background:linear-gradient(135deg,rgba(194,24,32,.22),rgba(18,18,22,.92) 48%,rgba(212,175,55,.14));border-radius:26px;padding:clamp(1rem,3vw,1.7rem);box-shadow:var(--shadow);overflow:hidden}.simulation-hero img{width:min(240px,82%);justify-self:center;filter:drop-shadow(0 0 30px rgba(212,175,55,.24))}.network-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1.2rem}.network-card{display:grid;gap:.65rem;align-content:start;border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,18,22,.9),rgba(5,5,6,.96));border-radius:22px;padding:1.15rem;box-shadow:var(--shadow);position:relative;overflow:hidden}.network-card:before{content:"";position:absolute;inset:0 0 auto;height:5px;background:linear-gradient(90deg,var(--red),var(--gold2))}.network-card span{color:var(--red);font-size:.75rem;font-weight:1000;text-transform:uppercase;letter-spacing:.12em}.network-card h2{margin:0;text-transform:uppercase;line-height:1}.network-card p{margin:0;color:#d8d1c3;font-weight:760}.network-card b{color:var(--gold2);text-transform:uppercase;font-size:.76rem;letter-spacing:.08em}.network-card:hover{border-color:rgba(255,226,138,.55);transform:translateY(-2px)}
+.news-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1.35rem}
+.news-article{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,18,22,.9),rgba(5,5,6,.96));border-radius:24px;padding:1.15rem;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.news-article:before{content:"";position:absolute;inset:0 0 auto;height:5px;background:linear-gradient(90deg,var(--red),var(--gold2))}
+.news-article--lead{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.85rem;align-items:end;background:linear-gradient(135deg,rgba(194,24,32,.22),rgba(18,18,22,.92) 45%,rgba(212,175,55,.12))}
+.news-article h2{margin:.55rem 0 .55rem;text-transform:uppercase;line-height:1;font-size:clamp(1.55rem,3vw,2.7rem)}
+.news-article p{margin:.55rem 0;color:#ded6c8;font-weight:760}
+.news-article a:not(.btn){color:var(--gold2);font-weight:1000;text-decoration:underline;text-underline-offset:3px}
 .team-hub-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.85rem;margin-top:1rem}
 .team-hub-card{display:grid;grid-template-columns:54px 1fr;gap:.85rem;align-items:center;border-radius:18px;padding:.9rem;position:relative;overflow:hidden}
 .team-hub-card:before{content:"";position:absolute;inset:0 0 auto;height:5px;background:linear-gradient(90deg,var(--team-primary),var(--team-accent))}
 .team-hub-card:hover,.coach-profile-card:target{border-color:rgba(255,226,138,.65);box-shadow:0 0 0 1px rgba(255,226,138,.18),0 26px 70px rgba(0,0,0,.45)}
 .team-hub-card__rank{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--team-primary),#090909);color:#fff;font-weight:1000}
+.team-hub-card__logo{display:grid;place-items:center;width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--team-primary),#090909 72%);border:1px solid rgba(255,226,138,.22);box-shadow:inset 0 0 18px rgba(255,255,255,.08),0 10px 24px rgba(0,0,0,.24)}
+.team-hub-card__logo img{width:38px;height:38px;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(0,0,0,.52))}
 .team-hub-card h3,.coach-profile-card h2{margin:0;text-transform:uppercase;line-height:1}
 .team-hub-card p{margin:.2rem 0;color:var(--gold2);font-weight:900}
 .team-hub-card__meta{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;color:var(--muted);font-size:.78rem;font-weight:850}
@@ -205,7 +214,7 @@ h1,h2,h3,.hero-title,.panel-header h2,.lead-story h1{letter-spacing:0}
   .magazine-hero{padding-top:1rem}
   .magazine-hero__copy{min-height:auto}
   .magazine-hero__media{min-height:260px}
-  .team-hub-grid,.coach-profile-card__body,.archive-art-grid,.team-schedule-hero,.team-schedule-card__games,.simulation-hero,.network-grid{grid-template-columns:1fr}
+  .team-hub-grid,.coach-profile-card__body,.archive-art-grid,.team-schedule-hero,.team-schedule-card__games,.simulation-hero,.network-grid,.news-grid,.news-article--lead{grid-template-columns:1fr}
   .schedule-poster-card img{max-height:720px}
   .topbar:before{border-radius:24px}
 }
@@ -217,6 +226,21 @@ h1,h2,h3,.hero-title,.panel-header h2,.lead-story h1{letter-spacing:0}
 }
 .match-card--conference{border-left:4px solid var(--red)}
 .match-card--non{border-left:4px solid #f4f2eb}
+.match-card{min-width:0}
+.match-card__body{display:grid;gap:.45rem;min-width:0;flex:1}
+.match-card__teams{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:.45rem;align-items:center}
+.match-card__teams>span{display:grid;place-items:center;color:var(--gold2);font-weight:1000;font-size:.78rem}
+.team-link{display:flex;align-items:center;justify-content:center;min-height:2.35rem;border:1px solid rgba(255,226,138,.28);background:linear-gradient(135deg,var(--team-primary),rgba(5,5,6,.92));border-radius:12px;padding:.45rem .55rem;color:#fff;font-weight:1000;text-align:center;text-transform:uppercase;line-height:1.05;word-break:normal;overflow-wrap:anywhere;box-shadow:inset 0 -18px 28px rgba(0,0,0,.22)}
+.team-link:hover{border-color:rgba(255,226,138,.7);filter:brightness(1.08);transform:translateY(-1px)}
+.match-card__venue,.match-card__coaches{line-height:1.25}
+.open-team-chip{display:grid;align-items:center;gap:.12rem;border-radius:12px}
+.open-team-chip b{font-size:.78rem;line-height:1.08}
+.open-team-chip small{color:var(--muted);font-size:.66rem;font-weight:900;text-transform:uppercase}
 .game-kind{display:inline-flex!important;align-items:center;gap:.42rem;color:#f3ebdc!important;letter-spacing:.08em}
 .game-kind:before{content:"";width:.58rem;height:.58rem;border-radius:999px;background:var(--red);box-shadow:0 0 0 3px rgba(227,34,42,.16)}
 .game-kind--non:before{background:#f4f2eb;box-shadow:0 0 0 3px rgba(244,242,235,.16)}
+@media (max-width:520px){
+  .match-card{display:grid}
+  .match-card__teams{grid-template-columns:1fr;gap:.35rem}
+  .match-card__teams>span{min-height:1rem}
+}

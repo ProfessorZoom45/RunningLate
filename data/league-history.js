@@ -1,1 +1,2371 @@
-window.RLD_DATA = {"generated_at":"2026-07-09T18:32:10.914Z","settings":[{"label":"League Type","value":"Private"},{"label":"Max Users","value":"32"},{"label":"Active Member Teams","value":"32"},{"label":"Cross-Play","value":"ON"},{"label":"Difficulty","value":"Heisman"},{"label":"Advance Cycle","value":"48 hours"},{"label":"Quarter Length","value":"5 minutes"},{"label":"Wear & Tear","value":"ON"},{"label":"Custom Playbooks","value":"Allowed"},{"label":"First Advance","value":"Friday, July 10 at Noon EST"}],"timeline":[{"date":"2026-07-07","title":"Day 1 Launch","detail":"Running Late Dynasty officially launches for CFB 27 with private league setup, cross-play, and the first advance posted for July 10 at noon EST."},{"date":"2026-06-30","title":"Conference Boards Set","detail":"ACC, Big Ten, BIG XII, SEC, and Independent team boards are posted for the CFB 27 setup."},{"date":"2026-06-28","title":"CFB 27 Draft Night","detail":"The new era starts with a public draft order and team selections, beginning with Ohio State at pick one."},{"date":"2025-11-01","title":"Stay Ready Reward System","detail":"Offseason rewards formalize the league motto: move fast, stay ready, and keep the dynasty rolling."},{"date":"2025-08-21","title":"GOTW and Rewards Grow","detail":"Game of the Week voting and boost systems become part of the weekly culture, rewarding activity and big matchups."},{"date":"2025-07-11","title":"Week 0 Era Begins","detail":"Announcements and ready-to-advance tracking begin, setting the rhythm that becomes the league identity."},{"date":"2025-07-10","title":"Highlights Channel Comes Alive","detail":"Streams, clips, and highlight links start turning the dynasty into more than standings: it becomes a weekly show."},{"date":"2025-06-12","title":"Server Opens","detail":"The league Discord opens with a general welcome message, giving the dynasty a home base before the first public advance posts."}],"teams":[{"school":"Alabama","display":"ALABAMA 🐘","conference":"SEC","coach":"ceoblitzthajet","primary":"#9e1b32","accent":"#ffffff"},{"school":"Auburn","display":"AUBURN 🦅","conference":"SEC","coach":"i_do_dis_314","primary":"#0c2340","accent":"#f26522","gamertag":"i_do_dis_314","platform":"PlayStation","joinedDynasty":true},{"school":"BYU","display":"BYU 🟦","conference":"BIG XII","coach":"Zo0o_0oM","primary":"#002e5d","accent":"#ffffff","gamertag":"Zo0o_0oM","platform":"PlayStation","joinedDynasty":true},{"school":"Clemson","display":"CLEMSON 🐅","conference":"ACC","coach":"tigerz009","primary":"#f56600","accent":"#522d80","gamertag":"JetUp1227","platform":"PlayStation","joinedDynasty":true},{"school":"Colorado","display":"COLORADO 🦬","conference":"BIG XII","coach":"bill913","primary":"#cfb87c","accent":"#000000","gamertag":"datboynice33935","platform":"PlayStation","joinedDynasty":true},{"school":"Florida","display":"FLORIDA 🐊","conference":"SEC","coach":"taybby0814","primary":"#0021a5","accent":"#fa4616","gamertag":"TayBby313","platform":"PlayStation","joinedDynasty":true},{"school":"Florida State","display":"FLORIDA STATE 🏹","conference":"ACC","coach":"allstarcowboy254._84024","primary":"#782f40","accent":"#ceb888","gamertag":"AllStarC0wBoY254","platform":"PlayStation","joinedDynasty":true},{"school":"Georgia","display":"GEORGIA 🐶","conference":"SEC","coach":"mikecmd_856","primary":"#ba0c2f","accent":"#000000"},{"school":"Houston","display":"HOUSTON 🐾","conference":"BIG XII","coach":"marjaan_","primary":"#c8102e","accent":"#ffffff"},{"school":"Indiana","display":"INDIANA 🔴","conference":"Big Ten","coach":"grinch_is_here","primary":"#990000","accent":"#edebeb","gamertag":"AirGoatish","platform":"PlayStation","joinedDynasty":true},{"school":"LSU","display":"LSU 🐯","conference":"SEC","coach":"bignutt195","primary":"#461d7c","accent":"#fdd023","gamertag":"JTChamp195","platform":"PlayStation","joinedDynasty":true},{"school":"Miami","display":"MIAMI 🙌","conference":"ACC","coach":"dame1336","primary":"#f47321","accent":"#005030","gamertag":"Chi-Twn_VS_Any_1","platform":"PlayStation","joinedDynasty":true},{"school":"Michigan","display":"MICHIGAN 〽️","conference":"Big Ten","coach":"grap.12_58536","primary":"#00274c","accent":"#ffcb05","gamertag":"GRAND_RAPIDS_MI","platform":"PlayStation","joinedDynasty":true},{"school":"Mississippi State","display":"MISSISSIPPI STATE 🔔","conference":"SEC","coach":"zeeeeeeeee3","primary":"#660000","accent":"#ffffff"},{"school":"Missouri","display":"MISSOURI TIGERS","conference":"SEC","coach":"earlthepearl1995_","primary":"#f1b82d","accent":"#000000"},{"school":"Nebraska","display":"NEBRASKA 🌽","conference":"Big Ten","coach":"lakedogg32","primary":"#e41c38","accent":"#ffffff"},{"school":"Notre Dame","display":"NOTRE DAME ☘️","conference":"Independent","coach":"malepatternballedness","primary":"#0c2340","accent":"#c99700","gamertag":"brah_sparks","platform":"PlayStation","joinedDynasty":true},{"school":"Ohio State","display":"OHIO STATE 🌰","conference":"Big Ten","coach":"zig8875","primary":"#bb0000","accent":"#666666","gamertag":"zig817","platform":"PlayStation","joinedDynasty":true},{"school":"Oklahoma","display":"OKLAHOMA 🔴","conference":"SEC","coach":"tweetybirrrd","primary":"#841617","accent":"#fdf9d8","gamertag":"GeauxTweety","platform":"PlayStation","joinedDynasty":true},{"school":"Ole Miss","display":"OLE MISS 🔵","conference":"SEC","coach":"grody365","primary":"#ce1126","accent":"#14213d"},{"school":"Oregon","display":"OREGON 🦆","conference":"Big Ten","coach":"rainey84480","primary":"#154733","accent":"#fee123","gamertag":"VueTV117","platform":"PlayStation","joinedDynasty":true},{"school":"Penn State","display":"PENN STATE 🦁","conference":"Big Ten","coach":"ulost2sway","primary":"#1e407c","accent":"#ffffff"},{"school":"SMU","display":"SMU 🐎","conference":"ACC","coach":"automattic_nwo","primary":"#0033a0","accent":"#c8102e","gamertag":"AutomatticTX_NWO","platform":"PlayStation","joinedDynasty":true},{"school":"South Carolina","display":"SOUTH CAROLINA 🐔","conference":"SEC","coach":"cmledet97","primary":"#73000a","accent":"#000000","gamertag":"Cmledet97","platform":"PlayStation","joinedDynasty":true},{"school":"TCU","display":"TCU 🐸","conference":"BIG XII","coach":"john5564415","primary":"#4d1979","accent":"#ffffff","gamertag":"ITTs_John","platform":"PlayStation","joinedDynasty":true},{"school":"Tennessee","display":"TENNESSEE 🍊","conference":"SEC","coach":"cmledet969829","primary":"#ff8200","accent":"#ffffff","gamertag":"cmledet96","platform":"PlayStation","joinedDynasty":true},{"school":"Texas","display":"TEXAS 🤘","conference":"SEC","coach":"jrob9179","primary":"#bf5700","accent":"#ffffff","gamertag":"jrob9179","platform":"PlayStation","joinedDynasty":true},{"school":"Texas A&M","display":"TEXAS A&M 👍","conference":"SEC","coach":"selfmadezay.","primary":"#500000","accent":"#ffffff","gamertag":"A716WESTSIDER","platform":"PlayStation","joinedDynasty":true},{"school":"Texas Tech","display":"TEXAS TECH 🏴‍☠️","conference":"BIG XII","coach":"lifesgood0688","primary":"#cc0000","accent":"#000000"},{"school":"USC","display":"USC ✌️","conference":"Big Ten","coach":"mrrolltide","primary":"#990000","accent":"#ffc72c","gamertag":"Bama_Boy2740","platform":"PlayStation","joinedDynasty":true},{"school":"Virginia Tech","display":"VIRGINIA TECH 🦃","conference":"ACC","coach":"superhb","primary":"#861f41","accent":"#e5751f"},{"school":"Washington","display":"WASHINGTON 🐺","conference":"Big Ten","coach":"hoezay_hndrxx","primary":"#4b2e83","accent":"#b7a57a","gamertag":"OVO-JAW4","platform":"PlayStation","joinedDynasty":true}],"draft_order":[{"pick":1,"coach":"zig8875","team":"Ohio State"},{"pick":2,"coach":"jrob9179","team":"Texas"},{"pick":3,"coach":"marjaan_","team":"Houston"},{"pick":4,"coach":"malepatternballedness","team":"Notre Dame"},{"pick":5,"coach":"mrrolltide","team":"Usc"},{"pick":6,"coach":"lifesgood0688","team":"Texas Tech"},{"pick":7,"coach":"rainey84480","team":"Oregon"},{"pick":8,"coach":"selfmadezay.","team":"Texas A&M"},{"pick":9,"coach":"dame1336","team":"Miami"},{"pick":10,"coach":"tigerz009","team":"Clemson"},{"pick":11,"coach":"bignutt195","team":"Lsu"},{"pick":12,"coach":"ceoblitzthajet","team":"Alabama"},{"pick":13,"coach":"imjusttoolucky","team":"TBD"},{"pick":14,"coach":"grap.12_58536","team":"Michigan"},{"pick":15,"coach":"tweetybirrrd","team":"Oklahoma"},{"pick":16,"coach":"mikecmd_856","team":"Georgia"},{"pick":17,"coach":"bill913","team":"Colorado"},{"pick":18,"coach":"allstarcowboy254._84024","team":"Florida State"},{"pick":19,"coach":"automattic_nwo","team":"Smu"},{"pick":20,"coach":"cmledet969829","team":"Tennessee"},{"pick":21,"coach":"grinch_is_here","team":"Indiana"},{"pick":22,"coach":"taybby0814","team":"Florida"},{"pick":23,"coach":"hoezay_hndrxx","team":"Washington"},{"pick":24,"coach":"zeeeeeeeee3","team":"Miss St"},{"pick":25,"coach":"grody365","team":"Ole Miss"},{"pick":26,"coach":"ulost2sway","team":"Penn State"},{"pick":27,"coach":"i_do_dis_314","team":"Auburn"},{"pick":29,"coach":"superhb","team":"TBD"},{"pick":30,"coach":"lakedogg32","team":"TBD"},{"pick":31,"coach":"cmledet97","team":"TBD"},{"pick":32,"coach":"zo0o_0om","team":"TBD"}],"schedule":[{"week":"Week 1","matchup":"Clemson @ LSU","away":"Clemson","home":"LSU","neutral":false,"venue":"","conference":false},{"week":"Week 1","matchup":"SMU @ Florida State","away":"SMU","home":"Florida State","neutral":false,"venue":"","conference":true},{"week":"Week 2","matchup":"Oklahoma @ Michigan","away":"Oklahoma","home":"Michigan","neutral":false,"venue":"","conference":false},{"week":"Week 2","matchup":"Ohio State @ Texas","away":"Ohio State","home":"Texas","neutral":false,"venue":"","conference":false},{"week":"Week 3","matchup":"Houston @ Texas Tech","away":"Houston","home":"Texas Tech","neutral":false,"venue":"","conference":true},{"week":"Week 3","matchup":"Florida State @ Alabama","away":"Florida State","home":"Alabama","neutral":false,"venue":"","conference":false},{"week":"Week 3","matchup":"Mississippi State @ South Carolina","away":"Mississippi State","home":"South Carolina","neutral":false,"venue":"","conference":true},{"week":"Week 3","matchup":"Florida @ Auburn","away":"Florida","home":"Auburn","neutral":false,"venue":"","conference":true},{"week":"Week 3","matchup":"LSU @ Ole Miss","away":"LSU","home":"Ole Miss","neutral":false,"venue":"","conference":true},{"week":"Week 4","matchup":"Texas @ Tennessee","away":"Texas","home":"Tennessee","neutral":false,"venue":"","conference":true},{"week":"Week 4","matchup":"South Carolina @ Alabama","away":"South Carolina","home":"Alabama","neutral":false,"venue":"","conference":true},{"week":"Week 4","matchup":"Ole Miss @ Florida","away":"Ole Miss","home":"Florida","neutral":false,"venue":"","conference":true},{"week":"Week 4","matchup":"Oklahoma @ Georgia","away":"Oklahoma","home":"Georgia","neutral":false,"venue":"","conference":true},{"week":"Week 4","matchup":"Texas A&M @ LSU","away":"Texas A&M","home":"LSU","neutral":false,"venue":"","conference":true},{"week":"Week 4","matchup":"Oregon @ USC","away":"Oregon","home":"USC","neutral":false,"venue":"","conference":true},{"week":"Week 4","matchup":"Missouri @ Mississippi State","away":"Missouri","home":"Mississippi State","neutral":false,"venue":"","conference":true},{"week":"Week 5","matchup":"BYU @ TCU","away":"BYU","home":"TCU","neutral":false,"venue":"","conference":true},{"week":"Week 5","matchup":"Texas Tech @ Colorado","away":"Texas Tech","home":"Colorado","neutral":false,"venue":"","conference":true},{"week":"Week 5","matchup":"Alabama @ Mississippi State","away":"Alabama","home":"Mississippi State","neutral":false,"venue":"","conference":true},{"week":"Week 5","matchup":"Auburn @ Tennessee","away":"Auburn","home":"Tennessee","neutral":false,"venue":"","conference":true},{"week":"Week 5","matchup":"Miami @ Clemson","away":"Miami","home":"Clemson","neutral":false,"venue":"","conference":true},{"week":"Week 5","matchup":"Washington @ USC","away":"Washington","home":"USC","neutral":false,"venue":"","conference":true},{"week":"Week 5","matchup":"Florida @ Missouri","away":"Florida","home":"Missouri","neutral":false,"venue":"","conference":true},{"week":"Week 6","matchup":"Georgia @ Alabama","away":"Georgia","home":"Alabama","neutral":false,"venue":"","conference":true},{"week":"Week 6","matchup":"South Carolina @ Florida","away":"South Carolina","home":"Florida","neutral":false,"venue":"","conference":true},{"week":"Week 6","matchup":"Texas vs Oklahoma","away":"Texas","home":"Oklahoma","neutral":true,"venue":"Cotton Bowl Stadium","conference":true},{"week":"Week 6","matchup":"Indiana @ Nebraska","away":"Indiana","home":"Nebraska","neutral":false,"venue":"","conference":true},{"week":"Week 6","matchup":"USC @ Penn State","away":"USC","home":"Penn State","neutral":false,"venue":"","conference":true},{"week":"Week 6","matchup":"Texas A&M @ Missouri","away":"Texas A&M","home":"Missouri","neutral":false,"venue":"","conference":true},{"week":"Week 7","matchup":"Notre Dame @ BYU","away":"Notre Dame","home":"BYU","neutral":false,"venue":"","conference":false},{"week":"Week 7","matchup":"Auburn @ Georgia","away":"Auburn","home":"Georgia","neutral":false,"venue":"","conference":true},{"week":"Week 7","matchup":"Mississippi State @ LSU","away":"Mississippi State","home":"LSU","neutral":false,"venue":"","conference":true},{"week":"Week 7","matchup":"Alabama @ Tennessee","away":"Alabama","home":"Tennessee","neutral":false,"venue":"","conference":true},{"week":"Week 7","matchup":"Florida @ Texas","away":"Florida","home":"Texas","neutral":false,"venue":"","conference":true},{"week":"Week 7","matchup":"Florida State @ Miami","away":"Florida State","home":"Miami","neutral":false,"venue":"","conference":true},{"week":"Week 7","matchup":"Indiana @ Ohio State","away":"Indiana","home":"Ohio State","neutral":false,"venue":"","conference":true},{"week":"Week 7","matchup":"Penn State @ Michigan","away":"Penn State","home":"Michigan","neutral":false,"venue":"","conference":true},{"week":"Week 7","matchup":"Nebraska @ Oregon","away":"Nebraska","home":"Oregon","neutral":false,"venue":"","conference":true},{"week":"Week 7","matchup":"Missouri @ Ole Miss","away":"Missouri","home":"Ole Miss","neutral":false,"venue":"","conference":true},{"week":"Week 8","matchup":"Texas A&M @ Alabama","away":"Texas A&M","home":"Alabama","neutral":false,"venue":"","conference":true},{"week":"Week 8","matchup":"LSU @ Auburn","away":"LSU","home":"Auburn","neutral":false,"venue":"","conference":true},{"week":"Week 8","matchup":"Oklahoma @ Mississippi State","away":"Oklahoma","home":"Mississippi State","neutral":false,"venue":"","conference":true},{"week":"Week 8","matchup":"Tennessee @ South Carolina","away":"Tennessee","home":"South Carolina","neutral":false,"venue":"","conference":true},{"week":"Week 8","matchup":"Ole Miss @ Texas","away":"Ole Miss","home":"Texas","neutral":false,"venue":"","conference":true},{"week":"Week 8","matchup":"Virginia Tech @ Clemson","away":"Virginia Tech","home":"Clemson","neutral":false,"venue":"","conference":true},{"week":"Week 8","matchup":"Indiana @ Michigan","away":"Indiana","home":"Michigan","neutral":false,"venue":"","conference":true},{"week":"Week 9","matchup":"Florida vs Georgia","away":"Florida","home":"Georgia","neutral":true,"venue":"Mercedes-Benz Stadium","conference":true},{"week":"Week 9","matchup":"South Carolina @ Oklahoma","away":"South Carolina","home":"Oklahoma","neutral":false,"venue":"","conference":true},{"week":"Week 9","matchup":"Auburn @ Ole Miss","away":"Auburn","home":"Ole Miss","neutral":false,"venue":"","conference":true},{"week":"Week 9","matchup":"Mississippi State @ Texas","away":"Mississippi State","home":"Texas","neutral":false,"venue":"","conference":true},{"week":"Week 9","matchup":"Clemson @ Florida State","away":"Clemson","home":"Florida State","neutral":false,"venue":"","conference":true},{"week":"Week 9","matchup":"Ohio State @ USC","away":"Ohio State","home":"USC","neutral":false,"venue":"","conference":true},{"week":"Week 9","matchup":"Washington @ Nebraska","away":"Washington","home":"Nebraska","neutral":false,"venue":"","conference":true},{"week":"Week 10","matchup":"Virginia Tech @ SMU","away":"Virginia Tech","home":"SMU","neutral":false,"venue":"","conference":true},{"week":"Week 10","matchup":"Alabama @ LSU","away":"Alabama","home":"LSU","neutral":false,"venue":"","conference":true},{"week":"Week 10","matchup":"Oklahoma @ Florida","away":"Oklahoma","home":"Florida","neutral":false,"venue":"","conference":true},{"week":"Week 10","matchup":"Georgia @ Ole Miss","away":"Georgia","home":"Ole Miss","neutral":false,"venue":"","conference":true},{"week":"Week 10","matchup":"Texas A&M @ South Carolina","away":"Texas A&M","home":"South Carolina","neutral":false,"venue":"","conference":true},{"week":"Week 10","matchup":"Miami @ Notre Dame","away":"Miami","home":"Notre Dame","neutral":false,"venue":"","conference":false},{"week":"Week 10","matchup":"Penn State @ Washington","away":"Penn State","home":"Washington","neutral":false,"venue":"","conference":true},{"week":"Week 10","matchup":"Oregon @ Ohio State","away":"Oregon","home":"Ohio State","neutral":false,"venue":"","conference":true},{"week":"Week 10","matchup":"Texas @ Missouri","away":"Texas","home":"Missouri","neutral":false,"venue":"","conference":true},{"week":"Week 11","matchup":"Houston @ Colorado","away":"Houston","home":"Colorado","neutral":false,"venue":"","conference":true},{"week":"Week 11","matchup":"Texas @ LSU","away":"Texas","home":"LSU","neutral":false,"venue":"","conference":true},{"week":"Week 11","matchup":"Auburn @ Mississippi State","away":"Auburn","home":"Mississippi State","neutral":false,"venue":"","conference":true},{"week":"Week 11","matchup":"Ole Miss @ Oklahoma","away":"Ole Miss","home":"Oklahoma","neutral":false,"venue":"","conference":true},{"week":"Week 11","matchup":"Tennessee @ Texas A&M","away":"Tennessee","home":"Texas A&M","neutral":false,"venue":"","conference":true},{"week":"Week 11","matchup":"Michigan @ Oregon","away":"Michigan","home":"Oregon","neutral":false,"venue":"","conference":true},{"week":"Week 11","matchup":"USC @ Indiana","away":"USC","home":"Indiana","neutral":false,"venue":"","conference":true},{"week":"Week 11","matchup":"Missouri @ Georgia","away":"Missouri","home":"Georgia","neutral":false,"venue":"","conference":true},{"week":"Week 12","matchup":"SMU @ Notre Dame","away":"SMU","home":"Notre Dame","neutral":false,"venue":"","conference":false},{"week":"Week 12","matchup":"Texas A&M @ Oklahoma","away":"Texas A&M","home":"Oklahoma","neutral":false,"venue":"","conference":true},{"week":"Week 12","matchup":"Georgia @ South Carolina","away":"Georgia","home":"South Carolina","neutral":false,"venue":"","conference":true},{"week":"Week 12","matchup":"LSU @ Tennessee","away":"LSU","home":"Tennessee","neutral":false,"venue":"","conference":true},{"week":"Week 12","matchup":"Virginia Tech @ Miami","away":"Virginia Tech","home":"Miami","neutral":false,"venue":"","conference":true},{"week":"Week 12","matchup":"Ohio State @ Nebraska","away":"Ohio State","home":"Nebraska","neutral":false,"venue":"","conference":true},{"week":"Week 12","matchup":"Indiana @ Washington","away":"Indiana","home":"Washington","neutral":false,"venue":"","conference":true},{"week":"Week 13","matchup":"Mississippi State @ Ole Miss","away":"Mississippi State","home":"Ole Miss","neutral":false,"venue":"","conference":true},{"week":"Week 13","matchup":"Florida @ Florida State","away":"Florida","home":"Florida State","neutral":false,"venue":"","conference":false},{"week":"Week 13","matchup":"Texas @ Texas A&M","away":"Texas","home":"Texas A&M","neutral":false,"venue":"","conference":true},{"week":"Week 13","matchup":"Auburn @ Alabama","away":"Auburn","home":"Alabama","neutral":false,"venue":"","conference":true},{"week":"Week 13","matchup":"South Carolina @ Clemson","away":"South Carolina","home":"Clemson","neutral":false,"venue":"","conference":false},{"week":"Week 13","matchup":"Michigan @ Ohio State","away":"Michigan","home":"Ohio State","neutral":false,"venue":"","conference":true},{"week":"Week 13","matchup":"Washington @ Oregon","away":"Washington","home":"Oregon","neutral":false,"venue":"","conference":true},{"week":"Week 13","matchup":"TCU @ Texas Tech","away":"TCU","home":"Texas Tech","neutral":false,"venue":"","conference":true},{"week":"Week 13","matchup":"Oklahoma @ Missouri","away":"Oklahoma","home":"Missouri","neutral":false,"venue":"","conference":true}],"rules":["Schedule every user game within 24 hours after advance.","Use a clear 2-hour max gaming window if no exact kickoff time is set.","Someone must stream, screen share, or record user games for admin review.","Forced loss and fair sim calls are admin-reviewed case by case.","CPU restarts should stay at zero unless there is proof or a strong reason.","No scoring over 100; chew clock when a game gets out of hand.","Check uniforms before kickoff to avoid dark-on-dark or white-on-white matchups.","Respect the opponent, the admins, and the league. Keep trash talk inside football."],"version":"launch-magazine-site","brand":{"name":"Running Late Dynasty","short":"RLD","game":"CFB 27","tagline":"Day 1 Dynasty Era","discordInvite":"https://discord.gg/8sXA2RQPnm","privacy":"Public preseason site for Running Late Dynasty CFB 27.","footer":"Perfect Timing Gaming • Powered by D1SN • Credits: Professor Zoom","coverIssue":"D1SN Special Issue 00","coverDate":"July 2026"},"sitemap":[{"title":"Splash Gate","file":"index.html","type":"Entry","summary":"Full magazine-cover splash page leading into the Dynasty Hub."},{"title":"Dynasty Hub","file":"hub.html","type":"Core","summary":"Command center with league signals, headlines, featured games, health, and timeline."},{"title":"Coach Cards","file":"coaches.html","type":"Core","summary":"Public preseason coach profile cards with team, conference, record, scheme, and ranking slots."},{"title":"Teams","file":"teams.html","type":"Core","summary":"Merged team/user hub with active member cards, coach-card links, conference board, and open-team pool."},{"title":"Schedule","file":"schedule.html","type":"Core","summary":"Projected 86-game user-vs-user schedule grouped by week."},{"title":"Rules","file":"rules.html","type":"League Ops","summary":"Public CFB 27 rulebook summary and enforcement reminders."},{"title":"History","file":"history.html","type":"Archive","summary":"Timeline from the CFB 26 roots into the CFB 27 Day 1 era."},{"title":"Rewards","file":"rewards.html","type":"League Ops","summary":"Reward board and Game of the Week boost space."},{"title":"Media","file":"media.html","type":"Community","summary":"Streams, clips, highlight culture, and content links."},{"title":"Videos","file":"videos.html","type":"Community","summary":"Official YouTube playlist, latest featured video, and coach collaborator invite."},{"title":"Archive","file":"archive.html","type":"Archive","summary":"Database of past index splash covers and weekly issue images, starting with Issue 1."}],"legacy":{"cfb26_user_programs":["LSU","Clemson","Arkansas","Michigan","Texas","Ohio State","Miami","Delaware","Georgia","Arizona State","Florida","Washington","Alabama","BYU","Oklahoma","Florida State","Notre Dame","South Carolina","Illinois","USC","Texas Tech","Baylor","Colorado","Texas A&M","Penn State","Tennessee","North Carolina","Utah","Auburn","Minnesota","SMU","UCLA"],"carryover_programs":["Alabama","Auburn","BYU","Clemson","Colorado","Florida","Florida State","Georgia","LSU","Miami","Michigan","Notre Dame","Ohio State","Oklahoma","Penn State","SMU","South Carolina","Tennessee","Texas","Texas A&M","Texas Tech","USC","Washington"],"new_cfb27_claims_vs_legacy_list":["Houston","Indiana","Mississippi State","Nebraska","Ole Miss","Oregon","TCU","Virginia Tech","Missouri"],"legacy_programs_not_on_current_claimed_board":["Arizona State","Arkansas","Baylor","Delaware","Illinois","Minnesota","North Carolina","UCLA","Utah"],"culture_notes":["The league began as a CFB 26 Discord dynasty with weekly advances and public announcements.","Streams, clips, highlight links, GOTW voting, and boost/reward tracking turned the league into a weekly show.","The CFB 27 launch keeps the old pace and public archive structure while adding a cleaner hub for new users."]},"derived":{"conference_counts":{"SEC":13,"BIG XII":5,"ACC":5,"Big Ten":8,"Independent":1},"week_counts":{"Week 1":2,"Week 2":2,"Week 3":5,"Week 4":7,"Week 5":7,"Week 6":6,"Week 7":10,"Week 8":7,"Week 9":7,"Week 10":9,"Week 11":8,"Week 12":7,"Week 13":9},"top_user_game_counts":[{"team":"Texas","games":9},{"team":"Oklahoma","games":9},{"team":"Alabama","games":8},{"team":"LSU","games":8},{"team":"South Carolina","games":8},{"team":"Mississippi State","games":8},{"team":"Florida","games":8},{"team":"Ole Miss","games":8},{"team":"Auburn","games":7},{"team":"Georgia","games":7},{"team":"Texas A&M","games":7},{"team":"Missouri","games":7},{"team":"Ohio State","games":6},{"team":"Tennessee","games":6},{"team":"Oregon","games":5}],"neutral_games":[{"week":"Week 6","matchup":"Texas vs Oklahoma","away":"Texas","home":"Oklahoma","neutral":true,"venue":"Cotton Bowl Stadium","conference":true},{"week":"Week 9","matchup":"Florida vs Georgia","away":"Florida","home":"Georgia","neutral":true,"venue":"Mercedes-Benz Stadium","conference":true}],"claimed_count":32,"projected_user_games":86,"legacy_carryover_count":23},"public_notes":["Discord invite: https://discord.gg/8sXA2RQPnm","Preseason hub is ready for weekly league updates.","Coach cards use public profile fields and can be expanded as users submit details."],"dashboard":{"status":{"leagueState":"LAUNCH WEEK","currentWeek":"Preseason","nextAdvance":"Friday July 10 • Noon EST","updateLabel":"Preseason launch board","editorNote":"Weekly league notes can be added as the season advances."},"scorebar":[{"label":"League","value":"Private"},{"label":"Difficulty","value":"Heisman"},{"label":"Advance","value":"48H"},{"label":"Teams","value":"32"},{"label":"User Games","value":"86"},{"label":"Discord","value":"LIVE"}],"coverLines":[{"kicker":"Season Preview","title":"The Season Awaits","detail":"86 projected user-vs-user games for Weeks 1-13 live in the schedule board."},{"kicker":"Program Count","title":"32 Active Member Programs","detail":"ACC, Big Ten, BIG XII, SEC, and Independent boards are already mapped."},{"kicker":"League Clock","title":"48-Hour Advances","detail":"Day 1 pace, clean windows, and no excuses."},{"kicker":"Culture","title":"Built From The Chat","detail":"CFB 26 roots, clips, rewards, GOTW heat, and CFB 27 launch history."}],"signals":[{"label":"Advance Signal","value":"48H","status":"ON CLOCK","tone":"red","detail":"Games move on a 48-hour cycle. First advance is Friday July 10 at Noon EST.","editKey":"dashboard.signals[0]"},{"label":"Scheduling Signal","value":"24H","status":"POST WINDOW","tone":"gold","detail":"Users should schedule within 24 hours after advance with a time or 2-hour window.","editKey":"dashboard.signals[1]"},{"label":"Stream Signal","value":"REC","status":"REVIEW READY","tone":"blue","detail":"User games should be streamed, screen shared, or recorded for admin review.","editKey":"dashboard.signals[2]"},{"label":"GOTW Signal","value":"TBD","status":"VOTE SLOT","tone":"green","detail":"Use this slot for Game of the Week voting and boost announcements.","editKey":"dashboard.signals[3]"},{"label":"Reward Signal","value":"OPEN","status":"TRACKER SHELL","tone":"purple","detail":"Ready rewards, GOTW boosts, and completed game challenge space are built in.","editKey":"dashboard.signals[4]"},{"label":"Discord Signal","value":"LIVE","status":"JOINABLE","tone":"discord","detail":"Invite is public and repeated in the ticker and footer on every page.","editKey":"brand.discordInvite"}],"headlines":[{"kicker":"TOP STORY","title":"Running Late Dynasty opens the CFB 27 Day 1 era","summary":"The new hub combines the old D1SN magazine structure with a cleaner live-dashboard layout for teams, schedules, rules, rewards, media, and archives.","href":"history.html","cta":"Read History"},{"kicker":"SCHEDULE DESK","title":"86 projected user games already loaded","summary":"The schedule board filters the 86 projected user-vs-user games for Weeks 1-13 by week, team, and venue.","href":"schedule.html","cta":"Open Schedule"},{"kicker":"TEAM / USER HUB","title":"32 active member programs, one merged team board","summary":"Search by school, username, or conference, then jump into coach cards, team schedules, conference groups, and open-team status from one page.","href":"teams.html","cta":"Open Teams"}],"watchlist":[{"rank":"01","title":"SEC gauntlet","detail":"13 active member programs create the deepest conference board on the site."},{"rank":"02","title":"Rivalry week heat","detail":"Florida vs Florida State, Texas vs Texas A&M, Auburn vs Alabama, Michigan vs Ohio State, Washington vs Oregon, and more are already scheduled."},{"rank":"03","title":"Neutral-site flex","detail":"Texas vs Oklahoma at Cotton Bowl Stadium and Florida vs Georgia at Mercedes-Benz Stadium are marked as neutral-site games."},{"rank":"04","title":"Content culture","detail":"Streams, clips, highlights, GOTW, and rewards keep the league feeling like a weekly show."}],"featuredLinks":[{"label":"Teams","href":"teams.html","detail":"Merged team, user, and board hub"},{"label":"Coach Cards","href":"coaches.html","detail":"Public preseason profiles"},{"label":"Schedule","href":"schedule.html","detail":"Weekly user games"},{"label":"Rules","href":"rules.html","detail":"League standards"},{"label":"Media","href":"media.html","detail":"Streams and clips"},{"label":"Videos","href":"videos.html","detail":"Official YouTube playlist"}],"updateGuide":[{"area":"Splash cover lines","edit":"data/league-history.json → dashboard.coverLines","result":"Changes the magazine cover teasers on index.html."},{"area":"Dashboard signals","edit":"data/league-history.json → dashboard.signals","result":"Changes the colored ESPN-style alert cards on hub.html."},{"area":"Top stories","edit":"data/league-history.json → dashboard.headlines","result":"Changes the main news cards on the Hub."},{"area":"Teams","edit":"data/league-history.json → teams","result":"Updates team board, conference cards, and active member count."},{"area":"Schedule","edit":"data/league-history.json → schedule","result":"Updates schedule page, user-game count, and featured games."},{"area":"Rules","edit":"data/league-history.json → rules","result":"Updates rule cards without editing page HTML."}]}};
+window.RLD_DATA = {
+  "generated_at": "2026-07-10T05:41:45.276Z",
+  "settings": [
+    {
+      "label": "League Type",
+      "value": "Private"
+    },
+    {
+      "label": "Max Users",
+      "value": "32"
+    },
+    {
+      "label": "Active Member Teams",
+      "value": "32"
+    },
+    {
+      "label": "Cross-Play",
+      "value": "ON"
+    },
+    {
+      "label": "Difficulty",
+      "value": "Heisman"
+    },
+    {
+      "label": "Advance Cycle",
+      "value": "48 hours"
+    },
+    {
+      "label": "Quarter Length",
+      "value": "5 minutes"
+    },
+    {
+      "label": "Wear & Tear",
+      "value": "ON"
+    },
+    {
+      "label": "Custom Playbooks",
+      "value": "Allowed"
+    },
+    {
+      "label": "First Advance",
+      "value": "Friday, July 10 at Noon EST"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-07-07",
+      "title": "Day 1 Launch",
+      "detail": "Running Late Dynasty officially launches for CFB 27 with private league setup, cross-play, and the first advance posted for July 10 at noon EST."
+    },
+    {
+      "date": "2026-06-30",
+      "title": "Conference Boards Set",
+      "detail": "ACC, Big Ten, BIG XII, SEC, and Independent team boards are posted for the CFB 27 setup."
+    },
+    {
+      "date": "2026-06-28",
+      "title": "CFB 27 Draft Night",
+      "detail": "The new era starts with a public draft order and team selections, beginning with Ohio State at pick one."
+    },
+    {
+      "date": "2025-11-01",
+      "title": "Stay Ready System",
+      "detail": "Offseason pacing formalizes the league motto: move fast, stay ready, and keep the dynasty rolling."
+    },
+    {
+      "date": "2025-08-21",
+      "title": "GOTW and League Culture Grow",
+      "detail": "Game of the Week voting becomes part of the weekly culture around activity and big matchups."
+    },
+    {
+      "date": "2025-07-11",
+      "title": "Week 0 Era Begins",
+      "detail": "Announcements and ready-to-advance tracking begin, setting the rhythm that becomes the league identity."
+    },
+    {
+      "date": "2025-07-10",
+      "title": "Highlights Channel Comes Alive",
+      "detail": "Streams, clips, and highlight links start turning the dynasty into more than standings: it becomes a weekly show."
+    },
+    {
+      "date": "2025-06-12",
+      "title": "Server Opens",
+      "detail": "The league Discord opens with a general welcome message, giving the dynasty a home base before the first public advance posts."
+    }
+  ],
+  "teams": [
+    {
+      "school": "Alabama",
+      "display": "ALABAMA 🐘",
+      "conference": "SEC",
+      "coach": "charlesmullins412",
+      "primary": "#9e1b32",
+      "accent": "#ffffff",
+      "gamertag": "frm_da_burgh412",
+      "platform": "PlayStation",
+      "coachName": "PENDING",
+      "prestige": "PENDING",
+      "levelArchetype": "PENDING",
+      "jobSecurity": "PENDING",
+      "offScheme": "PENDING",
+      "defScheme": "PENDING",
+      "almaMater": "PENDING",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "joinedDynasty": true,
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "Auburn",
+      "display": "AUBURN 🦅",
+      "conference": "SEC",
+      "coach": "i_do_dis_314",
+      "primary": "#0c2340",
+      "accent": "#f26522",
+      "gamertag": "i_do_dis_314",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "Dame Dash",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Recruiter",
+      "jobSecurity": "Safe",
+      "offScheme": "Veer and Shoot",
+      "defScheme": "4-2-5",
+      "almaMater": "Auburn",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "BYU",
+      "display": "BYU 🟦",
+      "conference": "BIG XII",
+      "coach": "Zo0o_0oM",
+      "primary": "#002e5d",
+      "accent": "#ffffff",
+      "gamertag": "Zo0o_0oM",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "Zoom Quick",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Recruiter",
+      "jobSecurity": "Safe",
+      "offScheme": "Power Spread",
+      "defScheme": "3-3-5",
+      "almaMater": "Buffalo",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "Clemson",
+      "display": "CLEMSON 🐅",
+      "conference": "ACC",
+      "coach": "tigerz009",
+      "primary": "#f56600",
+      "accent": "#522d80",
+      "gamertag": "JetUp1227",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "Matt Addyman",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Recruiter",
+      "jobSecurity": "Safe",
+      "offScheme": "Multiple Offense",
+      "defScheme": "Base 3-4",
+      "almaMater": "Clemson",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "Colorado",
+      "display": "COLORADO 🦬",
+      "conference": "BIG XII",
+      "coach": "bill913",
+      "primary": "#cfb87c",
+      "accent": "#000000",
+      "gamertag": "datboynice33935",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "Sam Dauty",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Tactician",
+      "jobSecurity": "Safe",
+      "offScheme": "Multiple Offense",
+      "defScheme": "Base 4-3",
+      "almaMater": "Virginia Tech",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "Florida",
+      "display": "FLORIDA 🐊",
+      "conference": "SEC",
+      "coach": "taybby0814",
+      "primary": "#0021a5",
+      "accent": "#fa4616",
+      "gamertag": "TayBby313",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "Tay Marshall",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Recruiter",
+      "jobSecurity": "Safe",
+      "offScheme": "Power Spread",
+      "defScheme": "4-2-5",
+      "almaMater": "Florida",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "Florida State",
+      "display": "FLORIDA STATE 🏹",
+      "conference": "ACC",
+      "coach": "allstarcowboy254._84024",
+      "primary": "#782f40",
+      "accent": "#ceb888",
+      "gamertag": "AllStarC0wBoY254",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "Dubby Nuggy De Bluntxzynez",
+      "prestige": "C-",
+      "levelArchetype": "LVL 50 - Tactician",
+      "jobSecurity": "Safe",
+      "offScheme": "Multiple Offense",
+      "defScheme": "Base 3-4",
+      "almaMater": "North Texas",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "Georgia",
+      "display": "GEORGIA 🐶",
+      "conference": "SEC",
+      "coach": "mikecmd_856",
+      "primary": "#ba0c2f",
+      "accent": "#000000",
+      "gamertag": "MikeCMD_856",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "Champ Bailey",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Recruiter",
+      "jobSecurity": "Safe",
+      "offScheme": "Multiple Offense",
+      "defScheme": "Base 3-4",
+      "almaMater": "Georgia",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "Houston",
+      "display": "HOUSTON 🐾",
+      "conference": "BIG XII",
+      "coach": "marjaan_",
+      "primary": "#c8102e",
+      "accent": "#ffffff",
+      "gamertag": "Marjaan8224",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "Mister Underdawg",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Motivator",
+      "jobSecurity": "Safe",
+      "offScheme": "Power Spread",
+      "defScheme": "4-2-5",
+      "almaMater": "Penn State",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "Indiana",
+      "display": "INDIANA 🔴",
+      "conference": "Big Ten",
+      "coach": "grinch_is_here",
+      "primary": "#990000",
+      "accent": "#edebeb",
+      "gamertag": "AirGoatish",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "Grinch Henndawg",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Recruiter",
+      "jobSecurity": "Safe",
+      "offScheme": "Power Spread",
+      "defScheme": "Base 4-3",
+      "almaMater": "Air Force",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "LSU",
+      "display": "LSU 🐯",
+      "conference": "SEC",
+      "coach": "bignutt195",
+      "primary": "#461d7c",
+      "accent": "#fdd023",
+      "gamertag": "JTChamp195",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "JT Taylor",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Recruiter",
+      "jobSecurity": "Safe",
+      "offScheme": "Veer and Shoot",
+      "defScheme": "Base 3-4",
+      "almaMater": "Virginia Tech",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "Miami",
+      "display": "MIAMI 🙌",
+      "conference": "ACC",
+      "coach": "dame1336",
+      "primary": "#f47321",
+      "accent": "#005030",
+      "gamertag": "Chi-Twn_VS_Any_1",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "PENDING",
+      "prestige": "PENDING",
+      "levelArchetype": "PENDING",
+      "jobSecurity": "PENDING",
+      "offScheme": "PENDING",
+      "defScheme": "PENDING",
+      "almaMater": "PENDING",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "Michigan",
+      "display": "MICHIGAN 〽️",
+      "conference": "Big Ten",
+      "coach": "grap.12_58536",
+      "primary": "#00274c",
+      "accent": "#ffcb05",
+      "gamertag": "GRAND_RAPIDS_MI",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "Carl Knight",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Recruiter",
+      "jobSecurity": "Safe",
+      "offScheme": "Power Spread",
+      "defScheme": "Base 4-3",
+      "almaMater": "Michigan",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "Mississippi State",
+      "display": "MISSISSIPPI STATE 🔔",
+      "conference": "SEC",
+      "coach": "zeeeeeeeee3",
+      "primary": "#660000",
+      "accent": "#ffffff",
+      "gamertag": "PENDING",
+      "platform": "PENDING",
+      "coachName": "PENDING",
+      "prestige": "PENDING",
+      "levelArchetype": "PENDING",
+      "jobSecurity": "PENDING",
+      "offScheme": "PENDING",
+      "defScheme": "PENDING",
+      "almaMater": "PENDING",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "joinedDynasty": false,
+      "status": "PENDING"
+    },
+    {
+      "school": "Missouri",
+      "display": "MISSOURI TIGERS",
+      "conference": "SEC",
+      "coach": "earlthepearl1995_",
+      "primary": "#f1b82d",
+      "accent": "#000000",
+      "gamertag": "PENDING",
+      "platform": "PENDING",
+      "coachName": "PENDING",
+      "prestige": "PENDING",
+      "levelArchetype": "PENDING",
+      "jobSecurity": "PENDING",
+      "offScheme": "PENDING",
+      "defScheme": "PENDING",
+      "almaMater": "PENDING",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "joinedDynasty": false,
+      "status": "PENDING"
+    },
+    {
+      "school": "Nebraska",
+      "display": "NEBRASKA 🌽",
+      "conference": "Big Ten",
+      "coach": "lakedogg32",
+      "primary": "#e41c38",
+      "accent": "#ffffff",
+      "gamertag": "lakedogg",
+      "platform": "PlayStation",
+      "coachName": "Gay Blade",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Recruiter",
+      "jobSecurity": "Safe",
+      "offScheme": "Multiple Offense",
+      "defScheme": "4-2-5",
+      "almaMater": "Florida",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "joinedDynasty": true,
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "Notre Dame",
+      "display": "NOTRE DAME ☘️",
+      "conference": "Independent",
+      "coach": "malepatternballedness",
+      "primary": "#0c2340",
+      "accent": "#c99700",
+      "gamertag": "brah_sparks",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "Dr. Bald",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Motivator",
+      "jobSecurity": "Safe",
+      "offScheme": "Power Spread",
+      "defScheme": "Base 3-4",
+      "almaMater": "Georgia",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "Ohio State",
+      "display": "OHIO STATE 🌰",
+      "conference": "Big Ten",
+      "coach": "zig8875",
+      "primary": "#bb0000",
+      "accent": "#666666",
+      "gamertag": "zig817",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "Dequan Upton",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Recruiter",
+      "jobSecurity": "Safe",
+      "offScheme": "Veer and Shoot",
+      "defScheme": "Base 3-4",
+      "almaMater": "Ohio State",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "Oklahoma",
+      "display": "OKLAHOMA 🔴",
+      "conference": "SEC",
+      "coach": "tweetybirrrd",
+      "primary": "#841617",
+      "accent": "#fdf9d8",
+      "gamertag": "GeauxTweety",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "Boomer Esiason",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Recruiter",
+      "jobSecurity": "Safe",
+      "offScheme": "Air Raid",
+      "defScheme": "3-3-5",
+      "almaMater": "Oklahoma",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "Ole Miss",
+      "display": "OLE MISS 🔵",
+      "conference": "SEC",
+      "coach": "grody365",
+      "primary": "#ce1126",
+      "accent": "#14213d",
+      "gamertag": "issaGRODYthang",
+      "platform": "PC",
+      "joinedDynasty": true,
+      "coachName": "Mike Vick",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Tactician",
+      "jobSecurity": "Safe",
+      "offScheme": "Veer and Shoot",
+      "defScheme": "Base 3-4",
+      "almaMater": "Virginia Tech",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "Oregon",
+      "display": "OREGON 🦆",
+      "conference": "Big Ten",
+      "coach": "rainey84480",
+      "primary": "#154733",
+      "accent": "#fee123",
+      "gamertag": "VueTV117",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "RC Rainey",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Recruiter",
+      "jobSecurity": "Safe",
+      "offScheme": "Spread",
+      "defScheme": "3-4 Multiple",
+      "almaMater": "Florida State",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "Penn State",
+      "display": "PENN STATE 🦁",
+      "conference": "Big Ten",
+      "coach": "ulost2sway",
+      "primary": "#1e407c",
+      "accent": "#ffffff",
+      "gamertag": "ULost2Sway",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "Free Of",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Recruiter",
+      "jobSecurity": "Safe",
+      "offScheme": "Power Spread",
+      "defScheme": "Base 3-4",
+      "almaMater": "Air Force",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "SMU",
+      "display": "SMU 🐎",
+      "conference": "ACC",
+      "coach": "automattic_nwo",
+      "primary": "#0033a0",
+      "accent": "#c8102e",
+      "gamertag": "AutomatticTX_NWO",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "Matt Automattic",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Tactician",
+      "jobSecurity": "Safe",
+      "offScheme": "Power Spread",
+      "defScheme": "4-3 Multiple",
+      "almaMater": "Texas A&M",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "South Carolina",
+      "display": "SOUTH CAROLINA 🐔",
+      "conference": "SEC",
+      "coach": "cmledet97",
+      "primary": "#73000a",
+      "accent": "#000000",
+      "gamertag": "Cmledet97",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "PENDING",
+      "prestige": "PENDING",
+      "levelArchetype": "PENDING",
+      "jobSecurity": "PENDING",
+      "offScheme": "PENDING",
+      "defScheme": "PENDING",
+      "almaMater": "PENDING",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "TCU",
+      "display": "TCU 🐸",
+      "conference": "BIG XII",
+      "coach": "john5564415",
+      "primary": "#4d1979",
+      "accent": "#ffffff",
+      "gamertag": "ITTs_John",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "J Ferb",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Recruiter",
+      "jobSecurity": "Safe",
+      "offScheme": "Multiple Offense",
+      "defScheme": "3-3-5",
+      "almaMater": "Alabama",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "Tennessee",
+      "display": "TENNESSEE 🍊",
+      "conference": "SEC",
+      "coach": "cmledet969829",
+      "primary": "#ff8200",
+      "accent": "#ffffff",
+      "gamertag": "cmledet96",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "Lane Train",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Recruiter",
+      "jobSecurity": "Safe",
+      "offScheme": "Multiple Offense",
+      "defScheme": "4-2-5",
+      "almaMater": "Georgia",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "Texas",
+      "display": "TEXAS 🤘",
+      "conference": "SEC",
+      "coach": "jrob9179",
+      "primary": "#bf5700",
+      "accent": "#ffffff",
+      "gamertag": "jrob9179",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "PENDING",
+      "prestige": "PENDING",
+      "levelArchetype": "PENDING",
+      "jobSecurity": "PENDING",
+      "offScheme": "PENDING",
+      "defScheme": "PENDING",
+      "almaMater": "PENDING",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "Texas A&M",
+      "display": "TEXAS A&M 👍",
+      "conference": "SEC",
+      "coach": "selfmadezay.",
+      "primary": "#500000",
+      "accent": "#ffffff",
+      "gamertag": "A716WESTSIDER",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "Isiah Rodriguez",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Recruiter",
+      "jobSecurity": "Safe",
+      "offScheme": "Power Spread",
+      "defScheme": "4-2-5",
+      "almaMater": "Georgia",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "Texas Tech",
+      "display": "TEXAS TECH 🏴‍☠️",
+      "conference": "BIG XII",
+      "coach": "lifesgood0688",
+      "primary": "#cc0000",
+      "accent": "#000000",
+      "gamertag": "PENDING",
+      "platform": "PENDING",
+      "coachName": "PENDING",
+      "prestige": "PENDING",
+      "levelArchetype": "PENDING",
+      "jobSecurity": "PENDING",
+      "offScheme": "PENDING",
+      "defScheme": "PENDING",
+      "almaMater": "PENDING",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "joinedDynasty": false,
+      "status": "PENDING"
+    },
+    {
+      "school": "USC",
+      "display": "USC ✌️",
+      "conference": "Big Ten",
+      "coach": "mrrolltide",
+      "primary": "#990000",
+      "accent": "#ffc72c",
+      "gamertag": "Bama_Boy2740",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "Pat Taylor",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Motivator",
+      "jobSecurity": "Safe",
+      "offScheme": "Air Raid",
+      "defScheme": "4-2-5",
+      "almaMater": "Alabama",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "Virginia Tech",
+      "display": "VIRGINIA TECH 🦃",
+      "conference": "ACC",
+      "coach": "superhb",
+      "primary": "#861f41",
+      "accent": "#e5751f",
+      "gamertag": "PENDING",
+      "platform": "PENDING",
+      "coachName": "PENDING",
+      "prestige": "PENDING",
+      "levelArchetype": "PENDING",
+      "jobSecurity": "PENDING",
+      "offScheme": "PENDING",
+      "defScheme": "PENDING",
+      "almaMater": "PENDING",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "joinedDynasty": false,
+      "status": "PENDING"
+    },
+    {
+      "school": "Washington",
+      "display": "WASHINGTON 🐺",
+      "conference": "Big Ten",
+      "coach": "hoezay_hndrxx",
+      "primary": "#4b2e83",
+      "accent": "#b7a57a",
+      "gamertag": "OVO-JAW4",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "Hoezay Williams",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Recruiter",
+      "jobSecurity": "Safe",
+      "offScheme": "Veer and Shoot",
+      "defScheme": "Base 3-4",
+      "almaMater": "LSU",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "top25Media": "PENDING",
+      "top25Coaches": "PENDING",
+      "lastGameResult": "No result yet",
+      "status": "Joined Dynasty"
+    }
+  ],
+  "draft_order": [
+    {
+      "pick": 1,
+      "coach": "zig8875",
+      "team": "Ohio State"
+    },
+    {
+      "pick": 2,
+      "coach": "jrob9179",
+      "team": "Texas"
+    },
+    {
+      "pick": 3,
+      "coach": "marjaan_",
+      "team": "Houston"
+    },
+    {
+      "pick": 4,
+      "coach": "malepatternballedness",
+      "team": "Notre Dame"
+    },
+    {
+      "pick": 5,
+      "coach": "mrrolltide",
+      "team": "Usc"
+    },
+    {
+      "pick": 6,
+      "coach": "lifesgood0688",
+      "team": "Texas Tech"
+    },
+    {
+      "pick": 7,
+      "coach": "rainey84480",
+      "team": "Oregon"
+    },
+    {
+      "pick": 8,
+      "coach": "selfmadezay.",
+      "team": "Texas A&M"
+    },
+    {
+      "pick": 9,
+      "coach": "dame1336",
+      "team": "Miami"
+    },
+    {
+      "pick": 10,
+      "coach": "tigerz009",
+      "team": "Clemson"
+    },
+    {
+      "pick": 11,
+      "coach": "bignutt195",
+      "team": "Lsu"
+    },
+    {
+      "pick": 12,
+      "coach": "charlesmullins412",
+      "team": "Alabama"
+    },
+    {
+      "pick": 13,
+      "coach": "imjusttoolucky",
+      "team": "TBD"
+    },
+    {
+      "pick": 14,
+      "coach": "grap.12_58536",
+      "team": "Michigan"
+    },
+    {
+      "pick": 15,
+      "coach": "tweetybirrrd",
+      "team": "Oklahoma"
+    },
+    {
+      "pick": 16,
+      "coach": "mikecmd_856",
+      "team": "Georgia"
+    },
+    {
+      "pick": 17,
+      "coach": "bill913",
+      "team": "Colorado"
+    },
+    {
+      "pick": 18,
+      "coach": "allstarcowboy254._84024",
+      "team": "Florida State"
+    },
+    {
+      "pick": 19,
+      "coach": "automattic_nwo",
+      "team": "Smu"
+    },
+    {
+      "pick": 20,
+      "coach": "cmledet969829",
+      "team": "Tennessee"
+    },
+    {
+      "pick": 21,
+      "coach": "grinch_is_here",
+      "team": "Indiana"
+    },
+    {
+      "pick": 22,
+      "coach": "taybby0814",
+      "team": "Florida"
+    },
+    {
+      "pick": 23,
+      "coach": "hoezay_hndrxx",
+      "team": "Washington"
+    },
+    {
+      "pick": 24,
+      "coach": "zeeeeeeeee3",
+      "team": "Miss St"
+    },
+    {
+      "pick": 25,
+      "coach": "grody365",
+      "team": "Ole Miss"
+    },
+    {
+      "pick": 26,
+      "coach": "ulost2sway",
+      "team": "Penn State"
+    },
+    {
+      "pick": 27,
+      "coach": "i_do_dis_314",
+      "team": "Auburn"
+    },
+    {
+      "pick": 29,
+      "coach": "superhb",
+      "team": "TBD"
+    },
+    {
+      "pick": 30,
+      "coach": "lakedogg32",
+      "team": "TBD"
+    },
+    {
+      "pick": 31,
+      "coach": "cmledet97",
+      "team": "TBD"
+    },
+    {
+      "pick": 32,
+      "coach": "zo0o_0om",
+      "team": "TBD"
+    }
+  ],
+  "schedule": [
+    {
+      "week": "Week 1",
+      "matchup": "Clemson @ LSU",
+      "away": "Clemson",
+      "home": "LSU",
+      "neutral": false,
+      "venue": "",
+      "conference": false
+    },
+    {
+      "week": "Week 1",
+      "matchup": "SMU @ Florida State",
+      "away": "SMU",
+      "home": "Florida State",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 2",
+      "matchup": "Oklahoma @ Michigan",
+      "away": "Oklahoma",
+      "home": "Michigan",
+      "neutral": false,
+      "venue": "",
+      "conference": false
+    },
+    {
+      "week": "Week 2",
+      "matchup": "Ohio State @ Texas",
+      "away": "Ohio State",
+      "home": "Texas",
+      "neutral": false,
+      "venue": "",
+      "conference": false
+    },
+    {
+      "week": "Week 3",
+      "matchup": "Houston @ Texas Tech",
+      "away": "Houston",
+      "home": "Texas Tech",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 3",
+      "matchup": "Florida State @ Alabama",
+      "away": "Florida State",
+      "home": "Alabama",
+      "neutral": false,
+      "venue": "",
+      "conference": false
+    },
+    {
+      "week": "Week 3",
+      "matchup": "Mississippi State @ South Carolina",
+      "away": "Mississippi State",
+      "home": "South Carolina",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 3",
+      "matchup": "Florida @ Auburn",
+      "away": "Florida",
+      "home": "Auburn",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 3",
+      "matchup": "LSU @ Ole Miss",
+      "away": "LSU",
+      "home": "Ole Miss",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 4",
+      "matchup": "Texas @ Tennessee",
+      "away": "Texas",
+      "home": "Tennessee",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 4",
+      "matchup": "South Carolina @ Alabama",
+      "away": "South Carolina",
+      "home": "Alabama",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 4",
+      "matchup": "Ole Miss @ Florida",
+      "away": "Ole Miss",
+      "home": "Florida",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 4",
+      "matchup": "Oklahoma @ Georgia",
+      "away": "Oklahoma",
+      "home": "Georgia",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 4",
+      "matchup": "Texas A&M @ LSU",
+      "away": "Texas A&M",
+      "home": "LSU",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 4",
+      "matchup": "Oregon @ USC",
+      "away": "Oregon",
+      "home": "USC",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 4",
+      "matchup": "Missouri @ Mississippi State",
+      "away": "Missouri",
+      "home": "Mississippi State",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 5",
+      "matchup": "BYU @ TCU",
+      "away": "BYU",
+      "home": "TCU",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 5",
+      "matchup": "Texas Tech @ Colorado",
+      "away": "Texas Tech",
+      "home": "Colorado",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 5",
+      "matchup": "Alabama @ Mississippi State",
+      "away": "Alabama",
+      "home": "Mississippi State",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 5",
+      "matchup": "Auburn @ Tennessee",
+      "away": "Auburn",
+      "home": "Tennessee",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 5",
+      "matchup": "Miami @ Clemson",
+      "away": "Miami",
+      "home": "Clemson",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 5",
+      "matchup": "Washington @ USC",
+      "away": "Washington",
+      "home": "USC",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 5",
+      "matchup": "Florida @ Missouri",
+      "away": "Florida",
+      "home": "Missouri",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 6",
+      "matchup": "Georgia @ Alabama",
+      "away": "Georgia",
+      "home": "Alabama",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 6",
+      "matchup": "South Carolina @ Florida",
+      "away": "South Carolina",
+      "home": "Florida",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 6",
+      "matchup": "Texas vs Oklahoma",
+      "away": "Texas",
+      "home": "Oklahoma",
+      "neutral": true,
+      "venue": "Cotton Bowl Stadium",
+      "conference": true
+    },
+    {
+      "week": "Week 6",
+      "matchup": "Indiana @ Nebraska",
+      "away": "Indiana",
+      "home": "Nebraska",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 6",
+      "matchup": "USC @ Penn State",
+      "away": "USC",
+      "home": "Penn State",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 6",
+      "matchup": "Texas A&M @ Missouri",
+      "away": "Texas A&M",
+      "home": "Missouri",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 7",
+      "matchup": "Notre Dame @ BYU",
+      "away": "Notre Dame",
+      "home": "BYU",
+      "neutral": false,
+      "venue": "",
+      "conference": false
+    },
+    {
+      "week": "Week 7",
+      "matchup": "Auburn @ Georgia",
+      "away": "Auburn",
+      "home": "Georgia",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 7",
+      "matchup": "Mississippi State @ LSU",
+      "away": "Mississippi State",
+      "home": "LSU",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 7",
+      "matchup": "Alabama @ Tennessee",
+      "away": "Alabama",
+      "home": "Tennessee",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 7",
+      "matchup": "Florida @ Texas",
+      "away": "Florida",
+      "home": "Texas",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 7",
+      "matchup": "Florida State @ Miami",
+      "away": "Florida State",
+      "home": "Miami",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 7",
+      "matchup": "Indiana @ Ohio State",
+      "away": "Indiana",
+      "home": "Ohio State",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 7",
+      "matchup": "Penn State @ Michigan",
+      "away": "Penn State",
+      "home": "Michigan",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 7",
+      "matchup": "Nebraska @ Oregon",
+      "away": "Nebraska",
+      "home": "Oregon",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 7",
+      "matchup": "Missouri @ Ole Miss",
+      "away": "Missouri",
+      "home": "Ole Miss",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 8",
+      "matchup": "Texas A&M @ Alabama",
+      "away": "Texas A&M",
+      "home": "Alabama",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 8",
+      "matchup": "LSU @ Auburn",
+      "away": "LSU",
+      "home": "Auburn",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 8",
+      "matchup": "Oklahoma @ Mississippi State",
+      "away": "Oklahoma",
+      "home": "Mississippi State",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 8",
+      "matchup": "Tennessee @ South Carolina",
+      "away": "Tennessee",
+      "home": "South Carolina",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 8",
+      "matchup": "Ole Miss @ Texas",
+      "away": "Ole Miss",
+      "home": "Texas",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 8",
+      "matchup": "Virginia Tech @ Clemson",
+      "away": "Virginia Tech",
+      "home": "Clemson",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 8",
+      "matchup": "Indiana @ Michigan",
+      "away": "Indiana",
+      "home": "Michigan",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 9",
+      "matchup": "Florida vs Georgia",
+      "away": "Florida",
+      "home": "Georgia",
+      "neutral": true,
+      "venue": "Mercedes-Benz Stadium",
+      "conference": true
+    },
+    {
+      "week": "Week 9",
+      "matchup": "South Carolina @ Oklahoma",
+      "away": "South Carolina",
+      "home": "Oklahoma",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 9",
+      "matchup": "Auburn @ Ole Miss",
+      "away": "Auburn",
+      "home": "Ole Miss",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 9",
+      "matchup": "Mississippi State @ Texas",
+      "away": "Mississippi State",
+      "home": "Texas",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 9",
+      "matchup": "Clemson @ Florida State",
+      "away": "Clemson",
+      "home": "Florida State",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 9",
+      "matchup": "Ohio State @ USC",
+      "away": "Ohio State",
+      "home": "USC",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 9",
+      "matchup": "Washington @ Nebraska",
+      "away": "Washington",
+      "home": "Nebraska",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 10",
+      "matchup": "Virginia Tech @ SMU",
+      "away": "Virginia Tech",
+      "home": "SMU",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 10",
+      "matchup": "Alabama @ LSU",
+      "away": "Alabama",
+      "home": "LSU",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 10",
+      "matchup": "Oklahoma @ Florida",
+      "away": "Oklahoma",
+      "home": "Florida",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 10",
+      "matchup": "Georgia @ Ole Miss",
+      "away": "Georgia",
+      "home": "Ole Miss",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 10",
+      "matchup": "Texas A&M @ South Carolina",
+      "away": "Texas A&M",
+      "home": "South Carolina",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 10",
+      "matchup": "Miami @ Notre Dame",
+      "away": "Miami",
+      "home": "Notre Dame",
+      "neutral": false,
+      "venue": "",
+      "conference": false
+    },
+    {
+      "week": "Week 10",
+      "matchup": "Penn State @ Washington",
+      "away": "Penn State",
+      "home": "Washington",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 10",
+      "matchup": "Oregon @ Ohio State",
+      "away": "Oregon",
+      "home": "Ohio State",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 10",
+      "matchup": "Texas @ Missouri",
+      "away": "Texas",
+      "home": "Missouri",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 11",
+      "matchup": "Houston @ Colorado",
+      "away": "Houston",
+      "home": "Colorado",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 11",
+      "matchup": "Texas @ LSU",
+      "away": "Texas",
+      "home": "LSU",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 11",
+      "matchup": "Auburn @ Mississippi State",
+      "away": "Auburn",
+      "home": "Mississippi State",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 11",
+      "matchup": "Ole Miss @ Oklahoma",
+      "away": "Ole Miss",
+      "home": "Oklahoma",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 11",
+      "matchup": "Tennessee @ Texas A&M",
+      "away": "Tennessee",
+      "home": "Texas A&M",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 11",
+      "matchup": "Michigan @ Oregon",
+      "away": "Michigan",
+      "home": "Oregon",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 11",
+      "matchup": "USC @ Indiana",
+      "away": "USC",
+      "home": "Indiana",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 11",
+      "matchup": "Missouri @ Georgia",
+      "away": "Missouri",
+      "home": "Georgia",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 12",
+      "matchup": "SMU @ Notre Dame",
+      "away": "SMU",
+      "home": "Notre Dame",
+      "neutral": false,
+      "venue": "",
+      "conference": false
+    },
+    {
+      "week": "Week 12",
+      "matchup": "Texas A&M @ Oklahoma",
+      "away": "Texas A&M",
+      "home": "Oklahoma",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 12",
+      "matchup": "Georgia @ South Carolina",
+      "away": "Georgia",
+      "home": "South Carolina",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 12",
+      "matchup": "LSU @ Tennessee",
+      "away": "LSU",
+      "home": "Tennessee",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 12",
+      "matchup": "Virginia Tech @ Miami",
+      "away": "Virginia Tech",
+      "home": "Miami",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 12",
+      "matchup": "Ohio State @ Nebraska",
+      "away": "Ohio State",
+      "home": "Nebraska",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 12",
+      "matchup": "Indiana @ Washington",
+      "away": "Indiana",
+      "home": "Washington",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 13",
+      "matchup": "Mississippi State @ Ole Miss",
+      "away": "Mississippi State",
+      "home": "Ole Miss",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 13",
+      "matchup": "Florida @ Florida State",
+      "away": "Florida",
+      "home": "Florida State",
+      "neutral": false,
+      "venue": "",
+      "conference": false
+    },
+    {
+      "week": "Week 13",
+      "matchup": "Texas @ Texas A&M",
+      "away": "Texas",
+      "home": "Texas A&M",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 13",
+      "matchup": "Auburn @ Alabama",
+      "away": "Auburn",
+      "home": "Alabama",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 13",
+      "matchup": "South Carolina @ Clemson",
+      "away": "South Carolina",
+      "home": "Clemson",
+      "neutral": false,
+      "venue": "",
+      "conference": false
+    },
+    {
+      "week": "Week 13",
+      "matchup": "Michigan @ Ohio State",
+      "away": "Michigan",
+      "home": "Ohio State",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 13",
+      "matchup": "Washington @ Oregon",
+      "away": "Washington",
+      "home": "Oregon",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 13",
+      "matchup": "TCU @ Texas Tech",
+      "away": "TCU",
+      "home": "Texas Tech",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 13",
+      "matchup": "Oklahoma @ Missouri",
+      "away": "Oklahoma",
+      "home": "Missouri",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    }
+  ],
+  "rules": [
+    "Schedule every user game within 24 hours after advance.",
+    "Use a clear 2-hour max gaming window if no exact kickoff time is set.",
+    "Someone must stream, screen share, or record user games for admin review.",
+    "Forced loss and fair sim calls are admin-reviewed case by case.",
+    "CPU restarts should stay at zero unless there is proof or a strong reason.",
+    "No scoring over 100; chew clock when a game gets out of hand.",
+    "Check uniforms before kickoff to avoid dark-on-dark or white-on-white matchups.",
+    "Respect the opponent, the admins, and the league. Keep trash talk inside football."
+  ],
+  "version": "launch-magazine-site",
+  "brand": {
+    "name": "Running Late Dynasty",
+    "short": "RLD",
+    "game": "CFB 27",
+    "tagline": "Day 1 Dynasty Era",
+    "discordInvite": "https://discord.gg/8sXA2RQPnm",
+    "privacy": "Public preseason site for Running Late Dynasty CFB 27.",
+    "footer": "Perfect Timing Gaming • Powered by D1SN • Credits: Professor Zoom",
+    "coverIssue": "D1SN Special Issue 00",
+    "coverDate": "July 2026"
+  },
+  "sitemap": [
+    {
+      "title": "Splash Gate",
+      "file": "index.html",
+      "type": "Entry",
+      "summary": "Full magazine-cover splash page leading into the Dynasty Hub."
+    },
+    {
+      "title": "Dynasty Hub",
+      "file": "hub.html",
+      "type": "Core",
+      "summary": "Command center with league signals, headlines, featured games, health, and timeline."
+    },
+    {
+      "title": "Coach Cards",
+      "file": "coaches.html",
+      "type": "Core",
+      "summary": "Public preseason coach profile cards with team, conference, record, scheme, and ranking slots."
+    },
+    {
+      "title": "Teams",
+      "file": "teams.html",
+      "type": "Core",
+      "summary": "Merged team/user hub with active member cards, coach-card links, conference board, and open-team pool."
+    },
+    {
+      "title": "Schedule",
+      "file": "schedule.html",
+      "type": "Core",
+      "summary": "Projected 86-game user-vs-user schedule grouped by week."
+    },
+    {
+      "title": "Rules",
+      "file": "rules.html",
+      "type": "League Ops",
+      "summary": "Public CFB 27 rulebook summary and enforcement reminders."
+    },
+    {
+      "title": "History",
+      "file": "history.html",
+      "type": "Archive",
+      "summary": "Timeline from the CFB 26 roots into the CFB 27 Day 1 era."
+    },
+    {
+      "title": "Media Center",
+      "file": "media.html",
+      "type": "Community",
+      "summary": "Merged streams, clips, highlights, official YouTube playlist, and coach collaborator invite."
+    },
+    {
+      "title": "Archive",
+      "file": "archive.html",
+      "type": "Archive",
+      "summary": "Database of past index splash covers and weekly issue images, starting with Issue 1."
+    }
+  ],
+  "legacy": {
+    "cfb26_user_programs": [
+      "LSU",
+      "Clemson",
+      "Arkansas",
+      "Michigan",
+      "Texas",
+      "Ohio State",
+      "Miami",
+      "Delaware",
+      "Georgia",
+      "Arizona State",
+      "Florida",
+      "Washington",
+      "Alabama",
+      "BYU",
+      "Oklahoma",
+      "Florida State",
+      "Notre Dame",
+      "South Carolina",
+      "Illinois",
+      "USC",
+      "Texas Tech",
+      "Baylor",
+      "Colorado",
+      "Texas A&M",
+      "Penn State",
+      "Tennessee",
+      "North Carolina",
+      "Utah",
+      "Auburn",
+      "Minnesota",
+      "SMU",
+      "UCLA"
+    ],
+    "carryover_programs": [
+      "Alabama",
+      "Auburn",
+      "BYU",
+      "Clemson",
+      "Colorado",
+      "Florida",
+      "Florida State",
+      "Georgia",
+      "LSU",
+      "Miami",
+      "Michigan",
+      "Notre Dame",
+      "Ohio State",
+      "Oklahoma",
+      "Penn State",
+      "SMU",
+      "South Carolina",
+      "Tennessee",
+      "Texas",
+      "Texas A&M",
+      "Texas Tech",
+      "USC",
+      "Washington"
+    ],
+    "new_cfb27_claims_vs_legacy_list": [
+      "Houston",
+      "Indiana",
+      "Mississippi State",
+      "Nebraska",
+      "Ole Miss",
+      "Oregon",
+      "TCU",
+      "Virginia Tech",
+      "Missouri"
+    ],
+    "legacy_programs_not_on_current_claimed_board": [
+      "Arizona State",
+      "Arkansas",
+      "Baylor",
+      "Delaware",
+      "Illinois",
+      "Minnesota",
+      "North Carolina",
+      "UCLA",
+      "Utah"
+    ],
+    "culture_notes": [
+      "The league began as a CFB 26 Discord dynasty with weekly advances and public announcements.",
+      "Streams, clips, highlight links, and GOTW voting turned the league into a weekly show.",
+      "The CFB 27 launch keeps the old pace and public archive structure while adding a cleaner hub for new users."
+    ]
+  },
+  "derived": {
+    "conference_counts": {
+      "SEC": 13,
+      "BIG XII": 5,
+      "ACC": 5,
+      "Big Ten": 8,
+      "Independent": 1
+    },
+    "week_counts": {
+      "Week 1": 2,
+      "Week 2": 2,
+      "Week 3": 5,
+      "Week 4": 7,
+      "Week 5": 7,
+      "Week 6": 6,
+      "Week 7": 10,
+      "Week 8": 7,
+      "Week 9": 7,
+      "Week 10": 9,
+      "Week 11": 8,
+      "Week 12": 7,
+      "Week 13": 9
+    },
+    "top_user_game_counts": [
+      {
+        "team": "Texas",
+        "games": 9
+      },
+      {
+        "team": "Oklahoma",
+        "games": 9
+      },
+      {
+        "team": "Alabama",
+        "games": 8
+      },
+      {
+        "team": "LSU",
+        "games": 8
+      },
+      {
+        "team": "South Carolina",
+        "games": 8
+      },
+      {
+        "team": "Mississippi State",
+        "games": 8
+      },
+      {
+        "team": "Florida",
+        "games": 8
+      },
+      {
+        "team": "Ole Miss",
+        "games": 8
+      },
+      {
+        "team": "Auburn",
+        "games": 7
+      },
+      {
+        "team": "Georgia",
+        "games": 7
+      },
+      {
+        "team": "Texas A&M",
+        "games": 7
+      },
+      {
+        "team": "Missouri",
+        "games": 7
+      },
+      {
+        "team": "Ohio State",
+        "games": 6
+      },
+      {
+        "team": "Tennessee",
+        "games": 6
+      },
+      {
+        "team": "Oregon",
+        "games": 5
+      }
+    ],
+    "neutral_games": [
+      {
+        "week": "Week 6",
+        "matchup": "Texas vs Oklahoma",
+        "away": "Texas",
+        "home": "Oklahoma",
+        "neutral": true,
+        "venue": "Cotton Bowl Stadium",
+        "conference": true
+      },
+      {
+        "week": "Week 9",
+        "matchup": "Florida vs Georgia",
+        "away": "Florida",
+        "home": "Georgia",
+        "neutral": true,
+        "venue": "Mercedes-Benz Stadium",
+        "conference": true
+      }
+    ],
+    "claimed_count": 32,
+    "projected_user_games": 86,
+    "legacy_carryover_count": 23,
+    "joined_count": 28,
+    "pending_join_count": 4
+  },
+  "public_notes": [
+    "Discord invite: https://discord.gg/8sXA2RQPnm",
+    "Preseason hub is ready for weekly league updates.",
+    "Coach cards use public profile fields and can be expanded as users submit details."
+  ],
+  "dashboard": {
+    "status": {
+      "leagueState": "LAUNCH WEEK",
+      "currentWeek": "Preseason",
+      "nextAdvance": "Friday July 10 • Noon EST",
+      "updateLabel": "Preseason launch board",
+      "editorNote": "Weekly league notes can be added as the season advances."
+    },
+    "scorebar": [
+      {
+        "label": "League",
+        "value": "Private"
+      },
+      {
+        "label": "Difficulty",
+        "value": "Heisman"
+      },
+      {
+        "label": "Advance",
+        "value": "48H"
+      },
+      {
+        "label": "Teams",
+        "value": "32"
+      },
+      {
+        "label": "User Games",
+        "value": "86"
+      },
+      {
+        "label": "Discord",
+        "value": "LIVE"
+      }
+    ],
+    "coverLines": [
+      {
+        "kicker": "Season Preview",
+        "title": "The Season Awaits",
+        "detail": "86 projected user-vs-user games for Weeks 1-13 live in the schedule board."
+      },
+      {
+        "kicker": "Program Count",
+        "title": "32 Active Member Programs",
+        "detail": "ACC, Big Ten, BIG XII, SEC, and Independent boards are already mapped."
+      },
+      {
+        "kicker": "League Clock",
+        "title": "48-Hour Advances",
+        "detail": "Day 1 pace, clean windows, and no excuses."
+      },
+      {
+        "kicker": "Culture",
+        "title": "Built From The Chat",
+        "detail": "CFB 26 roots, clips, GOTW heat, and CFB 27 launch history."
+      }
+    ],
+    "signals": [
+      {
+        "label": "Advance Signal",
+        "value": "48H",
+        "status": "ON CLOCK",
+        "tone": "red",
+        "detail": "Games move on a 48-hour cycle. First advance is Friday July 10 at Noon EST.",
+        "editKey": "dashboard.signals[0]"
+      },
+      {
+        "label": "Scheduling Signal",
+        "value": "24H",
+        "status": "POST WINDOW",
+        "tone": "gold",
+        "detail": "Users should schedule within 24 hours after advance with a time or 2-hour window.",
+        "editKey": "dashboard.signals[1]"
+      },
+      {
+        "label": "Stream Signal",
+        "value": "REC",
+        "status": "REVIEW READY",
+        "tone": "blue",
+        "detail": "User games should be streamed, screen shared, or recorded for admin review.",
+        "editKey": "dashboard.signals[2]"
+      },
+      {
+        "label": "GOTW Signal",
+        "value": "TBD",
+        "status": "VOTE SLOT",
+        "tone": "green",
+        "detail": "Use this slot for Game of the Week voting and boost announcements.",
+        "editKey": "dashboard.signals[3]"
+      },
+      {
+        "label": "Discord Signal",
+        "value": "LIVE",
+        "status": "JOINABLE",
+        "tone": "discord",
+        "detail": "Invite is public and repeated in the ticker and footer on every page.",
+        "editKey": "brand.discordInvite"
+      }
+    ],
+    "headlines": [
+      {
+        "kicker": "TOP STORY",
+        "title": "Running Late Dynasty opens the CFB 27 Day 1 era",
+        "summary": "The new hub combines the old D1SN magazine structure with a cleaner live-dashboard layout for teams, schedules, rules, media, and archives.",
+        "href": "history.html",
+        "cta": "Read History"
+      },
+      {
+        "kicker": "SCHEDULE DESK",
+        "title": "86 projected user games already loaded",
+        "summary": "The schedule board filters the 86 projected user-vs-user games for Weeks 1-13 by week, team, and venue.",
+        "href": "schedule.html",
+        "cta": "Open Schedule"
+      },
+      {
+        "kicker": "TEAM / USER HUB",
+        "title": "32 active member programs, one merged team board",
+        "summary": "Search by school, username, or conference, then jump into coach cards, team schedules, conference groups, and open-team status from one page.",
+        "href": "teams.html",
+        "cta": "Open Teams"
+      }
+    ],
+    "watchlist": [
+      {
+        "rank": "01",
+        "title": "SEC gauntlet",
+        "detail": "13 active member programs create the deepest conference board on the site."
+      },
+      {
+        "rank": "02",
+        "title": "Rivalry week heat",
+        "detail": "Florida vs Florida State, Texas vs Texas A&M, Auburn vs Alabama, Michigan vs Ohio State, Washington vs Oregon, and more are already scheduled."
+      },
+      {
+        "rank": "03",
+        "title": "Neutral-site flex",
+        "detail": "Texas vs Oklahoma at Cotton Bowl Stadium and Florida vs Georgia at Mercedes-Benz Stadium are marked as neutral-site games."
+      },
+      {
+        "rank": "04",
+        "title": "Content culture",
+        "detail": "Streams, clips, highlights, and league media keep the season feeling like a weekly show."
+      }
+    ],
+    "featuredLinks": [
+      {
+        "label": "Teams",
+        "href": "teams.html",
+        "detail": "Merged team, user, and board hub"
+      },
+      {
+        "label": "Coach Cards",
+        "href": "coaches.html",
+        "detail": "Public preseason profiles"
+      },
+      {
+        "label": "Schedule",
+        "href": "schedule.html",
+        "detail": "Weekly user games"
+      },
+      {
+        "label": "Rules",
+        "href": "rules.html",
+        "detail": "League standards"
+      },
+      {
+        "label": "Media Center",
+        "href": "media.html",
+        "detail": "Streams, clips, and official playlist"
+      }
+    ],
+    "updateGuide": [
+      {
+        "area": "Splash cover lines",
+        "edit": "data/league-history.json → dashboard.coverLines",
+        "result": "Changes the magazine cover teasers on index.html."
+      },
+      {
+        "area": "Dashboard signals",
+        "edit": "data/league-history.json → dashboard.signals",
+        "result": "Changes the colored ESPN-style alert cards on hub.html."
+      },
+      {
+        "area": "Top stories",
+        "edit": "data/league-history.json → dashboard.headlines",
+        "result": "Changes the main news cards on the Hub."
+      },
+      {
+        "area": "Teams",
+        "edit": "data/league-history.json → teams",
+        "result": "Updates team board, conference cards, and active member count."
+      },
+      {
+        "area": "Schedule",
+        "edit": "data/league-history.json → schedule",
+        "result": "Updates schedule page, user-game count, and featured games."
+      },
+      {
+        "area": "Rules",
+        "edit": "data/league-history.json → rules",
+        "result": "Updates rule cards without editing page HTML."
+      }
+    ]
+  }
+};
