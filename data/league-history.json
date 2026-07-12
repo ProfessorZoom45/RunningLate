@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-10T05:41:45.276Z",
+  "generated_at": "2026-07-12T18:18:30.411Z",
   "settings": [
     {
       "label": "League Type",
@@ -40,6 +40,26 @@
     {
       "label": "First Advance",
       "value": "Friday, July 10 at Noon EST"
+    },
+    {
+      "label": "Current Season",
+      "value": "Year 1 (2026)"
+    },
+    {
+      "label": "Current Week",
+      "value": "Week 0"
+    },
+    {
+      "label": "User Games",
+      "value": "83"
+    },
+    {
+      "label": "Users Active",
+      "value": "32/32"
+    },
+    {
+      "label": "Second Advance",
+      "value": "Sunday @ NOON EST"
     }
   ],
   "timeline": [
@@ -94,6 +114,7 @@
       "accent": "#ffffff",
       "gamertag": "frm_da_burgh412",
       "platform": "PlayStation",
+      "joinedDynasty": true,
       "coachName": "PENDING",
       "prestige": "PENDING",
       "levelArchetype": "PENDING",
@@ -106,10 +127,7 @@
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
-      "joinedDynasty": true,
       "status": "Joined Dynasty"
     },
     {
@@ -134,8 +152,6 @@
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
       "status": "Joined Dynasty"
     },
@@ -161,8 +177,6 @@
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
       "status": "Joined Dynasty"
     },
@@ -188,8 +202,6 @@
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
       "status": "Joined Dynasty"
     },
@@ -215,8 +227,6 @@
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
       "status": "Joined Dynasty"
     },
@@ -242,8 +252,6 @@
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
       "status": "Joined Dynasty"
     },
@@ -269,8 +277,6 @@
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
       "status": "Joined Dynasty"
     },
@@ -296,8 +302,6 @@
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
       "status": "Joined Dynasty"
     },
@@ -323,8 +327,6 @@
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
       "status": "Joined Dynasty"
     },
@@ -334,7 +336,7 @@
       "conference": "Big Ten",
       "coach": "grinch_is_here",
       "primary": "#990000",
-      "accent": "#edebeb",
+      "accent": "#ffffff",
       "gamertag": "AirGoatish",
       "platform": "PlayStation",
       "joinedDynasty": true,
@@ -350,8 +352,6 @@
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
       "status": "Joined Dynasty"
     },
@@ -377,8 +377,6 @@
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
       "status": "Joined Dynasty"
     },
@@ -386,26 +384,24 @@
       "school": "Miami",
       "display": "MIAMI 🙌",
       "conference": "ACC",
-      "coach": "dame1336",
-      "primary": "#f47321",
-      "accent": "#005030",
-      "gamertag": "Chi-Twn_VS_Any_1",
+      "coach": "lakedogg32",
+      "primary": "#005030",
+      "accent": "#f47321",
+      "gamertag": "lakedogg",
       "platform": "PlayStation",
       "joinedDynasty": true,
-      "coachName": "PENDING",
-      "prestige": "PENDING",
-      "levelArchetype": "PENDING",
-      "jobSecurity": "PENDING",
-      "offScheme": "PENDING",
-      "defScheme": "PENDING",
-      "almaMater": "PENDING",
+      "coachName": "Gay Blade",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Motivator",
+      "jobSecurity": "Safe",
+      "offScheme": "Air Raid",
+      "defScheme": "4-2-5",
+      "almaMater": "Florida",
       "teamRecord": "0-0",
       "careerRecord": "0-0",
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
       "status": "Joined Dynasty"
     },
@@ -431,8 +427,6 @@
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
       "status": "Joined Dynasty"
     },
@@ -443,78 +437,47 @@
       "coach": "zeeeeeeeee3",
       "primary": "#660000",
       "accent": "#ffffff",
-      "gamertag": "PENDING",
-      "platform": "PENDING",
-      "coachName": "PENDING",
-      "prestige": "PENDING",
-      "levelArchetype": "PENDING",
-      "jobSecurity": "PENDING",
-      "offScheme": "PENDING",
-      "defScheme": "PENDING",
-      "almaMater": "PENDING",
+      "gamertag": "Zee315",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "Zee Juan",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Tactician",
+      "jobSecurity": "Safe",
+      "offScheme": "Veer and Shoot",
+      "defScheme": "4-2-5",
+      "almaMater": "Washington",
       "teamRecord": "0-0",
       "careerRecord": "0-0",
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
-      "joinedDynasty": false,
-      "status": "PENDING"
-    },
-    {
-      "school": "Missouri",
-      "display": "MISSOURI TIGERS",
-      "conference": "SEC",
-      "coach": "earlthepearl1995_",
-      "primary": "#f1b82d",
-      "accent": "#000000",
-      "gamertag": "PENDING",
-      "platform": "PENDING",
-      "coachName": "PENDING",
-      "prestige": "PENDING",
-      "levelArchetype": "PENDING",
-      "jobSecurity": "PENDING",
-      "offScheme": "PENDING",
-      "defScheme": "PENDING",
-      "almaMater": "PENDING",
-      "teamRecord": "0-0",
-      "careerRecord": "0-0",
-      "rivalsRecord": "0-0",
-      "bowlRecord": "0-0",
-      "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
-      "lastGameResult": "No result yet",
-      "joinedDynasty": false,
-      "status": "PENDING"
+      "status": "Joined Dynasty"
     },
     {
       "school": "Nebraska",
       "display": "NEBRASKA 🌽",
       "conference": "Big Ten",
-      "coach": "lakedogg32",
+      "coach": "neloxxii",
       "primary": "#e41c38",
       "accent": "#ffffff",
-      "gamertag": "lakedogg",
+      "gamertag": "KrazyTrooper",
       "platform": "PlayStation",
-      "coachName": "Gay Blade",
+      "joinedDynasty": true,
+      "coachName": "Mr Unranked",
       "prestige": "C-",
       "levelArchetype": "LVL 1 - Recruiter",
       "jobSecurity": "Safe",
       "offScheme": "Multiple Offense",
-      "defScheme": "4-2-5",
-      "almaMater": "Florida",
+      "defScheme": "Base 3-4",
+      "almaMater": "Air Force",
       "teamRecord": "0-0",
       "careerRecord": "0-0",
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
-      "joinedDynasty": true,
       "status": "Joined Dynasty"
     },
     {
@@ -539,8 +502,6 @@
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
       "status": "Joined Dynasty"
     },
@@ -566,14 +527,12 @@
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
       "status": "Joined Dynasty"
     },
     {
       "school": "Oklahoma",
-      "display": "OKLAHOMA 🔴",
+      "display": "OKLAHOMA 🚩",
       "conference": "SEC",
       "coach": "tweetybirrrd",
       "primary": "#841617",
@@ -593,8 +552,6 @@
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
       "status": "Joined Dynasty"
     },
@@ -603,8 +560,8 @@
       "display": "OLE MISS 🔵",
       "conference": "SEC",
       "coach": "grody365",
-      "primary": "#ce1126",
-      "accent": "#14213d",
+      "primary": "#14213d",
+      "accent": "#ce1126",
       "gamertag": "issaGRODYthang",
       "platform": "PC",
       "joinedDynasty": true,
@@ -620,8 +577,6 @@
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
       "status": "Joined Dynasty"
     },
@@ -647,8 +602,6 @@
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
       "status": "Joined Dynasty"
     },
@@ -674,8 +627,6 @@
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
       "status": "Joined Dynasty"
     },
@@ -684,8 +635,8 @@
       "display": "SMU 🐎",
       "conference": "ACC",
       "coach": "automattic_nwo",
-      "primary": "#0033a0",
-      "accent": "#c8102e",
+      "primary": "#c8102e",
+      "accent": "#0033a0",
       "gamertag": "AutomatticTX_NWO",
       "platform": "PlayStation",
       "joinedDynasty": true,
@@ -701,8 +652,6 @@
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
       "status": "Joined Dynasty"
     },
@@ -716,20 +665,18 @@
       "gamertag": "Cmledet97",
       "platform": "PlayStation",
       "joinedDynasty": true,
-      "coachName": "PENDING",
-      "prestige": "PENDING",
-      "levelArchetype": "PENDING",
-      "jobSecurity": "PENDING",
-      "offScheme": "PENDING",
-      "defScheme": "PENDING",
-      "almaMater": "PENDING",
+      "coachName": "Ronald Acuna",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Recruiter",
+      "jobSecurity": "Safe",
+      "offScheme": "Multiple Offense",
+      "defScheme": "4-2-5",
+      "almaMater": "South Carolina",
       "teamRecord": "0-0",
       "careerRecord": "0-0",
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
       "status": "Joined Dynasty"
     },
@@ -755,8 +702,6 @@
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
       "status": "Joined Dynasty"
     },
@@ -782,8 +727,6 @@
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
       "status": "Joined Dynasty"
     },
@@ -797,20 +740,18 @@
       "gamertag": "jrob9179",
       "platform": "PlayStation",
       "joinedDynasty": true,
-      "coachName": "PENDING",
-      "prestige": "PENDING",
-      "levelArchetype": "PENDING",
-      "jobSecurity": "PENDING",
-      "offScheme": "PENDING",
-      "defScheme": "PENDING",
-      "almaMater": "PENDING",
+      "coachName": "Eric Taylor",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Motivator",
+      "jobSecurity": "Safe",
+      "offScheme": "Air Raid",
+      "defScheme": "3-3-5 Tite",
+      "almaMater": "Texas",
       "teamRecord": "0-0",
       "careerRecord": "0-0",
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
       "status": "Joined Dynasty"
     },
@@ -836,8 +777,6 @@
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
       "status": "Joined Dynasty"
     },
@@ -848,25 +787,48 @@
       "coach": "lifesgood0688",
       "primary": "#cc0000",
       "accent": "#000000",
-      "gamertag": "PENDING",
-      "platform": "PENDING",
-      "coachName": "PENDING",
-      "prestige": "PENDING",
-      "levelArchetype": "PENDING",
-      "jobSecurity": "PENDING",
-      "offScheme": "PENDING",
-      "defScheme": "PENDING",
-      "almaMater": "PENDING",
+      "gamertag": "LifesGood716",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "Good Life",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Tactician",
+      "jobSecurity": "Safe",
+      "offScheme": "Veer and Shoot",
+      "defScheme": "3-4 Multiple",
+      "almaMater": "San Jose State",
       "teamRecord": "0-0",
       "careerRecord": "0-0",
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
-      "joinedDynasty": false,
-      "status": "PENDING"
+      "status": "Joined Dynasty"
+    },
+    {
+      "school": "UCLA",
+      "display": "UCLA 🐻",
+      "conference": "Big Ten",
+      "coach": "yungdwsg1400",
+      "primary": "#2d68c4",
+      "accent": "#ffd100",
+      "gamertag": "YungdWSG1400",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "Kareem Abdul-Jabbar",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Recruiter",
+      "jobSecurity": "Safe",
+      "offScheme": "Spread",
+      "defScheme": "4-2-5",
+      "almaMater": "UCLA",
+      "teamRecord": "0-0",
+      "careerRecord": "0-0",
+      "rivalsRecord": "0-0",
+      "bowlRecord": "0-0",
+      "top25Record": "0-0",
+      "lastGameResult": "No result yet",
+      "status": "Joined Dynasty"
     },
     {
       "school": "USC",
@@ -890,8 +852,6 @@
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
       "status": "Joined Dynasty"
     },
@@ -902,25 +862,23 @@
       "coach": "superhb",
       "primary": "#861f41",
       "accent": "#e5751f",
-      "gamertag": "PENDING",
-      "platform": "PENDING",
-      "coachName": "PENDING",
-      "prestige": "PENDING",
-      "levelArchetype": "PENDING",
-      "jobSecurity": "PENDING",
-      "offScheme": "PENDING",
-      "defScheme": "PENDING",
-      "almaMater": "PENDING",
+      "gamertag": "superhb--",
+      "platform": "PlayStation",
+      "joinedDynasty": true,
+      "coachName": "Ben Chillin",
+      "prestige": "C-",
+      "levelArchetype": "LVL 1 - Recruiter",
+      "jobSecurity": "Safe",
+      "offScheme": "Power Spread",
+      "defScheme": "Base 3-4",
+      "almaMater": "Virginia Tech",
       "teamRecord": "0-0",
       "careerRecord": "0-0",
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
-      "joinedDynasty": false,
-      "status": "PENDING"
+      "status": "Joined Dynasty"
     },
     {
       "school": "Washington",
@@ -944,8 +902,6 @@
       "rivalsRecord": "0-0",
       "bowlRecord": "0-0",
       "top25Record": "0-0",
-      "top25Media": "PENDING",
-      "top25Coaches": "PENDING",
       "lastGameResult": "No result yet",
       "status": "Joined Dynasty"
     }
@@ -1244,15 +1200,6 @@
       "conference": true
     },
     {
-      "week": "Week 4",
-      "matchup": "Missouri @ Mississippi State",
-      "away": "Missouri",
-      "home": "Mississippi State",
-      "neutral": false,
-      "venue": "",
-      "conference": true
-    },
-    {
       "week": "Week 5",
       "matchup": "BYU @ TCU",
       "away": "BYU",
@@ -1307,15 +1254,6 @@
       "conference": true
     },
     {
-      "week": "Week 5",
-      "matchup": "Florida @ Missouri",
-      "away": "Florida",
-      "home": "Missouri",
-      "neutral": false,
-      "venue": "",
-      "conference": true
-    },
-    {
       "week": "Week 6",
       "matchup": "Georgia @ Alabama",
       "away": "Georgia",
@@ -1362,9 +1300,9 @@
     },
     {
       "week": "Week 6",
-      "matchup": "Texas A&M @ Missouri",
-      "away": "Texas A&M",
-      "home": "Missouri",
+      "matchup": "UCLA @ Oregon",
+      "away": "UCLA",
+      "home": "Oregon",
       "neutral": false,
       "venue": "",
       "conference": true
@@ -1446,15 +1384,6 @@
       "matchup": "Nebraska @ Oregon",
       "away": "Nebraska",
       "home": "Oregon",
-      "neutral": false,
-      "venue": "",
-      "conference": true
-    },
-    {
-      "week": "Week 7",
-      "matchup": "Missouri @ Ole Miss",
-      "away": "Missouri",
-      "home": "Ole Miss",
       "neutral": false,
       "venue": "",
       "conference": true
@@ -1658,15 +1587,6 @@
       "conference": true
     },
     {
-      "week": "Week 10",
-      "matchup": "Texas @ Missouri",
-      "away": "Texas",
-      "home": "Missouri",
-      "neutral": false,
-      "venue": "",
-      "conference": true
-    },
-    {
       "week": "Week 11",
       "matchup": "Houston @ Colorado",
       "away": "Houston",
@@ -1730,15 +1650,6 @@
       "conference": true
     },
     {
-      "week": "Week 11",
-      "matchup": "Missouri @ Georgia",
-      "away": "Missouri",
-      "home": "Georgia",
-      "neutral": false,
-      "venue": "",
-      "conference": true
-    },
-    {
       "week": "Week 12",
       "matchup": "SMU @ Notre Dame",
       "away": "SMU",
@@ -1785,9 +1696,9 @@
     },
     {
       "week": "Week 12",
-      "matchup": "Ohio State @ Nebraska",
+      "matchup": "Ohio State @ Indiana",
       "away": "Ohio State",
-      "home": "Nebraska",
+      "home": "Indiana",
       "neutral": false,
       "venue": "",
       "conference": true
@@ -1797,6 +1708,24 @@
       "matchup": "Indiana @ Washington",
       "away": "Indiana",
       "home": "Washington",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 12",
+      "matchup": "UCLA @ Michigan",
+      "away": "UCLA",
+      "home": "Michigan",
+      "neutral": false,
+      "venue": "",
+      "conference": true
+    },
+    {
+      "week": "Week 12",
+      "matchup": "Ohio State @ Nebraska",
+      "away": "Ohio State",
+      "home": "Nebraska",
       "neutral": false,
       "venue": "",
       "conference": true
@@ -1875,9 +1804,9 @@
     },
     {
       "week": "Week 13",
-      "matchup": "Oklahoma @ Missouri",
-      "away": "Oklahoma",
-      "home": "Missouri",
+      "matchup": "USC @ UCLA",
+      "away": "USC",
+      "home": "UCLA",
       "neutral": false,
       "venue": "",
       "conference": true
@@ -1934,7 +1863,7 @@
       "title": "Schedule",
       "file": "schedule.html",
       "type": "Core",
-      "summary": "Projected 86-game user-vs-user schedule grouped by week."
+      "summary": "Projected 83-game user-vs-user schedule grouped by week."
     },
     {
       "title": "Rules",
@@ -2018,6 +1947,7 @@
       "Texas",
       "Texas A&M",
       "Texas Tech",
+      "UCLA",
       "USC",
       "Washington"
     ],
@@ -2029,8 +1959,7 @@
       "Ole Miss",
       "Oregon",
       "TCU",
-      "Virginia Tech",
-      "Missouri"
+      "Virginia Tech"
     ],
     "legacy_programs_not_on_current_claimed_board": [
       "Arizona State",
@@ -2040,7 +1969,6 @@
       "Illinois",
       "Minnesota",
       "North Carolina",
-      "UCLA",
       "Utah"
     ],
     "culture_notes": [
@@ -2051,36 +1979,28 @@
   },
   "derived": {
     "conference_counts": {
-      "SEC": 13,
+      "SEC": 12,
       "BIG XII": 5,
       "ACC": 5,
-      "Big Ten": 8,
+      "Big Ten": 9,
       "Independent": 1
     },
     "week_counts": {
       "Week 1": 2,
       "Week 2": 2,
       "Week 3": 5,
-      "Week 4": 7,
-      "Week 5": 7,
+      "Week 4": 6,
+      "Week 5": 6,
       "Week 6": 6,
-      "Week 7": 10,
+      "Week 7": 9,
       "Week 8": 7,
       "Week 9": 7,
-      "Week 10": 9,
-      "Week 11": 8,
-      "Week 12": 7,
+      "Week 10": 8,
+      "Week 11": 7,
+      "Week 12": 9,
       "Week 13": 9
     },
     "top_user_game_counts": [
-      {
-        "team": "Texas",
-        "games": 9
-      },
-      {
-        "team": "Oklahoma",
-        "games": 9
-      },
       {
         "team": "Alabama",
         "games": 8
@@ -2090,19 +2010,15 @@
         "games": 8
       },
       {
+        "team": "Oklahoma",
+        "games": 8
+      },
+      {
         "team": "South Carolina",
         "games": 8
       },
       {
-        "team": "Mississippi State",
-        "games": 8
-      },
-      {
-        "team": "Florida",
-        "games": 8
-      },
-      {
-        "team": "Ole Miss",
+        "team": "Texas",
         "games": 8
       },
       {
@@ -2110,28 +2026,40 @@
         "games": 7
       },
       {
-        "team": "Georgia",
+        "team": "Florida",
         "games": 7
       },
       {
-        "team": "Texas A&M",
-        "games": 7
-      },
-      {
-        "team": "Missouri",
+        "team": "Mississippi State",
         "games": 7
       },
       {
         "team": "Ohio State",
+        "games": 7
+      },
+      {
+        "team": "Ole Miss",
+        "games": 7
+      },
+      {
+        "team": "Georgia",
+        "games": 6
+      },
+      {
+        "team": "Indiana",
+        "games": 6
+      },
+      {
+        "team": "Michigan",
+        "games": 6
+      },
+      {
+        "team": "Oregon",
         "games": 6
       },
       {
         "team": "Tennessee",
         "games": 6
-      },
-      {
-        "team": "Oregon",
-        "games": 5
       }
     ],
     "neutral_games": [
@@ -2155,23 +2083,24 @@
       }
     ],
     "claimed_count": 32,
-    "projected_user_games": 86,
+    "projected_user_games": 83,
     "legacy_carryover_count": 23,
-    "joined_count": 28,
-    "pending_join_count": 4
+    "joined_count": 32,
+    "pending_join_count": 0
   },
   "public_notes": [
     "Discord invite: https://discord.gg/8sXA2RQPnm",
-    "Preseason hub is ready for weekly league updates.",
+    "Year 1 (2026) Week 0 hub is ready for weekly league updates.",
     "Coach cards use public profile fields and can be expanded as users submit details."
   ],
   "dashboard": {
     "status": {
-      "leagueState": "LAUNCH WEEK",
-      "currentWeek": "Preseason",
-      "nextAdvance": "Friday July 10 • Noon EST",
-      "updateLabel": "Preseason launch board",
-      "editorNote": "Weekly league notes can be added as the season advances."
+      "leagueState": "YEAR 1",
+      "currentWeek": "Week 0",
+      "nextAdvance": "Sunday @ NOON EST",
+      "updateLabel": "Week 0 launch board",
+      "editorNote": "Year 1 (2026) Week 0 hub is ready for weekly league updates.",
+      "seasonYear": "2026"
     },
     "scorebar": [
       {
@@ -2192,7 +2121,7 @@
       },
       {
         "label": "User Games",
-        "value": "86"
+        "value": "83"
       },
       {
         "label": "Discord",
@@ -2203,7 +2132,7 @@
       {
         "kicker": "Season Preview",
         "title": "The Season Awaits",
-        "detail": "86 projected user-vs-user games for Weeks 1-13 live in the schedule board."
+        "detail": "83 projected user-vs-user games for Weeks 1-13 live in the schedule board."
       },
       {
         "kicker": "Program Count",
@@ -2273,8 +2202,8 @@
       },
       {
         "kicker": "SCHEDULE DESK",
-        "title": "86 projected user games already loaded",
-        "summary": "The schedule board filters the 86 projected user-vs-user games for Weeks 1-13 by week, team, and venue.",
+        "title": "83 projected user games already loaded",
+        "summary": "The schedule board filters the 83 projected user-vs-user games for Weeks 1-13 by week, team, and venue.",
         "href": "schedule.html",
         "cta": "Open Schedule"
       },
@@ -2290,7 +2219,7 @@
       {
         "rank": "01",
         "title": "SEC gauntlet",
-        "detail": "13 active member programs create the deepest conference board on the site."
+        "detail": "12 active member programs create the deepest conference board on the site."
       },
       {
         "rank": "02",
@@ -2367,5 +2296,13 @@
         "result": "Updates rule cards without editing page HTML."
       }
     ]
+  },
+  "season": {
+    "year": "2026",
+    "label": "Year 1",
+    "currentWeek": "Week 0",
+    "phase": "Preseason",
+    "advanceCycle": "48H",
+    "nextAdvance": "Sunday @ NOON EST"
   }
 }

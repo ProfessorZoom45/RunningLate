@@ -7,11 +7,12 @@
     {src:'assets/audio/diners.mp3', title:'Juice WRLD - Diners (Unreleased)'},
     {src:'assets/audio/newz-daily-news.mp3', title:'Newz - Daily News'},
     {src:'assets/audio/daze-man-of-my-word.mp3', title:'Daze, The Leader - Man Of My Word'},
-    {src:'assets/audio/ab-honcho-daze-jungle.mp3', title:'AB Honcho x Daze, The Leader - Jungle'}
+    {src:'assets/audio/ab-honcho-daze-jungle.mp3', title:'AB Honcho x Daze, The Leader - Jungle'},
+    {src:'assets/audio/wave-keonte.mp3', title:"Wave - Keonte'"}
   ];
   const HEALTH_METRICS = [
-    ['User Games Completed','0/86','Games submitted or marked complete'],
-    ['Users Active','28/32','Confirmed dynasty join count'],
+    ['User Games Completed','0/83','Games submitted or marked complete'],
+    ['Users Active','32/32','Confirmed dynasty join count'],
     ['Streams Posted','0','Clips, VODs, and stream links logged'],
     ['Admin Reviews','1','Open items to review'],
     ['Open Teams','68 pool','Available schools listed by conference']
@@ -24,7 +25,7 @@
       {type:'YouTube', label:'YouTube', url:'https://youtube.com/@hoezayw?si=CUhF3AKRn5fLipzq'},
       {type:'Twitch', label:'Twitch', url:'https://www.twitch.tv/hoezay4'}
     ],
-    'nebraska': [
+    'miami': [
       {type:'Twitch', label:'Twitch', url:'https://www.twitch.tv/lakedogg32?sr=a'}
     ],
     'oregon': [
@@ -69,6 +70,7 @@
     'Texas': ['Arkansas','Nebraska','Oklahoma','TCU','Texas A&M','Texas Tech'],
     'Texas A&M': ['Arkansas','Baylor','LSU','South Carolina','Texas'],
     'Texas Tech': ['Baylor','Oklahoma State','TCU','Texas'],
+    'UCLA': ['California','USC'],
     'USC': ['Notre Dame','Stanford','UCLA'],
     'Virginia Tech': ['Georgia Tech','Miami','Virginia','West Virginia'],
     'Washington': ['Oregon','Washington State']
@@ -131,11 +133,9 @@
       'IOWA HAWKEYES 🐤',
       'MARYLAND TERRAPINS 🐢',
       'MICHIGAN STATE SPARTANS 🪖',
-      'MINNESOTA GOLDEN GOPHERS 🐿️',
-      'NORTHWESTERN WILDCATS 🟣',
+      'MINNESOTA GOLDEN GOPHERS 🐿️',      'NORTHWESTERN WILDCATS 🟣',
       'PURDUE BOILERMAKERS 🚂',
       'RUTGERS SCARLET KNIGHTS 🛡️',
-      'UCLA BRUINS 🐻',
       'WISCONSIN BADGERS 🦡'
     ]],
     ['Big XII Available', [
@@ -152,6 +152,7 @@
       'WEST VIRGINIA MOUNTAINEERS ⛰️'
     ]],
     ['SEC Available', [
+      'MISSOURI TIGERS',
       'ARKANSAS RAZORBACKS 🐗',
       'KENTUCKY WILDCATS 🐱',
       'VANDERBILT COMMODORES ⚓'
@@ -419,8 +420,6 @@
       ['Record vs Rivals', pendingValue(t.rivalsRecord, '0-0')],
       ['Bowl Record', pendingValue(t.bowlRecord, '0-0')],
       ['Record vs Top 25', pendingValue(t.top25Record, '0-0')],
-      ['Top-25 (Media)', pendingValue(t.top25Media)],
-      ['Top-25 (Coaches)', pendingValue(t.top25Coaches)],
       ['Twitch/YouTube', socialLinksHtml(t), true],
       ['Next User Game', `<a href="${teamScheduleHref(t.school)}">${esc(nextGameForTeam(data, t.school))}</a>`, true],
       ['Last Game Result', pendingValue(t.lastGameResult, 'No result yet')]

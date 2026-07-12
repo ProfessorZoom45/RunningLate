@@ -4,7 +4,7 @@ Public CFB 27 launch archive dated 2026-07-07.
 
 ## Quick Read
 
-Running Late Dynasty started as a fast-moving CFB 26 Discord league and grew into a full league operation with weekly advances, streams, Game of the Week voting, offseason pacing, and public announcements. The CFB 27 version launches as the Day 1 era: a private, cross-play dynasty built around custom head coaches, 48-hour advances, Heisman difficulty, and an 86-game projected user-vs-user schedule.
+Running Late Dynasty started as a fast-moving CFB 26 Discord league and grew into a full league operation with weekly advances, streams, Game of the Week voting, offseason pacing, and public announcements. The CFB 27 version launches as the Day 1 era: a private, cross-play dynasty built around custom head coaches, 48-hour advances, Heisman difficulty, and an 83-game projected user-vs-user schedule.
 
 ## Timeline
 
@@ -36,7 +36,7 @@ Running Late Dynasty started as a fast-moving CFB 26 Discord league and grew int
 
 - CLEMSON 🐅 - tigerz009
 - FLORIDA STATE 🏹 - allstarcowboy254._84024
-- MIAMI 🙌 - dame1336
+- MIAMI 🙌 - lakedogg32
 - SMU 🐎 - automattic_nwo
 - VIRGINIA TECH 🦃 - superhb
 
@@ -44,7 +44,7 @@ Running Late Dynasty started as a fast-moving CFB 26 Discord league and grew int
 
 - INDIANA 🔴 - grinch_is_here
 - MICHIGAN 〽️ - grap.12_58536
-- NEBRASKA 🌽 - lakedogg32
+- NEBRASKA 🌽 - neloxxii
 - OHIO STATE 🌰 - zig8875
 - OREGON 🦆 - rainey84480
 - PENN STATE 🦁 - ulost2sway
@@ -67,8 +67,7 @@ Running Late Dynasty started as a fast-moving CFB 26 Discord league and grew int
 - GEORGIA 🐶 - mikecmd_856
 - LSU 🐯 - bignutt195
 - MISSISSIPPI STATE 🔔 - zeeeeeeeee3
-- MISSOURI TIGERS - earlthepearl1995_
-- OKLAHOMA 🔴 - tweetybirrrd
+- OKLAHOMA 🚩 - tweetybirrrd
 - OLE MISS 🔵 - grody365
 - SOUTH CAROLINA 🐔 - cmledet97
 - TENNESSEE 🍊 - cmledet969829
@@ -107,7 +106,6 @@ Running Late Dynasty started as a fast-moving CFB 26 Discord league and grew int
 - Conference: Oklahoma @ Georgia
 - Conference: Texas A&M @ LSU
 - Conference: Oregon @ USC
-- Conference: Missouri @ Mississippi State
 
 ### Week 5
 
@@ -117,7 +115,6 @@ Running Late Dynasty started as a fast-moving CFB 26 Discord league and grew int
 - Conference: Auburn @ Tennessee
 - Conference: Miami @ Clemson
 - Conference: Washington @ USC
-- Conference: Florida @ Missouri
 
 ### Week 6
 
@@ -126,7 +123,6 @@ Running Late Dynasty started as a fast-moving CFB 26 Discord league and grew int
 - Conference: Texas vs Oklahoma - Cotton Bowl Stadium
 - Conference: Indiana @ Nebraska
 - Conference: USC @ Penn State
-- Conference: Texas A&M @ Missouri
 
 ### Week 7
 
@@ -139,7 +135,6 @@ Running Late Dynasty started as a fast-moving CFB 26 Discord league and grew int
 - Conference: Indiana @ Ohio State
 - Conference: Penn State @ Michigan
 - Conference: Nebraska @ Oregon
-- Conference: Missouri @ Ole Miss
 
 ### Week 8
 
@@ -171,7 +166,6 @@ Running Late Dynasty started as a fast-moving CFB 26 Discord league and grew int
 - Non-Conference: Miami @ Notre Dame
 - Conference: Penn State @ Washington
 - Conference: Oregon @ Ohio State
-- Conference: Texas @ Missouri
 
 ### Week 11
 
@@ -182,7 +176,6 @@ Running Late Dynasty started as a fast-moving CFB 26 Discord league and grew int
 - Conference: Tennessee @ Texas A&M
 - Conference: Michigan @ Oregon
 - Conference: USC @ Indiana
-- Conference: Missouri @ Georgia
 
 ### Week 12
 
@@ -204,9 +197,8 @@ Running Late Dynasty started as a fast-moving CFB 26 Discord league and grew int
 - Conference: Michigan @ Ohio State
 - Conference: Washington @ Oregon
 - Conference: TCU @ Texas Tech
-- Conference: Oklahoma @ Missouri
 
-Projected user games found: **86**.
+Projected user games found: **83**.
 
 ## Public Rules Summary
 
