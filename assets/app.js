@@ -228,7 +228,7 @@
     const type = game.isUser ? 'USER vs USER' : 'USER vs CPU';
     return `FINAL — ${owner}${winningTeam} ${verb} ${losingTeam}, ${winningScore}-${losingScore} (${game.week}, ${type}).`;
   }
-  async function liveGameResultRecaps(){
+  async function liveGameResults(){
     const payload = await loadLiveSheet('Game Results');
     const rows = (payload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
     const games = rows.map(row => {
@@ -240,14 +240,16 @@
         season: row[0] || '', week: row[1] || 'Week ?', gameType: row[2] || '',
         away: row[3] || '', awayUser, awayScore,
         home: row[6] || '', homeUser, homeScore,
-        winner: row[9] || '', createdAt: row[19] || '',
+        winner: row[9] || '', loser: row[10] || '',
+        conference: row[11] || '', overtime: row[12] || '', notes: row[13] || '',
+        createdAt: row[19] || '',
         isUser: awayUser.toLowerCase() !== 'cpu' && homeUser.toLowerCase() !== 'cpu'
       };
     }).filter(game => game.away && game.home && Number.isFinite(game.awayScore) && Number.isFinite(game.homeScore));
     games.sort((a,b) => Number(b.isUser) - Number(a.isUser)
       || String(b.createdAt).localeCompare(String(a.createdAt))
       || weekNumber(b.week) - weekNumber(a.week));
-    return games.slice(0, 3).map(gameResultRecap);
+    return games;
   }
   function renderLiveSeasonWeek(status){
     const text = status ? `${status.season} - Current Week: ${status.week}` : 'Live season status unavailable';
@@ -265,6 +267,29 @@
       });
       el.replaceWith(frag);
     });
+  }
+  function renderGameResultsPage(games){
+    const root = $('[data-render="game-results-page"]');
+    if(!root) return;
+    const userGames = games.filter(game => game.isUser);
+    const cpuGames = games.filter(game => !game.isUser);
+    $('[data-render="result-total"]')?.replaceChildren(document.createTextNode(String(games.length)));
+    $('[data-render="result-user-total"]')?.replaceChildren(document.createTextNode(String(userGames.length)));
+    $('[data-render="result-cpu-total"]')?.replaceChildren(document.createTextNode(String(cpuGames.length)));
+    const gameCard = game => {
+      const awayWon = game.winner.toLowerCase() === game.away.toLowerCase() || game.awayScore > game.homeScore;
+      const details = [game.season, game.week, game.overtime ? 'Overtime' : '', game.createdAt].filter(Boolean).join(' • ');
+      return `<article class="result-card reveal ${game.isUser ? 'result-card--user' : ''}">
+        <div class="result-card__head"><span class="game-kind ${game.isUser ? '' : 'game-kind--non'}">${game.isUser ? 'USER vs USER' : 'USER vs CPU'}</span><b>FINAL</b></div>
+        <div class="result-team ${awayWon ? 'is-winner' : ''}"><span><strong>${esc(game.away)}</strong><small>${esc(game.awayUser || 'CPU')}</small></span><b>${game.awayScore}</b></div>
+        <div class="result-team ${awayWon ? '' : 'is-winner'}"><span><strong>${esc(game.home)}</strong><small>${esc(game.homeUser || 'CPU')}</small></span><b>${game.homeScore}</b></div>
+        <p class="result-recap">${esc(gameResultRecap(game))}</p>
+        ${game.notes ? `<p class="result-notes">${esc(game.notes)}</p>` : ''}
+        <small class="result-meta">${esc(details)}</small>
+      </article>`;
+    };
+    const section = (title, subtitle, list) => `<section class="result-section"><div class="result-section__head"><div><span class="eyebrow">${esc(subtitle)}</span><h2>${esc(title)}</h2></div><strong>${list.length} FINAL${list.length === 1 ? '' : 'S'}</strong></div>${list.length ? `<div class="result-grid">${list.map(gameCard).join('')}</div>` : '<div class="result-empty">No completed games are logged in this category yet.</div>'}</section>`;
+    root.innerHTML = section('User vs User Results', 'Priority Results', userGames) + section('User vs CPU Results', 'All Other Finals', cpuGames);
   }
   function esc(v){ return String(v ?? '').replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s])); }
   function weekNumber(w){ const m=String(w).match(/\d+/); return m?Number(m[0]):999; }
@@ -834,8 +859,8 @@
     const items = [
       ['hub','hub.html','&#127968;','Hub'],
       ['schedule','schedule.html','&#128197;','Schedule'],
+      ['results','results.html','&#127942;','Results'],
       ['teams','teams.html','&#127944;','Teams'],
-      ['updates','updates.html','&#128293;','Updates'],
       ['discord',DISCORD,'&#128172;','Discord']
     ];
     const nav = document.createElement('nav');
@@ -851,7 +876,7 @@
     items.forEach(x=>io.observe(x));
   }
   function linkTeamMentions(data, root=document.body){
-    if(!root || !['hub','schedule'].includes(document.body.dataset.page || '')) return;
+    if(!root || !['hub','schedule','results'].includes(document.body.dataset.page || '')) return;
     const teams = (data.teams || []).filter(t => t.school).slice().sort((a,b) => b.school.length - a.school.length);
     if(!teams.length) return;
     const byName = new Map(teams.map(t => [String(t.school).toLowerCase(), t]));
@@ -907,10 +932,11 @@
     const data = await loadData();
     const [statusResult, gameResultsResult] = await Promise.allSettled([
       liveDashboardStatus(),
-      liveGameResultRecaps()
+      liveGameResults()
     ]);
     const liveStatus = statusResult.status === 'fulfilled' ? statusResult.value : null;
-    const liveRecaps = gameResultsResult.status === 'fulfilled' ? gameResultsResult.value : [];
+    const liveGames = gameResultsResult.status === 'fulfilled' ? gameResultsResult.value : [];
+    const liveRecaps = liveGames.slice(0, 3).map(gameResultRecap);
     if(liveStatus){
       data.season ||= {};
       data.season.label = liveStatus.season;
@@ -927,6 +953,7 @@
     if(gameResultsResult.status === 'rejected') console.warn('Live spreadsheet game results could not be loaded.', gameResultsResult.reason);
     renderLiveSeasonWeek(liveStatus);
     renderLiveGameResults(liveRecaps);
+    renderGameResultsPage(liveGames);
     renderStats(data); renderScorebug(data); renderStatusText(data); renderCoverLines(data); renderHeadlines(data); renderSignals(data); renderWatchlist(data); renderFeaturedGames(data); renderUpdateGuide(data);
     renderSettings(data); renderLeagueHealth(data); renderOpenTeams(data); renderConferenceCards(data); renderTimeline(data); renderTeams(data); renderTeamHub(data); renderCoachCards(data); renderSchedule(data); renderTeamSchedules(data); renderRules(data); renderTopGames(data); renderSitemap(data); renderArchive(data); renderLegacy(data);
     linkTeamMentions(data);
