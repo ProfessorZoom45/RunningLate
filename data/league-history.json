@@ -2177,10 +2177,10 @@
       },
       {
         "label": "GOTW Signal",
-        "value": "TBD",
-        "status": "VOTE SLOT",
+        "value": "WK 2",
+        "status": "SELECTED 9-4",
         "tone": "green",
-        "detail": "Use this slot for Game of the Week voting and boost announcements.",
+        "detail": "#1 Ohio State (1-0) at #7 Texas (0-0). Nomination closed with 13 votes; prediction voting has not started.",
         "editKey": "dashboard.signals[3]"
       },
       {
