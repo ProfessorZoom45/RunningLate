@@ -420,11 +420,11 @@
     const items = data.dashboard?.scorebar || [];
     root.innerHTML = `<div class="scorebug-brand"><b>RLD</b><span>CFB 27 NOW</span></div>` + items.map(x=>`<div class="scorebug-item"><span>${esc(x.label)}</span><b>${esc(x.value)}</b></div>`).join('') + `<a class="scorebug-link" href="${DISCORD}" target="_blank" rel="noopener">Discord</a>`;
   }
-  function renderStatusText(data){
+  function renderStatusText(data, liveStatus){
     const s = data.dashboard?.status || {};
     const set = (sel,val) => { const el=$(sel); if(el) el.textContent = val || ''; };
     set('[data-render="status-label"]', s.leagueState || 'LIVE');
-    set('[data-render="current-week"]', s.currentWeek || 'Week TBD');
+    set('[data-render="current-week"]', liveStatus?.week || 'Live week unavailable');
     set('[data-render="next-advance"]', s.nextAdvance || 'Advance TBD');
   }
   function renderCoverLines(data){
@@ -1014,7 +1014,7 @@
     renderLiveSeasonWeek(liveStatus);
     renderLiveGameResults(liveRecaps);
     renderGameResultsPage(liveGames);
-    renderStats(data); renderScorebug(data); renderStatusText(data); renderCoverLines(data); renderHeadlines(data); renderSignals(data); renderWatchlist(data); renderFeaturedGames(data); renderUpdateGuide(data);
+    renderStats(data); renderScorebug(data); renderStatusText(data, liveStatus); renderCoverLines(data); renderHeadlines(data); renderSignals(data); renderWatchlist(data); renderFeaturedGames(data); renderUpdateGuide(data);
     renderSettings(data); renderLeagueHealth(liveGames.filter(game => game.isUser).length); renderOpenTeams(data); renderConferenceCards(data); renderTimeline(data); renderTeams(data); renderTeamHub(data); renderCoachCards(data); renderSchedule(data); renderTeamSchedules(data); renderRules(data); renderTopGames(data); renderSitemap(data); renderArchive(data); renderLegacy(data);
     linkTeamMentions(data);
     observe();
