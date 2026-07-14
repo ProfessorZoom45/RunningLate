@@ -574,8 +574,7 @@
         </article>`}
       </div>
       <div class="team-schedule-card__footer">
-        <b>Full 2026 Schedule</b>
-        <span>Official full team schedule and CPU games are coming soon. This page is built from the confirmed user-vs-user dynasty slate for now.</span>
+        <b>Full 2026 User-vs-User Schedule</b>
       </div>
     </article>`;
   }
