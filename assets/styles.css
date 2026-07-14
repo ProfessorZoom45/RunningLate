@@ -173,6 +173,10 @@ h1,h2,h3,.hero-title,.panel-header h2,.lead-story h1{letter-spacing:0}
 .news-article h2{margin:.55rem 0 .55rem;text-transform:uppercase;line-height:1;font-size:clamp(1.55rem,3vw,2.7rem)}
 .news-article p{margin:.55rem 0;color:#ded6c8;font-weight:760}
 .news-article a:not(.btn){color:var(--gold2);font-weight:1000;text-decoration:underline;text-underline-offset:3px}
+.history-article-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.history-article-grid .news-article{min-height:100%;display:flex;flex-direction:column;justify-content:flex-start}
+.history-article-grid .news-article--lead{grid-column:1/-1}
+.history-article-grid .eyebrow{align-self:flex-start}
 .team-hub-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.85rem;margin-top:1rem}
 .team-hub-card{display:grid;grid-template-columns:54px 1fr;gap:.85rem;align-items:center;border-radius:18px;padding:.9rem;position:relative;overflow:hidden}
 .team-hub-card:before{content:"";position:absolute;inset:0 0 auto;height:5px;background:linear-gradient(90deg,var(--team-primary),var(--team-accent))}
