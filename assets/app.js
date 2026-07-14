@@ -1,5 +1,6 @@
 (function(){
   const DISCORD = 'https://discord.gg/8sXA2RQPnm';
+  const LIVE_SHEET_ID = '1y1H-IfZk5Ry1A91-CuiSP2TdHBy_vMHp7-eEfF4BPXQ';
   const $ = (sel, root=document) => root.querySelector(sel);
   const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
   const state = { data: window.RLD_DATA || null };
@@ -169,6 +170,52 @@
       state.data = window.RLD_DATA || {teams:[],schedule:[],timeline:[],settings:[],rules:[],derived:{},dashboard:{}};
     }
     return state.data;
+  }
+  function sheetCellValue(cell){
+    if(!cell) return '';
+    return String(cell.f ?? cell.v ?? '').trim();
+  }
+  function liveDashboardStatus(){
+    return new Promise((resolve, reject) => {
+      const callbackName = `runningLateDashboard_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+      const script = document.createElement('script');
+      let settled = false;
+      const finish = (fn, value) => {
+        if(settled) return;
+        settled = true;
+        clearTimeout(timer);
+        script.remove();
+        try{ delete window[callbackName]; }catch(_){ window[callbackName] = undefined; }
+        fn(value);
+      };
+      window[callbackName] = payload => {
+        try{
+          if(payload?.status !== 'ok') throw new Error('Spreadsheet returned a non-OK response.');
+          const rows = (payload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
+          const compact = value => String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, '');
+          const seasonRow = rows.find(row => compact(row[0]) === 'seasonyear') || [];
+          const contextRow = rows.find(row => compact(row[0]) === 'currentweekuserreadycpuresults') || [];
+          const context = contextRow.find((value, index) => index > 0 && value) || '';
+          const contextMatch = context.match(/Season\s+(.+?)\s*\|\s*(Week\s+[^|]+)/i);
+          const seasonLabel = contextMatch?.[1]?.trim() || seasonRow[1] || '';
+          const dynastyYear = seasonRow[3] || '';
+          const season = seasonLabel && dynastyYear && !seasonLabel.includes(dynastyYear)
+            ? `${seasonLabel} (${dynastyYear})`
+            : seasonLabel;
+          const week = contextMatch?.[2]?.trim() || '';
+          if(!season || !week) throw new Error('Live season or week was not found on the Dashboard tab.');
+          finish(resolve, {season, week});
+        }catch(error){ finish(reject, error); }
+      };
+      script.onerror = () => finish(reject, new Error('Spreadsheet script could not be loaded.'));
+      script.src = `https://docs.google.com/spreadsheets/d/${LIVE_SHEET_ID}/gviz/tq?sheet=Dashboard&tqx=responseHandler:${callbackName}&_=${Date.now()}`;
+      const timer = setTimeout(() => finish(reject, new Error('Spreadsheet request timed out.')), 8000);
+      document.head.append(script);
+    });
+  }
+  function renderLiveSeasonWeek(status){
+    const text = status ? `${status.season} - Current Week: ${status.week}` : 'Live season status unavailable';
+    $$('[data-render="live-season-week"]').forEach(el => { el.textContent = text; });
   }
   function esc(v){ return String(v ?? '').replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s])); }
   function weekNumber(w){ const m=String(w).match(/\d+/); return m?Number(m[0]):999; }
@@ -809,6 +856,22 @@
   async function init(){
     wireNav(); wireMobileBottomNav(); mountAudioPlayer(); wireSplash();
     const data = await loadData();
+    let liveStatus = null;
+    try{
+      liveStatus = await liveDashboardStatus();
+      data.season ||= {};
+      data.season.label = liveStatus.season;
+      data.season.currentWeek = liveStatus.week;
+      data.dashboard ||= {};
+      data.dashboard.status ||= {};
+      data.dashboard.status.currentWeek = liveStatus.week;
+    }catch(error){
+      console.warn('Live spreadsheet season/week could not be loaded.', error);
+      data.dashboard ||= {};
+      data.dashboard.status ||= {};
+      data.dashboard.status.currentWeek = 'Live week unavailable';
+    }
+    renderLiveSeasonWeek(liveStatus);
     renderStats(data); renderScorebug(data); renderStatusText(data); renderCoverLines(data); renderHeadlines(data); renderSignals(data); renderWatchlist(data); renderFeaturedGames(data); renderUpdateGuide(data);
     renderSettings(data); renderLeagueHealth(data); renderOpenTeams(data); renderConferenceCards(data); renderTimeline(data); renderTeams(data); renderTeamHub(data); renderCoachCards(data); renderSchedule(data); renderTeamSchedules(data); renderRules(data); renderTopGames(data); renderSitemap(data); renderArchive(data); renderLegacy(data);
     linkTeamMentions(data);
