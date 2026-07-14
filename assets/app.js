@@ -247,7 +247,7 @@
     games.sort((a,b) => Number(b.isUser) - Number(a.isUser)
       || String(b.createdAt).localeCompare(String(a.createdAt))
       || weekNumber(b.week) - weekNumber(a.week));
-    return games.slice(0, 5).map(gameResultRecap);
+    return games.slice(0, 3).map(gameResultRecap);
   }
   function renderLiveSeasonWeek(status){
     const text = status ? `${status.season} - Current Week: ${status.week}` : 'Live season status unavailable';
