@@ -278,14 +278,11 @@
     $('[data-render="result-cpu-total"]')?.replaceChildren(document.createTextNode(String(cpuGames.length)));
     const gameCard = game => {
       const awayWon = game.winner.toLowerCase() === game.away.toLowerCase() || game.awayScore > game.homeScore;
-      const details = [game.season, game.week, game.overtime ? 'Overtime' : '', game.createdAt].filter(Boolean).join(' • ');
       return `<article class="result-card reveal ${game.isUser ? 'result-card--user' : ''}">
         <div class="result-card__head"><span class="game-kind ${game.isUser ? '' : 'game-kind--non'}">${game.isUser ? 'USER vs USER' : 'USER vs CPU'}</span><b>FINAL</b></div>
         <div class="result-team ${awayWon ? 'is-winner' : ''}"><span><strong>${esc(game.away)}</strong><small>${esc(game.awayUser || 'CPU')}</small></span><b>${game.awayScore}</b></div>
         <div class="result-team ${awayWon ? '' : 'is-winner'}"><span><strong>${esc(game.home)}</strong><small>${esc(game.homeUser || 'CPU')}</small></span><b>${game.homeScore}</b></div>
         <p class="result-recap">${esc(gameResultRecap(game))}</p>
-        ${game.notes ? `<p class="result-notes">${esc(game.notes)}</p>` : ''}
-        <small class="result-meta">${esc(details)}</small>
       </article>`;
     };
     const section = (title, subtitle, list) => `<section class="result-section"><div class="result-section__head"><div><span class="eyebrow">${esc(subtitle)}</span><h2>${esc(title)}</h2></div><strong>${list.length} FINAL${list.length === 1 ? '' : 'S'}</strong></div>${list.length ? `<div class="result-grid">${list.map(gameCard).join('')}</div>` : '<div class="result-empty">No completed games are logged in this category yet.</div>'}</section>`;
