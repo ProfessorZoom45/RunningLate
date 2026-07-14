@@ -332,7 +332,7 @@
     root.innerHTML = Object.keys(groups).sort(confOrder).map(conf => `
       <article class="glass-card reveal">
         <div class="panel-header"><div><span class="eyebrow">${esc(conf)}</span></div></div>
-        <div class="chip-row">${groups[conf].map(t=>`<span class="chip" style="--team-primary:${esc(t.primary)};border-color:${esc(t.primary)}66">${esc(t.display)}</span>`).join('')}</div>
+        <div class="chip-row">${groups[conf].map(t=>`<a class="chip conference-team-link" href="teams.html#hub-team-${slug(t.school)}" style="--team-primary:${esc(t.primary)};--team-accent:${esc(t.accent)}" aria-label="Open ${esc(cleanDisplay(t.school))} team hub">${esc(t.display)}</a>`).join('')}</div>
       </article>`).join('');
   }
   function renderTimeline(data){
