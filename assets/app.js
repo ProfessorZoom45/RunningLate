@@ -229,27 +229,77 @@
     return `FINAL — ${owner}${winningTeam} ${verb} ${losingTeam}, ${winningScore}-${losingScore} (${game.week}, ${type}).`;
   }
   async function liveGameResults(){
-    const payload = await loadLiveSheet('Game Results');
-    const rows = (payload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
-    const games = rows.map(row => {
+    const [resultsPayload, schedulePayload, gotwHistoryPayload] = await Promise.all([
+      loadLiveSheet('Game Results'),
+      loadLiveSheet('Schedule'),
+      loadLiveSheet('GOTW History')
+    ]);
+    const resultRows = (resultsPayload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
+    const scheduleRows = (schedulePayload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
+    const gotwHistoryRows = (gotwHistoryPayload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
+    const humanUser = value => Boolean(String(value || '').trim()) && !/^(cpu|cpu team|computer|ai)$/i.test(String(value).trim());
+    const classify = (gameType, awayUser, homeUser) => (/user/i.test(gameType) && !/cpu/i.test(gameType)) || (humanUser(awayUser) && humanUser(homeUser));
+    const games = resultRows.map(row => {
       const awayScore = Number(row[5]);
       const homeScore = Number(row[8]);
       const awayUser = row[4] || '';
       const homeUser = row[7] || '';
+      const gameType = row[2] || '';
       return {
-        season: row[0] || '', week: row[1] || 'Week ?', gameType: row[2] || '',
+        season: row[0] || '', week: row[1] || 'Week ?', gameType,
         away: row[3] || '', awayUser, awayScore,
         home: row[6] || '', homeUser, homeScore,
         winner: row[9] || '', loser: row[10] || '',
         conference: row[11] || '', overtime: row[12] || '', notes: row[13] || '',
         createdAt: row[19] || '',
-        isUser: awayUser.toLowerCase() !== 'cpu' && homeUser.toLowerCase() !== 'cpu'
+        isUser: classify(gameType, awayUser, homeUser)
       };
-    }).filter(game => game.away && game.home && Number.isFinite(game.awayScore) && Number.isFinite(game.homeScore));
-    games.sort((a,b) => Number(b.isUser) - Number(a.isUser)
+    }).concat(scheduleRows.map(row => {
+      const awayScore = row[9] === '' ? NaN : Number(row[9]);
+      const homeScore = row[10] === '' ? NaN : Number(row[10]);
+      const awayUser = row[5] || '';
+      const homeUser = row[7] || '';
+      const gameType = row[3] || '';
+      return {
+        season: row[1] || '', week: row[2] || 'Week ?', gameType,
+        away: row[4] || '', awayUser, awayScore,
+        home: row[6] || '', homeUser, homeScore,
+        winner: row[11] || '', loser: '', conference: '', overtime: '', notes: row[14] || '',
+        createdAt: row[16] || row[15] || '',
+        isUser: classify(gameType, awayUser, homeUser)
+      };
+    })).concat(gotwHistoryRows.map(row => {
+      const away = row[3] || '';
+      const home = row[5] || '';
+      const note = row[23] || '';
+      const score = String(note).match(/Final:\s*(.+?)\s+(\d+),\s*(.+?)\s+(\d+)/i);
+      const scoreFor = team => {
+        if(!score) return NaN;
+        const target = String(team).toLowerCase();
+        const first = score[1].toLowerCase();
+        const second = score[3].toLowerCase();
+        if(target.startsWith(first) || first.startsWith(target)) return Number(score[2]);
+        if(target.startsWith(second) || second.startsWith(target)) return Number(score[4]);
+        return NaN;
+      };
+      return {
+        season: row[1] || '', week: row[2] || 'Week ?', gameType: 'User vs User',
+        away, awayUser: row[4] || '', awayScore: scoreFor(away),
+        home, homeUser: row[6] || '', homeScore: scoreFor(home),
+        winner: row[14] || '', loser: '', conference: '', overtime: '', notes: note,
+        createdAt: row[21] || '', isUser: true
+      };
+    })).filter(game => game.away && game.home && Number.isFinite(game.awayScore) && Number.isFinite(game.homeScore));
+    const byGame = new Map();
+    games.forEach(game => {
+      const key = `${game.season}|${game.week}|${game.away}|${game.home}`.toLowerCase();
+      if(!byGame.has(key)) byGame.set(key, game);
+    });
+    const uniqueGames = [...byGame.values()];
+    uniqueGames.sort((a,b) => Number(b.isUser) - Number(a.isUser)
       || String(b.createdAt).localeCompare(String(a.createdAt))
       || weekNumber(b.week) - weekNumber(a.week));
-    return games;
+    return uniqueGames;
   }
   function renderLiveSeasonWeek(status){
     const text = status ? `${status.season} - Current Week: ${status.week}` : 'Live season status unavailable';
@@ -421,12 +471,12 @@
     const root = $('[data-render="settings"]'); if(!root) return;
     root.innerHTML = (data.settings || []).map(s => `<article class="stat-card reveal"><span>${esc(s.label)}</span><strong>${esc(s.value)}</strong></article>`).join('');
   }
-  function renderLeagueHealth(){
+  function renderLeagueHealth(completedUserGames=0){
     const root = $('[data-render="league-health"]'); if(!root) return;
-    root.innerHTML = HEALTH_METRICS.map(([label,value,detail]) => `
+    root.innerHTML = HEALTH_METRICS.map(([label,value,detail], index) => `
       <article class="health-card reveal">
         <span>${esc(label)}</span>
-        <strong>${esc(value)}</strong>
+        <strong>${esc(index === 0 ? `${completedUserGames}/83` : value)}</strong>
         <p>${esc(detail)}</p>
       </article>`).join('');
   }
@@ -857,14 +907,27 @@
       ['hub','hub.html','&#127968;','Hub'],
       ['schedule','schedule.html','&#128197;','Schedule'],
       ['results','results.html','&#127942;','Results'],
+      ['updates','updates.html','&#128293;','Updates'],
       ['teams','teams.html','&#127944;','Teams'],
       ['discord',DISCORD,'&#128172;','Discord']
     ];
     const nav = document.createElement('nav');
     nav.className = 'mobile-bottom-nav';
     nav.setAttribute('aria-label','Mobile navigation');
-    nav.innerHTML = items.map(([key,href,icon,label]) => `<a class="${activePage===key?'is-active':''}" href="${href}" ${key==='discord'?'target="_blank" rel="noopener"':''}><span>${icon}</span><b>${label}</b></a>`).join('');
+    nav.innerHTML = items.map(([key,href,icon,label]) => `<a class="${activePage===key?'is-active':''}" href="${href}" ${key==='discord'?'target="_blank" rel="noopener"':''}><span>${icon}</span><b>${label}</b></a>`).join('') + '<button type="button" class="mobile-overlay-toggle" aria-pressed="false"><span>&#10005;</span><b>Hide</b></button>';
     document.body.appendChild(nav);
+    const toggle = $('.mobile-overlay-toggle', nav);
+    const setOverlaysHidden = hidden => {
+      document.body.classList.toggle('mobile-overlays-hidden', hidden);
+      toggle.setAttribute('aria-pressed', hidden ? 'true' : 'false');
+      toggle.querySelector('span').innerHTML = hidden ? '&#8634;' : '&#10005;';
+      toggle.querySelector('b').textContent = hidden ? 'Show' : 'Hide';
+      try { localStorage.setItem('rldMobileOverlaysHidden', hidden ? '1' : '0'); } catch(e) {}
+    };
+    let hidden = false;
+    try { hidden = localStorage.getItem('rldMobileOverlaysHidden') === '1'; } catch(e) {}
+    setOverlaysHidden(hidden);
+    toggle.addEventListener('click', () => setOverlaysHidden(!document.body.classList.contains('mobile-overlays-hidden')));
   }
   function observe(){
     const items = $$('.reveal:not(.is-visible)');
@@ -952,7 +1015,7 @@
     renderLiveGameResults(liveRecaps);
     renderGameResultsPage(liveGames);
     renderStats(data); renderScorebug(data); renderStatusText(data); renderCoverLines(data); renderHeadlines(data); renderSignals(data); renderWatchlist(data); renderFeaturedGames(data); renderUpdateGuide(data);
-    renderSettings(data); renderLeagueHealth(data); renderOpenTeams(data); renderConferenceCards(data); renderTimeline(data); renderTeams(data); renderTeamHub(data); renderCoachCards(data); renderSchedule(data); renderTeamSchedules(data); renderRules(data); renderTopGames(data); renderSitemap(data); renderArchive(data); renderLegacy(data);
+    renderSettings(data); renderLeagueHealth(liveGames.filter(game => game.isUser).length); renderOpenTeams(data); renderConferenceCards(data); renderTimeline(data); renderTeams(data); renderTeamHub(data); renderCoachCards(data); renderSchedule(data); renderTeamSchedules(data); renderRules(data); renderTopGames(data); renderSitemap(data); renderArchive(data); renderLegacy(data);
     linkTeamMentions(data);
     observe();
   }

@@ -33,13 +33,13 @@
     <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav id="site-nav" class="site-nav" aria-label="Main navigation">
       <a class="nav-link" href="hub.html">Hub</a>
+      <a class="nav-link is-active" href="updates.html">Updates</a>
       <a class="nav-link" href="teams.html">Teams</a>
         <a class="nav-link" href="schedule.html">Schedule</a>
         <a class="nav-link" href="results.html">Results</a>
       <a class="nav-link" href="history.html">History</a>
       <a class="nav-link" href="media.html">Media</a>
       <a class="nav-link" href="archive.html">Archive</a>
-      <a class="nav-link is-active" href="updates.html">Updates</a>
       <a class="nav-link nav-link--discord" href="https://discord.gg/8sXA2RQPnm" target="_blank" rel="noopener">Discord</a>
     </nav>
   </header>
@@ -77,6 +77,40 @@
           <p>The later stretch brings Notre Dame at BYU, Miami at Notre Dame, SMU at Notre Dame, Florida at Florida State, and South Carolina at Clemson. Those games could shape early rankings before conference play settles the rest.</p>
           <a class="btn btn--red" href="schedule.html">Track The War Path</a>
         </article>
+      </div>
+    </section>
+    <section class="section section--broadcast">
+      <div class="panel-header"><div><span class="eyebrow">Live Board</span><h2>League Operations</h2><p>Advance pace, scheduling, streams, Game of the Week, and Discord information moved here from the Hub.</p></div></div>
+      <div class="grid grid--3" data-render="signal-cards"></div>
+    </section>
+    <section class="section">
+      <div class="grid grid--2 dashboard-two-col">
+        <article class="hero-panel reveal"><div class="panel-header"><div><span class="eyebrow">Featured Slate</span><h2>Opening Games</h2><p>Quick-glance matchups from the schedule.</p></div><a class="btn" href="schedule.html">Full Schedule</a></div><div class="mini-slate" data-render="featured-games"></div></article>
+        <article class="hero-panel reveal"><div class="panel-header"><div><span class="eyebrow">Watchlist</span><h2>What To Watch</h2><p>Weekly storylines, GOTW polls, and league developments.</p></div></div><div class="watchlist" data-render="watchlist"></div></article>
+      </div>
+    </section>
+    <section class="section">
+      <div class="grid grid--2 dashboard-two-col">
+        <article class="hero-panel reveal"><div class="panel-header"><div><span class="eyebrow">Game of the Week</span><h2>Pick'em Rewards</h2><p>Use <strong>!gotw</strong> to see the matchup and <strong>!gotw v home</strong> or <strong>!gotw v away</strong> to make a pick. Correct picks earn awareness rewards.</p></div></div><div class="chip-row"><span class="chip chip--gold">!gotw</span><span class="chip">!gotw v home</span><span class="chip">!gotw v away</span><span class="chip">!gotw results</span></div></article>
+        <article class="hero-panel reveal"><div class="panel-header"><div><span class="eyebrow">Discord Bot</span><h2>Command Board</h2><p>League, team, coach, matchup, recent-result, site, and GOTW shortcuts.</p></div><a class="btn" href="teams.html">Team List</a></div><div class="chip-row"><span class="chip chip--gold">!leagueinfo</span><span class="chip">!standings</span><span class="chip">!team</span><span class="chip">!coach</span><span class="chip">!h2h</span><span class="chip">!recentresults</span><span class="chip">!site</span></div></article>
+      </div>
+    </section>
+    <section class="section">
+      <div class="panel-header"><div><span class="eyebrow">League Setup</span><h2>Launch Board</h2><p>Core settings for the CFB 27 dynasty.</p></div></div>
+      <div class="grid grid--4" data-render="settings"></div>
+    </section>
+    <section class="section">
+      <div class="panel-header"><div><span class="eyebrow">League Health</span><h2>Admin Overview</h2><p>Activity, completions, streams, reviews, and openings.</p></div></div>
+      <div class="grid grid--3" data-render="league-health"></div>
+    </section>
+    <section class="section">
+      <div class="panel-header"><div><span class="eyebrow">Conference Map</span><h2>Power Structure</h2><p>Current user teams by conference.</p></div><a class="btn" href="teams.html">Teams</a></div>
+      <div class="grid grid--2" data-render="conferences"></div>
+    </section>
+    <section class="section">
+      <div class="grid grid--2">
+        <article class="hero-panel reveal"><div class="panel-header"><div><span class="eyebrow">User Game Slates</span><h2>Top 15 Toughest Schedules</h2></div></div><div class="leaderboard" data-render="top-games"></div></article>
+        <article class="hero-panel reveal"><div class="panel-header"><div><span class="eyebrow">Timeline</span><h2>From CFB 26 to 27</h2></div></div><div class="timeline" data-render="timeline"></div></article>
       </div>
     </section>
   </main>
