@@ -64,6 +64,16 @@ window.RLD_DATA = {
   ],
   "timeline": [
     {
+      "date": "2026-07-12",
+      "title": "Dynasty Advances to Week 1",
+      "detail": "The dynasty advances to Week 1. First USER-VS-USER Game of the Week: ⚪ Clemson Tigers (tigerz009) 🆚 ⚪ LSU Tigers (bignutt195). Final Score: 🏆 LSU 14, 🐅 Clemson 3."
+    },
+    {
+      "date": "2026-07-10",
+      "title": "Dynasty Advances to Week 0",
+      "detail": "The dynasty advances to Week 0, and the first USER-VS-CPU games in the Running Late CFB 27 Dynasty are played."
+    },
+    {
       "date": "2026-07-07",
       "title": "Day 1 Launch",
       "detail": "Running Late Dynasty officially launches for CFB 27 with private league setup, cross-play, and the first advance posted for July 10 at noon EST."
