@@ -175,9 +175,9 @@
     if(!cell) return '';
     return String(cell.f ?? cell.v ?? '').trim();
   }
-  function liveDashboardStatus(){
+  function loadLiveSheet(sheetName){
     return new Promise((resolve, reject) => {
-      const callbackName = `runningLateDashboard_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+      const callbackName = `runningLateSheet_${Date.now()}_${Math.random().toString(36).slice(2)}`;
       const script = document.createElement('script');
       let settled = false;
       const finish = (fn, value) => {
@@ -189,33 +189,82 @@
         fn(value);
       };
       window[callbackName] = payload => {
-        try{
-          if(payload?.status !== 'ok') throw new Error('Spreadsheet returned a non-OK response.');
-          const rows = (payload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
-          const compact = value => String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, '');
-          const seasonRow = rows.find(row => compact(row[0]) === 'seasonyear') || [];
-          const contextRow = rows.find(row => compact(row[0]) === 'currentweekuserreadycpuresults') || [];
-          const context = contextRow.find((value, index) => index > 0 && value) || '';
-          const contextMatch = context.match(/Season\s+(.+?)\s*\|\s*(Week\s+[^|]+)/i);
-          const seasonLabel = contextMatch?.[1]?.trim() || seasonRow[1] || '';
-          const dynastyYear = seasonRow[3] || '';
-          const season = seasonLabel && dynastyYear && !seasonLabel.includes(dynastyYear)
-            ? `${seasonLabel} (${dynastyYear})`
-            : seasonLabel;
-          const week = contextMatch?.[2]?.trim() || '';
-          if(!season || !week) throw new Error('Live season or week was not found on the Dashboard tab.');
-          finish(resolve, {season, week});
-        }catch(error){ finish(reject, error); }
+        if(payload?.status === 'ok') finish(resolve, payload);
+        else finish(reject, new Error('Spreadsheet returned a non-OK response.'));
       };
       script.onerror = () => finish(reject, new Error('Spreadsheet script could not be loaded.'));
-      script.src = `https://docs.google.com/spreadsheets/d/${LIVE_SHEET_ID}/gviz/tq?sheet=Dashboard&tqx=responseHandler:${callbackName}&_=${Date.now()}`;
+      script.src = `https://docs.google.com/spreadsheets/d/${LIVE_SHEET_ID}/gviz/tq?sheet=${encodeURIComponent(sheetName)}&tqx=responseHandler:${callbackName}&_=${Date.now()}`;
       const timer = setTimeout(() => finish(reject, new Error('Spreadsheet request timed out.')), 8000);
       document.head.append(script);
     });
   }
+  async function liveDashboardStatus(){
+    const payload = await loadLiveSheet('Dashboard');
+    const rows = (payload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
+    const compact = value => String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, '');
+    const seasonRow = rows.find(row => compact(row[0]) === 'seasonyear') || [];
+    const contextRow = rows.find(row => compact(row[0]) === 'currentweekuserreadycpuresults') || [];
+    const context = contextRow.find((value, index) => index > 0 && value) || '';
+    const contextMatch = context.match(/Season\s+(.+?)\s*\|\s*(Week\s+[^|]+)/i);
+    const seasonLabel = contextMatch?.[1]?.trim() || seasonRow[1] || '';
+    const dynastyYear = seasonRow[3] || '';
+    const season = seasonLabel && dynastyYear && !seasonLabel.includes(dynastyYear)
+      ? `${seasonLabel} (${dynastyYear})`
+      : seasonLabel;
+    const week = contextMatch?.[2]?.trim() || '';
+    if(!season || !week) throw new Error('Live season or week was not found on the Dashboard tab.');
+    return {season, week};
+  }
+  function gameResultRecap(game){
+    const awayWon = game.winner.toLowerCase() === game.away.toLowerCase() || game.awayScore > game.homeScore;
+    const winningTeam = awayWon ? game.away : game.home;
+    const losingTeam = awayWon ? game.home : game.away;
+    const winningUser = awayWon ? game.awayUser : game.homeUser;
+    const winningScore = awayWon ? game.awayScore : game.homeScore;
+    const losingScore = awayWon ? game.homeScore : game.awayScore;
+    const margin = Math.abs(winningScore - losingScore);
+    const verb = margin <= 3 ? 'survived' : margin <= 7 ? 'edged' : margin <= 14 ? 'beat' : margin <= 24 ? 'handled' : 'rolled past';
+    const owner = game.isUser && winningUser && winningUser.toLowerCase() !== 'cpu' ? `${winningUser}'s ` : '';
+    const type = game.isUser ? 'USER vs USER' : 'USER vs CPU';
+    return `FINAL — ${owner}${winningTeam} ${verb} ${losingTeam}, ${winningScore}-${losingScore} (${game.week}, ${type}).`;
+  }
+  async function liveGameResultRecaps(){
+    const payload = await loadLiveSheet('Game Results');
+    const rows = (payload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
+    const games = rows.map(row => {
+      const awayScore = Number(row[5]);
+      const homeScore = Number(row[8]);
+      const awayUser = row[4] || '';
+      const homeUser = row[7] || '';
+      return {
+        season: row[0] || '', week: row[1] || 'Week ?', gameType: row[2] || '',
+        away: row[3] || '', awayUser, awayScore,
+        home: row[6] || '', homeUser, homeScore,
+        winner: row[9] || '', createdAt: row[19] || '',
+        isUser: awayUser.toLowerCase() !== 'cpu' && homeUser.toLowerCase() !== 'cpu'
+      };
+    }).filter(game => game.away && game.home && Number.isFinite(game.awayScore) && Number.isFinite(game.homeScore));
+    games.sort((a,b) => Number(b.isUser) - Number(a.isUser)
+      || String(b.createdAt).localeCompare(String(a.createdAt))
+      || weekNumber(b.week) - weekNumber(a.week));
+    return games.slice(0, 5).map(gameResultRecap);
+  }
   function renderLiveSeasonWeek(status){
     const text = status ? `${status.season} - Current Week: ${status.week}` : 'Live season status unavailable';
     $$('[data-render="live-season-week"]').forEach(el => { el.textContent = text; });
+  }
+  function renderLiveGameResults(recaps){
+    $$('[data-render="live-game-results"]').forEach(el => {
+      if(!recaps?.length){ el.textContent = 'No completed game results are available yet.'; return; }
+      const frag = document.createDocumentFragment();
+      recaps.forEach(recap => {
+        const span = document.createElement('span');
+        span.className = 'ticker__result';
+        span.textContent = recap;
+        frag.append(span);
+      });
+      el.replaceWith(frag);
+    });
   }
   function esc(v){ return String(v ?? '').replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s])); }
   function weekNumber(w){ const m=String(w).match(/\d+/); return m?Number(m[0]):999; }
@@ -856,22 +905,28 @@
   async function init(){
     wireNav(); wireMobileBottomNav(); mountAudioPlayer(); wireSplash();
     const data = await loadData();
-    let liveStatus = null;
-    try{
-      liveStatus = await liveDashboardStatus();
+    const [statusResult, gameResultsResult] = await Promise.allSettled([
+      liveDashboardStatus(),
+      liveGameResultRecaps()
+    ]);
+    const liveStatus = statusResult.status === 'fulfilled' ? statusResult.value : null;
+    const liveRecaps = gameResultsResult.status === 'fulfilled' ? gameResultsResult.value : [];
+    if(liveStatus){
       data.season ||= {};
       data.season.label = liveStatus.season;
       data.season.currentWeek = liveStatus.week;
       data.dashboard ||= {};
       data.dashboard.status ||= {};
       data.dashboard.status.currentWeek = liveStatus.week;
-    }catch(error){
-      console.warn('Live spreadsheet season/week could not be loaded.', error);
+    }else{
+      console.warn('Live spreadsheet season/week could not be loaded.', statusResult.reason);
       data.dashboard ||= {};
       data.dashboard.status ||= {};
       data.dashboard.status.currentWeek = 'Live week unavailable';
     }
+    if(gameResultsResult.status === 'rejected') console.warn('Live spreadsheet game results could not be loaded.', gameResultsResult.reason);
     renderLiveSeasonWeek(liveStatus);
+    renderLiveGameResults(liveRecaps);
     renderStats(data); renderScorebug(data); renderStatusText(data); renderCoverLines(data); renderHeadlines(data); renderSignals(data); renderWatchlist(data); renderFeaturedGames(data); renderUpdateGuide(data);
     renderSettings(data); renderLeagueHealth(data); renderOpenTeams(data); renderConferenceCards(data); renderTimeline(data); renderTeams(data); renderTeamHub(data); renderCoachCards(data); renderSchedule(data); renderTeamSchedules(data); renderRules(data); renderTopGames(data); renderSitemap(data); renderArchive(data); renderLegacy(data);
     linkTeamMentions(data);
