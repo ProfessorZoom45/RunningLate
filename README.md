@@ -16,7 +16,6 @@ Static GitHub Pages site for the Running Late Dynasty CFB 27 league hub.
 - `teams.html` - merged Team/User Hub with coach-card links, detailed team cards, conference board, and Open Teams / Waitlist status.
 - `schedule.html` - searchable 83-game user-vs-user schedule grouped by week.
 - `team-schedules.html` - individual user-game schedule slates by team, with full official schedules marked coming soon.
-- `rules.html` - public rule summary.
 - `history.html` - league history and CFB 26 to CFB 27 carryover context.
 - `media.html` - merged streams, clips, highlights, YouTube playlist, and collaborator invite center.
 - `archive.html` - database of past index splash covers and weekly issue images.

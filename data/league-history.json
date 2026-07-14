@@ -1812,16 +1812,6 @@
       "conference": true
     }
   ],
-  "rules": [
-    "Schedule every user game within 24 hours after advance.",
-    "Use a clear 2-hour max gaming window if no exact kickoff time is set.",
-    "Someone must stream, screen share, or record user games for admin review.",
-    "Forced loss and fair sim calls are admin-reviewed case by case.",
-    "CPU restarts should stay at zero unless there is proof or a strong reason.",
-    "No scoring over 100; chew clock when a game gets out of hand.",
-    "Check uniforms before kickoff to avoid dark-on-dark or white-on-white matchups.",
-    "Respect the opponent, the admins, and the league. Keep trash talk inside football."
-  ],
   "version": "launch-magazine-site",
   "brand": {
     "name": "Running Late Dynasty",
@@ -1864,12 +1854,6 @@
       "file": "schedule.html",
       "type": "Core",
       "summary": "Projected 83-game user-vs-user schedule grouped by week."
-    },
-    {
-      "title": "Rules",
-      "file": "rules.html",
-      "type": "League Ops",
-      "summary": "Public CFB 27 rulebook summary and enforcement reminders."
     },
     {
       "title": "History",
@@ -2196,7 +2180,7 @@
       {
         "kicker": "TOP STORY",
         "title": "Running Late Dynasty opens the CFB 27 Day 1 era",
-        "summary": "The new hub combines the old D1SN magazine structure with a cleaner live-dashboard layout for teams, schedules, rules, media, and archives.",
+        "summary": "The new hub combines the old D1SN magazine structure with a cleaner live-dashboard layout for teams, schedules, media, and archives.",
         "href": "history.html",
         "cta": "Read History"
       },
@@ -2254,11 +2238,6 @@
         "detail": "Weekly user games"
       },
       {
-        "label": "Rules",
-        "href": "rules.html",
-        "detail": "League standards"
-      },
-      {
         "label": "Media Center",
         "href": "media.html",
         "detail": "Streams, clips, and official playlist"
@@ -2289,11 +2268,6 @@
         "area": "Schedule",
         "edit": "data/league-history.json → schedule",
         "result": "Updates schedule page, user-game count, and featured games."
-      },
-      {
-        "area": "Rules",
-        "edit": "data/league-history.json → rules",
-        "result": "Updates rule cards without editing page HTML."
       }
     ]
   },
