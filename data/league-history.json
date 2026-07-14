@@ -2146,7 +2146,7 @@
     ],
     "signals": [
       {
-        "label": "Advance Signal",
+        "label": "Advance",
         "value": "48H",
         "status": "ON CLOCK",
         "tone": "red",
@@ -2154,7 +2154,7 @@
         "editKey": "dashboard.signals[0]"
       },
       {
-        "label": "Scheduling Signal",
+        "label": "Scheduling",
         "value": "24H",
         "status": "POST WINDOW",
         "tone": "gold",
@@ -2162,7 +2162,7 @@
         "editKey": "dashboard.signals[1]"
       },
       {
-        "label": "Stream Signal",
+        "label": "Stream",
         "value": "REC",
         "status": "REVIEW READY",
         "tone": "blue",
@@ -2170,7 +2170,7 @@
         "editKey": "dashboard.signals[2]"
       },
       {
-        "label": "GOTW Signal",
+        "label": "GOTW",
         "value": "WK 2",
         "status": "SELECTED 9-4",
         "tone": "green",
@@ -2178,7 +2178,7 @@
         "editKey": "dashboard.signals[3]"
       },
       {
-        "label": "Discord Signal",
+        "label": "Discord",
         "value": "LIVE",
         "status": "JOINABLE",
         "tone": "discord",

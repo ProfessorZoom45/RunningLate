@@ -507,6 +507,7 @@
       root.innerHTML = result + jumper + (ordered.map(w => `
         <section id="schedule-${slug(w)}" class="week-block reveal"><div class="week-head"><h3>${esc(w)}</h3><span class="chip chip--gold">${groups[w].length} user games</span></div>
         <div class="match-grid">${groups[w].map(g=>matchCard(g,data)).join('')}</div></section>`).join('') || '<p class="lead">No games match that filter.</p>');
+      linkTeamMentions(data, root);
       observe();
     };
     if(weekFilter){
@@ -748,16 +749,19 @@
     document.body.appendChild(nav);
   }
   function observe(){
-    linkTexasMentions();
     const items = $$('.reveal:not(.is-visible)');
     if(!('IntersectionObserver' in window)){ items.forEach(x=>x.classList.add('is-visible')); return; }
     const io = new IntersectionObserver(entries => entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }}), {threshold:.08});
     items.forEach(x=>io.observe(x));
   }
-  function linkTexasMentions(root=document.body){
-    if(!root) return;
+  function linkTeamMentions(data, root=document.body){
+    if(!root || !['hub','schedule'].includes(document.body.dataset.page || '')) return;
+    const teams = (data.teams || []).filter(t => t.school).slice().sort((a,b) => b.school.length - a.school.length);
+    if(!teams.length) return;
+    const byName = new Map(teams.map(t => [String(t.school).toLowerCase(), t]));
     const skipSelector = 'a,script,style,textarea,input,select,option,.audio-player,.available-card,.ai-controlled-teams';
-    const rx = /\bTexas\b(?!\s*(?:A&M|Tech))/gi;
+    const escaped = teams.map(t => String(t.school).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    const rx = new RegExp(`\\b(?:${escaped.join('|')})\\b`, 'gi');
     const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
       acceptNode(node){
         const parent = node.parentElement;
@@ -775,9 +779,12 @@
       let last = 0, match;
       while((match = rx.exec(text))){
         if(match.index > last) frag.append(document.createTextNode(text.slice(last, match.index)));
+        const team = byName.get(match[0].toLowerCase());
         const a = document.createElement('a');
-        a.className = 'texas-team-link';
-        a.href = 'teams.html#hub-team-texas';
+        a.className = 'team-mention-link';
+        a.href = `teams.html#hub-team-${slug(team?.school || match[0])}`;
+        a.style.setProperty('--team-primary', team?.primary || '#bf5700');
+        a.style.setProperty('--team-accent', team?.accent || '#7a3300');
         a.textContent = match[0];
         frag.append(a);
         last = match.index + match[0].length;
@@ -804,6 +811,7 @@
     const data = await loadData();
     renderStats(data); renderScorebug(data); renderStatusText(data); renderCoverLines(data); renderHeadlines(data); renderSignals(data); renderWatchlist(data); renderFeaturedGames(data); renderUpdateGuide(data);
     renderSettings(data); renderLeagueHealth(data); renderOpenTeams(data); renderConferenceCards(data); renderTimeline(data); renderTeams(data); renderTeamHub(data); renderCoachCards(data); renderSchedule(data); renderTeamSchedules(data); renderRules(data); renderTopGames(data); renderSitemap(data); renderArchive(data); renderLegacy(data);
+    linkTeamMentions(data);
     observe();
   }
   document.addEventListener('DOMContentLoaded', init);

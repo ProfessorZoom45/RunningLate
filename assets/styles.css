@@ -167,8 +167,8 @@ h1,h2,h3,.hero-title,.panel-header h2,.lead-story h1{letter-spacing:0}
 .splash-archive-card__body{padding:1rem}
 .splash-archive-card__body h2{margin:.65rem 0 .4rem;text-transform:uppercase;line-height:1}
 .splash-archive-card__body p{margin:.2rem 0 .8rem;color:#d8d1c3;font-weight:750}
-.texas-team-link{display:inline-flex;align-items:center;color:#fff;background:linear-gradient(135deg,#bf5700,#7a3300);border:1px solid rgba(255,226,138,.5);border-radius:999px;padding:.02rem .38rem;margin:0 .08rem;font-weight:1000;text-decoration:none;box-shadow:0 0 0 1px rgba(0,0,0,.18)}
-.texas-team-link:hover{filter:brightness(1.12);transform:translateY(-1px)}
+.team-mention-link{display:inline-flex;align-items:center;color:#fff;background:linear-gradient(135deg,var(--team-primary,#bf5700),var(--team-accent,#7a3300));border:1px solid color-mix(in srgb,var(--team-accent,#ffe28a) 58%,white);border-radius:999px;padding:.02rem .38rem;margin:0 .08rem;font-weight:1000;text-decoration:none;box-shadow:0 0 0 1px rgba(0,0,0,.18)}
+.team-mention-link:hover{filter:brightness(1.14);transform:translateY(-1px)}
 .btn--profile{margin-top:.9rem;width:100%;border-radius:12px}.btn--schedule{margin-top:.55rem;background:linear-gradient(135deg,rgba(194,24,32,.95),rgba(107,12,18,.95));color:#fff;border-color:rgba(255,226,138,.28)}
 .coach-field a{color:var(--gold2);font-weight:1000;text-decoration:underline;text-underline-offset:3px}
 .social-links{display:flex;flex-wrap:wrap;gap:.38rem}
