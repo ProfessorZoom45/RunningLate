@@ -1,6 +1,24 @@
 (function(){
   const DISCORD = 'https://discord.gg/8sXA2RQPnm';
-  const LIVE_SHEET_ID = '1y1H-IfZk5Ry1A91-CuiSP2TdHBy_vMHp7-eEfF4BPXQ';
+  const POLL_CHANNEL = 'https://discord.com/channels/1382826467683205180/1407980310158905448';
+  const RUNNING_LATE_FEED = {
+    recentUserGames: [
+      { winner:'Florida State', winnerScore:31, loser:'SMU', loserScore:27, label:'Conference result' },
+      { winner:'LSU', winnerScore:14, loser:'Clemson', loserScore:3, label:'Week 1 GOTW' }
+    ],
+    topTen: [
+      { rank:1, team:'Ohio State', user:'zig8875' },
+      { rank:2, team:'Oregon', user:'rainey84480' },
+      { rank:3, team:'Notre Dame', user:'malepatternballedness' },
+      { rank:4, team:'Georgia', user:'mikecmd_856' },
+      { rank:5, team:'Indiana', user:'grinch_is_here' },
+      { rank:6, team:'Miami', user:'lakedogg32' },
+      { rank:7, team:'Texas', user:'jrob9179' },
+      { rank:8, team:'Texas A&M', user:'selfmadezay.' },
+      { rank:9, team:'Ole Miss', user:'grody365' },
+      { rank:10, team:'Oklahoma', user:'tweetybirrrd' }
+    ]
+  };
   const $ = (sel, root=document) => root.querySelector(sel);
   const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
   const state = { data: window.RLD_DATA || null };
@@ -171,174 +189,49 @@
     }
     return state.data;
   }
-  function sheetCellValue(cell){
-    if(!cell) return '';
-    return String(cell.f ?? cell.v ?? '').trim();
-  }
-  function loadLiveSheet(sheetName){
-    return new Promise((resolve, reject) => {
-      const callbackName = `runningLateSheet_${Date.now()}_${Math.random().toString(36).slice(2)}`;
-      const script = document.createElement('script');
-      let settled = false;
-      const finish = (fn, value) => {
-        if(settled) return;
-        settled = true;
-        clearTimeout(timer);
-        script.remove();
-        try{ delete window[callbackName]; }catch(_){ window[callbackName] = undefined; }
-        fn(value);
-      };
-      window[callbackName] = payload => {
-        if(payload?.status === 'ok') finish(resolve, payload);
-        else finish(reject, new Error('Spreadsheet returned a non-OK response.'));
-      };
-      script.onerror = () => finish(reject, new Error('Spreadsheet script could not be loaded.'));
-      script.src = `https://docs.google.com/spreadsheets/d/${LIVE_SHEET_ID}/gviz/tq?sheet=${encodeURIComponent(sheetName)}&tqx=responseHandler:${callbackName}&_=${Date.now()}`;
-      const timer = setTimeout(() => finish(reject, new Error('Spreadsheet request timed out.')), 8000);
-      document.head.append(script);
-    });
-  }
-  async function liveDashboardStatus(){
-    const payload = await loadLiveSheet('Dashboard');
-    const rows = (payload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
-    const compact = value => String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, '');
-    const seasonRow = rows.find(row => compact(row[0]) === 'seasonyear') || [];
-    const contextRow = rows.find(row => compact(row[0]) === 'currentweekuserreadycpuresults') || [];
-    const context = contextRow.find((value, index) => index > 0 && value) || '';
-    const contextMatch = context.match(/Season\s+(.+?)\s*\|\s*(Week\s+[^|]+)/i);
-    const seasonLabel = contextMatch?.[1]?.trim() || seasonRow[1] || '';
-    const dynastyYear = seasonRow[3] || '';
-    const season = seasonLabel && dynastyYear && !seasonLabel.includes(dynastyYear)
-      ? `${seasonLabel} (${dynastyYear})`
-      : seasonLabel;
-    const week = contextMatch?.[2]?.trim() || '';
-    if(!season || !week) throw new Error('Live season or week was not found on the Dashboard tab.');
-    return {season, week};
-  }
-  function gameResultRecap(game){
-    const awayWon = game.winner.toLowerCase() === game.away.toLowerCase() || game.awayScore > game.homeScore;
-    const winningTeam = awayWon ? game.away : game.home;
-    const losingTeam = awayWon ? game.home : game.away;
-    const winningUser = awayWon ? game.awayUser : game.homeUser;
-    const winningScore = awayWon ? game.awayScore : game.homeScore;
-    const losingScore = awayWon ? game.homeScore : game.awayScore;
-    const margin = Math.abs(winningScore - losingScore);
-    const verb = margin <= 3 ? 'survived' : margin <= 7 ? 'edged' : margin <= 14 ? 'beat' : margin <= 24 ? 'handled' : 'rolled past';
-    const owner = game.isUser && winningUser && winningUser.toLowerCase() !== 'cpu' ? `${winningUser}'s ` : '';
-    const type = game.isUser ? 'USER vs USER' : 'USER vs CPU';
-    return `FINAL — ${owner}${winningTeam} ${verb} ${losingTeam}, ${winningScore}-${losingScore} (${game.week}, ${type}).`;
-  }
-  async function liveGameResults(){
-    const [resultsPayload, schedulePayload, gotwHistoryPayload] = await Promise.all([
-      loadLiveSheet('Game Results'),
-      loadLiveSheet('Schedule'),
-      loadLiveSheet('GOTW History')
-    ]);
-    const resultRows = (resultsPayload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
-    const scheduleRows = (schedulePayload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
-    const gotwHistoryRows = (gotwHistoryPayload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
-    const humanUser = value => Boolean(String(value || '').trim()) && !/^(cpu|cpu team|computer|ai)$/i.test(String(value).trim());
-    const classify = (gameType, awayUser, homeUser) => (/user/i.test(gameType) && !/cpu/i.test(gameType)) || (humanUser(awayUser) && humanUser(homeUser));
-    const games = resultRows.map(row => {
-      const awayScore = Number(row[5]);
-      const homeScore = Number(row[8]);
-      const awayUser = row[4] || '';
-      const homeUser = row[7] || '';
-      const gameType = row[2] || '';
-      return {
-        season: row[0] || '', week: row[1] || 'Week ?', gameType,
-        away: row[3] || '', awayUser, awayScore,
-        home: row[6] || '', homeUser, homeScore,
-        winner: row[9] || '', loser: row[10] || '',
-        conference: row[11] || '', overtime: row[12] || '', notes: row[13] || '',
-        createdAt: row[19] || '',
-        isUser: classify(gameType, awayUser, homeUser)
-      };
-    }).concat(scheduleRows.map(row => {
-      const awayScore = row[9] === '' ? NaN : Number(row[9]);
-      const homeScore = row[10] === '' ? NaN : Number(row[10]);
-      const awayUser = row[5] || '';
-      const homeUser = row[7] || '';
-      const gameType = row[3] || '';
-      return {
-        season: row[1] || '', week: row[2] || 'Week ?', gameType,
-        away: row[4] || '', awayUser, awayScore,
-        home: row[6] || '', homeUser, homeScore,
-        winner: row[11] || '', loser: '', conference: '', overtime: '', notes: row[14] || '',
-        createdAt: row[16] || row[15] || '',
-        isUser: classify(gameType, awayUser, homeUser)
-      };
-    })).concat(gotwHistoryRows.map(row => {
-      const away = row[3] || '';
-      const home = row[5] || '';
-      const note = row[23] || '';
-      const score = String(note).match(/Final:\s*(.+?)\s+(\d+),\s*(.+?)\s+(\d+)/i);
-      const scoreFor = team => {
-        if(!score) return NaN;
-        const target = String(team).toLowerCase();
-        const first = score[1].toLowerCase();
-        const second = score[3].toLowerCase();
-        if(target.startsWith(first) || first.startsWith(target)) return Number(score[2]);
-        if(target.startsWith(second) || second.startsWith(target)) return Number(score[4]);
-        return NaN;
-      };
-      return {
-        season: row[1] || '', week: row[2] || 'Week ?', gameType: 'User vs User',
-        away, awayUser: row[4] || '', awayScore: scoreFor(away),
-        home, homeUser: row[6] || '', homeScore: scoreFor(home),
-        winner: row[14] || '', loser: '', conference: '', overtime: '', notes: note,
-        createdAt: row[21] || '', isUser: true
-      };
-    })).filter(game => game.away && game.home && Number.isFinite(game.awayScore) && Number.isFinite(game.homeScore));
-    const byGame = new Map();
-    games.forEach(game => {
-      const key = `${game.season}|${game.week}|${game.away}|${game.home}`.toLowerCase();
-      if(!byGame.has(key)) byGame.set(key, game);
-    });
-    const uniqueGames = [...byGame.values()];
-    uniqueGames.sort((a,b) => Number(b.isUser) - Number(a.isUser)
-      || String(b.createdAt).localeCompare(String(a.createdAt))
-      || weekNumber(b.week) - weekNumber(a.week));
-    return uniqueGames;
-  }
-  function renderLiveSeasonWeek(status){
-    const text = status ? `${status.season} - Current Week: ${status.week}` : 'Live season status unavailable';
-    $$('[data-render="live-season-week"]').forEach(el => { el.textContent = text; });
-  }
-  function renderLiveGameResults(recaps){
-    $$('[data-render="live-game-results"]').forEach(el => {
-      if(!recaps?.length){ el.textContent = 'No completed game results are available yet.'; return; }
-      const frag = document.createDocumentFragment();
-      recaps.forEach(recap => {
-        const span = document.createElement('span');
-        span.className = 'ticker__result';
-        span.textContent = recap;
-        frag.append(span);
-      });
-      el.replaceWith(frag);
-    });
-  }
-  function renderGameResultsPage(games){
-    const root = $('[data-render="game-results-page"]');
-    if(!root) return;
-    const userGames = games.filter(game => game.isUser);
-    const cpuGames = games.filter(game => !game.isUser);
-    $('[data-render="result-total"]')?.replaceChildren(document.createTextNode(String(games.length)));
-    $('[data-render="result-user-total"]')?.replaceChildren(document.createTextNode(String(userGames.length)));
-    $('[data-render="result-cpu-total"]')?.replaceChildren(document.createTextNode(String(cpuGames.length)));
-    const gameCard = game => {
-      const awayWon = game.winner.toLowerCase() === game.away.toLowerCase() || game.awayScore > game.homeScore;
-      return `<article class="result-card reveal ${game.isUser ? 'result-card--user' : ''}">
-        <div class="result-card__head"><span class="game-kind ${game.isUser ? '' : 'game-kind--non'}">${game.isUser ? 'USER vs USER' : 'USER vs CPU'}</span><b>FINAL</b></div>
-        <div class="result-team ${awayWon ? 'is-winner' : ''}"><span><strong>${esc(game.away)}</strong><small>${esc(game.awayUser || 'CPU')}</small></span><b>${game.awayScore}</b></div>
-        <div class="result-team ${awayWon ? '' : 'is-winner'}"><span><strong>${esc(game.home)}</strong><small>${esc(game.homeUser || 'CPU')}</small></span><b>${game.homeScore}</b></div>
-        <p class="result-recap">${esc(gameResultRecap(game))}</p>
-      </article>`;
-    };
-    const section = (title, subtitle, list) => `<section class="result-section"><div class="result-section__head"><div><span class="eyebrow">${esc(subtitle)}</span><h2>${esc(title)}</h2></div><strong>${list.length} FINAL${list.length === 1 ? '' : 'S'}</strong></div>${list.length ? `<div class="result-grid">${list.map(gameCard).join('')}</div>` : '<div class="result-empty">No completed games are logged in this category yet.</div>'}</section>`;
-    root.innerHTML = section('User vs User Results', 'Priority Results', userGames) + section('User vs CPU Results', 'All Other Finals', cpuGames);
-  }
   function esc(v){ return String(v ?? '').replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s])); }
+  function mountRunningLateFeed(){
+    const ticker = $('.ticker');
+    if(ticker){
+      const label = $('.ticker__label', ticker);
+      const track = $('.ticker__track', ticker);
+      if(label){
+        label.href = POLL_CHANNEL;
+        label.target = '_blank';
+        label.rel = 'noopener';
+        label.setAttribute('aria-label','Open the Running Late Discord poll channel');
+      }
+      if(track){
+        const games = RUNNING_LATE_FEED.recentUserGames.map(game =>
+          `<span><b>${esc(game.label)}:</b> ${esc(game.winner)} ${esc(game.winnerScore)}–${esc(game.loserScore)} ${esc(game.loser)}</span>`
+        ).join('');
+        const ranked = RUNNING_LATE_FEED.topTen.map(entry =>
+          `<span class="ticker-rank"><b>#${esc(entry.rank)} ${esc(entry.team)}</b> — ${esc(entry.user)}</span>`
+        ).join('');
+        track.innerHTML = `<span class="ticker-poll"><a href="${POLL_CHANNEL}" target="_blank" rel="noopener">Vote &amp; follow official polls in the Discord Poll Channel</a></span>${games}${ranked}`;
+      }
+    }
+
+    const board = $('[data-render="running-late-feed"]');
+    if(!board) return;
+    board.innerHTML = `
+      <article class="feed-card feed-card--poll">
+        <span class="eyebrow">Official Discord Polls</span>
+        <h2>League voting lives in the Poll Channel</h2>
+        <p>Open nominations, GOTW selections, prediction polls, and official poll results from one direct channel.</p>
+        <a class="btn btn--red" href="${POLL_CHANNEL}" target="_blank" rel="noopener">Open Poll Channel</a>
+      </article>
+      <article class="feed-card">
+        <span class="eyebrow">Recent User vs. User Results</span>
+        <div class="feed-results">${RUNNING_LATE_FEED.recentUserGames.map(game => `
+          <div><small>${esc(game.label)}</small><strong>${esc(game.winner)} ${esc(game.winnerScore)}–${esc(game.loserScore)} ${esc(game.loser)}</strong></div>`).join('')}</div>
+      </article>
+      <article class="feed-card feed-card--rankings">
+        <span class="eyebrow">Top-10 Ranked Users</span>
+        <ol>${RUNNING_LATE_FEED.topTen.map(entry => `
+          <li><b>#${esc(entry.rank)}</b><span><strong>${esc(entry.user)}</strong><small>${esc(entry.team)}</small></span></li>`).join('')}</ol>
+      </article>`;
+  }
   function weekNumber(w){ const m=String(w).match(/\d+/); return m?Number(m[0]):999; }
   function slug(v){ return String(v||'section').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') || 'section'; }
   function byWeek(schedule){ return schedule.reduce((acc,g)=>{(acc[g.week] ||= []).push(g); return acc;},{}); }
@@ -420,11 +313,11 @@
     const items = data.dashboard?.scorebar || [];
     root.innerHTML = `<div class="scorebug-brand"><b>RLD</b><span>CFB 27 NOW</span></div>` + items.map(x=>`<div class="scorebug-item"><span>${esc(x.label)}</span><b>${esc(x.value)}</b></div>`).join('') + `<a class="scorebug-link" href="${DISCORD}" target="_blank" rel="noopener">Discord</a>`;
   }
-  function renderStatusText(data, liveStatus){
+  function renderStatusText(data){
     const s = data.dashboard?.status || {};
     const set = (sel,val) => { const el=$(sel); if(el) el.textContent = val || ''; };
     set('[data-render="status-label"]', s.leagueState || 'LIVE');
-    set('[data-render="current-week"]', liveStatus?.week || 'Live week unavailable');
+    set('[data-render="current-week"]', s.currentWeek || 'Week TBD');
     set('[data-render="next-advance"]', s.nextAdvance || 'Advance TBD');
   }
   function renderCoverLines(data){
@@ -451,6 +344,37 @@
     if(rail) rail.innerHTML = all.slice(0,4).map((s,i)=>signalMarkup(s,i,true)).join('');
     if(cards) cards.innerHTML = all.map((s,i)=>signalMarkup(s,i,false)).join('');
   }
+  function renderGotwPreview(data){
+    const root = $('[data-render="gotw-preview"]'), g = data.gotw;
+    if(!root || !g) return;
+    const runner = g.runnerUp || {};
+    root.innerHTML = `
+      <div class="gotw-preview__head">
+        <div><span class="eyebrow">${esc(g.displayWeek)} Preview</span><h2 id="gotw-preview-title">${esc(g.gotwId)}</h2><p>The league is currently in <strong>${esc(g.leagueCurrentWeek)}</strong>. This is the selected ${esc(g.displayWeek)} showcase; no prediction poll is active yet.</p></div>
+        <div class="gotw-status"><b>Official nomination poll closed</b><span>Prediction status: ${esc(g.predictionStatus)}</span></div>
+      </div>
+      <div class="gotw-matchup" aria-label="Selected Game of the Week matchup">
+        <div><span class="gotw-rank">#${esc(g.awayRank)}</span><strong>🌰 ${esc(g.awayTeam)}</strong><small>Away</small></div>
+        <span class="gotw-at">at</span>
+        <div><span class="gotw-rank">#${esc(g.homeRank)}</span><strong>🤘 ${esc(g.homeTeam)}</strong><small>Home</small></div>
+      </div>
+      <p class="gotw-result"><strong>Selected matchup:</strong> ${esc(g.awayTeam)} at ${esc(g.homeTeam)} won the ${esc(g.displayWeek)} nomination poll <b>${esc(g.winnerVotes)}–${esc(g.runnerUpVotes)}</b>.</p>
+      <div class="gotw-details">
+        <span><b>Total Votes</b>${esc(g.totalVotes)}</span>
+        <span><b>Runner-Up</b>#${esc(runner.awayRank)} ${esc(runner.awayTeam)} at #${esc(runner.homeRank)} ${esc(runner.homeTeam)}</span>
+        <span><b>Nomination</b>${esc(g.nominationStatus)}</span>
+        <span><b>Prediction</b>${esc(g.predictionStatus)}</span>
+      </div>
+      <div class="gotw-poll-meta"><span>Opened: ${esc(g.pollOpenedAt)}</span><span>Closed: ${esc(g.pollClosedAt)}</span><a class="btn" href="${esc(g.pollUrl)}" target="_blank" rel="noopener noreferrer">Official nomination poll</a></div>`;
+  }
+  function renderCommandDocs(data){
+    const root = $('[data-render="command-docs"]'), docs = data.discordCommands;
+    if(!root || !docs) return;
+    const commandChips = commands => commands.map(c=>`<code>${esc(c)}</code>`).join(' ');
+    root.innerHTML = `
+      <div class="glass-card"><h3>Rankings</h3><p class="command-names">${commandChips(docs.ranks.commands)}</p><p>${esc(docs.ranks.description)}</p><ol class="command-example">${docs.ranks.example.map(line=>`<li>${esc(line.replace(/^\d+\.\s*/,''))}</li>`).join('')}</ol><p>${esc(docs.ranks.note)}</p><p><strong>${esc(docs.ranks.omissionNotice)}</strong></p></div>
+      <div class="glass-card"><h3>Game of the Week</h3><p class="command-names">${commandChips(docs.gotw.commands)}</p><p>${esc(docs.gotw.description)}</p></div>`;
+  }
   function renderWatchlist(data){
     const root = $('[data-render="watchlist"]'); if(!root) return;
     root.innerHTML = (data.dashboard?.watchlist || []).map(x=>`<article class="watch-card"><b>${esc(x.rank)}</b><div><h3>${esc(x.title)}</h3><p>${esc(x.detail)}</p></div></article>`).join('');
@@ -471,12 +395,12 @@
     const root = $('[data-render="settings"]'); if(!root) return;
     root.innerHTML = (data.settings || []).map(s => `<article class="stat-card reveal"><span>${esc(s.label)}</span><strong>${esc(s.value)}</strong></article>`).join('');
   }
-  function renderLeagueHealth(completedUserGames=0){
+  function renderLeagueHealth(){
     const root = $('[data-render="league-health"]'); if(!root) return;
-    root.innerHTML = HEALTH_METRICS.map(([label,value,detail], index) => `
+    root.innerHTML = HEALTH_METRICS.map(([label,value,detail]) => `
       <article class="health-card reveal">
         <span>${esc(label)}</span>
-        <strong>${esc(index === 0 ? `${completedUserGames}/83` : value)}</strong>
+        <strong>${esc(value)}</strong>
         <p>${esc(detail)}</p>
       </article>`).join('');
   }
@@ -500,7 +424,7 @@
     root.innerHTML = Object.keys(groups).sort(confOrder).map(conf => `
       <article class="glass-card reveal">
         <div class="panel-header"><div><span class="eyebrow">${esc(conf)}</span></div></div>
-        <div class="chip-row">${groups[conf].map(t=>`<a class="chip conference-team-link" href="teams.html#hub-team-${slug(t.school)}" style="--team-primary:${esc(t.primary)};--team-accent:${esc(t.accent)}" aria-label="Open ${esc(cleanDisplay(t.school))} team hub">${esc(t.display)}</a>`).join('')}</div>
+        <div class="chip-row">${groups[conf].map(t=>`<span class="chip" style="--team-primary:${esc(t.primary)};border-color:${esc(t.primary)}66">${esc(t.display)}</span>`).join('')}</div>
       </article>`).join('');
   }
   function renderTimeline(data){
@@ -675,7 +599,6 @@
       root.innerHTML = result + jumper + (ordered.map(w => `
         <section id="schedule-${slug(w)}" class="week-block reveal"><div class="week-head"><h3>${esc(w)}</h3><span class="chip chip--gold">${groups[w].length} user games</span></div>
         <div class="match-grid">${groups[w].map(g=>matchCard(g,data)).join('')}</div></section>`).join('') || '<p class="lead">No games match that filter.</p>');
-      linkTeamMentions(data, root);
       observe();
     };
     if(weekFilter){
@@ -743,7 +666,8 @@
         </article>`}
       </div>
       <div class="team-schedule-card__footer">
-        <b>Full 2026 User-vs-User Schedule</b>
+        <b>Full 2026 Schedule</b>
+        <span>Official full team schedule and CPU games are coming soon. This page is built from the confirmed user-vs-user dynasty slate for now.</span>
       </div>
     </article>`;
   }
@@ -906,43 +830,27 @@
     const items = [
       ['hub','hub.html','&#127968;','Hub'],
       ['schedule','schedule.html','&#128197;','Schedule'],
-      ['results','results.html','&#127942;','Results'],
-      ['updates','updates.html','&#128293;','Updates'],
       ['teams','teams.html','&#127944;','Teams'],
+      ['updates','updates.html','&#128293;','Updates'],
       ['discord',DISCORD,'&#128172;','Discord']
     ];
     const nav = document.createElement('nav');
     nav.className = 'mobile-bottom-nav';
     nav.setAttribute('aria-label','Mobile navigation');
-    nav.innerHTML = items.map(([key,href,icon,label]) => `<a class="${activePage===key?'is-active':''}" href="${href}" ${key==='discord'?'target="_blank" rel="noopener"':''}><span>${icon}</span><b>${label}</b></a>`).join('') + '<button type="button" class="mobile-overlay-toggle" aria-pressed="false"><span>&#10005;</span><b>Hide</b></button>';
+    nav.innerHTML = items.map(([key,href,icon,label]) => `<a class="${activePage===key?'is-active':''}" href="${href}" ${key==='discord'?'target="_blank" rel="noopener"':''}><span>${icon}</span><b>${label}</b></a>`).join('');
     document.body.appendChild(nav);
-    const toggle = $('.mobile-overlay-toggle', nav);
-    const setOverlaysHidden = hidden => {
-      document.body.classList.toggle('mobile-overlays-hidden', hidden);
-      toggle.setAttribute('aria-pressed', hidden ? 'true' : 'false');
-      toggle.querySelector('span').innerHTML = hidden ? '&#8634;' : '&#10005;';
-      toggle.querySelector('b').textContent = hidden ? 'Show' : 'Hide';
-      try { localStorage.setItem('rldMobileOverlaysHidden', hidden ? '1' : '0'); } catch(e) {}
-    };
-    let hidden = false;
-    try { hidden = localStorage.getItem('rldMobileOverlaysHidden') === '1'; } catch(e) {}
-    setOverlaysHidden(hidden);
-    toggle.addEventListener('click', () => setOverlaysHidden(!document.body.classList.contains('mobile-overlays-hidden')));
   }
   function observe(){
+    linkTexasMentions();
     const items = $$('.reveal:not(.is-visible)');
     if(!('IntersectionObserver' in window)){ items.forEach(x=>x.classList.add('is-visible')); return; }
     const io = new IntersectionObserver(entries => entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }}), {threshold:.08});
     items.forEach(x=>io.observe(x));
   }
-  function linkTeamMentions(data, root=document.body){
-    if(!root || !['hub','schedule','results'].includes(document.body.dataset.page || '')) return;
-    const teams = (data.teams || []).filter(t => t.school).slice().sort((a,b) => b.school.length - a.school.length);
-    if(!teams.length) return;
-    const byName = new Map(teams.map(t => [String(t.school).toLowerCase(), t]));
+  function linkTexasMentions(root=document.body){
+    if(!root) return;
     const skipSelector = 'a,script,style,textarea,input,select,option,.audio-player,.available-card,.ai-controlled-teams';
-    const escaped = teams.map(t => String(t.school).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
-    const rx = new RegExp(`\\b(?:${escaped.join('|')})\\b`, 'gi');
+    const rx = /\bTexas\b(?!\s*(?:A&M|Tech))/gi;
     const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
       acceptNode(node){
         const parent = node.parentElement;
@@ -960,12 +868,9 @@
       let last = 0, match;
       while((match = rx.exec(text))){
         if(match.index > last) frag.append(document.createTextNode(text.slice(last, match.index)));
-        const team = byName.get(match[0].toLowerCase());
         const a = document.createElement('a');
-        a.className = 'team-mention-link';
-        a.href = `teams.html#hub-team-${slug(team?.school || match[0])}`;
-        a.style.setProperty('--team-primary', team?.primary || '#bf5700');
-        a.style.setProperty('--team-accent', team?.accent || '#7a3300');
+        a.className = 'texas-team-link';
+        a.href = 'teams.html#hub-team-texas';
         a.textContent = match[0];
         frag.append(a);
         last = match.index + match[0].length;
@@ -988,35 +893,10 @@
     setTimeout(()=>{ location.href='hub.html'; }, 30200);
   }
   async function init(){
-    wireNav(); wireMobileBottomNav(); mountAudioPlayer(); wireSplash();
+    wireNav(); wireMobileBottomNav(); mountAudioPlayer(); wireSplash(); mountRunningLateFeed();
     const data = await loadData();
-    const [statusResult, gameResultsResult] = await Promise.allSettled([
-      liveDashboardStatus(),
-      liveGameResults()
-    ]);
-    const liveStatus = statusResult.status === 'fulfilled' ? statusResult.value : null;
-    const liveGames = gameResultsResult.status === 'fulfilled' ? gameResultsResult.value : [];
-    const liveRecaps = liveGames.slice(0, 3).map(gameResultRecap);
-    if(liveStatus){
-      data.season ||= {};
-      data.season.label = liveStatus.season;
-      data.season.currentWeek = liveStatus.week;
-      data.dashboard ||= {};
-      data.dashboard.status ||= {};
-      data.dashboard.status.currentWeek = liveStatus.week;
-    }else{
-      console.warn('Live spreadsheet season/week could not be loaded.', statusResult.reason);
-      data.dashboard ||= {};
-      data.dashboard.status ||= {};
-      data.dashboard.status.currentWeek = 'Live week unavailable';
-    }
-    if(gameResultsResult.status === 'rejected') console.warn('Live spreadsheet game results could not be loaded.', gameResultsResult.reason);
-    renderLiveSeasonWeek(liveStatus);
-    renderLiveGameResults(liveRecaps);
-    renderGameResultsPage(liveGames);
-    renderStats(data); renderScorebug(data); renderStatusText(data, liveStatus); renderCoverLines(data); renderHeadlines(data); renderSignals(data); renderWatchlist(data); renderFeaturedGames(data); renderUpdateGuide(data);
-    renderSettings(data); renderLeagueHealth(liveGames.filter(game => game.isUser).length); renderOpenTeams(data); renderConferenceCards(data); renderTimeline(data); renderTeams(data); renderTeamHub(data); renderCoachCards(data); renderSchedule(data); renderTeamSchedules(data); renderRules(data); renderTopGames(data); renderSitemap(data); renderArchive(data); renderLegacy(data);
-    linkTeamMentions(data);
+    renderStats(data); renderScorebug(data); renderStatusText(data); renderCoverLines(data); renderHeadlines(data); renderSignals(data); renderGotwPreview(data); renderCommandDocs(data); renderWatchlist(data); renderFeaturedGames(data); renderUpdateGuide(data);
+    renderSettings(data); renderLeagueHealth(data); renderOpenTeams(data); renderConferenceCards(data); renderTimeline(data); renderTeams(data); renderTeamHub(data); renderCoachCards(data); renderSchedule(data); renderTeamSchedules(data); renderRules(data); renderTopGames(data); renderSitemap(data); renderArchive(data); renderLegacy(data);
     observe();
   }
   document.addEventListener('DOMContentLoaded', init);

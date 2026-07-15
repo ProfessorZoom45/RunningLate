@@ -1,4 +1,4 @@
-window.RLD_DATA = {
+﻿window.RLD_DATA = {
   "generated_at": "2026-07-12T18:18:30.411Z",
   "settings": [
     {
@@ -47,7 +47,7 @@ window.RLD_DATA = {
     },
     {
       "label": "Current Week",
-      "value": "Week 0"
+      "value": "Week 1"
     },
     {
       "label": "User Games",
@@ -63,16 +63,6 @@ window.RLD_DATA = {
     }
   ],
   "timeline": [
-    {
-      "date": "2026-07-12",
-      "title": "Dynasty Advances to Week 1",
-      "detail": "The dynasty advances to Week 1. First USER-VS-USER Game of the Week: ⚪ Clemson Tigers (tigerz009) 🆚 ⚪ LSU Tigers (bignutt195). Final Score: 🏆 LSU 14, 🐅 Clemson 3."
-    },
-    {
-      "date": "2026-07-10",
-      "title": "Dynasty Advances to Week 0",
-      "detail": "The dynasty advances to Week 0, and the first USER-VS-CPU games in the Running Late CFB 27 Dynasty are played."
-    },
     {
       "date": "2026-07-07",
       "title": "Day 1 Launch",
@@ -1822,6 +1812,16 @@ window.RLD_DATA = {
       "conference": true
     }
   ],
+  "rules": [
+    "Schedule every user game within 24 hours after advance.",
+    "Use a clear 2-hour max gaming window if no exact kickoff time is set.",
+    "Someone must stream, screen share, or record user games for admin review.",
+    "Forced loss and fair sim calls are admin-reviewed case by case.",
+    "CPU restarts should stay at zero unless there is proof or a strong reason.",
+    "No scoring over 100; chew clock when a game gets out of hand.",
+    "Check uniforms before kickoff to avoid dark-on-dark or white-on-white matchups.",
+    "Respect the opponent, the admins, and the league. Keep trash talk inside football."
+  ],
   "version": "launch-magazine-site",
   "brand": {
     "name": "Running Late Dynasty",
@@ -1864,6 +1864,12 @@ window.RLD_DATA = {
       "file": "schedule.html",
       "type": "Core",
       "summary": "Projected 83-game user-vs-user schedule grouped by week."
+    },
+    {
+      "title": "Rules",
+      "file": "rules.html",
+      "type": "League Ops",
+      "summary": "Public CFB 27 rulebook summary and enforcement reminders."
     },
     {
       "title": "History",
@@ -2087,10 +2093,42 @@ window.RLD_DATA = {
     "Year 1 (2026) Week 0 hub is ready for weekly league updates.",
     "Coach cards use public profile fields and can be expanded as users submit details."
   ],
+  "gotw": {
+    "gotwId": "GOTW-2026-WK2",
+    "displayWeek": "Week 2",
+    "leagueCurrentWeek": "Week 1",
+    "awayTeam": "Ohio State",
+    "homeTeam": "Texas",
+    "awayRank": 1,
+    "homeRank": 7,
+    "winnerVotes": 9,
+    "runnerUpVotes": 4,
+    "totalVotes": 13,
+    "nominationStatus": "Closed — selected matchup",
+    "predictionStatus": "Pending — no prediction poll is active",
+    "runnerUp": {"awayTeam": "Oklahoma", "homeTeam": "Michigan", "awayRank": 10, "homeRank": 14},
+    "pollUrl": "https://discord.com/channels/1382826467683205180/1407980310158905448/1525926318334808195",
+    "pollMessageId": "1525926318334808195",
+    "pollOpenedAt": "July 12, 2026 at 2:06:24 PM EDT",
+    "pollClosedAt": "July 13, 2026 at 2:06:24 PM EDT"
+  },
+  "discordCommands": {
+    "ranks": {
+      "commands": ["!ranks", "/ranks"],
+      "description": "Displays the current identified teams from the live RUNNING LATE DYNASTY TOP-25 Poll in original numeric ranking order.",
+      "example": ["1. 🌰 Ohio State Buckeyes", "2. 🦆 Oregon Ducks"],
+      "note": "Unidentified CPU-controlled schools are omitted without renumbering the remaining teams.",
+      "omissionNotice": "Unidentified CPU ranks omitted: 18, 19, 24."
+    },
+    "gotw": {
+      "commands": ["!gotw", "/gotw"],
+      "description": "Displays the current GOTW ID, ranked matchup, nomination result, runner-up, and prediction status."
+    }
+  },
   "dashboard": {
     "status": {
       "leagueState": "YEAR 1",
-      "currentWeek": "Week 0",
+      "currentWeek": "Week 1",
       "nextAdvance": "Sunday @ NOON EST",
       "updateLabel": "Week 0 launch board",
       "editorNote": "Year 1 (2026) Week 0 hub is ready for weekly league updates.",
@@ -2146,7 +2184,7 @@ window.RLD_DATA = {
     ],
     "signals": [
       {
-        "label": "Advance",
+        "label": "Advance Signal",
         "value": "48H",
         "status": "ON CLOCK",
         "tone": "red",
@@ -2154,7 +2192,7 @@ window.RLD_DATA = {
         "editKey": "dashboard.signals[0]"
       },
       {
-        "label": "Scheduling",
+        "label": "Scheduling Signal",
         "value": "24H",
         "status": "POST WINDOW",
         "tone": "gold",
@@ -2162,7 +2200,7 @@ window.RLD_DATA = {
         "editKey": "dashboard.signals[1]"
       },
       {
-        "label": "Stream",
+        "label": "Stream Signal",
         "value": "REC",
         "status": "REVIEW READY",
         "tone": "blue",
@@ -2170,15 +2208,15 @@ window.RLD_DATA = {
         "editKey": "dashboard.signals[2]"
       },
       {
-        "label": "GOTW",
+        "label": "GOTW Signal",
         "value": "WK 2",
-        "status": "SELECTED 9-4",
+        "status": "SELECTED 9–4",
         "tone": "green",
         "detail": "#1 Ohio State (1-0) at #7 Texas (0-0). Nomination closed with 13 votes; prediction voting has not started.",
         "editKey": "dashboard.signals[3]"
       },
       {
-        "label": "Discord",
+        "label": "Discord Signal",
         "value": "LIVE",
         "status": "JOINABLE",
         "tone": "discord",
@@ -2190,7 +2228,7 @@ window.RLD_DATA = {
       {
         "kicker": "TOP STORY",
         "title": "Running Late Dynasty opens the CFB 27 Day 1 era",
-        "summary": "The new hub combines the old D1SN magazine structure with a cleaner live-dashboard layout for teams, schedules, media, and archives.",
+        "summary": "The new hub combines the old D1SN magazine structure with a cleaner live-dashboard layout for teams, schedules, rules, media, and archives.",
         "href": "history.html",
         "cta": "Read History"
       },
@@ -2248,6 +2286,11 @@ window.RLD_DATA = {
         "detail": "Weekly user games"
       },
       {
+        "label": "Rules",
+        "href": "rules.html",
+        "detail": "League standards"
+      },
+      {
         "label": "Media Center",
         "href": "media.html",
         "detail": "Streams, clips, and official playlist"
@@ -2278,15 +2321,21 @@ window.RLD_DATA = {
         "area": "Schedule",
         "edit": "data/league-history.json → schedule",
         "result": "Updates schedule page, user-game count, and featured games."
+      },
+      {
+        "area": "Rules",
+        "edit": "data/league-history.json → rules",
+        "result": "Updates rule cards without editing page HTML."
       }
     ]
   },
   "season": {
     "year": "2026",
     "label": "Year 1",
-    "currentWeek": "Week 0",
-    "phase": "Preseason",
+    "currentWeek": "Week 1",
+    "phase": "Regular Season",
     "advanceCycle": "48H",
     "nextAdvance": "Sunday @ NOON EST"
   }
-};
+}
+;
