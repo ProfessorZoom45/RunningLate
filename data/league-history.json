@@ -47,7 +47,7 @@
     },
     {
       "label": "Current Week",
-      "value": "Week 0"
+      "value": "Week 1"
     },
     {
       "label": "User Games",
@@ -2093,10 +2093,42 @@
     "Year 1 (2026) Week 0 hub is ready for weekly league updates.",
     "Coach cards use public profile fields and can be expanded as users submit details."
   ],
+  "gotw": {
+    "gotwId": "GOTW-2026-WK2",
+    "displayWeek": "Week 2",
+    "leagueCurrentWeek": "Week 1",
+    "awayTeam": "Ohio State",
+    "homeTeam": "Texas",
+    "awayRank": 1,
+    "homeRank": 7,
+    "winnerVotes": 9,
+    "runnerUpVotes": 4,
+    "totalVotes": 13,
+    "nominationStatus": "Closed — selected matchup",
+    "predictionStatus": "Pending — no prediction poll is active",
+    "runnerUp": {"awayTeam": "Oklahoma", "homeTeam": "Michigan", "awayRank": 10, "homeRank": 14},
+    "pollUrl": "https://discord.com/channels/1382826467683205180/1407980310158905448/1525926318334808195",
+    "pollMessageId": "1525926318334808195",
+    "pollOpenedAt": "July 12, 2026 at 2:06:24 PM EDT",
+    "pollClosedAt": "July 13, 2026 at 2:06:24 PM EDT"
+  },
+  "discordCommands": {
+    "ranks": {
+      "commands": ["!ranks", "/ranks"],
+      "description": "Displays the current identified teams from the live RUNNING LATE DYNASTY TOP-25 Poll in original numeric ranking order.",
+      "example": ["1. 🌰 Ohio State Buckeyes", "2. 🦆 Oregon Ducks"],
+      "note": "Unidentified CPU-controlled schools are omitted without renumbering the remaining teams.",
+      "omissionNotice": "Unidentified CPU ranks omitted: 18, 19, 24."
+    },
+    "gotw": {
+      "commands": ["!gotw", "/gotw"],
+      "description": "Displays the current GOTW ID, ranked matchup, nomination result, runner-up, and prediction status."
+    }
+  },
   "dashboard": {
     "status": {
       "leagueState": "YEAR 1",
-      "currentWeek": "Week 0",
+      "currentWeek": "Week 1",
       "nextAdvance": "Sunday @ NOON EST",
       "updateLabel": "Week 0 launch board",
       "editorNote": "Year 1 (2026) Week 0 hub is ready for weekly league updates.",
@@ -2177,10 +2209,10 @@
       },
       {
         "label": "GOTW Signal",
-        "value": "TBD",
-        "status": "VOTE SLOT",
+        "value": "WK 2",
+        "status": "SELECTED 9–4",
         "tone": "green",
-        "detail": "Use this slot for Game of the Week voting and boost announcements.",
+        "detail": "#1 Ohio State (1-0) at #7 Texas (0-0). Nomination closed with 13 votes; prediction voting has not started.",
         "editKey": "dashboard.signals[3]"
       },
       {
@@ -2300,8 +2332,8 @@
   "season": {
     "year": "2026",
     "label": "Year 1",
-    "currentWeek": "Week 0",
-    "phase": "Preseason",
+    "currentWeek": "Week 1",
+    "phase": "Regular Season",
     "advanceCycle": "48H",
     "nextAdvance": "Sunday @ NOON EST"
   }

@@ -1,5 +1,24 @@
 (function(){
   const DISCORD = 'https://discord.gg/8sXA2RQPnm';
+  const POLL_CHANNEL = 'https://discord.com/channels/1382826467683205180/1407980310158905448';
+  const RUNNING_LATE_FEED = {
+    recentUserGames: [
+      { winner:'Florida State', winnerScore:31, loser:'SMU', loserScore:27, label:'Conference result' },
+      { winner:'LSU', winnerScore:14, loser:'Clemson', loserScore:3, label:'Week 1 GOTW' }
+    ],
+    topTen: [
+      { rank:1, team:'Ohio State', user:'zig8875' },
+      { rank:2, team:'Oregon', user:'rainey84480' },
+      { rank:3, team:'Notre Dame', user:'malepatternballedness' },
+      { rank:4, team:'Georgia', user:'mikecmd_856' },
+      { rank:5, team:'Indiana', user:'grinch_is_here' },
+      { rank:6, team:'Miami', user:'lakedogg32' },
+      { rank:7, team:'Texas', user:'jrob9179' },
+      { rank:8, team:'Texas A&M', user:'selfmadezay.' },
+      { rank:9, team:'Ole Miss', user:'grody365' },
+      { rank:10, team:'Oklahoma', user:'tweetybirrrd' }
+    ]
+  };
   const $ = (sel, root=document) => root.querySelector(sel);
   const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
   const state = { data: window.RLD_DATA || null };
@@ -171,6 +190,48 @@
     return state.data;
   }
   function esc(v){ return String(v ?? '').replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s])); }
+  function mountRunningLateFeed(){
+    const ticker = $('.ticker');
+    if(ticker){
+      const label = $('.ticker__label', ticker);
+      const track = $('.ticker__track', ticker);
+      if(label){
+        label.href = POLL_CHANNEL;
+        label.target = '_blank';
+        label.rel = 'noopener';
+        label.setAttribute('aria-label','Open the Running Late Discord poll channel');
+      }
+      if(track){
+        const games = RUNNING_LATE_FEED.recentUserGames.map(game =>
+          `<span><b>${esc(game.label)}:</b> ${esc(game.winner)} ${esc(game.winnerScore)}–${esc(game.loserScore)} ${esc(game.loser)}</span>`
+        ).join('');
+        const ranked = RUNNING_LATE_FEED.topTen.map(entry =>
+          `<span class="ticker-rank"><b>#${esc(entry.rank)} ${esc(entry.team)}</b> — ${esc(entry.user)}</span>`
+        ).join('');
+        track.innerHTML = `<span class="ticker-poll"><a href="${POLL_CHANNEL}" target="_blank" rel="noopener">Vote &amp; follow official polls in the Discord Poll Channel</a></span>${games}${ranked}`;
+      }
+    }
+
+    const board = $('[data-render="running-late-feed"]');
+    if(!board) return;
+    board.innerHTML = `
+      <article class="feed-card feed-card--poll">
+        <span class="eyebrow">Official Discord Polls</span>
+        <h2>League voting lives in the Poll Channel</h2>
+        <p>Open nominations, GOTW selections, prediction polls, and official poll results from one direct channel.</p>
+        <a class="btn btn--red" href="${POLL_CHANNEL}" target="_blank" rel="noopener">Open Poll Channel</a>
+      </article>
+      <article class="feed-card">
+        <span class="eyebrow">Recent User vs. User Results</span>
+        <div class="feed-results">${RUNNING_LATE_FEED.recentUserGames.map(game => `
+          <div><small>${esc(game.label)}</small><strong>${esc(game.winner)} ${esc(game.winnerScore)}–${esc(game.loserScore)} ${esc(game.loser)}</strong></div>`).join('')}</div>
+      </article>
+      <article class="feed-card feed-card--rankings">
+        <span class="eyebrow">Top-10 Ranked Users</span>
+        <ol>${RUNNING_LATE_FEED.topTen.map(entry => `
+          <li><b>#${esc(entry.rank)}</b><span><strong>${esc(entry.user)}</strong><small>${esc(entry.team)}</small></span></li>`).join('')}</ol>
+      </article>`;
+  }
   function weekNumber(w){ const m=String(w).match(/\d+/); return m?Number(m[0]):999; }
   function slug(v){ return String(v||'section').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') || 'section'; }
   function byWeek(schedule){ return schedule.reduce((acc,g)=>{(acc[g.week] ||= []).push(g); return acc;},{}); }
@@ -282,6 +343,37 @@
     const cards = $('[data-render="signal-cards"]');
     if(rail) rail.innerHTML = all.slice(0,4).map((s,i)=>signalMarkup(s,i,true)).join('');
     if(cards) cards.innerHTML = all.map((s,i)=>signalMarkup(s,i,false)).join('');
+  }
+  function renderGotwPreview(data){
+    const root = $('[data-render="gotw-preview"]'), g = data.gotw;
+    if(!root || !g) return;
+    const runner = g.runnerUp || {};
+    root.innerHTML = `
+      <div class="gotw-preview__head">
+        <div><span class="eyebrow">${esc(g.displayWeek)} Preview</span><h2 id="gotw-preview-title">${esc(g.gotwId)}</h2><p>The league is currently in <strong>${esc(g.leagueCurrentWeek)}</strong>. This is the selected ${esc(g.displayWeek)} showcase; no prediction poll is active yet.</p></div>
+        <div class="gotw-status"><b>Official nomination poll closed</b><span>Prediction status: ${esc(g.predictionStatus)}</span></div>
+      </div>
+      <div class="gotw-matchup" aria-label="Selected Game of the Week matchup">
+        <div><span class="gotw-rank">#${esc(g.awayRank)}</span><strong>🌰 ${esc(g.awayTeam)}</strong><small>Away</small></div>
+        <span class="gotw-at">at</span>
+        <div><span class="gotw-rank">#${esc(g.homeRank)}</span><strong>🤘 ${esc(g.homeTeam)}</strong><small>Home</small></div>
+      </div>
+      <p class="gotw-result"><strong>Selected matchup:</strong> ${esc(g.awayTeam)} at ${esc(g.homeTeam)} won the ${esc(g.displayWeek)} nomination poll <b>${esc(g.winnerVotes)}–${esc(g.runnerUpVotes)}</b>.</p>
+      <div class="gotw-details">
+        <span><b>Total Votes</b>${esc(g.totalVotes)}</span>
+        <span><b>Runner-Up</b>#${esc(runner.awayRank)} ${esc(runner.awayTeam)} at #${esc(runner.homeRank)} ${esc(runner.homeTeam)}</span>
+        <span><b>Nomination</b>${esc(g.nominationStatus)}</span>
+        <span><b>Prediction</b>${esc(g.predictionStatus)}</span>
+      </div>
+      <div class="gotw-poll-meta"><span>Opened: ${esc(g.pollOpenedAt)}</span><span>Closed: ${esc(g.pollClosedAt)}</span><a class="btn" href="${esc(g.pollUrl)}" target="_blank" rel="noopener noreferrer">Official nomination poll</a></div>`;
+  }
+  function renderCommandDocs(data){
+    const root = $('[data-render="command-docs"]'), docs = data.discordCommands;
+    if(!root || !docs) return;
+    const commandChips = commands => commands.map(c=>`<code>${esc(c)}</code>`).join(' ');
+    root.innerHTML = `
+      <div class="glass-card"><h3>Rankings</h3><p class="command-names">${commandChips(docs.ranks.commands)}</p><p>${esc(docs.ranks.description)}</p><ol class="command-example">${docs.ranks.example.map(line=>`<li>${esc(line.replace(/^\d+\.\s*/,''))}</li>`).join('')}</ol><p>${esc(docs.ranks.note)}</p><p><strong>${esc(docs.ranks.omissionNotice)}</strong></p></div>
+      <div class="glass-card"><h3>Game of the Week</h3><p class="command-names">${commandChips(docs.gotw.commands)}</p><p>${esc(docs.gotw.description)}</p></div>`;
   }
   function renderWatchlist(data){
     const root = $('[data-render="watchlist"]'); if(!root) return;
@@ -801,9 +893,9 @@
     setTimeout(()=>{ location.href='hub.html'; }, 30200);
   }
   async function init(){
-    wireNav(); wireMobileBottomNav(); mountAudioPlayer(); wireSplash();
+    wireNav(); wireMobileBottomNav(); mountAudioPlayer(); wireSplash(); mountRunningLateFeed();
     const data = await loadData();
-    renderStats(data); renderScorebug(data); renderStatusText(data); renderCoverLines(data); renderHeadlines(data); renderSignals(data); renderWatchlist(data); renderFeaturedGames(data); renderUpdateGuide(data);
+    renderStats(data); renderScorebug(data); renderStatusText(data); renderCoverLines(data); renderHeadlines(data); renderSignals(data); renderGotwPreview(data); renderCommandDocs(data); renderWatchlist(data); renderFeaturedGames(data); renderUpdateGuide(data);
     renderSettings(data); renderLeagueHealth(data); renderOpenTeams(data); renderConferenceCards(data); renderTimeline(data); renderTeams(data); renderTeamHub(data); renderCoachCards(data); renderSchedule(data); renderTeamSchedules(data); renderRules(data); renderTopGames(data); renderSitemap(data); renderArchive(data); renderLegacy(data);
     observe();
   }

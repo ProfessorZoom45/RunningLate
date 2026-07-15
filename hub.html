@@ -20,7 +20,7 @@
     <div class="ticker__track" aria-label="league ticker">
       <span>Running Late Dynasty For College Football 27</span>
       <span>Private League - Cross-Play ON - Heisman - 48-Hour Advances</span>
-      <span>Year 1 (2026) - Current Week: Week 0</span>
+      <span>Year 1 (2026) - Current Week: Week 1</span>
       <span>32 Active Member Programs - 83 Projected User Games</span>
       <span>Join Discord: <a href="https://discord.gg/8sXA2RQPnm" target="_blank" rel="noopener">https://discord.gg/8sXA2RQPnm</a></span>
     </div>
@@ -50,13 +50,22 @@
           <div class="desk-label"><span>RLD GameDay Desk</span><b data-render="status-label">YEAR 1</b></div>
           <h1>CFB 27 Dynasty <em>Command Center</em></h1>
           <p class="lead">Fast signals up top, deeper league history below. The D1SN magazine style stays alive, and the front page now reads like a live sports dashboard.</p>
+          <div class="command-center-video" aria-label="Latest Running Late Dynasty video">
+            <div class="command-center-video__head">
+              <span>Latest From Running Late TV</span>
+              <a href="https://youtube.com/playlist?list=PLIsTy0ygbPW4" target="_blank" rel="noopener">View Playlist</a>
+            </div>
+            <div class="video-frame video-frame--wide">
+              <iframe src="https://www.youtube.com/embed/videoseries?list=PLIsTy0ygbPW4&amp;autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0&amp;modestbranding=1" title="Most recent Running Late Dynasty playlist video" allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+          </div>
           <div class="headline-stack" data-render="headlines"></div>
         </article>
         <aside class="dashboard-rail reveal">
           <img class="rail-logo" src="assets/rld-logo.png" alt="Running Late Dynasty CFB 27 logo">
           <div class="rail-meta">
             <span>Current Week</span>
-            <strong data-render="current-week">Week 0</strong>
+            <strong data-render="current-week">Week 1</strong>
             <small data-render="next-advance">Friday July 10 - Noon EST</small>
           </div>
           <div class="signal-board" data-render="signals"></div>
@@ -82,6 +91,12 @@
         <article class="hero-panel reveal"><div class="panel-header"><div><span class="eyebrow">🏟️ Featured Slate</span><h2>Opening Games</h2><p>Quick-glance game cards pulled from the schedule data.</p></div><a class="btn" href="schedule.html">Full Schedule</a></div><div class="mini-slate" data-render="featured-games"></div></article>
         <article class="hero-panel reveal"><div class="panel-header"><div><span class="eyebrow">🔥 Watchlist</span><h2>What To Watch</h2><p>Storylines for weekly issue writeups, GOTW polls, and league posts.</p></div></div><div class="watchlist" data-render="watchlist"></div></article>
       </div>
+    </section>
+
+    <section id="gotw-preview" class="section" aria-labelledby="gotw-preview-title">
+      <article class="hero-panel gotw-preview reveal" data-render="gotw-preview">
+        <div class="panel-header"><div><span class="eyebrow">Game of the Week</span><h2 id="gotw-preview-title">Week 2 Preview</h2><p>Loading the selected matchup…</p></div></div>
+      </article>
     </section>
 
     <section class="section">
@@ -145,30 +160,13 @@
           <a class="btn" href="teams.html">Team List</a>
         </div>
         <div class="grid grid--3">
-          <div class="glass-card">
-            <h3>League Lookup</h3>
-            <p><strong>!leagueinfo</strong> posts the current dynasty setup. <strong>!standings</strong> shows the league board. <strong>!site</strong> shares the GitHub Pages hub.</p>
-          </div>
-          <div class="glass-card">
-            <h3>Teams And Coaches</h3>
-            <p><strong>!team list</strong> and <strong>!coach list</strong> show lookup numbers. Use <strong>!team</strong> or <strong>!coach</strong> with a team, coach, or number.</p>
-          </div>
-          <div class="glass-card">
-            <h3>Matchups</h3>
-            <p><strong>!h2h</strong> checks user head-to-head history. Number shortcuts work too, like <strong>!h2h 3 4</strong>. <strong>!recentresults</strong> shows the latest logged games.</p>
-          </div>
+          <div class="glass-card"><h3>League Lookup</h3><p><strong>!leagueinfo</strong> posts the current dynasty setup. <strong>!standings</strong> shows the league board. <strong>!site</strong> shares the GitHub Pages hub.</p></div>
+          <div class="glass-card"><h3>Teams And Coaches</h3><p><strong>!team list</strong> and <strong>!coach list</strong> show lookup numbers. Use <strong>!team</strong> or <strong>!coach</strong> with a team, coach, or number.</p></div>
+          <div class="glass-card"><h3>Matchups</h3><p><strong>!h2h</strong> checks user head-to-head history. Number shortcuts work too, like <strong>!h2h 3 4</strong>. <strong>!recentresults</strong> shows the latest logged games.</p></div>
         </div>
+        <div class="grid grid--2 command-doc-grid" data-render="command-docs"></div>
         <div class="chip-row" aria-label="bot commands">
-          <span class="chip chip--gold">!leagueinfo</span>
-          <span class="chip">!standings</span>
-          <span class="chip">!team list</span>
-          <span class="chip">!team</span>
-          <span class="chip">!coach list</span>
-          <span class="chip">!coach</span>
-          <span class="chip">!h2h</span>
-          <span class="chip">!recentresults</span>
-          <span class="chip">!site</span>
-          <span class="chip chip--gold">!gotw</span>
+          <span class="chip chip--gold">!leagueinfo</span><span class="chip">!standings</span><span class="chip">!team list</span><span class="chip">!team</span><span class="chip">!coach list</span><span class="chip">!coach</span><span class="chip">!h2h</span><span class="chip">!recentresults</span><span class="chip">!site</span><span class="chip chip--gold">!gotw</span><span class="chip chip--gold">/gotw</span><span class="chip chip--gold">!ranks</span><span class="chip chip--gold">/ranks</span>
         </div>
       </article>
     </section>
