@@ -623,7 +623,6 @@
         ${g.venue?`<small class="match-card__venue">${esc(g.venue)}</small>`:''}
         <small class="match-card__coaches">${esc(g.away)}: ${esc(awayCoach||'Coach TBD')} | ${esc(g.home)}: ${esc(homeCoach||'Coach TBD')}</small>
       </div>
-      <span class="chip">${g.neutral?'VS':'@'}</span>
     </article>`;
   }
   function teamScheduleCard(t, data){
