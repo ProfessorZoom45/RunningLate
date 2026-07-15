@@ -230,6 +230,54 @@
     if(!season || !week) throw new Error('Live season or week was not found on the Dashboard tab.');
     return {season, week};
   }
+  async function liveTop25Poll(){
+    const payload = await loadLiveSheet('TOP-25 Poll');
+    const rows = (payload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
+    const compact = value => String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, '');
+    const sheetHeaders = (payload.table?.cols || []).map(column => compact(column.label));
+    const headerIndex = rows.findIndex(row => {
+      const cells = row.map(compact);
+      return cells.includes('season') && cells.includes('polltype') && cells.includes('rank') && cells.includes('team');
+    });
+    const headers = sheetHeaders.includes('team') && sheetHeaders.includes('season')
+      ? sheetHeaders
+      : headerIndex >= 0 ? rows[headerIndex].map(compact) : [];
+    const dataRows = sheetHeaders.includes('team') && sheetHeaders.includes('season') ? rows : rows.slice(headerIndex + 1);
+    if(!headers.length) throw new Error('TOP-25 Poll headers were not found.');
+    const col = name => headers.indexOf(compact(name));
+    const value = (row, name) => col(name) >= 0 ? row[col(name)] : '';
+    const entries = dataRows.map(row => ({
+      season: row[col('Season')] || '',
+      week: row[col('Week')] || '',
+      pollType: row[col('Poll Type')] || '',
+      rank: Number(row[col('Rank')]),
+      team: row[col('Team')] || '',
+      userTeam: row[col('User Team?')] || '',
+      userId: row[col('User ID')] || '',
+      record: value(row,'W-L') || (value(row,'Wins') !== '' && value(row,'Losses') !== '' ? `${value(row,'Wins')}-${value(row,'Losses')}` : ''),
+      points: row[col('Points')] || '',
+      lastWeek: value(row,'Last Week') || value(row,"Last Week's Rank"),
+      thisWeek: row[col('This Week')] || '',
+      source: row[col('Source')] || ''
+    })).filter(row => row.team && Number.isFinite(row.rank) && row.rank >= 1 && row.rank <= 25);
+    if(!entries.length) return {season:'', week:'', pollType:'', entries:[]};
+    const key = row => `${row.season}|${row.week}|${row.pollType}`;
+    const groups = new Map();
+    entries.forEach(row => {
+      const group = groups.get(key(row)) || new Map();
+      group.set(row.rank,row);
+      groups.set(key(row),group);
+    });
+    const completeGroups = [...groups.entries()].filter(([,group]) => group.size >= 25);
+    const [,byRank] = completeGroups.at(-1) || [...groups.entries()].at(-1);
+    const latest = byRank.values().next().value;
+    return {
+      season: latest.season,
+      week: latest.week,
+      pollType: latest.pollType,
+      entries: [...byRank.values()].sort((a,b) => a.rank - b.rank).slice(0,25)
+    };
+  }
   function gameResultRecap(game){
     const awayWon = game.winner.toLowerCase() === game.away.toLowerCase() || game.awayScore > game.homeScore;
     const winningTeam = awayWon ? game.away : game.home;
@@ -297,6 +345,38 @@
     };
     const section=(title,subtitle,list)=>`<section class="result-section"><div class="result-section__head"><div><span class="eyebrow">${esc(subtitle)}</span><h2>${esc(title)}</h2></div><strong>${list.length} FINAL${list.length===1?'':'S'}</strong></div>${list.length?`<div class="result-grid">${list.map(gameCard).join('')}</div>`:'<div class="result-empty">No completed games are logged in this category yet.</div>'}</section>`;
     root.innerHTML=section('User vs User Results','Priority Results',userGames)+section('User vs CPU Results','All Other Finals',cpuGames);
+  }
+  function renderTop25Poll(data, poll, error){
+    const root = $('[data-render="top-25-poll"]');
+    if(!root) return;
+    if(error){
+      root.innerHTML = '<div class="top25-state"><strong>Live poll temporarily unavailable.</strong><span>Refresh the page to try the spreadsheet again.</span></div>';
+      return;
+    }
+    if(!poll?.entries?.length){
+      root.innerHTML = '<div class="top25-state"><strong>No Top-25 poll has been posted yet.</strong><span>The board will populate automatically after the spreadsheet receives ranked rows.</span></div>';
+      return;
+    }
+    const lookup = teamLookup(data);
+    const movement = row => {
+      const previous = Number(String(row.lastWeek).replace(/[^0-9]/g,''));
+      if(!Number.isFinite(previous) || previous <= 0) return 'NEW';
+      const delta = previous - row.rank;
+      return delta > 0 ? `▲ ${delta}` : delta < 0 ? `▼ ${Math.abs(delta)}` : '—';
+    };
+    root.innerHTML = `
+      <div class="top25-meta"><span><b>Season</b>${esc(poll.season || 'Current')}</span><span><b>Week</b>${esc(poll.week || 'Current')}</span><span><b>Poll</b>${esc(poll.pollType || 'Top 25')}</span><span><b>Updated</b>Fresh on this visit</span></div>
+      <div class="top25-board">${poll.entries.map(row => {
+        const team = lookup[String(row.team).toLowerCase()];
+        const colors = team ? ` style="--team-primary:${esc(team.primary)};--team-accent:${esc(team.accent)}"` : '';
+        return `<article class="top25-row${row.rank <= 5 ? ' top25-row--elite' : ''}"${colors}>
+          <strong class="top25-rank">${esc(row.rank)}</strong>
+          <div class="top25-team">${teamLink(data,row.team,'team-link')}<small>${/^yes$/i.test(row.userTeam) ? 'User-controlled' : /^no$/i.test(row.userTeam) ? 'CPU team' : esc(row.userTeam || 'National poll')}</small></div>
+          <span class="top25-record"><b>${esc(row.record || '—')}</b><small>Record</small></span>
+          <span class="top25-points"><b>${esc(row.points || '—')}</b><small>Points</small></span>
+          <span class="top25-move">${esc(movement(row))}</span>
+        </article>`;
+      }).join('')}</div>`;
   }
   function esc(v){ return String(v ?? '').replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s])); }
   function mountRunningLateFeed(){
@@ -1033,7 +1113,7 @@
   async function init(){
     wireNav(); wireMobileBottomNav(); mountAudioPlayer(); wireSplash(); mountRunningLateFeed();
     const data = await loadData();
-    const [statusResult, gameResultsResult] = await Promise.allSettled([liveDashboardStatus(), liveGameResults()]);
+    const [statusResult, gameResultsResult, top25Result] = await Promise.allSettled([liveDashboardStatus(), liveGameResults(), liveTop25Poll()]);
     const liveStatus = statusResult.status === 'fulfilled' ? statusResult.value : null;
     const liveGames = gameResultsResult.status === 'fulfilled' ? gameResultsResult.value : [];
     if(liveStatus){
@@ -1044,6 +1124,7 @@
     renderLiveSeasonWeek(liveStatus);
     renderLiveGameResults(liveGames.slice(0,3).map(gameResultRecap));
     renderGameResultsPage(liveGames);
+    renderTop25Poll(data, top25Result.status === 'fulfilled' ? top25Result.value : null, top25Result.status === 'rejected' ? top25Result.reason : null);
     renderStats(data); renderScorebug(data); renderStatusText(data, liveStatus); renderCoverLines(data); renderHeadlines(data); renderSignals(data); renderGotwPreview(data); renderCommandDocs(data); renderWatchlist(data); renderFeaturedGames(data); renderUpdateGuide(data);
     renderSettings(data); renderLeagueHealth(liveGames.filter(game=>game.isUser).length); renderOpenTeams(data); renderConferenceCards(data); renderTimeline(data); renderTeams(data); renderTeamHub(data); renderCoachCards(data); renderSchedule(data); renderTeamSchedules(data); renderRules(data); renderTopGames(data); renderSitemap(data); renderArchive(data); renderLegacy(data);
     linkTeamMentions(data);
