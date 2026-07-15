@@ -20,8 +20,7 @@ Running Late Dynasty started as a fast-moving CFB 26 Discord league and grew int
 ## League Setup
 
 - **League Type:** Private
-- **Max Users:** 32
-- **Active Member Teams:** 32
+- **Users Active:** 32/32
 - **Cross-Play:** ON
 - **Difficulty:** Heisman
 - **Advance Cycle:** 48 hours

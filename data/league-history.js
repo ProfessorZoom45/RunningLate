@@ -6,14 +6,6 @@
       "value": "Private"
     },
     {
-      "label": "Max Users",
-      "value": "32"
-    },
-    {
-      "label": "Active Member Teams",
-      "value": "32"
-    },
-    {
       "label": "Cross-Play",
       "value": "ON"
     },
@@ -52,10 +44,6 @@
     {
       "label": "User Games",
       "value": "83"
-    },
-    {
-      "label": "Users Active",
-      "value": "32/32"
     },
     {
       "label": "Second Advance",
@@ -1866,12 +1854,6 @@
       "summary": "Projected 83-game user-vs-user schedule grouped by week."
     },
     {
-      "title": "Rules",
-      "file": "rules.html",
-      "type": "League Ops",
-      "summary": "Public CFB 27 rulebook summary and enforcement reminders."
-    },
-    {
       "title": "History",
       "file": "history.html",
       "type": "Archive",
@@ -2114,14 +2096,14 @@
   },
   "discordCommands": {
     "ranks": {
-      "commands": ["!ranks", "/ranks"],
+      "commands": ["/ranks"],
       "description": "Displays the current identified teams from the live RUNNING LATE DYNASTY TOP-25 Poll in original numeric ranking order.",
       "example": ["1. 🌰 Ohio State Buckeyes", "2. 🦆 Oregon Ducks"],
       "note": "Unidentified CPU-controlled schools are omitted without renumbering the remaining teams.",
       "omissionNotice": "Unidentified CPU ranks omitted: 18, 19, 24."
     },
     "gotw": {
-      "commands": ["!gotw", "/gotw"],
+      "commands": ["/gotw"],
       "description": "Displays the current GOTW ID, ranked matchup, nomination result, runner-up, and prediction status."
     }
   },
@@ -2148,8 +2130,8 @@
         "value": "48H"
       },
       {
-        "label": "Teams",
-        "value": "32"
+        "label": "Users Active",
+        "value": "32/32"
       },
       {
         "label": "User Games",
@@ -2284,11 +2266,6 @@
         "label": "Schedule",
         "href": "schedule.html",
         "detail": "Weekly user games"
-      },
-      {
-        "label": "Rules",
-        "href": "rules.html",
-        "detail": "League standards"
       },
       {
         "label": "Media Center",
