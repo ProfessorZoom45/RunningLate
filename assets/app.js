@@ -1,5 +1,6 @@
 (function(){
   const DISCORD = 'https://discord.gg/8sXA2RQPnm';
+  const LIVE_SHEET_ID = '1y1H-IfZk5Ry1A91-CuiSP2TdHBy_vMHp7-eEfF4BPXQ';
   const POLL_CHANNEL = 'https://discord.com/channels/1382826467683205180/1407980310158905448';
   const RUNNING_LATE_FEED = {
     recentUserGames: [
@@ -31,7 +32,6 @@
   ];
   const HEALTH_METRICS = [
     ['User Games Completed','0/83','Games submitted or marked complete'],
-    ['Users Active','32/32','Confirmed dynasty join count'],
     ['Streams Posted','0','Clips, VODs, and stream links logged'],
     ['Admin Reviews','1','Open items to review'],
     ['Open Teams','68 pool','Available schools listed by conference']
@@ -189,6 +189,115 @@
     }
     return state.data;
   }
+  function sheetCellValue(cell){
+    if(!cell) return '';
+    return String(cell.f ?? cell.v ?? '').trim();
+  }
+  function loadLiveSheet(sheetName){
+    return new Promise((resolve, reject) => {
+      const callbackName = `runningLateSheet_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+      const script = document.createElement('script');
+      let settled = false;
+      const finish = (fn, value) => {
+        if(settled) return;
+        settled = true;
+        clearTimeout(timer);
+        script.remove();
+        try{ delete window[callbackName]; }catch(_){ window[callbackName] = undefined; }
+        fn(value);
+      };
+      window[callbackName] = payload => payload?.status === 'ok'
+        ? finish(resolve, payload)
+        : finish(reject, new Error('Spreadsheet returned a non-OK response.'));
+      script.onerror = () => finish(reject, new Error('Spreadsheet script could not be loaded.'));
+      script.src = `https://docs.google.com/spreadsheets/d/${LIVE_SHEET_ID}/gviz/tq?sheet=${encodeURIComponent(sheetName)}&tqx=responseHandler:${callbackName}&_=${Date.now()}`;
+      const timer = setTimeout(() => finish(reject, new Error('Spreadsheet request timed out.')), 8000);
+      document.head.append(script);
+    });
+  }
+  async function liveDashboardStatus(){
+    const payload = await loadLiveSheet('Dashboard');
+    const rows = (payload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
+    const compact = value => String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, '');
+    const seasonRow = rows.find(row => compact(row[0]) === 'seasonyear') || [];
+    const contextRow = rows.find(row => compact(row[0]) === 'currentweekuserreadycpuresults') || [];
+    const context = contextRow.find((value, index) => index > 0 && value) || '';
+    const contextMatch = context.match(/Season\s+(.+?)\s*\|\s*(Week\s+[^|]+)/i);
+    const seasonLabel = contextMatch?.[1]?.trim() || seasonRow[1] || '';
+    const dynastyYear = seasonRow[3] || '';
+    const season = seasonLabel && dynastyYear && !seasonLabel.includes(dynastyYear) ? `${seasonLabel} (${dynastyYear})` : seasonLabel;
+    const week = contextMatch?.[2]?.trim() || '';
+    if(!season || !week) throw new Error('Live season or week was not found on the Dashboard tab.');
+    return {season, week};
+  }
+  function gameResultRecap(game){
+    const awayWon = game.winner.toLowerCase() === game.away.toLowerCase() || game.awayScore > game.homeScore;
+    const winningTeam = awayWon ? game.away : game.home;
+    const losingTeam = awayWon ? game.home : game.away;
+    const winningUser = awayWon ? game.awayUser : game.homeUser;
+    const winningScore = awayWon ? game.awayScore : game.homeScore;
+    const losingScore = awayWon ? game.homeScore : game.awayScore;
+    const margin = Math.abs(winningScore - losingScore);
+    const verb = margin <= 3 ? 'survived' : margin <= 7 ? 'edged' : margin <= 14 ? 'beat' : margin <= 24 ? 'handled' : 'rolled past';
+    const owner = game.isUser && winningUser && winningUser.toLowerCase() !== 'cpu' ? `${winningUser}'s ` : '';
+    return `FINAL — ${owner}${winningTeam} ${verb} ${losingTeam}, ${winningScore}-${losingScore} (${game.week}, ${game.isUser ? 'USER vs USER' : 'USER vs CPU'}).`;
+  }
+  async function liveGameResults(){
+    const [resultsPayload, schedulePayload, gotwHistoryPayload] = await Promise.all([
+      loadLiveSheet('Game Results'), loadLiveSheet('Schedule'), loadLiveSheet('GOTW History')
+    ]);
+    const resultRows = (resultsPayload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
+    const scheduleRows = (schedulePayload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
+    const gotwHistoryRows = (gotwHistoryPayload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
+    const humanUser = value => Boolean(String(value || '').trim()) && !/^(cpu|cpu team|computer|ai)$/i.test(String(value).trim());
+    const classify = (gameType, awayUser, homeUser) => (/user/i.test(gameType) && !/cpu/i.test(gameType)) || (humanUser(awayUser) && humanUser(homeUser));
+    const games = resultRows.map(row => {
+      const awayUser = row[4] || '', homeUser = row[7] || '', gameType = row[2] || '';
+      return {season:row[0]||'',week:row[1]||'Week ?',gameType,away:row[3]||'',awayUser,awayScore:Number(row[5]),home:row[6]||'',homeUser,homeScore:Number(row[8]),winner:row[9]||'',loser:row[10]||'',conference:row[11]||'',overtime:row[12]||'',notes:row[13]||'',createdAt:row[19]||'',isUser:classify(gameType,awayUser,homeUser)};
+    }).concat(scheduleRows.map(row => {
+      const awayUser = row[5] || '', homeUser = row[7] || '', gameType = row[3] || '';
+      return {season:row[1]||'',week:row[2]||'Week ?',gameType,away:row[4]||'',awayUser,awayScore:row[9]===''?NaN:Number(row[9]),home:row[6]||'',homeUser,homeScore:row[10]===''?NaN:Number(row[10]),winner:row[11]||'',loser:'',conference:'',overtime:'',notes:row[14]||'',createdAt:row[16]||row[15]||'',isUser:classify(gameType,awayUser,homeUser)};
+    })).concat(gotwHistoryRows.map(row => {
+      const away = row[3] || '', home = row[5] || '', note = row[23] || '';
+      const score = String(note).match(/Final:\s*(.+?)\s+(\d+),\s*(.+?)\s+(\d+)/i);
+      const scoreFor = team => {
+        if(!score) return NaN;
+        const target=String(team).toLowerCase(), first=score[1].toLowerCase(), second=score[3].toLowerCase();
+        if(target.startsWith(first)||first.startsWith(target)) return Number(score[2]);
+        if(target.startsWith(second)||second.startsWith(target)) return Number(score[4]);
+        return NaN;
+      };
+      return {season:row[1]||'',week:row[2]||'Week ?',gameType:'User vs User',away,awayUser:row[4]||'',awayScore:scoreFor(away),home,homeUser:row[6]||'',homeScore:scoreFor(home),winner:row[14]||'',loser:'',conference:'',overtime:'',notes:note,createdAt:row[21]||'',isUser:true};
+    })).filter(game => game.away && game.home && Number.isFinite(game.awayScore) && Number.isFinite(game.homeScore));
+    const byGame = new Map();
+    games.forEach(game => { const key=`${game.season}|${game.week}|${game.away}|${game.home}`.toLowerCase(); if(!byGame.has(key)) byGame.set(key,game); });
+    return [...byGame.values()].sort((a,b) => Number(b.isUser)-Number(a.isUser) || String(b.createdAt).localeCompare(String(a.createdAt)) || weekNumber(b.week)-weekNumber(a.week));
+  }
+  function renderLiveSeasonWeek(status){
+    const text = status ? `${status.season} - Current Week: ${status.week}` : 'Live season status unavailable';
+    $$('[data-render="live-season-week"]').forEach(el => { el.textContent = text; });
+  }
+  function renderLiveGameResults(recaps){
+    $$('[data-render="live-game-results"]').forEach(el => {
+      if(!recaps?.length){ el.textContent='No completed game results are available yet.'; return; }
+      const frag=document.createDocumentFragment();
+      recaps.forEach(recap => { const span=document.createElement('span'); span.className='ticker__result'; span.textContent=recap; frag.append(span); });
+      el.replaceWith(frag);
+    });
+  }
+  function renderGameResultsPage(games){
+    const root = $('[data-render="game-results-page"]'); if(!root) return;
+    const userGames=games.filter(game=>game.isUser), cpuGames=games.filter(game=>!game.isUser);
+    $('[data-render="result-total"]')?.replaceChildren(document.createTextNode(String(games.length)));
+    $('[data-render="result-user-total"]')?.replaceChildren(document.createTextNode(String(userGames.length)));
+    $('[data-render="result-cpu-total"]')?.replaceChildren(document.createTextNode(String(cpuGames.length)));
+    const gameCard = game => {
+      const awayWon=game.winner.toLowerCase()===game.away.toLowerCase()||game.awayScore>game.homeScore;
+      return `<article class="result-card reveal ${game.isUser?'result-card--user':''}"><div class="result-card__head"><span class="game-kind ${game.isUser?'':'game-kind--non'}">${game.isUser?'USER vs USER':'USER vs CPU'}</span><b>FINAL</b></div><div class="result-team ${awayWon?'is-winner':''}"><span><strong>${esc(game.away)}</strong><small>${esc(game.awayUser||'CPU')}</small></span><b>${game.awayScore}</b></div><div class="result-team ${awayWon?'':'is-winner'}"><span><strong>${esc(game.home)}</strong><small>${esc(game.homeUser||'CPU')}</small></span><b>${game.homeScore}</b></div><p class="result-recap">${esc(gameResultRecap(game))}</p></article>`;
+    };
+    const section=(title,subtitle,list)=>`<section class="result-section"><div class="result-section__head"><div><span class="eyebrow">${esc(subtitle)}</span><h2>${esc(title)}</h2></div><strong>${list.length} FINAL${list.length===1?'':'S'}</strong></div>${list.length?`<div class="result-grid">${list.map(gameCard).join('')}</div>`:'<div class="result-empty">No completed games are logged in this category yet.</div>'}</section>`;
+    root.innerHTML=section('User vs User Results','Priority Results',userGames)+section('User vs CPU Results','All Other Finals',cpuGames);
+  }
   function esc(v){ return String(v ?? '').replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s])); }
   function mountRunningLateFeed(){
     const ticker = $('.ticker');
@@ -208,7 +317,7 @@
         const ranked = RUNNING_LATE_FEED.topTen.map(entry =>
           `<span class="ticker-rank"><b>#${esc(entry.rank)} ${esc(entry.team)}</b> — ${esc(entry.user)}</span>`
         ).join('');
-        track.innerHTML = `<span class="ticker-poll"><a href="${POLL_CHANNEL}" target="_blank" rel="noopener">Vote &amp; follow official polls in the Discord Poll Channel</a></span>${games}${ranked}`;
+        track.innerHTML = `<span data-render="live-game-results">Loading latest game results...</span><span data-render="live-season-week">Loading live season...</span><span class="ticker-poll"><a href="${POLL_CHANNEL}" target="_blank" rel="noopener">Vote &amp; follow official polls in the Discord Poll Channel</a></span>${games}${ranked}`;
       }
     }
 
@@ -313,11 +422,11 @@
     const items = data.dashboard?.scorebar || [];
     root.innerHTML = `<div class="scorebug-brand"><b>RLD</b><span>CFB 27 NOW</span></div>` + items.map(x=>`<div class="scorebug-item"><span>${esc(x.label)}</span><b>${esc(x.value)}</b></div>`).join('') + `<a class="scorebug-link" href="${DISCORD}" target="_blank" rel="noopener">Discord</a>`;
   }
-  function renderStatusText(data){
+  function renderStatusText(data, liveStatus){
     const s = data.dashboard?.status || {};
     const set = (sel,val) => { const el=$(sel); if(el) el.textContent = val || ''; };
     set('[data-render="status-label"]', s.leagueState || 'LIVE');
-    set('[data-render="current-week"]', s.currentWeek || 'Week TBD');
+    set('[data-render="current-week"]', liveStatus?.week || s.currentWeek || 'Week TBD');
     set('[data-render="next-advance"]', s.nextAdvance || 'Advance TBD');
   }
   function renderCoverLines(data){
@@ -395,12 +504,12 @@
     const root = $('[data-render="settings"]'); if(!root) return;
     root.innerHTML = (data.settings || []).map(s => `<article class="stat-card reveal"><span>${esc(s.label)}</span><strong>${esc(s.value)}</strong></article>`).join('');
   }
-  function renderLeagueHealth(){
+  function renderLeagueHealth(completedUserGames=0){
     const root = $('[data-render="league-health"]'); if(!root) return;
-    root.innerHTML = HEALTH_METRICS.map(([label,value,detail]) => `
+    root.innerHTML = HEALTH_METRICS.map(([label,value,detail], index) => `
       <article class="health-card reveal">
         <span>${esc(label)}</span>
-        <strong>${esc(value)}</strong>
+        <strong>${esc(index === 0 ? `${completedUserGames}/83` : value)}</strong>
         <p>${esc(detail)}</p>
       </article>`).join('');
   }
@@ -424,7 +533,7 @@
     root.innerHTML = Object.keys(groups).sort(confOrder).map(conf => `
       <article class="glass-card reveal">
         <div class="panel-header"><div><span class="eyebrow">${esc(conf)}</span></div></div>
-        <div class="chip-row">${groups[conf].map(t=>`<span class="chip" style="--team-primary:${esc(t.primary)};border-color:${esc(t.primary)}66">${esc(t.display)}</span>`).join('')}</div>
+        <div class="chip-row">${groups[conf].map(t=>`<a class="chip conference-team-link" href="teams.html#hub-team-${slug(t.school)}" style="--team-primary:${esc(t.primary)};--team-accent:${esc(t.accent)}" aria-label="Open ${esc(cleanDisplay(t.school))} team hub">${esc(t.display)}</a>`).join('')}</div>
       </article>`).join('');
   }
   function renderTimeline(data){
@@ -599,6 +708,7 @@
       root.innerHTML = result + jumper + (ordered.map(w => `
         <section id="schedule-${slug(w)}" class="week-block reveal"><div class="week-head"><h3>${esc(w)}</h3><span class="chip chip--gold">${groups[w].length} user games</span></div>
         <div class="match-grid">${groups[w].map(g=>matchCard(g,data)).join('')}</div></section>`).join('') || '<p class="lead">No games match that filter.</p>');
+      linkTeamMentions(data, root);
       observe();
     };
     if(weekFilter){
@@ -665,8 +775,7 @@
         </article>`}
       </div>
       <div class="team-schedule-card__footer">
-        <b>Full 2026 Schedule</b>
-        <span>Official full team schedule and CPU games are coming soon. This page is built from the confirmed user-vs-user dynasty slate for now.</span>
+        <b>Full 2026 User-vs-User Schedule</b>
       </div>
     </article>`;
   }
@@ -829,27 +938,43 @@
     const items = [
       ['hub','hub.html','&#127968;','Hub'],
       ['schedule','schedule.html','&#128197;','Schedule'],
-      ['teams','teams.html','&#127944;','Teams'],
+      ['results','results.html','&#127942;','Results'],
       ['updates','updates.html','&#128293;','Updates'],
+      ['teams','teams.html','&#127944;','Teams'],
       ['discord',DISCORD,'&#128172;','Discord']
     ];
     const nav = document.createElement('nav');
     nav.className = 'mobile-bottom-nav';
     nav.setAttribute('aria-label','Mobile navigation');
-    nav.innerHTML = items.map(([key,href,icon,label]) => `<a class="${activePage===key?'is-active':''}" href="${href}" ${key==='discord'?'target="_blank" rel="noopener"':''}><span>${icon}</span><b>${label}</b></a>`).join('');
+    nav.innerHTML = items.map(([key,href,icon,label]) => `<a class="${activePage===key?'is-active':''}" href="${href}" ${key==='discord'?'target="_blank" rel="noopener"':''}><span>${icon}</span><b>${label}</b></a>`).join('') + '<button type="button" class="mobile-overlay-toggle" aria-pressed="false"><span>&#10005;</span><b>Hide</b></button>';
     document.body.appendChild(nav);
+    const toggle = $('.mobile-overlay-toggle', nav);
+    const setOverlaysHidden = hidden => {
+      document.body.classList.toggle('mobile-overlays-hidden', hidden);
+      toggle.setAttribute('aria-pressed', hidden ? 'true' : 'false');
+      toggle.querySelector('span').innerHTML = hidden ? '&#8634;' : '&#10005;';
+      toggle.querySelector('b').textContent = hidden ? 'Show' : 'Hide';
+      try { localStorage.setItem('rldMobileOverlaysHidden', hidden ? '1' : '0'); } catch(e) {}
+    };
+    let hidden = false;
+    try { hidden = localStorage.getItem('rldMobileOverlaysHidden') === '1'; } catch(e) {}
+    setOverlaysHidden(hidden);
+    toggle.addEventListener('click', () => setOverlaysHidden(!document.body.classList.contains('mobile-overlays-hidden')));
   }
   function observe(){
-    linkTexasMentions();
     const items = $$('.reveal:not(.is-visible)');
     if(!('IntersectionObserver' in window)){ items.forEach(x=>x.classList.add('is-visible')); return; }
     const io = new IntersectionObserver(entries => entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }}), {threshold:.08});
     items.forEach(x=>io.observe(x));
   }
-  function linkTexasMentions(root=document.body){
-    if(!root) return;
+  function linkTeamMentions(data, root=document.body){
+    if(!root || !['hub','schedule','results'].includes(document.body.dataset.page || '')) return;
+    const teams = (data.teams || []).filter(t => t.school).slice().sort((a,b) => b.school.length - a.school.length);
+    if(!teams.length) return;
+    const byName = new Map(teams.map(t => [String(t.school).toLowerCase(), t]));
     const skipSelector = 'a,script,style,textarea,input,select,option,.audio-player,.available-card,.ai-controlled-teams';
-    const rx = /\bTexas\b(?!\s*(?:A&M|Tech))/gi;
+    const escaped = teams.map(t => String(t.school).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    const rx = new RegExp(`\\b(?:${escaped.join('|')})\\b`, 'gi');
     const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
       acceptNode(node){
         const parent = node.parentElement;
@@ -867,9 +992,12 @@
       let last = 0, match;
       while((match = rx.exec(text))){
         if(match.index > last) frag.append(document.createTextNode(text.slice(last, match.index)));
+        const team = byName.get(match[0].toLowerCase());
         const a = document.createElement('a');
-        a.className = 'texas-team-link';
-        a.href = 'teams.html#hub-team-texas';
+        a.className = 'team-mention-link';
+        a.href = `teams.html#hub-team-${slug(team?.school || match[0])}`;
+        a.style.setProperty('--team-primary', team?.primary || '#bf5700');
+        a.style.setProperty('--team-accent', team?.accent || '#7a3300');
         a.textContent = match[0];
         frag.append(a);
         last = match.index + match[0].length;
@@ -880,6 +1008,17 @@
   }
   function wireNav(){
     const btn = $('.menu-toggle'), nav = $('#site-nav');
+    const addNavLink = (href, label, afterHref) => {
+      if(!nav || nav.querySelector(`a[href="${href}"]`)) return;
+      const link = document.createElement('a');
+      link.className = `nav-link${document.body.dataset.page === href.replace('.html','') ? ' is-active' : ''}`;
+      link.href = href;
+      link.textContent = label;
+      const after = nav.querySelector(`a[href="${afterHref}"]`);
+      after ? after.insertAdjacentElement('afterend', link) : nav.prepend(link);
+    };
+    addNavLink('updates.html', 'Updates', 'hub.html');
+    addNavLink('results.html', 'Results', 'schedule.html');
     btn?.addEventListener('click',()=>{ const open=nav.classList.toggle('is-open'); btn.setAttribute('aria-expanded', open?'true':'false'); });
   }
   function wireSplash(){
@@ -894,8 +1033,20 @@
   async function init(){
     wireNav(); wireMobileBottomNav(); mountAudioPlayer(); wireSplash(); mountRunningLateFeed();
     const data = await loadData();
-    renderStats(data); renderScorebug(data); renderStatusText(data); renderCoverLines(data); renderHeadlines(data); renderSignals(data); renderGotwPreview(data); renderCommandDocs(data); renderWatchlist(data); renderFeaturedGames(data); renderUpdateGuide(data);
-    renderSettings(data); renderLeagueHealth(data); renderOpenTeams(data); renderConferenceCards(data); renderTimeline(data); renderTeams(data); renderTeamHub(data); renderCoachCards(data); renderSchedule(data); renderTeamSchedules(data); renderRules(data); renderTopGames(data); renderSitemap(data); renderArchive(data); renderLegacy(data);
+    const [statusResult, gameResultsResult] = await Promise.allSettled([liveDashboardStatus(), liveGameResults()]);
+    const liveStatus = statusResult.status === 'fulfilled' ? statusResult.value : null;
+    const liveGames = gameResultsResult.status === 'fulfilled' ? gameResultsResult.value : [];
+    if(liveStatus){
+      data.season ||= {}; data.season.label = liveStatus.season; data.season.currentWeek = liveStatus.week;
+      data.dashboard ||= {}; data.dashboard.status ||= {}; data.dashboard.status.currentWeek = liveStatus.week;
+    }else console.warn('Live spreadsheet season/week could not be loaded.', statusResult.reason);
+    if(gameResultsResult.status === 'rejected') console.warn('Live spreadsheet game results could not be loaded.', gameResultsResult.reason);
+    renderLiveSeasonWeek(liveStatus);
+    renderLiveGameResults(liveGames.slice(0,3).map(gameResultRecap));
+    renderGameResultsPage(liveGames);
+    renderStats(data); renderScorebug(data); renderStatusText(data, liveStatus); renderCoverLines(data); renderHeadlines(data); renderSignals(data); renderGotwPreview(data); renderCommandDocs(data); renderWatchlist(data); renderFeaturedGames(data); renderUpdateGuide(data);
+    renderSettings(data); renderLeagueHealth(liveGames.filter(game=>game.isUser).length); renderOpenTeams(data); renderConferenceCards(data); renderTimeline(data); renderTeams(data); renderTeamHub(data); renderCoachCards(data); renderSchedule(data); renderTeamSchedules(data); renderRules(data); renderTopGames(data); renderSitemap(data); renderArchive(data); renderLegacy(data);
+    linkTeamMentions(data);
     observe();
   }
   document.addEventListener('DOMContentLoaded', init);
