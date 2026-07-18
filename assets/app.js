@@ -257,6 +257,7 @@
       record: value(row,'W-L') || (value(row,'Wins') !== '' && value(row,'Losses') !== '' ? `${value(row,'Wins')}-${value(row,'Losses')}` : ''),
       points: row[col('Points')] || '',
       lastWeek: value(row,'Last Week') || value(row,"Last Week's Rank"),
+      startingRank: value(row,'Starting Rank'),
       thisWeek: row[col('This Week')] || '',
       source: row[col('Source')] || ''
     })).filter(row => row.team && Number.isFinite(row.rank) && row.rank >= 1 && row.rank <= 25);
@@ -277,6 +278,72 @@
       pollType: latest.pollType,
       entries: [...byRank.values()].sort((a,b) => a.rank - b.rank).slice(0,25)
     };
+  }
+  async function liveTeamRecords(){
+    const [standingsPayload, coachPayload] = await Promise.all([
+      loadLiveSheet('Standings'), loadLiveSheet('Coach Records')
+    ]);
+    const tableRows = payload => (payload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
+    const compact = value => String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, '');
+    const parse = (payload, required) => {
+      const rows = tableRows(payload);
+      const labels = (payload.table?.cols || []).map(column => compact(column.label));
+      const headerIndex = rows.findIndex(row => required.every(name => row.map(compact).includes(compact(name))));
+      const headers = required.every(name => labels.includes(compact(name))) ? labels : headerIndex >= 0 ? rows[headerIndex].map(compact) : [];
+      const dataRows = required.every(name => labels.includes(compact(name))) ? rows : rows.slice(headerIndex + 1);
+      if(!headers.length) throw new Error(`Live headers were not found for ${required.join(', ')}.`);
+      const col = name => headers.indexOf(compact(name));
+      const value = (row, name) => col(name) >= 0 ? row[col(name)] : '';
+      return {dataRows, value};
+    };
+    const standings = parse(standingsPayload, ['Team','User','W','L']);
+    const coaches = parse(coachPayload, ['User','Current Team','Overall Wins','Overall Losses']);
+    const records = new Map();
+    standings.dataRows.forEach(row => {
+      const user = standings.value(row,'User');
+      if(!user) return;
+      records.set(user.toLowerCase(), {
+        team: standings.value(row,'Team'),
+        teamRecord: `${standings.value(row,'W') || 0}-${standings.value(row,'L') || 0}`,
+        currentRank: standings.value(row,'Current Rank')
+      });
+    });
+    coaches.dataRows.forEach(row => {
+      const user = coaches.value(row,'User');
+      if(!user) return;
+      const key = user.toLowerCase();
+      const current = records.get(key) || {};
+      records.set(key, {
+        ...current,
+        careerRecord: `${coaches.value(row,'Overall Wins') || 0}-${coaches.value(row,'Overall Losses') || 0}`,
+        coachName: coaches.value(row,'Coach'),
+        prestige: coaches.value(row,'Prestige'),
+        levelArchetype: coaches.value(row,'Level & Archetype'),
+        jobSecurity: coaches.value(row,'Job Security'),
+        offScheme: coaches.value(row,'Off. Scheme'),
+        defScheme: coaches.value(row,'Def. Scheme'),
+        almaMater: coaches.value(row,'Alma Mater')
+      });
+    });
+    return records;
+  }
+  function applyLiveTeamData(data, records, games){
+    const normalizeUser = value => String(value || '').trim().toLowerCase();
+    const latestFor = user => games.filter(game => normalizeUser(game.awayUser) === user || normalizeUser(game.homeUser) === user)
+      .sort((a,b) => weekNumber(b.week) - weekNumber(a.week) || String(b.createdAt).localeCompare(String(a.createdAt)))[0];
+    (data.teams || []).forEach(team => {
+      const user = normalizeUser(team.coach);
+      const live = records?.get(user);
+      if(live) Object.assign(team, live);
+      const game = latestFor(user);
+      if(game){
+        const away = normalizeUser(game.awayUser) === user;
+        const teamScore = away ? game.awayScore : game.homeScore;
+        const opponentScore = away ? game.homeScore : game.awayScore;
+        const opponent = away ? game.home : game.away;
+        team.lastGameResult = `${teamScore > opponentScore ? 'W' : 'L'} ${teamScore}-${opponentScore} vs ${opponent}`;
+      }
+    });
   }
   function gameResultRecap(game){
     const awayWon = game.winner.toLowerCase() === game.away.toLowerCase() || game.awayScore > game.homeScore;
@@ -321,6 +388,31 @@
     games.forEach(game => { const key=`${game.season}|${game.week}|${game.away}|${game.home}`.toLowerCase(); if(!byGame.has(key)) byGame.set(key,game); });
     return [...byGame.values()].sort((a,b) => Number(b.isUser)-Number(a.isUser) || String(b.createdAt).localeCompare(String(a.createdAt)) || weekNumber(b.week)-weekNumber(a.week));
   }
+  async function liveFullSchedule(){
+    const payload = await loadLiveSheet('Schedule');
+    const rows = (payload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
+    const humanUser = value => Boolean(String(value || '').trim()) && !/^(cpu|cpu team|computer|ai)$/i.test(String(value).trim());
+    return rows.map(row => {
+      const gameType = row[3] || 'Game';
+      const away = row[4] || '';
+      const awayUser = row[5] || '';
+      const home = row[6] || '';
+      const homeUser = row[7] || '';
+      const notes = row[14] || '';
+      const isUser = (/user/i.test(gameType) && !/cpu/i.test(gameType)) || (humanUser(awayUser) && humanUser(homeUser));
+      return {
+        id: row[0] || '', season: row[1] || '', week: row[2] || 'Week ?', gameType,
+        away, awayUser, home, homeUser, status: row[8] || 'Scheduled',
+        awayScore: row[9] === '' ? null : Number(row[9]), homeScore: row[10] === '' ? null : Number(row[10]),
+        winner: row[11] || '', forcedWin: row[12] || '', fairSim: row[13] || '', notes,
+        createdAt: row[15] || '', updatedAt: row[16] || '', source: row[17] || '',
+        matchup: `${away} at ${home}`, neutral: /neutral site/i.test(notes),
+        venue: (String(notes).match(/neutral site:\s*([^;]+)/i) || [,''])[1],
+        conference: /conference game/i.test(notes) && !/non-conference game/i.test(notes), isUser
+      };
+    }).filter(game => game.away && game.home && /^Week\s+\d+$/i.test(game.week))
+      .sort((a,b) => weekNumber(a.week)-weekNumber(b.week) || a.away.localeCompare(b.away) || a.home.localeCompare(b.home));
+  }
   function renderLiveSeasonWeek(status){
     const text = status ? `${status.season} - Current Week: ${status.week}` : 'Live season status unavailable';
     $$('[data-render="live-season-week"]').forEach(el => { el.textContent = text; });
@@ -359,7 +451,8 @@
     }
     const lookup = teamLookup(data);
     const movement = row => {
-      const previous = Number(String(row.lastWeek).replace(/[^0-9]/g,''));
+      const baseline = row.lastWeek && !/^[-—]+$/.test(String(row.lastWeek).trim()) ? row.lastWeek : row.startingRank;
+      const previous = Number(String(baseline).replace(/[^0-9]/g,''));
       if(!Number.isFinite(previous) || previous <= 0) return 'NEW';
       const delta = previous - row.rank;
       return delta > 0 ? `▲ ${delta}` : delta < 0 ? `▼ ${Math.abs(delta)}` : '—';
@@ -379,7 +472,7 @@
       }).join('')}</div>`;
   }
   function esc(v){ return String(v ?? '').replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s])); }
-  function mountRunningLateFeed(){
+  function mountRunningLateFeed(feed = RUNNING_LATE_FEED){
     const ticker = $('.ticker');
     if(ticker){
       const label = $('.ticker__label', ticker);
@@ -391,10 +484,10 @@
         label.setAttribute('aria-label','Open the Running Late Discord poll channel');
       }
       if(track){
-        const games = RUNNING_LATE_FEED.recentUserGames.map(game =>
+        const games = feed.recentUserGames.map(game =>
           `<span><b>${esc(game.label)}:</b> ${esc(game.winner)} ${esc(game.winnerScore)}–${esc(game.loserScore)} ${esc(game.loser)}</span>`
         ).join('');
-        const ranked = RUNNING_LATE_FEED.topTen.map(entry =>
+        const ranked = feed.topTen.map(entry =>
           `<span class="ticker-rank"><b>#${esc(entry.rank)} ${esc(entry.team)}</b> — ${esc(entry.user)}</span>`
         ).join('');
         track.innerHTML = `<span data-render="live-game-results">Loading latest game results...</span><span data-render="live-season-week">Loading live season...</span><span class="ticker-poll"><a href="${POLL_CHANNEL}" target="_blank" rel="noopener">Vote &amp; follow official polls in the Discord Poll Channel</a></span>${games}${ranked}`;
@@ -412,14 +505,23 @@
       </article>
       <article class="feed-card">
         <span class="eyebrow">Recent User vs. User Results</span>
-        <div class="feed-results">${RUNNING_LATE_FEED.recentUserGames.map(game => `
+        <div class="feed-results">${feed.recentUserGames.map(game => `
           <div><small>${esc(game.label)}</small><strong>${esc(game.winner)} ${esc(game.winnerScore)}–${esc(game.loserScore)} ${esc(game.loser)}</strong></div>`).join('')}</div>
       </article>
       <article class="feed-card feed-card--rankings">
         <span class="eyebrow">Top-10 Ranked Users</span>
-        <ol>${RUNNING_LATE_FEED.topTen.map(entry => `
+        <ol>${feed.topTen.map(entry => `
           <li><b>#${esc(entry.rank)}</b><span><strong>${esc(entry.user)}</strong><small>${esc(entry.team)}</small></span></li>`).join('')}</ol>
       </article>`;
+  }
+  function liveFeed(games, poll, data){
+    const recentUserGames = games.filter(game => game.isUser).slice(0,2).map(game => {
+      const awayWon = game.awayScore > game.homeScore;
+      return {winner:awayWon ? game.away : game.home,winnerScore:awayWon ? game.awayScore : game.homeScore,loser:awayWon ? game.home : game.away,loserScore:awayWon ? game.homeScore : game.awayScore,label:`${game.week} final`};
+    });
+    const lookup = teamLookup(data);
+    const topTen = (poll?.entries || []).filter(entry => /^yes$/i.test(entry.userTeam)).slice(0,10).map(entry => ({rank:entry.rank,team:entry.team,user:lookup[String(entry.team).toLowerCase()]?.coach || entry.userId || 'User team'}));
+    return {recentUserGames:recentUserGames.length ? recentUserGames : RUNNING_LATE_FEED.recentUserGames,topTen:topTen.length ? topTen : RUNNING_LATE_FEED.topTen};
   }
   function weekNumber(w){ const m=String(w).match(/\d+/); return m?Number(m[0]):999; }
   function slug(v){ return String(v||'section').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') || 'section'; }
@@ -720,7 +822,7 @@
             <div>
               <h3>${esc(cleanDisplay(t.school))}</h3>
               <p>${esc(t.coach)}</p>
-              <div class="team-hub-card__meta">${conferenceBadge(t.conference)}<span><b>GT:</b> ${esc(dynastyGamertag(t))}</span><span><b>Platform:</b> ${esc(dynastyPlatform(t))}</span><span><b>Next User Game:</b> ${esc(nextGameForTeam(data,t.school))}</span></div>
+              <div class="team-hub-card__meta">${conferenceBadge(t.conference)}<span><b>Record:</b> ${esc(pendingValue(t.teamRecord, '0-0'))}</span><span><b>GT:</b> ${esc(dynastyGamertag(t))}</span><span><b>Platform:</b> ${esc(dynastyPlatform(t))}</span><span><b>Next User Game:</b> ${esc(nextGameForTeam(data,t.school))}</span></div>
             </div>
           </a>`).join('')}</div>`;
       observe();
@@ -776,7 +878,7 @@
     const root = $('[data-render="schedule"]'); if(!root) return;
     const search = $('#scheduleSearch'); const weekFilter = $('#weekFilter');
     const scheduleTotal = $('[data-render="schedule-total"]');
-    if(scheduleTotal) scheduleTotal.textContent = data.derived?.projected_user_games || (data.schedule || []).length;
+    if(scheduleTotal) scheduleTotal.textContent = (data.schedule || []).length;
     const render = () => {
       const q = (search?.value || '').toLowerCase().trim();
       const wf = weekFilter?.value || 'All';
@@ -786,7 +888,7 @@
       const jumper = ordered.length > 1 ? `<nav class="section-jumper" aria-label="Schedule sections">${ordered.map(w=>`<a href="#schedule-${slug(w)}">${esc(w.replace('Week ','W'))} <span>${groups[w].length}</span></a>`).join('')}</nav>` : '';
       const result = q ? `<p class="finder-result">${games.length ? `${games.length} game${games.length===1?'':'s'} found.` : 'No games match that filter.'}</p>` : '';
       root.innerHTML = result + jumper + (ordered.map(w => `
-        <section id="schedule-${slug(w)}" class="week-block reveal"><div class="week-head"><h3>${esc(w)}</h3><span class="chip chip--gold">${groups[w].length} user games</span></div>
+        <section id="schedule-${slug(w)}" class="week-block reveal"><div class="week-head"><h3>${esc(w)}</h3><span class="chip chip--gold">${groups[w].length} games</span></div>
         <div class="match-grid">${groups[w].map(g=>matchCard(g,data)).join('')}</div></section>`).join('') || '<p class="lead">No games match that filter.</p>');
       linkTeamMentions(data, root);
       observe();
@@ -800,18 +902,19 @@
   function matchCard(g, data){
     const awayCoach = coachForTeam(data,g.away);
     const homeCoach = coachForTeam(data,g.home);
-    const gameType = g.conference ? 'Conference Game' : 'Non-Conference Game';
-    const kindClass = g.conference ? 'game-kind--conference' : 'game-kind--non';
+    const gameType = g.isUser ? 'USER vs USER' : 'USER vs CPU';
+    const kindClass = g.isUser ? 'game-kind--conference' : 'game-kind--non';
     return `<article class="match-card ${g.conference ? 'match-card--conference' : 'match-card--non'}">
       <div class="match-card__body">
-        <small class="game-kind ${kindClass}">${esc(gameType)}</small>
+        <small class="game-kind ${kindClass}">${esc(gameType)}${g.status === 'Final' ? ' • FINAL' : ''}</small>
         <div class="match-card__teams">
           ${teamLink(data,g.away,'team-link team-link--away')}
           <span>${g.neutral?'VS':'@'}</span>
           ${teamLink(data,g.home,'team-link team-link--home')}
         </div>
         ${g.venue?`<small class="match-card__venue">${esc(g.venue)}</small>`:''}
-        <small class="match-card__coaches">${esc(g.away)}: ${esc(awayCoach||'Coach TBD')} | ${esc(g.home)}: ${esc(homeCoach||'Coach TBD')}</small>
+        <small class="match-card__coaches">${esc(g.away)}: ${esc(g.awayUser || awayCoach || 'CPU')} | ${esc(g.home)}: ${esc(g.homeUser || homeCoach || 'CPU')}</small>
+        ${g.status === 'Final' && Number.isFinite(g.awayScore) && Number.isFinite(g.homeScore) ? `<strong class="match-card__score">FINAL — ${esc(g.away)} ${g.awayScore}, ${esc(g.home)} ${g.homeScore}</strong>` : ''}
       </div>
     </article>`;
   }
@@ -1113,7 +1216,7 @@
   async function init(){
     wireNav(); wireMobileBottomNav(); mountAudioPlayer(); wireSplash(); mountRunningLateFeed();
     const data = await loadData();
-    const [statusResult, gameResultsResult, top25Result] = await Promise.allSettled([liveDashboardStatus(), liveGameResults(), liveTop25Poll()]);
+    const [statusResult, gameResultsResult, top25Result, teamRecordsResult, fullScheduleResult] = await Promise.allSettled([liveDashboardStatus(), liveGameResults(), liveTop25Poll(), liveTeamRecords(), liveFullSchedule()]);
     const liveStatus = statusResult.status === 'fulfilled' ? statusResult.value : null;
     const liveGames = gameResultsResult.status === 'fulfilled' ? gameResultsResult.value : [];
     if(liveStatus){
@@ -1121,6 +1224,11 @@
       data.dashboard ||= {}; data.dashboard.status ||= {}; data.dashboard.status.currentWeek = liveStatus.week;
     }else console.warn('Live spreadsheet season/week could not be loaded.', statusResult.reason);
     if(gameResultsResult.status === 'rejected') console.warn('Live spreadsheet game results could not be loaded.', gameResultsResult.reason);
+    if(fullScheduleResult.status === 'fulfilled') data.schedule = fullScheduleResult.value;
+    else console.warn('Live spreadsheet full schedule could not be loaded; using the local fallback schedule.', fullScheduleResult.reason);
+    if(teamRecordsResult.status === 'fulfilled') applyLiveTeamData(data, teamRecordsResult.value, liveGames);
+    else console.warn('Live spreadsheet standings and coach records could not be loaded.', teamRecordsResult.reason);
+    mountRunningLateFeed(liveFeed(liveGames, top25Result.status === 'fulfilled' ? top25Result.value : null, data));
     renderLiveSeasonWeek(liveStatus);
     renderLiveGameResults(liveGames.slice(0,3).map(gameResultRecap));
     renderGameResultsPage(liveGames);
