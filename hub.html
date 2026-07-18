@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dynasty Hub | Running Late Dynasty CFB 27</title>
-  <meta name="description" content="ESPN-style Running Late Dynasty CFB 27 command center with easy update signals, teams, schedule, history, and rules.">
+  <meta name="description" content="Running Late Dynasty CFB 27 command center with live standings, schedules, results, rankings, teams, and league history.">
   <meta name="theme-color" content="#050505">
   <meta property="og:title" content="Dynasty Hub | Running Late Dynasty CFB 27">
-  <meta property="og:description" content="ESPN-style Running Late Dynasty CFB 27 command center with easy update signals, teams, schedule, history, and rules.">
+  <meta property="og:description" content="Running Late Dynasty CFB 27 command center with live standings, schedules, results, rankings, teams, and league history.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://professorzoom45.github.io/RunningLate/assets/images/hype-running-late-logo.png">
   <link rel="icon" href="assets/rld-logo.png" type="image/png">
@@ -20,8 +20,8 @@
     <div class="ticker__track" aria-label="league ticker">
       <span>Running Late Dynasty For College Football 27</span>
       <span>Private League - Cross-Play ON - Heisman - 48-Hour Advances</span>
-      <span>Year 1 (2026) - Current Week: Week 1</span>
-      <span>32 Active Member Programs - 83 Projected User Games</span>
+      <span>Year 1 (2026) - Current Week: Week 3</span>
+      <span>Live Standings - Results - Rankings - Advance Readiness</span>
       <span>Join Discord: <a href="https://discord.gg/8sXA2RQPnm" target="_blank" rel="noopener">https://discord.gg/8sXA2RQPnm</a></span>
     </div>
   </div>
@@ -48,7 +48,12 @@
         <article class="lead-story reveal">
           <div class="desk-label"><span>RLD GameDay Desk</span><b data-render="status-label">YEAR 1</b></div>
           <h1>CFB 27 Dynasty <em>Command Center</em></h1>
-          <p class="lead">Fast signals up top, deeper league history below. The D1SN magazine style stays alive, and the front page now reads like a live sports dashboard.</p>
+          <p class="lead">The Running Late Dynasty Hub brings live league standings, schedules, results, rankings, and weekly storylines together in one place. Follow every user team, track the race to advance, and stay connected to the dynasty as it unfolds.</p>
+          <div class="cta-row hub-primary-actions" aria-label="Week 3 quick links">
+            <a class="btn btn--primary" href="results.html">Week 3 Results</a>
+            <a class="btn" href="teams.html#top-25">Live Top-25</a>
+            <a class="btn" href="schedule.html">Full Schedule</a>
+          </div>
           <div class="command-center-video" aria-label="Latest Running Late Dynasty video">
             <div class="command-center-video__head">
               <span>Latest From Running Late TV</span>
@@ -64,10 +69,9 @@
           <img class="rail-logo" src="assets/rld-logo.png" alt="Running Late Dynasty CFB 27 logo">
           <div class="rail-meta">
             <span>Current Week</span>
-            <strong data-render="current-week">Week 1</strong>
-            <small data-render="next-advance">Friday July 10 - Noon EST</small>
+            <strong data-render="current-week">Week 3</strong>
+            <small data-render="next-advance">Saturday at Noon EST</small>
           </div>
-          <div class="signal-board" data-render="signals"></div>
         </aside>
       </div>
     </section>
@@ -81,21 +85,15 @@
     </section>
 
     <section class="section section--broadcast">
-      <div class="panel-header"><div><span class="eyebrow">📺 Live Board</span><h2>Easy Signals</h2><p>Week 0 signals for advance pace, scheduling, streams, and Discord activity.</p></div></div>
-      <div class="grid grid--3" data-render="signal-cards"></div>
+      <div class="panel-header"><div><span class="eyebrow">📺 Live Board</span><h2>League Status</h2><p>Current advance pace, scheduling, stream, GOTW, and Discord updates.</p></div></div>
+      <div class="grid grid--4 status-card-grid" data-render="status-cards"></div>
     </section>
 
     <section class="section">
       <div class="grid grid--2 dashboard-two-col">
-        <article class="hero-panel reveal"><div class="panel-header"><div><span class="eyebrow">🏟️ Featured Slate</span><h2>Opening Games</h2><p>Quick-glance game cards pulled from the schedule data.</p></div><a class="btn" href="schedule.html">Full Schedule</a></div><div class="mini-slate" data-render="featured-games"></div></article>
-        <article class="hero-panel reveal"><div class="panel-header"><div><span class="eyebrow">🔥 Watchlist</span><h2>What To Watch</h2><p>Storylines for weekly issue writeups, GOTW polls, and league posts.</p></div></div><div class="watchlist" data-render="watchlist"></div></article>
+        <article class="hero-panel reveal"><div class="panel-header"><div><span class="eyebrow">🏟️ Featured Slate</span><h2>Week 3 Games</h2><p>Current matchups from the live league schedule.</p></div><a class="btn" href="schedule.html">Full Schedule</a></div><div class="mini-slate" data-render="featured-games"></div></article>
+        <article class="hero-panel reveal"><div class="panel-header"><div><span class="eyebrow">🔥 Watchlist</span><h2>What To Watch</h2><p>Current games, rivalries, and league storylines.</p></div></div><div class="watchlist" data-render="watchlist"></div></article>
       </div>
-    </section>
-
-    <section id="gotw-preview" class="section" aria-labelledby="gotw-preview-title">
-      <article class="hero-panel gotw-preview reveal" data-render="gotw-preview">
-        <div class="panel-header"><div><span class="eyebrow">Game of the Week</span><h2 id="gotw-preview-title">Week 2 Preview</h2><p>Loading the selected matchup…</p></div></div>
-      </article>
     </section>
 
     <section class="section">
@@ -125,14 +123,6 @@
           <div class="glass-card">
             <h3>Freshman Reward</h3>
             <p>Correct picks earn awareness points. Only true freshmen can receive the reward, with a max of +10 awareness to one true freshman.</p>
-          </div>
-          <div class="glass-card">
-            <h3>Spreadsheet Source</h3>
-            <p>GOTW data is designed to pull from the <strong>Game of the Week</strong>, <strong>GOTW Votes</strong>, and <strong>GOTW Rewards</strong> spreadsheet tabs.</p>
-          </div>
-          <div class="glass-card">
-            <h3>Future Live Board</h3>
-            <p>Next upgrade target: active matchup, vote totals, final winner, correct picks, season totals, and awareness-point winners on the site.</p>
           </div>
         </div>
         <div class="chip-row" aria-label="GOTW reward summary">
@@ -170,12 +160,12 @@
     </section>
 
     <section class="section">
-      <div class="panel-header"><div><span class="eyebrow">📡 League Setup</span><h2>Launch Board</h2><p>Core preseason settings for the CFB 27 site.</p></div></div>
+      <div class="panel-header"><div><span class="eyebrow">📡 League Setup</span><h2>League Settings</h2><p>Current dynasty format and gameplay settings.</p></div></div>
       <div class="grid grid--4" data-render="settings"></div>
     </section>
 
     <section class="section">
-      <div class="panel-header"><div><span class="eyebrow">League Health</span><h2>Admin Signals</h2><p>Fast public readout for activity, completions, streams, reviews, and team openings.</p></div></div>
+      <div class="panel-header"><div><span class="eyebrow">League Health</span><h2>Admin Overview</h2><p>Current public readout for activity, completions, streams, reviews, and team openings.</p></div></div>
       <div class="grid grid--3" data-render="league-health"></div>
     </section>
 
@@ -186,8 +176,8 @@
 
     <section class="section">
       <div class="grid grid--2">
-        <article class="hero-panel reveal"><div class="panel-header"><div><span class="eyebrow">🔥 Toughest User Game Slates</span><h2>Top 15 Toughest Schedules</h2><p>Programs with the heaviest projected user-game workload.</p></div></div><div class="leaderboard" data-render="top-games"></div></article>
-        <article class="hero-panel reveal"><div class="panel-header"><div><span class="eyebrow">🧭 Timeline</span><h2>From CFB 26 to 27</h2><p>The league history arc stays on the front page.</p></div></div><div class="timeline" data-render="timeline"></div></article>
+        <article class="hero-panel reveal"><div class="panel-header"><div><span class="eyebrow">🔥 Schedule Leaders</span><h2>Busiest Team Schedules</h2><p>Programs with the most games currently listed.</p></div></div><div class="leaderboard" data-render="top-games"></div></article>
+        <article class="hero-panel reveal"><div class="panel-header"><div><span class="eyebrow">🧭 Timeline</span><h2>From CFB 26 to 27</h2><p>Key milestones from the league's history.</p></div></div><div class="timeline" data-render="timeline"></div></article>
       </div>
     </section>
   </main>
@@ -202,6 +192,7 @@
     </div>
   </footer>
   <script src="data/league-history.js"></script>
+  <script src="assets/live-config.js"></script>
   <script src="assets/app.js"></script>
 </body>
 </html>

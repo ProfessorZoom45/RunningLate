@@ -30,8 +30,8 @@
       "value": "Allowed"
     },
     {
-      "label": "First Advance",
-      "value": "Friday, July 10 at Noon EST"
+      "label": "Next Advance",
+      "value": "Saturday at Noon EST"
     },
     {
       "label": "Current Season",
@@ -39,15 +39,15 @@
     },
     {
       "label": "Current Week",
-      "value": "Week 1"
+      "value": "Week 3"
     },
     {
       "label": "User Games",
       "value": "83"
     },
     {
-      "label": "Second Advance",
-      "value": "Sunday @ NOON EST"
+      "label": "Current Readiness",
+      "value": "25/32"
     }
   ],
   "timeline": [
@@ -1800,16 +1800,6 @@
       "conference": true
     }
   ],
-  "rules": [
-    "Schedule every user game within 24 hours after advance.",
-    "Use a clear 2-hour max gaming window if no exact kickoff time is set.",
-    "Someone must stream, screen share, or record user games for admin review.",
-    "Forced loss and fair sim calls are admin-reviewed case by case.",
-    "CPU restarts should stay at zero unless there is proof or a strong reason.",
-    "No scoring over 100; chew clock when a game gets out of hand.",
-    "Check uniforms before kickoff to avoid dark-on-dark or white-on-white matchups.",
-    "Respect the opponent, the admins, and the league. Keep trash talk inside football."
-  ],
   "version": "launch-magazine-site",
   "brand": {
     "name": "Running Late Dynasty",
@@ -1817,7 +1807,7 @@
     "game": "CFB 27",
     "tagline": "Day 1 Dynasty Era",
     "discordInvite": "https://discord.gg/8sXA2RQPnm",
-    "privacy": "Public preseason site for Running Late Dynasty CFB 27.",
+    "privacy": "Public league site for Running Late Dynasty CFB 27.",
     "footer": "Perfect Timing Gaming • Powered by D1SN • Credits: Professor Zoom",
     "coverIssue": "D1SN Special Issue 00",
     "coverDate": "July 2026"
@@ -1833,13 +1823,13 @@
       "title": "Dynasty Hub",
       "file": "hub.html",
       "type": "Core",
-      "summary": "Command center with league signals, headlines, featured games, health, and timeline."
+      "summary": "Command center with league status, headlines, featured games, health, and timeline."
     },
     {
       "title": "Coach Cards",
       "file": "coaches.html",
       "type": "Core",
-      "summary": "Public preseason coach profile cards with team, conference, record, scheme, and ranking slots."
+      "summary": "Current coach directory with team, conference, record, and scheme details."
     },
     {
       "title": "Teams",
@@ -1851,7 +1841,7 @@
       "title": "Schedule",
       "file": "schedule.html",
       "type": "Core",
-      "summary": "Projected 83-game user-vs-user schedule grouped by week."
+      "summary": "Live user and CPU schedule grouped by week."
     },
     {
       "title": "History",
@@ -2072,28 +2062,9 @@
   },
   "public_notes": [
     "Discord invite: https://discord.gg/8sXA2RQPnm",
-    "Year 1 (2026) Week 0 hub is ready for weekly league updates.",
-    "Coach cards use public profile fields and can be expanded as users submit details."
+    "Year 1 (2026) is currently in Week 3.",
+    "Standings, results, rankings, schedules, and readiness update from the live league spreadsheet."
   ],
-  "gotw": {
-    "gotwId": "GOTW-2026-WK2",
-    "displayWeek": "Week 2",
-    "leagueCurrentWeek": "Week 1",
-    "awayTeam": "Ohio State",
-    "homeTeam": "Texas",
-    "awayRank": 1,
-    "homeRank": 7,
-    "winnerVotes": 9,
-    "runnerUpVotes": 4,
-    "totalVotes": 13,
-    "nominationStatus": "Closed — selected matchup",
-    "predictionStatus": "Pending — no prediction poll is active",
-    "runnerUp": {"awayTeam": "Oklahoma", "homeTeam": "Michigan", "awayRank": 10, "homeRank": 14},
-    "pollUrl": "https://discord.com/channels/1382826467683205180/1407980310158905448/1525926318334808195",
-    "pollMessageId": "1525926318334808195",
-    "pollOpenedAt": "July 12, 2026 at 2:06:24 PM EDT",
-    "pollClosedAt": "July 13, 2026 at 2:06:24 PM EDT"
-  },
   "discordCommands": {
     "ranks": {
       "commands": ["/ranks"],
@@ -2110,10 +2081,10 @@
   "dashboard": {
     "status": {
       "leagueState": "YEAR 1",
-      "currentWeek": "Week 1",
-      "nextAdvance": "Sunday @ NOON EST",
-      "updateLabel": "Week 0 launch board",
-      "editorNote": "Year 1 (2026) Week 0 hub is ready for weekly league updates.",
+      "currentWeek": "Week 3",
+      "nextAdvance": "Saturday at Noon EST",
+      "updateLabel": "Week 3 league board",
+      "editorNote": "Live league data refreshes from the dynasty spreadsheet.",
       "seasonYear": "2026"
     },
     "scorebar": [
@@ -2144,87 +2115,79 @@
     ],
     "coverLines": [
       {
-        "kicker": "Season Preview",
-        "title": "The Season Awaits",
-        "detail": "83 projected user-vs-user games for Weeks 1-13 live in the schedule board."
+        "kicker": "Week 3",
+        "title": "The Season Is Underway",
+        "detail": "Live results, rankings, standings, and schedules update throughout the week."
       },
       {
         "kicker": "Program Count",
         "title": "32 Active Member Programs",
-        "detail": "ACC, Big Ten, BIG XII, SEC, and Independent boards are already mapped."
+        "detail": "ACC, Big Ten, BIG XII, SEC, and Independent teams are represented."
       },
       {
         "kicker": "League Clock",
         "title": "48-Hour Advances",
-        "detail": "Day 1 pace, clean windows, and no excuses."
+        "detail": "Advance readiness and the next deadline come directly from the league dashboard."
       },
       {
-        "kicker": "Culture",
-        "title": "Built From The Chat",
-        "detail": "CFB 26 roots, clips, GOTW heat, and CFB 27 launch history."
+        "kicker": "League Coverage",
+        "title": "Every Week In One Place",
+        "detail": "Follow results, rankings, Game of the Week, streams, and league history."
       }
     ],
-    "signals": [
+    "statusCards": [
       {
-        "label": "Advance Signal",
+        "label": "Advance Status",
         "value": "48H",
         "status": "ON CLOCK",
         "tone": "red",
         "detail": "In-Game Weeks move on a 48-hour cycle. Second Advance is Sunday @ NOON EST",
-        "editKey": "dashboard.signals[0]"
+        "editKey": "dashboard.statusCards[0]"
       },
       {
-        "label": "Scheduling Signal",
+        "label": "Scheduling Status",
         "value": "24H",
         "status": "POST WINDOW",
         "tone": "gold",
         "detail": "Users should schedule within 24 hours after advance with a time or 2-hour window.",
-        "editKey": "dashboard.signals[1]"
+        "editKey": "dashboard.statusCards[1]"
       },
       {
-        "label": "Stream Signal",
+        "label": "Stream Status",
         "value": "REC",
         "status": "REVIEW READY",
         "tone": "blue",
         "detail": "User games should be streamed, screen shared, or recorded for admin review.",
-        "editKey": "dashboard.signals[2]"
+        "editKey": "dashboard.statusCards[2]"
       },
       {
-        "label": "GOTW Signal",
+        "label": "GOTW Status",
         "value": "WK 2",
         "status": "SELECTED 9–4",
         "tone": "green",
         "detail": "#1 Ohio State (1-0) at #7 Texas (0-0). Nomination closed with 13 votes; prediction voting has not started.",
-        "editKey": "dashboard.signals[3]"
-      },
-      {
-        "label": "Discord Signal",
-        "value": "LIVE",
-        "status": "JOINABLE",
-        "tone": "discord",
-        "detail": "Invite is public and repeated in the ticker and footer on every page.",
-        "editKey": "brand.discordInvite"
+        "editKey": "dashboard.statusCards[3]"
       }
     ],
     "headlines": [
       {
-        "kicker": "TOP STORY",
-        "title": "Running Late Dynasty opens the CFB 27 Day 1 era",
-        "summary": "The new hub combines the old D1SN magazine structure with a cleaner live-dashboard layout for teams, schedules, rules, media, and archives.",
-        "href": "history.html",
-        "cta": "Read History"
+        "kicker": "WEEK 3 GOTW FINAL",
+        "title": "Florida State defeats Alabama in the Week 3 Game of the Week",
+        "summary": "The Seminoles earned the Week 3 showcase win over Alabama.",
+        "href": "results.html",
+        "cta": "View Results"
       },
       {
-        "kicker": "SCHEDULE DESK",
-        "title": "83 projected user games already loaded",
-        "summary": "The schedule board filters the 83 projected user-vs-user games for Weeks 1-13 by week, team, and venue.",
-        "href": "schedule.html",
-        "cta": "Open Schedule"
+        "kicker": "WEEK 2 GOTW WINNER",
+        "title": "🎉 Congratulations to jrob9179 (Texas)",
+        "summary": "Texas defeated Ohio State 59-13 to win the Week 2 Game of the Week.",
+        "href": "results.html",
+        "cta": "View Results"
       },
       {
         "kicker": "TEAM / USER HUB",
-        "title": "32 active member programs, one merged team board",
-        "summary": "Search by school, username, or conference, then jump into coach cards, team schedules, conference groups, and open-team status from one page.",
+        "title": "Find every user team and coach",
+        "summary": "Search the league by school, username, conference, record, or ranking.",
         "href": "teams.html",
         "cta": "Open Teams"
       }
@@ -2247,8 +2210,8 @@
       },
       {
         "rank": "04",
-        "title": "Content culture",
-        "detail": "Streams, clips, highlights, and league media keep the season feeling like a weekly show."
+        "title": "League media",
+        "detail": "Follow streams, clips, highlights, and the official Running Late playlist."
       }
     ],
     "featuredLinks": [
@@ -2260,7 +2223,7 @@
       {
         "label": "Coach Cards",
         "href": "coaches.html",
-        "detail": "Public preseason profiles"
+        "detail": "Current users, teams, records, and schemes"
       },
       {
         "label": "Schedule",
@@ -2280,8 +2243,8 @@
         "result": "Changes the magazine cover teasers on index.html."
       },
       {
-        "area": "Dashboard signals",
-        "edit": "data/league-history.json → dashboard.signals",
+        "area": "Dashboard status cards",
+        "edit": "data/league-history.json → dashboard.statusCards",
         "result": "Changes the colored ESPN-style alert cards on hub.html."
       },
       {
@@ -2298,20 +2261,15 @@
         "area": "Schedule",
         "edit": "data/league-history.json → schedule",
         "result": "Updates schedule page, user-game count, and featured games."
-      },
-      {
-        "area": "Rules",
-        "edit": "data/league-history.json → rules",
-        "result": "Updates rule cards without editing page HTML."
       }
     ]
   },
   "season": {
     "year": "2026",
     "label": "Year 1",
-    "currentWeek": "Week 1",
+    "currentWeek": "Week 3",
     "phase": "Regular Season",
     "advanceCycle": "48H",
-    "nextAdvance": "Sunday @ NOON EST"
+    "nextAdvance": "Saturday at Noon EST"
   }
 }

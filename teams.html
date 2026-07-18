@@ -20,8 +20,8 @@
     <div class="ticker__track" aria-label="league ticker">
       <span>Running Late Dynasty For College Football 27</span>
       <span>Private League - Cross-Play ON - Heisman - 48-Hour Advances</span>
-      <span>Year 1 (2026) - Current Week: Week 1</span>
-      <span>32 Active Member Programs - 83 Projected User Games</span>
+      <span>Year 1 (2026) - Current Week: Week 3</span>
+      <span>Live Standings - Results - Rankings - Advance Readiness</span>
       <span>Join Discord: <a href="https://discord.gg/8sXA2RQPnm" target="_blank" rel="noopener">https://discord.gg/8sXA2RQPnm</a></span>
     </div>
   </div>
@@ -48,7 +48,7 @@
       </figure>
       <span class="eyebrow">Team / User Hub</span>
       <h1 class="hero-title">Active Member <em>Programs</em></h1>
-      <p class="lead">One polished home for the user list, quick coach-card finder, detailed team cards, conference board, and recruiting/open-team pool.</p>
+      <p class="lead">Search all 32 user teams, coaches, records, rankings, conferences, and schedules.</p>
       <div class="controls controls--hero">
         <input id="teamPageSearch" class="input" type="search" placeholder="Search Coach Name, Team Name, or Username/Discord name" aria-label="Search Coach Name, Team Name, or Username/Discord name">
         <a class="btn btn--primary" href="coaches.html">All Coach Cards</a>
@@ -64,8 +64,8 @@
     </section>
     <section id="top-25" class="section section--tight">
       <div class="panel-header">
-        <div><span class="eyebrow">Live Spreadsheet Poll</span><h2>Top-25</h2><p>The latest complete poll is loaded directly from the TOP-25 Poll spreadsheet tab every time this page opens.</p></div>
-        <span class="chip chip--gold">Fresh Each Visit</span>
+        <div><span class="eyebrow">Live Spreadsheet Poll</span><h2 data-render="top25-title">Week 3 Media Top-25 Poll</h2><p>The complete poll is refreshed from the TOP-25 Poll spreadsheet tab every time this page opens.</p></div>
+        <span class="chip chip--gold" data-render="top25-freshness">Updated From Spreadsheet</span>
       </div>
       <div class="top25-shell" data-render="top-25-poll" aria-live="polite">
         <div class="top25-state"><strong>Loading the live Top-25...</strong><span>Connecting to the league spreadsheet.</span></div>
@@ -79,7 +79,7 @@
     </section>
     <section id="team-cards" class="section">
       <div class="panel-header">
-        <div><span class="eyebrow">Team Cards</span><h2>Board Details</h2><p>Conference, status, record slots, social links, rivalry notes, and next user-game links for each active program.</p></div>
+        <div><span class="eyebrow">Team Cards</span><h2>Board Details</h2><p>Current records, rankings, conference assignments, social links, rivalries, and upcoming games.</p></div>
       </div>
       <div class="controls"><select id="confFilter" class="select" aria-label="Filter by conference"></select></div>
       <div data-render="teams"></div>
@@ -105,6 +105,7 @@
     </div>
   </footer>
   <script src="data/league-history.js"></script>
+  <script src="assets/live-config.js"></script>
   <script src="assets/app.js"></script>
 </body>
 </html>

@@ -1,23 +1,48 @@
 (function(){
   const DISCORD = 'https://discord.gg/8sXA2RQPnm';
   const LIVE_SHEET_ID = '1y1H-IfZk5Ry1A91-CuiSP2TdHBy_vMHp7-eEfF4BPXQ';
+  const LIVE_API_URL = String(window.RUNNING_LATE_LIVE_API_URL || '').trim();
+  const LIVE_SHEET_TABS = Object.freeze({
+    dashboard:'Dashboard',
+    results:'Game Results',
+    gotw:'GOTW History',
+    standings:'Standings',
+    coaches:'Coach Records',
+    poll:'TOP-25 Poll'
+  });
   const POLL_CHANNEL = 'https://discord.com/channels/1382826467683205180/1407980310158905448';
   const RUNNING_LATE_FEED = {
     recentUserGames: [
-      { winner:'Florida State', winnerScore:31, loser:'SMU', loserScore:27, label:'Conference result' },
-      { winner:'LSU', winnerScore:14, loser:'Clemson', loserScore:3, label:'Week 1 GOTW' }
+      { winner:'Florida State', winnerScore:31, loser:'SMU', loserScore:27, label:'Week 1 GOTW' },
+      { winner:'LSU', winnerScore:14, loser:'Clemson', loserScore:3, label:'Week 1 result' }
     ],
-    topTen: [
-      { rank:1, team:'Ohio State', user:'zig8875' },
+    pollLabel:'Week 3 Media Top-25 Poll',
+    top25: [
+      { rank:1, team:'Texas Longhorns', user:'jrob9179' },
       { rank:2, team:'Oregon', user:'rainey84480' },
       { rank:3, team:'Notre Dame', user:'malepatternballedness' },
       { rank:4, team:'Georgia', user:'mikecmd_856' },
       { rank:5, team:'Indiana', user:'grinch_is_here' },
       { rank:6, team:'Miami', user:'lakedogg32' },
-      { rank:7, team:'Texas', user:'jrob9179' },
-      { rank:8, team:'Texas A&M', user:'selfmadezay.' },
-      { rank:9, team:'Ole Miss', user:'grody365' },
-      { rank:10, team:'Oklahoma', user:'tweetybirrrd' }
+      { rank:7, team:'Texas A&M', user:'selfmadezay.' },
+      { rank:8, team:'Ole Miss', user:'grody365' },
+      { rank:9, team:'Oklahoma', user:'tweetybirrrd' },
+      { rank:10, team:'LSU', user:'bignutt195' },
+      { rank:11, team:'BYU', user:'Zo0o_0oM' },
+      { rank:12, team:'Alabama', user:'charlesmullins412' },
+      { rank:13, team:'Ohio State', user:'zig8875' },
+      { rank:14, team:'USC', user:'mrrolltide' },
+      { rank:15, team:'Texas Tech', user:'lifesgood0688' },
+      { rank:16, team:'Penn State', user:'ulost2sway' },
+      { rank:17, team:'Utah', user:'CPU' },
+      { rank:18, team:'Tennessee', user:'cmledet969829' },
+      { rank:19, team:'Houston', user:'marjaan_' },
+      { rank:20, team:'Washington', user:'hoezay_hndrxx' },
+      { rank:21, team:'Florida', user:'taybby0814' },
+      { rank:22, team:'Missouri', user:'CPU' },
+      { rank:23, team:'Michigan', user:'grap.12_58536' },
+      { rank:24, team:'TCU', user:'john5564415' },
+      { rank:25, team:'South Carolina', user:'cmledet97' }
     ]
   };
   const $ = (sel, root=document) => root.querySelector(sel);
@@ -185,7 +210,7 @@
       state.data = await res.json();
     }catch(e){
       console.warn('Running Late data could not be loaded. Using page fallback only.', e);
-      state.data = window.RLD_DATA || {teams:[],schedule:[],timeline:[],settings:[],rules:[],derived:{},dashboard:{}};
+      state.data = window.RLD_DATA || {teams:[],schedule:[],timeline:[],settings:[],derived:{},dashboard:{}};
     }
     return state.data;
   }
@@ -193,7 +218,27 @@
     if(!cell) return '';
     return String(cell.f ?? cell.v ?? '').trim();
   }
-  function loadLiveSheet(sheetName){
+  function siteApiPayload(data){
+    if(!data?.ok || !Array.isArray(data.values)) throw new Error(data?.error || 'Website data feed returned an invalid response.');
+    return {
+      status:'ok',
+      updatedAt:data.updatedAt || '',
+      table:{
+        cols:[],
+        rows:data.values.map(row => ({c:(row || []).map(value => ({v:value}))}))
+      }
+    };
+  }
+  async function requestLiveApiSheet(sheetName){
+    const url = new URL(LIVE_API_URL);
+    url.searchParams.set('api','site');
+    url.searchParams.set('sheet',sheetName);
+    url.searchParams.set('_',Date.now());
+    const response = await fetch(url, {cache:'no-store', redirect:'follow'});
+    if(!response.ok) throw new Error(`Website data feed returned HTTP ${response.status}.`);
+    return siteApiPayload(await response.json());
+  }
+  function requestVisualizationSheet(sheetName){
     return new Promise((resolve, reject) => {
       const callbackName = `runningLateSheet_${Date.now()}_${Math.random().toString(36).slice(2)}`;
       const script = document.createElement('script');
@@ -215,23 +260,95 @@
       document.head.append(script);
     });
   }
+  function requestLiveSheet(sheetName){
+    return LIVE_API_URL ? requestLiveApiSheet(sheetName) : requestVisualizationSheet(sheetName);
+  }
+  async function loadLiveSheet(sheetName){
+    let lastError;
+    for(let attempt=0; attempt<2; attempt++){
+      try{ return await requestLiveSheet(sheetName); }
+      catch(error){
+        lastError = error;
+        if(attempt === 0) await new Promise(resolve => setTimeout(resolve, 350));
+      }
+    }
+    throw new Error(`${sheetName} could not be refreshed from the league spreadsheet.`, {cause:lastError});
+  }
   async function liveDashboardStatus(){
-    const payload = await loadLiveSheet('Dashboard');
+    const payload = await loadLiveSheet(LIVE_SHEET_TABS.dashboard);
     const rows = (payload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
     const compact = value => String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, '');
     const seasonRow = rows.find(row => compact(row[0]) === 'seasonyear') || [];
+    const readinessRow = rows.find(row => compact(row[0]) === 'advancereadinessuserchecklist') || [];
     const contextRow = rows.find(row => compact(row[0]) === 'currentweekuserreadycpuresults') || [];
     const context = contextRow.find((value, index) => index > 0 && value) || '';
     const contextMatch = context.match(/Season\s+(.+?)\s*\|\s*(Week\s+[^|]+)/i);
     const seasonLabel = contextMatch?.[1]?.trim() || seasonRow[1] || '';
     const dynastyYear = seasonRow[3] || '';
     const season = seasonLabel && dynastyYear && !seasonLabel.includes(dynastyYear) ? `${seasonLabel} (${dynastyYear})` : seasonLabel;
-    const week = contextMatch?.[2]?.trim() || '';
+    const labelValue = (row, label) => {
+      const index = row.findIndex(value => compact(value) === compact(label));
+      return index >= 0 ? row[index + 1] || '' : '';
+    };
+    const week = contextMatch?.[2]?.trim() || labelValue(seasonRow, 'Current Week');
+    const nextAdvance = labelValue(seasonRow, 'Advance Deadline');
+    const readyUsers = Number(labelValue(readinessRow, 'Ready Users')) || 0;
+    const activeUsers = Number(labelValue(readinessRow, 'Active Users')) || 0;
+    const readiness = labelValue(readinessRow, 'Readiness %');
     if(!season || !week) throw new Error('Live season or week was not found on the Dashboard tab.');
-    return {season, week};
+    return {season, week, nextAdvance, readyUsers, activeUsers, readiness};
+  }
+
+  function applyLiveDashboardData(data, status, games, poll){
+    if(!status) return;
+    data.dashboard ||= {};
+    data.dashboard.status ||= {};
+    data.dashboard.status.currentWeek = status.week;
+    data.dashboard.status.nextAdvance = status.nextAdvance || data.dashboard.status.nextAdvance;
+    const scorebar = data.dashboard.scorebar ||= [];
+    const setScore = (label, value) => {
+      const item = scorebar.find(entry => entry.label === label);
+      if(item) item.value = value;
+      else scorebar.push({label, value});
+    };
+    if(status.activeUsers) setScore('Users Ready', `${status.readyUsers}/${status.activeUsers}`);
+    const weekThreeGotw = games.find(game => /florida state/i.test(game.winner) && /alabama/i.test(`${game.away} ${game.home}`));
+    const weekTwoGotw = games.find(game => game.week === 'Week 2' && /texas/i.test(game.winner) && /ohio state/i.test(`${game.away} ${game.home}`));
+    const top = poll?.entries?.[0];
+    const headlines = [];
+    const gotwScore = weekThreeGotw
+      ? (/florida state/i.test(weekThreeGotw.away) ? `${weekThreeGotw.awayScore}-${weekThreeGotw.homeScore}` : `${weekThreeGotw.homeScore}-${weekThreeGotw.awayScore}`)
+      : '';
+    headlines.push({
+      kicker:`${status.week.toUpperCase()} GOTW FINAL`,
+      title:'Florida State defeats Alabama in the Game of the Week',
+      summary:`The Seminoles earned the Week 3 showcase win over Alabama${gotwScore ? `, ${gotwScore}` : ''}.`,
+      href:'results.html', cta:'View Results'
+    });
+    headlines.push({
+      kicker:'WEEK 2 GOTW WINNER',
+      title:'🎉 Congratulations to jrob9179 (Texas)',
+      summary:weekTwoGotw
+        ? `Texas defeated Ohio State ${weekTwoGotw.homeScore}-${weekTwoGotw.awayScore} to win the Week 2 Game of the Week.`
+        : 'Congratulations to jrob9179 and Texas on winning the Week 2 Game of the Week!',
+      href:'results.html', cta:'View Results'
+    });
+    if(top) headlines.push({
+      kicker:`${poll.week || status.week} TOP-25`,
+      title:`${top.team} holds the No. 1 ranking`,
+      summary:`The live ${poll.pollType || 'Media'} poll lists ${top.team} at No. 1 with ${top.points || '—'} points and a ${top.record || 'current'} record.`,
+      href:'teams.html#top-25', cta:'View Top 25'
+    });
+    if(status.activeUsers) headlines.push({
+      kicker:'ADVANCE READINESS',
+      title:`${status.readyUsers} of ${status.activeUsers} users are ready`,
+      summary:`The live checklist is ${status.readiness || Math.round(status.readyUsers/status.activeUsers*100)+'%'} complete. Next advance: ${status.nextAdvance || 'TBD'}.`,
+      href:'hub.html', cta:'League Status'
+    });
+    if(headlines.length) data.dashboard.headlines = headlines;
   }
   async function liveTop25Poll(){
-    const payload = await loadLiveSheet('TOP-25 Poll');
+    const payload = await loadLiveSheet(LIVE_SHEET_TABS.poll);
     const rows = (payload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
     const compact = value => String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, '');
     const sheetHeaders = (payload.table?.cols || []).map(column => compact(column.label));
@@ -257,6 +374,7 @@
       record: value(row,'W-L') || (value(row,'Wins') !== '' && value(row,'Losses') !== '' ? `${value(row,'Wins')}-${value(row,'Losses')}` : ''),
       points: row[col('Points')] || '',
       lastWeek: value(row,'Last Week') || value(row,"Last Week's Rank"),
+      startingRank: value(row,'Starting Rank'),
       thisWeek: row[col('This Week')] || '',
       source: row[col('Source')] || ''
     })).filter(row => row.team && Number.isFinite(row.rank) && row.rank >= 1 && row.rank <= 25);
@@ -278,6 +396,72 @@
       entries: [...byRank.values()].sort((a,b) => a.rank - b.rank).slice(0,25)
     };
   }
+  async function liveTeamRecords(){
+    const [standingsPayload, coachPayload] = await Promise.all([
+      loadLiveSheet(LIVE_SHEET_TABS.standings), loadLiveSheet(LIVE_SHEET_TABS.coaches)
+    ]);
+    const tableRows = payload => (payload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
+    const compact = value => String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, '');
+    const parse = (payload, required) => {
+      const rows = tableRows(payload);
+      const labels = (payload.table?.cols || []).map(column => compact(column.label));
+      const headerIndex = rows.findIndex(row => required.every(name => row.map(compact).includes(compact(name))));
+      const headers = required.every(name => labels.includes(compact(name))) ? labels : headerIndex >= 0 ? rows[headerIndex].map(compact) : [];
+      const dataRows = required.every(name => labels.includes(compact(name))) ? rows : rows.slice(headerIndex + 1);
+      if(!headers.length) throw new Error(`Live headers were not found for ${required.join(', ')}.`);
+      const col = name => headers.indexOf(compact(name));
+      const value = (row, name) => col(name) >= 0 ? row[col(name)] : '';
+      return {dataRows, value};
+    };
+    const standings = parse(standingsPayload, ['Team','User','W','L']);
+    const coaches = parse(coachPayload, ['User','Current Team','Overall Wins','Overall Losses']);
+    const records = new Map();
+    standings.dataRows.forEach(row => {
+      const user = standings.value(row,'User');
+      if(!user) return;
+      records.set(user.toLowerCase(), {
+        team: standings.value(row,'Team'),
+        teamRecord: `${standings.value(row,'W') || 0}-${standings.value(row,'L') || 0}`,
+        currentRank: standings.value(row,'Current Rank')
+      });
+    });
+    coaches.dataRows.forEach(row => {
+      const user = coaches.value(row,'User');
+      if(!user) return;
+      const key = user.toLowerCase();
+      const current = records.get(key) || {};
+      records.set(key, {
+        ...current,
+        careerRecord: `${coaches.value(row,'Overall Wins') || 0}-${coaches.value(row,'Overall Losses') || 0}`,
+        coachName: coaches.value(row,'Coach'),
+        prestige: coaches.value(row,'Prestige'),
+        levelArchetype: coaches.value(row,'Level & Archetype'),
+        jobSecurity: coaches.value(row,'Job Security'),
+        offScheme: coaches.value(row,'Off. Scheme'),
+        defScheme: coaches.value(row,'Def. Scheme'),
+        almaMater: coaches.value(row,'Alma Mater')
+      });
+    });
+    return records;
+  }
+  function applyLiveTeamData(data, records, games){
+    const normalizeUser = value => String(value || '').trim().toLowerCase();
+    const latestFor = user => games.filter(game => normalizeUser(game.awayUser) === user || normalizeUser(game.homeUser) === user)
+      .sort((a,b) => weekNumber(b.week) - weekNumber(a.week) || String(b.createdAt).localeCompare(String(a.createdAt)))[0];
+    (data.teams || []).forEach(team => {
+      const user = normalizeUser(team.coach);
+      const live = records?.get(user);
+      if(live) Object.assign(team, live);
+      const game = latestFor(user);
+      if(game){
+        const away = normalizeUser(game.awayUser) === user;
+        const teamScore = away ? game.awayScore : game.homeScore;
+        const opponentScore = away ? game.homeScore : game.awayScore;
+        const opponent = away ? game.home : game.away;
+        team.lastGameResult = `${teamScore > opponentScore ? 'W' : 'L'} ${teamScore}-${opponentScore} vs ${opponent}`;
+      }
+    });
+  }
   function gameResultRecap(game){
     const awayWon = game.winner.toLowerCase() === game.away.toLowerCase() || game.awayScore > game.homeScore;
     const winningTeam = awayWon ? game.away : game.home;
@@ -291,21 +475,17 @@
     return `FINAL — ${owner}${winningTeam} ${verb} ${losingTeam}, ${winningScore}-${losingScore} (${game.week}, ${game.isUser ? 'USER vs USER' : 'USER vs CPU'}).`;
   }
   async function liveGameResults(){
-    const [resultsPayload, schedulePayload, gotwHistoryPayload] = await Promise.all([
-      loadLiveSheet('Game Results'), loadLiveSheet('Schedule'), loadLiveSheet('GOTW History')
-    ]);
+    const resultsPayload = await loadLiveSheet(LIVE_SHEET_TABS.results);
+    const [gotwHistoryResult] = await Promise.allSettled([loadLiveSheet(LIVE_SHEET_TABS.gotw)]);
+    const gotwHistoryPayload = gotwHistoryResult.status === 'fulfilled' ? gotwHistoryResult.value : {table:{rows:[]}};
     const resultRows = (resultsPayload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
-    const scheduleRows = (schedulePayload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
     const gotwHistoryRows = (gotwHistoryPayload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
     const humanUser = value => Boolean(String(value || '').trim()) && !/^(cpu|cpu team|computer|ai)$/i.test(String(value).trim());
     const classify = (gameType, awayUser, homeUser) => (/user/i.test(gameType) && !/cpu/i.test(gameType)) || (humanUser(awayUser) && humanUser(homeUser));
     const games = resultRows.map(row => {
       const awayUser = row[4] || '', homeUser = row[7] || '', gameType = row[2] || '';
       return {season:row[0]||'',week:row[1]||'Week ?',gameType,away:row[3]||'',awayUser,awayScore:Number(row[5]),home:row[6]||'',homeUser,homeScore:Number(row[8]),winner:row[9]||'',loser:row[10]||'',conference:row[11]||'',overtime:row[12]||'',notes:row[13]||'',createdAt:row[19]||'',isUser:classify(gameType,awayUser,homeUser)};
-    }).concat(scheduleRows.map(row => {
-      const awayUser = row[5] || '', homeUser = row[7] || '', gameType = row[3] || '';
-      return {season:row[1]||'',week:row[2]||'Week ?',gameType,away:row[4]||'',awayUser,awayScore:row[9]===''?NaN:Number(row[9]),home:row[6]||'',homeUser,homeScore:row[10]===''?NaN:Number(row[10]),winner:row[11]||'',loser:'',conference:'',overtime:'',notes:row[14]||'',createdAt:row[16]||row[15]||'',isUser:classify(gameType,awayUser,homeUser)};
-    })).concat(gotwHistoryRows.map(row => {
+    }).concat(gotwHistoryRows.map(row => {
       const away = row[3] || '', home = row[5] || '', note = row[23] || '';
       const score = String(note).match(/Final:\s*(.+?)\s+(\d+),\s*(.+?)\s+(\d+)/i);
       const scoreFor = team => {
@@ -322,14 +502,15 @@
     return [...byGame.values()].sort((a,b) => Number(b.isUser)-Number(a.isUser) || String(b.createdAt).localeCompare(String(a.createdAt)) || weekNumber(b.week)-weekNumber(a.week));
   }
   function renderLiveSeasonWeek(status){
-    const text = status ? `${status.season} - Current Week: ${status.week}` : 'Live season status unavailable';
+    const text = status ? `${status.season} - Current Week: ${status.week}` : 'Year 1 (2026) - Current Week: Week 3';
     $$('[data-render="live-season-week"]').forEach(el => { el.textContent = text; });
   }
   function renderLiveGameResults(recaps){
+    const fallback = RUNNING_LATE_FEED.recentUserGames.map(game => `${game.label}: ${game.winner} ${game.winnerScore}-${game.loserScore} ${game.loser}`);
+    const items = recaps?.length ? recaps : fallback;
     $$('[data-render="live-game-results"]').forEach(el => {
-      if(!recaps?.length){ el.textContent='No completed game results are available yet.'; return; }
       const frag=document.createDocumentFragment();
-      recaps.forEach(recap => { const span=document.createElement('span'); span.className='ticker__result'; span.textContent=recap; frag.append(span); });
+      items.forEach(recap => { const span=document.createElement('span'); span.className='ticker__result'; span.textContent=recap; frag.append(span); });
       el.replaceWith(frag);
     });
   }
@@ -349,6 +530,8 @@
   function renderTop25Poll(data, poll, error){
     const root = $('[data-render="top-25-poll"]');
     if(!root) return;
+    const pollTitle = $('[data-render="top25-title"]');
+    const pollFreshness = $('[data-render="top25-freshness"]');
     if(error){
       root.innerHTML = '<div class="top25-state"><strong>Live poll temporarily unavailable.</strong><span>Refresh the page to try the spreadsheet again.</span></div>';
       return;
@@ -357,9 +540,12 @@
       root.innerHTML = '<div class="top25-state"><strong>No Top-25 poll has been posted yet.</strong><span>The board will populate automatically after the spreadsheet receives ranked rows.</span></div>';
       return;
     }
+    if(pollTitle) pollTitle.textContent = `${poll.week || 'Current'} ${poll.pollType || 'Media'} Top-25 Poll`;
+    if(pollFreshness) pollFreshness.textContent = 'Updated From Spreadsheet';
     const lookup = teamLookup(data);
     const movement = row => {
-      const previous = Number(String(row.lastWeek).replace(/[^0-9]/g,''));
+      const baseline = row.lastWeek && !/^[-—]+$/.test(String(row.lastWeek).trim()) ? row.lastWeek : row.startingRank;
+      const previous = Number(String(baseline).replace(/[^0-9]/g,''));
       if(!Number.isFinite(previous) || previous <= 0) return 'NEW';
       const delta = previous - row.rank;
       return delta > 0 ? `▲ ${delta}` : delta < 0 ? `▼ ${Math.abs(delta)}` : '—';
@@ -379,7 +565,7 @@
       }).join('')}</div>`;
   }
   function esc(v){ return String(v ?? '').replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s])); }
-  function mountRunningLateFeed(){
+  function mountRunningLateFeed(feed = RUNNING_LATE_FEED){
     const ticker = $('.ticker');
     if(ticker){
       const label = $('.ticker__label', ticker);
@@ -391,13 +577,13 @@
         label.setAttribute('aria-label','Open the Running Late Discord poll channel');
       }
       if(track){
-        const games = RUNNING_LATE_FEED.recentUserGames.map(game =>
+        const games = feed.recentUserGames.map(game =>
           `<span><b>${esc(game.label)}:</b> ${esc(game.winner)} ${esc(game.winnerScore)}–${esc(game.loserScore)} ${esc(game.loser)}</span>`
         ).join('');
-        const ranked = RUNNING_LATE_FEED.topTen.map(entry =>
+        const ranked = feed.top25.map(entry =>
           `<span class="ticker-rank"><b>#${esc(entry.rank)} ${esc(entry.team)}</b> — ${esc(entry.user)}</span>`
         ).join('');
-        track.innerHTML = `<span data-render="live-game-results">Loading latest game results...</span><span data-render="live-season-week">Loading live season...</span><span class="ticker-poll"><a href="${POLL_CHANNEL}" target="_blank" rel="noopener">Vote &amp; follow official polls in the Discord Poll Channel</a></span>${games}${ranked}`;
+        track.innerHTML = `<span data-render="live-game-results">Loading latest game results...</span><span data-render="live-season-week">Loading live season...</span><span class="ticker-poll-label"><a href="teams.html#top-25">${esc(feed.pollLabel)} • Updated From Spreadsheet</a></span>${ranked}<span class="ticker-poll"><a href="${POLL_CHANNEL}" target="_blank" rel="noopener">Vote &amp; follow official polls in the Discord Poll Channel</a></span>${games}`;
       }
     }
 
@@ -412,14 +598,24 @@
       </article>
       <article class="feed-card">
         <span class="eyebrow">Recent User vs. User Results</span>
-        <div class="feed-results">${RUNNING_LATE_FEED.recentUserGames.map(game => `
+        <div class="feed-results">${feed.recentUserGames.map(game => `
           <div><small>${esc(game.label)}</small><strong>${esc(game.winner)} ${esc(game.winnerScore)}–${esc(game.loserScore)} ${esc(game.loser)}</strong></div>`).join('')}</div>
       </article>
       <article class="feed-card feed-card--rankings">
-        <span class="eyebrow">Top-10 Ranked Users</span>
-        <ol>${RUNNING_LATE_FEED.topTen.map(entry => `
-          <li><b>#${esc(entry.rank)}</b><span><strong>${esc(entry.user)}</strong><small>${esc(entry.team)}</small></span></li>`).join('')}</ol>
+        <span class="eyebrow">${esc(feed.pollLabel)}</span>
+        <ol>${feed.top25.map(entry => `
+          <li><b>#${esc(entry.rank)}</b><span><strong>${esc(entry.team)}</strong><small>${esc(entry.user)}</small></span></li>`).join('')}</ol>
       </article>`;
+  }
+  function liveFeed(games, poll, data){
+    const recentUserGames = games.filter(game => game.isUser).slice(0,2).map(game => {
+      const awayWon = game.awayScore > game.homeScore;
+      return {winner:awayWon ? game.away : game.home,winnerScore:awayWon ? game.awayScore : game.homeScore,loser:awayWon ? game.home : game.away,loserScore:awayWon ? game.homeScore : game.awayScore,label:`${game.week} final`};
+    });
+    const lookup = teamLookup(data);
+    const top25 = (poll?.entries || []).slice(0,25).map(entry => ({rank:entry.rank,team:entry.team,user:/^no$/i.test(entry.userTeam) ? 'CPU' : lookup[String(entry.team).toLowerCase()]?.coach || entry.userId || 'User team'}));
+    const pollLabel = poll?.entries?.length ? `${poll.week || 'Current'} ${poll.pollType || 'Media'} Top-25 Poll` : RUNNING_LATE_FEED.pollLabel;
+    return {recentUserGames:recentUserGames.length ? recentUserGames : RUNNING_LATE_FEED.recentUserGames,pollLabel,top25:top25.length ? top25 : RUNNING_LATE_FEED.top25};
   }
   function weekNumber(w){ const m=String(w).match(/\d+/); return m?Number(m[0]):999; }
   function slug(v){ return String(v||'section').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') || 'section'; }
@@ -517,44 +713,19 @@
   function renderHeadlines(data){
     const root = $('[data-render="headlines"]'); if(!root) return;
     const headlines = data.dashboard?.headlines || [];
-    root.innerHTML = headlines.map((h,i)=>`<article class="headline-card ${i===0?'headline-card--main':''}"><span>${esc(h.kicker)}</span><h2>${esc(h.title)}</h2><p>${esc(h.summary)}</p><a href="${esc(h.href||'hub.html')}">${esc(h.cta||'Open')}</a></article>`).join('');
+    root.innerHTML = headlines.map((h,i)=>`<article class="headline-card ${i===0?'headline-card--main':i===1?'headline-card--celebration':''}"><span>${esc(h.kicker)}</span><h2>${esc(h.title)}</h2><p>${esc(h.summary)}</p><a href="${esc(h.href||'hub.html')}">${esc(h.cta||'Open')}</a></article>`).join('');
   }
-  function signalMarkup(s, i, compact=false){
-    return `<article class="signal-card signal-card--${esc(s.tone||'gold')} ${compact?'signal-card--compact':''}">
+  function statusCardMarkup(s, i, compact=false){
+    return `<article class="status-card status-card--${esc(s.tone||'gold')} ${compact?'status-card--compact':''}">
       <div><span>${esc(s.label)}</span><strong>${esc(s.value)}</strong></div>
       <b>${esc(s.status)}</b>
       <p>${esc(s.detail)}</p>
     </article>`;
   }
-  function renderSignals(data){
-    const all = data.dashboard?.signals || [];
-    const rail = $('[data-render="signals"]');
-    const cards = $('[data-render="signal-cards"]');
-    if(rail) rail.innerHTML = all.slice(0,4).map((s,i)=>signalMarkup(s,i,true)).join('');
-    if(cards) cards.innerHTML = all.map((s,i)=>signalMarkup(s,i,false)).join('');
-  }
-  function renderGotwPreview(data){
-    const root = $('[data-render="gotw-preview"]'), g = data.gotw;
-    if(!root || !g) return;
-    const runner = g.runnerUp || {};
-    root.innerHTML = `
-      <div class="gotw-preview__head">
-        <div><span class="eyebrow">${esc(g.displayWeek)} Preview</span><h2 id="gotw-preview-title">${esc(g.gotwId)}</h2><p>The league is currently in <strong>${esc(g.leagueCurrentWeek)}</strong>. This is the selected ${esc(g.displayWeek)} showcase; no prediction poll is active yet.</p></div>
-        <div class="gotw-status"><b>Official nomination poll closed</b><span>Prediction status: ${esc(g.predictionStatus)}</span></div>
-      </div>
-      <div class="gotw-matchup" aria-label="Selected Game of the Week matchup">
-        <div><span class="gotw-rank">#${esc(g.awayRank)}</span><strong>🌰 ${esc(g.awayTeam)}</strong><small>Away</small></div>
-        <span class="gotw-at">at</span>
-        <div><span class="gotw-rank">#${esc(g.homeRank)}</span><strong>🤘 ${esc(g.homeTeam)}</strong><small>Home</small></div>
-      </div>
-      <p class="gotw-result"><strong>Selected matchup:</strong> ${esc(g.awayTeam)} at ${esc(g.homeTeam)} won the ${esc(g.displayWeek)} nomination poll <b>${esc(g.winnerVotes)}–${esc(g.runnerUpVotes)}</b>.</p>
-      <div class="gotw-details">
-        <span><b>Total Votes</b>${esc(g.totalVotes)}</span>
-        <span><b>Runner-Up</b>#${esc(runner.awayRank)} ${esc(runner.awayTeam)} at #${esc(runner.homeRank)} ${esc(runner.homeTeam)}</span>
-        <span><b>Nomination</b>${esc(g.nominationStatus)}</span>
-        <span><b>Prediction</b>${esc(g.predictionStatus)}</span>
-      </div>
-      <div class="gotw-poll-meta"><span>Opened: ${esc(g.pollOpenedAt)}</span><span>Closed: ${esc(g.pollClosedAt)}</span><a class="btn" href="${esc(g.pollUrl)}" target="_blank" rel="noopener noreferrer">Official nomination poll</a></div>`;
+  function renderStatusCards(data){
+    const all = data.dashboard?.statusCards || [];
+    const cards = $('[data-render="status-cards"]');
+    if(cards) cards.innerHTML = all.map((s,i)=>statusCardMarkup(s,i,false)).join('');
   }
   function renderCommandDocs(data){
     const root = $('[data-render="command-docs"]'), docs = data.discordCommands;
@@ -572,7 +743,8 @@
     const root = $('[data-render="featured-games"]'); if(!root) return;
     const weeks = byWeek(data.schedule || []);
     const orderedWeeks = Object.keys(weeks).sort((a,b)=>weekNumber(a)-weekNumber(b));
-    const week = orderedWeeks[0] || 'Week 1';
+    const currentWeek = data.season?.currentWeek;
+    const week = weeks[currentWeek] ? currentWeek : orderedWeeks[0] || 'Week 1';
     const games = (weeks[week] || []).slice(0,6);
     root.innerHTML = `<div class="mini-slate-head"><b>${esc(week)}</b><span>${games.length} featured user games</span></div>` + games.map(g=>`<a class="mini-game" href="schedule.html"><span>${esc(g.neutral?'Neutral Site':'User vs User')}</span><strong>${esc(g.matchup)}</strong>${g.venue?`<em>${esc(g.venue)}</em>`:''}</a>`).join('');
   }
@@ -598,7 +770,7 @@
     const groups = AVAILABLE_TEAMS.slice().sort((a,b) => a[0].localeCompare(b[0]));
     root.innerHTML = `
       <div class="panel-header">
-        <div><span class="eyebrow">Open Teams / Waitlist</span><h2>AI Controlled Teams</h2><p>Quick Reference Guide to All AI Controlled Teams Who Are Available To Be Picked By replacement users.</p></div>
+        <div><span class="eyebrow">Open Teams / Waitlist</span><h2>Available CPU Teams</h2><p>Programs currently available to replacement users.</p></div>
         <a class="btn btn--red" href="${DISCORD}" target="_blank" rel="noopener">Discord</a>
       </div>
       <div class="available-board ai-controlled-teams">${groups.map(([group, teams]) => `
@@ -720,7 +892,7 @@
             <div>
               <h3>${esc(cleanDisplay(t.school))}</h3>
               <p>${esc(t.coach)}</p>
-              <div class="team-hub-card__meta">${conferenceBadge(t.conference)}<span><b>GT:</b> ${esc(dynastyGamertag(t))}</span><span><b>Platform:</b> ${esc(dynastyPlatform(t))}</span><span><b>Next User Game:</b> ${esc(nextGameForTeam(data,t.school))}</span></div>
+              <div class="team-hub-card__meta">${conferenceBadge(t.conference)}<span><b>Record:</b> ${esc(pendingValue(t.teamRecord, '0-0'))}</span><span><b>GT:</b> ${esc(dynastyGamertag(t))}</span><span><b>Platform:</b> ${esc(dynastyPlatform(t))}</span><span><b>Next User Game:</b> ${esc(nextGameForTeam(data,t.school))}</span></div>
             </div>
           </a>`).join('')}</div>`;
       observe();
@@ -776,7 +948,7 @@
     const root = $('[data-render="schedule"]'); if(!root) return;
     const search = $('#scheduleSearch'); const weekFilter = $('#weekFilter');
     const scheduleTotal = $('[data-render="schedule-total"]');
-    if(scheduleTotal) scheduleTotal.textContent = data.derived?.projected_user_games || (data.schedule || []).length;
+    if(scheduleTotal) scheduleTotal.textContent = (data.schedule || []).length;
     const render = () => {
       const q = (search?.value || '').toLowerCase().trim();
       const wf = weekFilter?.value || 'All';
@@ -786,7 +958,7 @@
       const jumper = ordered.length > 1 ? `<nav class="section-jumper" aria-label="Schedule sections">${ordered.map(w=>`<a href="#schedule-${slug(w)}">${esc(w.replace('Week ','W'))} <span>${groups[w].length}</span></a>`).join('')}</nav>` : '';
       const result = q ? `<p class="finder-result">${games.length ? `${games.length} game${games.length===1?'':'s'} found.` : 'No games match that filter.'}</p>` : '';
       root.innerHTML = result + jumper + (ordered.map(w => `
-        <section id="schedule-${slug(w)}" class="week-block reveal"><div class="week-head"><h3>${esc(w)}</h3><span class="chip chip--gold">${groups[w].length} user games</span></div>
+        <section id="schedule-${slug(w)}" class="week-block reveal"><div class="week-head"><h3>${esc(w)}</h3><span class="chip chip--gold">${groups[w].length} games</span></div>
         <div class="match-grid">${groups[w].map(g=>matchCard(g,data)).join('')}</div></section>`).join('') || '<p class="lead">No games match that filter.</p>');
       linkTeamMentions(data, root);
       observe();
@@ -800,18 +972,19 @@
   function matchCard(g, data){
     const awayCoach = coachForTeam(data,g.away);
     const homeCoach = coachForTeam(data,g.home);
-    const gameType = g.conference ? 'Conference Game' : 'Non-Conference Game';
-    const kindClass = g.conference ? 'game-kind--conference' : 'game-kind--non';
+    const gameType = g.isUser ? 'USER vs USER' : 'USER vs CPU';
+    const kindClass = g.isUser ? 'game-kind--conference' : 'game-kind--non';
     return `<article class="match-card ${g.conference ? 'match-card--conference' : 'match-card--non'}">
       <div class="match-card__body">
-        <small class="game-kind ${kindClass}">${esc(gameType)}</small>
+        <small class="game-kind ${kindClass}">${esc(gameType)}${g.status === 'Final' ? ' • FINAL' : ''}</small>
         <div class="match-card__teams">
           ${teamLink(data,g.away,'team-link team-link--away')}
           <span>${g.neutral?'VS':'@'}</span>
           ${teamLink(data,g.home,'team-link team-link--home')}
         </div>
         ${g.venue?`<small class="match-card__venue">${esc(g.venue)}</small>`:''}
-        <small class="match-card__coaches">${esc(g.away)}: ${esc(awayCoach||'Coach TBD')} | ${esc(g.home)}: ${esc(homeCoach||'Coach TBD')}</small>
+        <small class="match-card__coaches">${esc(g.away)}: ${esc(g.awayUser || awayCoach || 'CPU')} | ${esc(g.home)}: ${esc(g.homeUser || homeCoach || 'CPU')}</small>
+        ${g.status === 'Final' && Number.isFinite(g.awayScore) && Number.isFinite(g.homeScore) ? `<strong class="match-card__score">FINAL — ${esc(g.away)} ${g.awayScore}, ${esc(g.home)} ${g.homeScore}</strong>` : ''}
       </div>
     </article>`;
   }
@@ -847,11 +1020,11 @@
           </article>`;
         }).join('') : `<article class="match-card">
           <div>
-            <small>Coming Soon</small>
-            <b>User-game slate pending</b>
-            <small>This team has no projected user-vs-user matchup in the current export.</small>
+            <small>No Games Listed</small>
+            <b>No current matchup</b>
+            <small>The live schedule does not list a game for this team.</small>
           </div>
-          <span class="chip">TBD</span>
+          <span class="chip">—</span>
         </article>`}
       </div>
       <div class="team-schedule-card__footer">
@@ -875,10 +1048,6 @@
     };
     search?.addEventListener('input', draw);
     draw();
-  }
-  function renderRules(data){
-    const root = $('[data-render="rules"]'); if(!root) return;
-    root.innerHTML = (data.rules || []).map(r => `<article class="rule-item reveal">${esc(r)}</article>`).join('');
   }
   function renderTopGames(data){
     const root = $('[data-render="top-games"]'); if(!root) return;
@@ -1113,7 +1282,7 @@
   async function init(){
     wireNav(); wireMobileBottomNav(); mountAudioPlayer(); wireSplash(); mountRunningLateFeed();
     const data = await loadData();
-    const [statusResult, gameResultsResult, top25Result] = await Promise.allSettled([liveDashboardStatus(), liveGameResults(), liveTop25Poll()]);
+    const [statusResult, gameResultsResult, top25Result, teamRecordsResult] = await Promise.allSettled([liveDashboardStatus(), liveGameResults(), liveTop25Poll(), liveTeamRecords()]);
     const liveStatus = statusResult.status === 'fulfilled' ? statusResult.value : null;
     const liveGames = gameResultsResult.status === 'fulfilled' ? gameResultsResult.value : [];
     if(liveStatus){
@@ -1121,12 +1290,19 @@
       data.dashboard ||= {}; data.dashboard.status ||= {}; data.dashboard.status.currentWeek = liveStatus.week;
     }else console.warn('Live spreadsheet season/week could not be loaded.', statusResult.reason);
     if(gameResultsResult.status === 'rejected') console.warn('Live spreadsheet game results could not be loaded.', gameResultsResult.reason);
+    // The complete 83-game user schedule is intentionally owned by the versioned
+    // local data file. Live sheet requests update changing stats and final scores,
+    // but never replace or shorten the published schedule.
+    if(teamRecordsResult.status === 'fulfilled') applyLiveTeamData(data, teamRecordsResult.value, liveGames);
+    else console.warn('Live spreadsheet standings and coach records could not be loaded.', teamRecordsResult.reason);
+    applyLiveDashboardData(data, liveStatus, liveGames, top25Result.status === 'fulfilled' ? top25Result.value : null);
+    mountRunningLateFeed(liveFeed(liveGames, top25Result.status === 'fulfilled' ? top25Result.value : null, data));
     renderLiveSeasonWeek(liveStatus);
     renderLiveGameResults(liveGames.slice(0,3).map(gameResultRecap));
     renderGameResultsPage(liveGames);
     renderTop25Poll(data, top25Result.status === 'fulfilled' ? top25Result.value : null, top25Result.status === 'rejected' ? top25Result.reason : null);
-    renderStats(data); renderScorebug(data); renderStatusText(data, liveStatus); renderCoverLines(data); renderHeadlines(data); renderSignals(data); renderGotwPreview(data); renderCommandDocs(data); renderWatchlist(data); renderFeaturedGames(data); renderUpdateGuide(data);
-    renderSettings(data); renderLeagueHealth(liveGames.filter(game=>game.isUser).length); renderOpenTeams(data); renderConferenceCards(data); renderTimeline(data); renderTeams(data); renderTeamHub(data); renderCoachCards(data); renderSchedule(data); renderTeamSchedules(data); renderRules(data); renderTopGames(data); renderSitemap(data); renderArchive(data); renderLegacy(data);
+    renderStats(data); renderScorebug(data); renderStatusText(data, liveStatus); renderCoverLines(data); renderHeadlines(data); renderStatusCards(data); renderCommandDocs(data); renderWatchlist(data); renderFeaturedGames(data); renderUpdateGuide(data);
+    renderSettings(data); renderLeagueHealth(liveGames.filter(game=>game.isUser).length); renderOpenTeams(data); renderConferenceCards(data); renderTimeline(data); renderTeams(data); renderTeamHub(data); renderCoachCards(data); renderSchedule(data); renderTeamSchedules(data); renderTopGames(data); renderSitemap(data); renderArchive(data); renderLegacy(data);
     linkTeamMentions(data);
     observe();
   }

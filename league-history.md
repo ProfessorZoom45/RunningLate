@@ -198,23 +198,3 @@ Running Late Dynasty started as a fast-moving CFB 26 Discord league and grew int
 - Conference: TCU @ Texas Tech
 
 Projected user games found: **83**.
-
-## Public Rules Summary
-
-- Schedule every user game within 24 hours after advance.
-- Use a clear 2-hour max gaming window if no exact kickoff time is set.
-- Someone must stream, screen share, or record user games for admin review.
-- Forced loss and fair sim calls are admin-reviewed case by case.
-- CPU restarts should stay at zero unless there is proof or a strong reason.
-- No scoring over 100; chew clock when a game gets out of hand.
-- Check uniforms before kickoff to avoid dark-on-dark or white-on-white matchups.
-- Respect the opponent, the admins, and the league. Keep trash talk inside football.
-
----
-
-## Preseason Site Notes
-
-- Public pages focus on team, schedule, rules, media, and history.
-- Coach profile cards are ready for submitted user details as the preseason file fills in.
-- Private admin logs, passwords, and account metadata are not published here.
-- The live site is built for GitHub Pages and uses static HTML, CSS, JavaScript, JSON, images, and audio.

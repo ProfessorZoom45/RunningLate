@@ -11,11 +11,15 @@ Static GitHub Pages site for the Running Late Dynasty CFB 27 league hub.
 ## Pages
 
 - `index.html` - full magazine-cover splash gate that links into the hub.
-- `hub.html` - Dynasty command center, league health, signals, featured games, and conference overview.
-- `coaches.html` - public preseason coach cards with team, user, conference, record, scheme, and ranking slots.
+- `hub.html` - Dynasty command center, league health, status cards, featured games, and conference overview.
+- `coaches.html` - live coach directory with team, user, conference, record, and scheme details.
 - `teams.html` - merged Team/User Hub with coach-card links, detailed team cards, conference board, and Open Teams / Waitlist status.
-- `schedule.html` - searchable 83-game user-vs-user schedule grouped by week.
-- `team-schedules.html` - individual user-game schedule slates by team, with full official schedules marked coming soon.
+- `schedule.html` - searchable, versioned 83-game user-vs-user schedule grouped by week. The complete schedule is stored locally so it remains available even if Google Sheets is temporarily unavailable.
+- `team-schedules.html` - live user and CPU schedules organized by team.
+
+## Live spreadsheet connection
+
+GitHub Pages reads changing league information from the sanitized, read-only Apps Script website feed. Set `window.RUNNING_LATE_LIVE_API_URL` to the deployed Apps Script `/exec` URL before `assets/app.js` loads. Dashboard status, readiness, standings, coach records, completed games, GOTW history, and the Top-25 refresh on each visit. The full schedule is intentionally hardcoded in `data/league-history.json`; spreadsheet responses update stats and results without replacing the published schedule. If no Apps Script URL is configured, the client attempts the legacy Google Visualization feed and then uses repository fallbacks.
 - `history.html` - league history and CFB 26 to CFB 27 carryover context.
 - `media.html` - merged streams, clips, highlights, YouTube playlist, and collaborator invite center.
 - `archive.html` - database of past index splash covers and weekly issue images.
