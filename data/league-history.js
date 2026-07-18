@@ -2065,6 +2065,28 @@ window.RLD_DATA = {
     "Year 1 (2026) is currently in Week 3.",
     "Standings, results, rankings, schedules, and readiness update from the live league spreadsheet."
   ],
+  "gotw": {
+    "gotwId": "GOTW-2026-WK4",
+    "displayWeek": "Week 4",
+    "leagueCurrentWeek": "Week 3",
+    "awayTeam": "Oklahoma Sooners",
+    "homeTeam": "Georgia Bulldogs",
+    "awayUser": "tweetybirrrd",
+    "homeUser": "mikecmd_856",
+    "awayRecord": "2-0",
+    "homeRecord": "3-0",
+    "awayRank": 9,
+    "homeRank": 4,
+    "awayVotes": 9,
+    "homeVotes": 2,
+    "totalVotes": 11,
+    "pollUrl": "https://discord.com/channels/1382826467683205180/1407980310158905448",
+    "pollOpenedAt": "Pending",
+    "pollClosedAt": "Pending",
+    "nominationStatus": "Final",
+    "predictionStatus": "Prediction Open",
+    "pollClosesAt": "Pending"
+  },
   "discordCommands": {
     "ranks": {
       "commands": ["/ranks"],

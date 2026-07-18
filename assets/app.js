@@ -347,6 +347,30 @@
     });
     if(headlines.length) data.dashboard.headlines = headlines;
   }
+  async function liveGotwInfo(){
+    const payload = await loadLiveSheet('Game of the Week');
+    const rows = (payload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
+    const compact = value => String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, '');
+    const settings = new Map();
+    rows.slice(0,40).forEach(row => { if(row[0] && row[1]) settings.set(compact(row[0]), row[1]); });
+    const get = (name, fallback='PENDING') => settings.get(compact(name)) || fallback;
+    const awayTeam = get('Away Team'), homeTeam = get('Home Team');
+    const summary = {away:0, home:0};
+    rows.slice(0,12).forEach(row => {
+      const side = compact(row[4]), team = compact(row[5]);
+      if(side === 'away' && team === compact(awayTeam)) summary.away = Number(row[6]) || 0;
+      if(side === 'home' && team === compact(homeTeam)) summary.home = Number(row[6]) || 0;
+    });
+    if(compact(awayTeam) === 'pending' || compact(homeTeam) === 'pending') throw new Error('Active GOTW teams were not found.');
+    return {
+      gotwId:get('GOTW ID'), displayWeek:get('Week'), awayTeam, homeTeam,
+      awayUser:get('Away User'), homeUser:get('Home User'), awayRank:get('Away Rank',''), homeRank:get('Home Rank',''),
+      awayRecord:get('Away Record'), homeRecord:get('Home Record'), nominationStatus:get('Candidate Poll Status'),
+      predictionStatus:get('Prediction Poll Status'), pollOpenedAt:get('Prediction Poll Opens'),
+      pollClosedAt:get('Prediction Poll Closes'), pollUrl:get('Prediction Poll URL',''), notes:get('Notes',''),
+      awayVotes:summary.away, homeVotes:summary.home, totalVotes:summary.away + summary.home
+    };
+  }
   async function liveTop25Poll(){
     const payload = await loadLiveSheet(LIVE_SHEET_TABS.poll);
     const rows = (payload.table?.rows || []).map(row => (row.c || []).map(sheetCellValue));
@@ -726,6 +750,33 @@
     const all = data.dashboard?.statusCards || [];
     const cards = $('[data-render="status-cards"]');
     if(cards) cards.innerHTML = all.map((s,i)=>statusCardMarkup(s,i,false)).join('');
+  }
+  function renderGotwPreview(data){
+    const root = $('[data-render="gotw-preview"]'), g = data.gotw;
+    if(!root || !g) return;
+    const rank = value => value && !/^pending$/i.test(String(value)) ? `#${esc(value)} ` : '';
+    const predictionVotes = Number(g.totalVotes || 0) > 0
+      ? `${esc(g.awayTeam)} ${esc(g.awayVotes || 0)}–${esc(g.homeVotes || 0)} ${esc(g.homeTeam)}`
+      : 'Individual predictions are pending';
+    const pollHref = g.pollUrl || 'https://discord.com/channels/1382826467683205180/1407980310158905448';
+    root.innerHTML = `
+      <div class="gotw-preview__head">
+        <div><span class="eyebrow">${esc(g.displayWeek)} Preview</span><h2 id="gotw-preview-title">${esc(g.gotwId)}</h2><p>The league is currently in <strong>${esc(g.leagueCurrentWeek)}</strong>. This matchup is loaded directly from the live dynasty spreadsheet.</p></div>
+        <div class="gotw-status"><b>${esc(g.nominationStatus || 'Matchup Active')}</b><span>Prediction status: ${esc(g.predictionStatus || 'Pending')}</span></div>
+      </div>
+      <div class="gotw-matchup" aria-label="Active Game of the Week matchup">
+        <div><span class="gotw-rank">${rank(g.awayRank)}</span><strong>${esc(g.awayTeam)}</strong><small>${esc(g.awayUser || 'Away')} · ${esc(g.awayRecord || '')}</small></div>
+        <span class="gotw-at">at</span>
+        <div><span class="gotw-rank">${rank(g.homeRank)}</span><strong>${esc(g.homeTeam)}</strong><small>${esc(g.homeUser || 'Home')} · ${esc(g.homeRecord || '')}</small></div>
+      </div>
+      <p class="gotw-result"><strong>Active matchup:</strong> ${rank(g.awayRank)}${esc(g.awayTeam)} at ${rank(g.homeRank)}${esc(g.homeTeam)}. <b>${predictionVotes}</b>.</p>
+      <div class="gotw-details">
+        <span><b>Away Predictions</b>${esc(g.awayVotes || 0)}</span>
+        <span><b>Home Predictions</b>${esc(g.homeVotes || 0)}</span>
+        <span><b>Nomination</b>${esc(g.nominationStatus || 'Pending')}</span>
+        <span><b>Prediction</b>${esc(g.predictionStatus || 'Pending')}</span>
+      </div>
+      <div class="gotw-poll-meta"><span>Opened: ${esc(g.pollOpenedAt || 'Pending')}</span><span>Closes: ${esc(g.pollClosesAt || g.pollClosedAt || 'Pending')}</span><a class="btn" href="${esc(pollHref)}" target="_blank" rel="noopener noreferrer">Open GOTW poll channel</a></div>`;
   }
   function renderCommandDocs(data){
     const root = $('[data-render="command-docs"]'), docs = data.discordCommands;
@@ -1282,13 +1333,16 @@
   async function init(){
     wireNav(); wireMobileBottomNav(); mountAudioPlayer(); wireSplash(); mountRunningLateFeed();
     const data = await loadData();
-    const [statusResult, gameResultsResult, top25Result, teamRecordsResult] = await Promise.allSettled([liveDashboardStatus(), liveGameResults(), liveTop25Poll(), liveTeamRecords()]);
+    const [statusResult, gameResultsResult, top25Result, teamRecordsResult, gotwResult] = await Promise.allSettled([liveDashboardStatus(), liveGameResults(), liveTop25Poll(), liveTeamRecords(), liveGotwInfo()]);
     const liveStatus = statusResult.status === 'fulfilled' ? statusResult.value : null;
     const liveGames = gameResultsResult.status === 'fulfilled' ? gameResultsResult.value : [];
     if(liveStatus){
       data.season ||= {}; data.season.label = liveStatus.season; data.season.currentWeek = liveStatus.week;
       data.dashboard ||= {}; data.dashboard.status ||= {}; data.dashboard.status.currentWeek = liveStatus.week;
     }else console.warn('Live spreadsheet season/week could not be loaded.', statusResult.reason);
+    if(gotwResult.status === 'fulfilled'){
+      data.gotw = {...(data.gotw || {}), ...gotwResult.value, leagueCurrentWeek:liveStatus?.week || data.season?.currentWeek || 'PENDING'};
+    }else console.warn('Live spreadsheet GOTW information could not be loaded; using local fallback data.', gotwResult.reason);
     if(gameResultsResult.status === 'rejected') console.warn('Live spreadsheet game results could not be loaded.', gameResultsResult.reason);
     // The complete 83-game user schedule is intentionally owned by the versioned
     // local data file. Live sheet requests update changing stats and final scores,
@@ -1301,7 +1355,7 @@
     renderLiveGameResults(liveGames.slice(0,3).map(gameResultRecap));
     renderGameResultsPage(liveGames);
     renderTop25Poll(data, top25Result.status === 'fulfilled' ? top25Result.value : null, top25Result.status === 'rejected' ? top25Result.reason : null);
-    renderStats(data); renderScorebug(data); renderStatusText(data, liveStatus); renderCoverLines(data); renderHeadlines(data); renderStatusCards(data); renderCommandDocs(data); renderWatchlist(data); renderFeaturedGames(data); renderUpdateGuide(data);
+    renderStats(data); renderScorebug(data); renderStatusText(data, liveStatus); renderCoverLines(data); renderHeadlines(data); renderStatusCards(data); renderGotwPreview(data); renderCommandDocs(data); renderWatchlist(data); renderFeaturedGames(data); renderUpdateGuide(data);
     renderSettings(data); renderLeagueHealth(liveGames.filter(game=>game.isUser).length); renderOpenTeams(data); renderConferenceCards(data); renderTimeline(data); renderTeams(data); renderTeamHub(data); renderCoachCards(data); renderSchedule(data); renderTeamSchedules(data); renderTopGames(data); renderSitemap(data); renderArchive(data); renderLegacy(data);
     linkTeamMentions(data);
     observe();
