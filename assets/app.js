@@ -8,6 +8,7 @@
     gotw:'GOTW History',
     standings:'Standings',
     coaches:'Coach Records',
+    profiles:'User Profiles',
     poll:'TOP-25 Poll'
   });
   const POLL_CHANNEL = 'https://discord.com/channels/1382826467683205180/1407980310158905448';
@@ -439,6 +440,17 @@
     };
     const standings = parse(standingsPayload, ['Team','User','W','L']);
     const coaches = parse(coachPayload, ['User','Current Team','Overall Wins','Overall Losses']);
+    let profiles = null;
+    try {
+      profiles = parse(await loadLiveSheet(LIVE_SHEET_TABS.profiles), ['Profile ID','Discord Username','Team','Profile Headline','Bio']);
+    } catch (error) {
+      console.warn('Live profile feed is unavailable; using the spreadsheet-generated snapshot.', error);
+      const snapshot = await fetch('data/user-profiles.json', {cache:'no-store'}).then(response => {
+        if(!response.ok) throw new Error(`Profile snapshot HTTP ${response.status}`);
+        return response.json();
+      });
+      profiles = {dataRows:snapshot.profiles || [], value:(row,name) => row[name] ?? ''};
+    }
     const records = new Map();
     standings.dataRows.forEach(row => {
       const user = standings.value(row,'User');
@@ -466,6 +478,20 @@
         almaMater: coaches.value(row,'Alma Mater')
       });
     });
+    profiles.dataRows.forEach(row => {
+      const user = String(profiles.value(row,'Discord Username') || '').replace(/^@/, '');
+      if(!user) return;
+      const key = user.toLowerCase();
+      const current = records.get(key) || {};
+      const links = [['Twitch',profiles.value(row,'Twitch URL')],['YouTube',profiles.value(row,'YouTube URL')],['Other',profiles.value(row,'Other Social URL')]]
+        .filter(([,url]) => url && !/^pending$/i.test(url));
+      records.set(key, {...current,
+        profileHeadline:profiles.value(row,'Profile Headline'), profileBio:profiles.value(row,'Bio'),
+        availabilitySummary:profiles.value(row,'Availability Summary'),
+        profileLinks:links.map(([label,url]) => ({label,type:label,url})),
+        profileUpdatedAt:profiles.value(row,'Last Updated At')
+      });
+    });
     return records;
   }
   function applyLiveTeamData(data, records, games){
@@ -476,6 +502,7 @@
       const user = normalizeUser(team.coach);
       const live = records?.get(user);
       if(live) Object.assign(team, live);
+      if(team.profileLinks?.length) team.socialLinks = team.profileLinks;
       const game = latestFor(user);
       if(game){
         const away = normalizeUser(game.awayUser) === user;
@@ -679,7 +706,7 @@
   }
   function teamScheduleHref(school){ return `team-schedules.html#team-${slug(school)}`; }
   function socialLinksForTeam(t){
-    return SOCIAL_LINKS[String(t?.school || '').toLowerCase()] || [];
+    return t?.profileLinks?.length ? t.profileLinks : (SOCIAL_LINKS[String(t?.school || '').toLowerCase()] || []);
   }
   function socialLinksHtml(t){
     const links = socialLinksForTeam(t);
@@ -908,6 +935,8 @@
   }
   function coachProfileData(t, data){
     return [
+      ['Profile Headline', pendingValue(t.profileHeadline)],
+      ['Coach Biography', pendingValue(t.profileBio)],
       ['User Name', t.coach],
       ['Dynasty Gamertag', dynastyGamertag(t)],
       ['Platform', dynastyPlatform(t)],
@@ -924,6 +953,8 @@
       ['Record vs Rivals', pendingValue(t.rivalsRecord, '0-0')],
       ['Bowl Record', pendingValue(t.bowlRecord, '0-0')],
       ['Record vs Top 25', pendingValue(t.top25Record, '0-0')],
+      ['Availability', pendingValue(t.availabilitySummary)],
+      ['Profile Updated', pendingValue(t.profileUpdatedAt)],
       ['Twitch/YouTube', socialLinksHtml(t), true],
       ['Next User Game', `<a href="${teamScheduleHref(t.school)}">${esc(nextGameForTeam(data, t.school))}</a>`, true],
       ['Last Game Result', pendingValue(t.lastGameResult, 'No result yet')]
