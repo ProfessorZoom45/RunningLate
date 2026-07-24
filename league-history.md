@@ -70,7 +70,7 @@ Running Late Dynasty started as a fast-moving CFB 26 Discord league and grew int
 - OLE MISS 🔵 - grody365
 - SOUTH CAROLINA 🐔 - cmledet97
 - TENNESSEE 🍊 - cmledet969829
-- TEXAS 🤘 - jrob9179
+- TEXAS 🤘🏼 - jrob9179
 - TEXAS A&M 👍 - selfmadezay.
 
 ### Independent

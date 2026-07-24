@@ -720,7 +720,7 @@ window.RLD_DATA = {
     },
     {
       "school": "Texas",
-      "display": "TEXAS 🤘",
+      "display": "TEXAS 🤘🏼",
       "conference": "SEC",
       "coach": "jrob9179",
       "primary": "#bf5700",
